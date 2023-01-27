@@ -1,2 +1,2 @@
-# Fresh2Rely-Server
-Fresh2Rely-Server repo
+# Fresh2Rely
+Fresh2Rely repo
