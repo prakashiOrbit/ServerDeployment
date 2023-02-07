@@ -1,26 +1,26 @@
+import React from 'react';
 import { Button } from '@mui/material';
-import React, { Component } from 'react'
+import { useNavigate } from "react-router-dom";
 
-export class ButtonClass extends Component {
-    constructor(props) {
-        super(props);
-        // const { aev } = this.props.params;
-      
-
-    }
-    render() {
-        return (
-            <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-                onClick={this.props.formDetails.submitURL ? () => this.props.showData(this.props.formDetails.submitURL,this.props.search ? true : false) : ''}
-            >
-                {this.props.aev != 'edit' ? this.props.formDetails.label : this.props.formDetails.submitURL ? "Save" : "Cancel"}
-            </Button>
-        )
-    }
+const ButtonClass = (props) => {
+const navigate = useNavigate();
+const { aev, formDetails } = props;
+let submitURL = formDetails.submitURL;
+if (aev === 'edit' && formDetails.submitURL) {
+submitURL = formDetails.submitURLForEdit;
 }
 
-export default ButtonClass
+return (
+<Button
+type="submit"
+fullWidth
+variant="contained"
+sx={{ mt: 3, mb: 2, ml: 3 }}
+onClick={formDetails.redirect ? () => navigate(formDetails.redirect) : submitURL ? () => props.showData(submitURL, props.search ? true : false) : ''}
+>
+{aev !== 'edit' ? formDetails.label : formDetails.submitURL ? "Save" : "Cancel"}
+</Button>
+);
+}
+
+export default ButtonClass;

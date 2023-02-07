@@ -16,6 +16,7 @@ import ButtonClass from './ButtonClass';
 import { validation } from './Validattion';
 
 import EnhancedTable from './DataTable';
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
 
 
 
@@ -116,6 +117,14 @@ export class FormView extends Component {
         })
 
     }
+
+    redirectToOtherPage = (button) => {
+        const { redirect } = button;
+      
+        if (!redirect) return;
+      
+        this.history.push(redirect);
+      };
 
     onChange(e) {
         const name = e.target.name;
@@ -222,7 +231,7 @@ export class FormView extends Component {
 
                             this.props.aev === 'list' ? (<>
                                 {/* <TableData inputDetails={inputDetails} /> */}
-                                <div style={{ display: "flex", alignItems: "center" }}>
+                                <div style={{ display: "flex", alignItems: "center"}}>
 
                                     {/* <TextField
                                 value={search}
@@ -256,19 +265,17 @@ export class FormView extends Component {
                                     <div>
                                     <div>
                                     {Object.keys(this.state.searchBar).length ? (
-                                    <div style={{ display: "flex", justifyContent: "flex" }}>
+                                    <div style={{ display: "flex", justifyContent: "space-between" }}>
                                     {this.state.searchBar.division.buttons.map(button => (
 
                                     <ButtonClass
-                                    style={{ marginLeft: 10 }}
                                     key={button.id}
-                                    onClick={this.props.handleSearch}
-                                    //onClick={this.props.buttonData.redirect ? this.handleRedirect : this.props.handleSearch}
-                                    formDetails={button}
-                                    showData={this.showData}
-                                    inputDetails={this.state.inputDetails}
-                                    aev={this.props.aev}
-                                    search
+                                    fun={this.navi}
+                                    formDetails={button} 
+                                    showData={this.showData} 
+                                    inputDetails={this.state.inputDetails} 
+                                    aev={this.props.aev} 
+                                    search 
                                     />
 
                                     ))}

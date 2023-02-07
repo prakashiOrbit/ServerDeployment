@@ -3,12 +3,13 @@ import React from "react";
 //import farmerFields from "./farmerFields.js";
 //import FormView from "form-create-builder";
 import FormView from "../CreateForm"
-import { getApi, postMethod} from "../../webservice";
+import { getApi} from "../../webservice";
 import SmartConnect from "../Url/SmartConnect";
 
 //import farmerFields from "./farmerFields.json";
 
 class FarmerList extends React.Component {
+
     //   fields = "./Service/po.json";
     //   farmerFields = "./Service/farmer.json";
     constructor(props) {
@@ -16,18 +17,22 @@ class FarmerList extends React.Component {
         this.child = React.createRef();
 
         this.state = {
-            //searchList: "/Service/posearch.json",
             functions: this.child,
             handleSearch:null,
             flow:"FarmerFlow",
             tenant:"apptest/"
         }
         console.log(this.child, "child propss");
+
+       
     }
     componentDidMount(){
-        this.setState({
-            handleSearch:  this.state.functions.current ? this.state.functions.current.handleSearch : {} 
-        })
+        // this.setState({
+        //     //handleClick:  this.state.functions.current ? this.state.functions.current.handleSearch : {} 
+        //     this.child.current.handleSearch();
+        // })
+        // this.child.current.handleSearch();
+        this.child.current.handleSearch();
     }
 
     render() {
@@ -35,10 +40,10 @@ class FarmerList extends React.Component {
             <div>
                 {
                     this.state.handleSearch ? (<>
-                        <FormView aev="list" fields={"/Service/farmer.json"} search={"/Service/posearch.json"} getApi={getApi} postApi={this.state.functions.current ? this.state.functions.current.handleSearch : null} />
+                        <FormView aev="list" fields={"/Service/farmer.json"} search={"/Service/posearch.json"} getApi={getApi}/>
                     </>) : (null)
-                }
-                <SmartConnect ref={this.child} />
+    }
+                <SmartConnect ref={this.child} flow={this.state.flow} tenant={this.state.tenant}  handleSearch={this.handleSearch}/>
             </div>
         );
     }
