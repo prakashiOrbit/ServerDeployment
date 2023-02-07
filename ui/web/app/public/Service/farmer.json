@@ -1,0 +1,69 @@
+{
+  "division": {
+    "name": "PO Header",
+    "formelements": [
+      {
+        "id": "farmerId",
+        "label": "farmerId",
+        "control": "textbox",
+        "validation": "number",
+        "disabled": true
+      },
+      {
+        "id": "Name",
+        "label": "name",
+        "control": "textbox"
+      },
+      {
+        "label": "Phone NO",
+        "id": "Phone No",
+        "control": "textbox",
+        "validation": "phone"
+      },
+	    {
+        "label": "Address",
+        "id": "Address",
+        "control": "textbox"
+      },
+      {
+        "label": "Aadhar",
+        "id": "aadhar_no",
+        "control": "textbox",
+        "validate": "aadhar"
+      },
+      {
+        "label": "PAN",
+        "id": "pan",
+        "control": "textbox",
+        "validate": "pan"
+      },
+      {
+        "label": "Contact",
+        "id": "contact",
+        "control": "textbox",
+        "validate": "alphanumeric"
+      },
+      {
+        "label": "Payment",
+        "id": "payment",
+        "control": "textbox",
+        "validate": "alphanumeric"
+      }
+    ],
+    "buttons": [
+      {
+        "id": "create",
+        "label": "Create",
+        "control": "button",
+        "validationjs": "validatedata",
+        "submitURL": "CreateFarmer",
+        "submitURLForEdit": "EditFarmer"
+      },
+      {
+        "id": "cancel",
+        "label": "Cancel",
+        "control": "button"
+      }
+    ]
+  }
+}
