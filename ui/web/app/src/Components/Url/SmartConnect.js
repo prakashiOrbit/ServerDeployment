@@ -7,6 +7,7 @@ export default class SmartConnect extends Component {
         this.urlbuilder = this.urlbuilder.bind(this);
         this.postMethod = this.postMethod.bind(this);
         this.authenticate = this.authenticate.bind(this);
+        this.handleSearch = this.handleSearch.bind(this);
        
     }
 

@@ -54,7 +54,7 @@ export function postApi(url, value) {
         console.log(url, 'url POST');
         console.log(value);
       });
-      //console.log(handleSearch(url,value),"=======================>value");
+      console.log(handleSearch(url,value),"=======================>value");
       return handleSearch(url, value);
   });
 }

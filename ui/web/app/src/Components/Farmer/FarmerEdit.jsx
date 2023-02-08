@@ -17,7 +17,9 @@ class FarmerEdit extends React.Component {
 
         this.state = {
             functions: this.child,
-            handleEdit:null
+            handleEdit:null,
+            flow:"FarmerFlow",
+            tenant:"apptest/"
         }
         console.log(this.child, "child propss");
 
@@ -32,13 +34,13 @@ class FarmerEdit extends React.Component {
     render() {
         return (
             <div>
-                {
-                    this.state.handleEdit ? (<>
-                        <FormView aev="add" fields={"/Service/farmer.json"} search={"/Service/posearch.json"} getApi={getApi} postApi={this.state.functions.current ? this.state.functions.current.handleEdit : null} />
-                    </>) : (null)
-    }
-                <SmartConnect ref={this.child}  />
-            </div>
+            {
+                this.state.handleClick ? (<>
+                    <FormView aev="add" fields={"/Service/farmer.json"} search={"/Service/posearch.json"} getApi={getApi} postApi={this.state.functions.current ? this.state.functions.current.handleEdit : null} />
+                </>) : (null)
+}
+            <SmartConnect ref={this.child} flow={this.state.flow} tenant={this.state.tenant}/>
+        </div>
 
 
 
