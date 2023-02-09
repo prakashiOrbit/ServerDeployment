@@ -56,6 +56,6 @@ ls -l # List the contets of the build folder to check if the files were built co
 #---------------------Trigger the docker build and deploy
 cd /home/iorbitdev/projects/Fresh2Rely/Docker
 #ls -l
-#sudo docker-compose up
+sudo docker-compose up
 
 #---------------------End
