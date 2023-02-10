@@ -19,15 +19,14 @@ const App = () => {
   const list = "/Details/listFarmer.json";
   const search = "/Service/posearch.json"
   const field = "/Service/po.json";
-  
+
+  const [isSignedIn, setIsSignedIn] = useState(false)
 
   //const list = "/Details/listOld.json"
   const navigate = useNavigate();
   useEffect(() => {
-    // nav("/test/list")
-  }, []);
-
-  const [isSignedIn, setIsSignedIn] = useState(true)
+    
+  },[]);
 
   const signin = () => {
     setIsSignedIn(true)

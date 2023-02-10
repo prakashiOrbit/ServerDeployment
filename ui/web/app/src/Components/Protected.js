@@ -1,8 +1,9 @@
 import React from 'react'
 import { Navigate } from 'react-router-dom'
 function Protected({ isSignedIn, children }) {
-  if (!isSignedIn) {
-    return <Navigate to="/Login" replace />
+  var id = localStorage.getItem('sessionId');
+  if (id === undefined || id === '') {
+    return <Navigate to="/login" replace />
   }
   return children
 }

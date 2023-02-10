@@ -86,16 +86,17 @@ export default class SmartConnect extends Component {
                     console.log(id);
                     localStorage.clear();
                     localStorage.setItem('sessionId', id);
+                    return "success";
                 })
                 .catch(err => {
                     console.log(err)
+                    return "fail";
                 }))
     };
 
     render() {
         return ( 
-            <>
-            </>
+            <p>{''}</p>
         )
     }
 }

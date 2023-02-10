@@ -4,29 +4,83 @@ import { FormControl } from '@mui/material';
 import Typography from "@mui/material/Typography";
 import { Container, InputLabel, Input, FormHelperText, Button, Grid } from '@mui/material';
 
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Slide from '@mui/material/Slide';
+import {config} from "../../Constants/constant";
+
+//import SmartConnect from "react-smart-connect";
+import SmartConnect from "../smart-connect/smart-connect";
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      open: false,
+      openf: false
     };
 
   this.onLoginClick = this.onLoginClick.bind(this);
+  this.child = React.createRef();
 
   }
+  
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
   onLoginClick = () => {
-    const userData = {
-      username: this.state.username,
-      password: this.state.password
-    };
-    console.log("Login " + userData.username + " " + userData.password);
+    if(this.state.username === '' || this.state.password === ''){
+      this.handleClickOpen();
+    }else{
+      const userData = {
+        username: this.state.username,
+        password: this.state.password
+      };
+
+      var test = this.child.current.authenticate(userData.username, userData.password);
+      console.log(test);
+
+      if(test === undefined){
+        this.handleClickOpenf();
+      }else{
+        
+      }
+
+      console.log("Login " + userData.username + " " + userData.password);
+    }
 
   };
+
+  handleClickOpen = () => {
+    //setOpen(true);
+    this.setState({open:true});
+  };
+
+  handleClose = () => {
+    //setOpen(false);
+    this.setState({open:false});
+  };
+
+  handleClickOpenf = () => {
+    //setOpen(true);
+    this.setState({openf:true});
+  };
+
+  handleClosef = () => {
+    //setOpen(false);
+    this.setState({openf:false});
+  };
+
   render() {
     return (
       <Container maxWidth="sm">
@@ -57,6 +111,43 @@ class Login extends Component {
               </Grid>
             </Grid>
           </form>
+          <Dialog
+        open={this.state.open}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={this.handleClose}
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogTitle>{"Error"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-slide-description">
+            User name or password missing.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={this.handleClose}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={this.state.openf}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={this.handleClosef}
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogTitle>{"Error"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-slide-description">
+            Authentication faliure.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={this.handleClosef}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+
+      <SmartConnect server={config.host} port={config.port} tenant={config.tenant} flow="farmer" flowEvent="farmerEvent" ref={this.child} />
       </Container>
 
       // <Container>
