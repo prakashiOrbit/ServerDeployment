@@ -1,3 +1,8 @@
+/**
+ * Component to enable react app to communicate with an instance of smart server.
+ * Author: sushruthiorbit
+ */
+
 import React, {
     Component
 } from 'react';
@@ -29,6 +34,7 @@ export default class SmartConnect extends Component {
         this._computeURL();
     }
 
+    /** Method to used internally to construct a URL */
     _computeURL = () => {
         var computedUrl = "https://" + this.state.server + ":" + this.state.port + "/";
         computedUrl += this.state.tenant + "/" + this.state.flow + "/" + this.state.flowEvent;
@@ -36,7 +42,8 @@ export default class SmartConnect extends Component {
         return computedUrl;
     }
 
-    _postMethod(payload) {
+    /** Method to be called by other components to perform a post call */
+    postMethod(payload) {
         var url = this._computeURL();
         var id = localStorage.getItem('sessionId');
         const req = {
@@ -45,7 +52,7 @@ export default class SmartConnect extends Component {
                 'Content-Type': 'application/json',
                 'Session-Id': id
             },
-            body: JSON.stringify(payload)
+            body: JSON.stringify(payload) // To do: Write a construct param function to build the payload
         }
         console.log(url, req)
         return new Promise((resolve, reject) => {
@@ -56,11 +63,12 @@ export default class SmartConnect extends Component {
                     console.log(res);
                 })
                 .catch(err => {
-                    console.log(err)
+                    reject(err)
                 })
         })
     }
 
+    /** Method to authenticate, fetch and store the sessionId using which other API Calls can happen */
     authenticate(username, password) {
         var url = 'http://' + this.state.server + ':' + this.state.port + '/' + this.state.tenant + '/Security/Authenticate';
         var pay = {
@@ -85,17 +93,20 @@ export default class SmartConnect extends Component {
                     var id = (resp.responses[0].sessionId);
                     console.log(id);
                     localStorage.clear();
-                    localStorage.setItem('sessionId', id);
+                    localStorage.setItem('sessionId', id); // Stores sessionId to local storage
+                    return "success";
                 })
                 .catch(err => {
                     console.log(err)
+                    return "fail";
                 }))
     };
 
+    /** To do: Write a search function to perfom search operation.*/ 
+
     render() {
         return ( 
-            <>
-            </>
+            <p>{''}</p>
         )
     }
 }
