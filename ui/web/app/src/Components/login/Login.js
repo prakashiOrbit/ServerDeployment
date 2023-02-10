@@ -34,10 +34,12 @@ class Login extends Component {
 
   }
   
+  /** Updates name and password states */
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  /** Handles login submit */
   onLoginClick = () => {
     if(this.state.username === '' || this.state.password === ''){
       this.handleClickOpen();
@@ -53,7 +55,7 @@ class Login extends Component {
       if(test === undefined){
         this.handleClickOpenf();
       }else{
-        
+        // To do: Redirection using class component is not working. Will have to upgrade this to a functional component
       }
 
       console.log("Login " + userData.username + " " + userData.password);
@@ -61,23 +63,23 @@ class Login extends Component {
 
   };
 
+  /** Open for validation error */
   handleClickOpen = () => {
-    //setOpen(true);
     this.setState({open:true});
   };
 
+  /** Close for validation error */
   handleClose = () => {
-    //setOpen(false);
     this.setState({open:false});
   };
 
+  /** Open for api faliures */
   handleClickOpenf = () => {
-    //setOpen(true);
     this.setState({openf:true});
   };
 
+  /** Open for api faliures */
   handleClosef = () => {
-    //setOpen(false);
     this.setState({openf:false});
   };
 
@@ -149,43 +151,6 @@ class Login extends Component {
 
       <SmartConnect server={config.host} port={config.port} tenant={config.tenant} flow="farmer" flowEvent="farmerEvent" ref={this.child} />
       </Container>
-
-      // <Container>
-      //   <Row>
-      //     <Col md="4">
-      //       <h1>Login</h1>
-      //       <Form>
-      //         <Form.Group controlId="usernameId">
-      //           <Form.Label>User name</Form.Label>
-      //           <Form.Control
-      //             type="text"
-      //             name="username"
-      //             placeholder="Enter user name"
-      //             value={this.state.username}
-      //             onChange={this.onChange}
-      //           />
-      //           <FormControl.Feedback type="invalid"></FormControl.Feedback>
-      //         </Form.Group>
-
-      //         <Form.Group controlId="passwordId">
-      //           <Form.Label>Your password</Form.Label>
-      //           <Form.Control
-      //             type="password"
-      //             name="password"
-      //             placeholder="Enter password"
-      //             value={this.state.password}
-      //             onChange={this.onChange}
-      //           />
-      //           <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-      //         </Form.Group>
-      //       </Form>
-      //       <Button color="primary" onClick={this.onLoginClick}>Login</Button>
-      //       <p className="mt-2">
-      //         Don't have account? <Link to="/signup">Signup</Link>
-      //       </p>
-      //     </Col>
-      //   </Row>
-      // </Container>
     );
   }
 }
