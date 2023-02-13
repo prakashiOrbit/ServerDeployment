@@ -82,5 +82,15 @@ export const sideMenu = [
             }
         ]
     }
+<<<<<<< HEAD
 >>>>>>> b7f219a4b8c6bcdf007d6233637736215ac64634
 ]
+=======
+]
+
+export const config = {
+    host : "localhost",
+    port: "9082",
+    tenant: "fresh2rely"
+}
+>>>>>>> b41bdff7b8d963bd84b049a51f36d8be670cc886
