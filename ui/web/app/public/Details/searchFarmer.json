@@ -1,0 +1,31 @@
+{
+  "headCells": [
+    "id",
+    "firstname",
+    "lastname",
+    "address",
+    "aadhar",
+    "pan",
+    "contact"
+  ],
+  "data": [
+    [
+      "1",
+      "sahil",
+      "lalwani",
+      "bangalorel",
+      "7456874362837856",
+      "BE6123E"
+      
+    ],
+    [
+      "2",
+      "rakesh",
+      "sharma",
+      "trichy",
+      "9956874362837856",
+      "AP6123E"
+      
+    ]
+  ]
+}
