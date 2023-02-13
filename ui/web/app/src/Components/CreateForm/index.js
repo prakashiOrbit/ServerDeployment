@@ -16,7 +16,10 @@ import ButtonClass from './ButtonClass';
 import { validation } from './Validattion';
 
 import EnhancedTable from './DataTable';
-import { Navigate, Outlet, useNavigate } from "react-router-dom";
+import BasicTable from '../BasicTable'
+
+import { getApi, postMethod} from "../../webservice";
+import SmartConnect from "../Url/SmartConnect";
 
 
 
@@ -98,7 +101,7 @@ export class FormView extends Component {
             }
         })
         
-            this.props.postApi(url,search ? this.state.searchInputDetails.farmer :this.state.inputDetails)
+            this.props.postApi(url,search)
                 .then((resp) => {
                     // setFormDetails(resp.data)
                     console.log(resp, "respo from postapi");
@@ -117,14 +120,6 @@ export class FormView extends Component {
         })
 
     }
-
-    redirectToOtherPage = (button) => {
-        const { redirect } = button;
-      
-        if (!redirect) return;
-      
-        this.history.push(redirect);
-      };
 
     onChange(e) {
         const name = e.target.name;
@@ -231,7 +226,7 @@ export class FormView extends Component {
 
                             this.props.aev === 'list' ? (<>
                                 {/* <TableData inputDetails={inputDetails} /> */}
-                                <div style={{ display: "flex", alignItems: "center"}}>
+                                <div style={{ display: "flex", alignItems: "center" }}>
 
                                     {/* <TextField
                                 value={search}
@@ -263,27 +258,9 @@ export class FormView extends Component {
                                         ) : <div>No Data</div>
                                     }
                                     <div>
-                                    <div>
-                                    {Object.keys(this.state.searchBar).length ? (
-                                    <div style={{ display: "flex", justifyContent: "space-between" }}>
-                                    {this.state.searchBar.division.buttons.map(button => (
-
-                                    <ButtonClass
-                                    key={button.id}
-                                    fun={this.navi}
-                                    formDetails={button} 
-                                    showData={this.showData} 
-                                    inputDetails={this.state.inputDetails} 
-                                    aev={this.props.aev} 
-                                    search 
-                                    />
-
-                                    ))}
-                                    </div>
-                                    ) : (
-                                    <div>No Data</div>
-                                    )}
-                                    </div>
+                                        {Object.keys(this.state.searchBar).length ? (<ButtonClass onClick={this.props.handleSearch} formDetails={this.state.searchBar.division.buttons[0]} showData={this.showData} inputDetails={this.state.inputDetails} aev={this.props.aev} search />
+                                        ) : (<div>No Data</div>)}
+                                        {/* <Button fullWidth onClick={this.handleSearchButton} style={{ marginLeft: 10 }} variant="contained">Search</Button> */}
                                     </div>
                                 </div>
                                 {/* <EnhancedTable inputDetails={this.state.inputDetails} selected={this.state.selected} state={this.state}
@@ -291,10 +268,22 @@ export class FormView extends Component {
                                 //setView={setView}
                                 /> */}
 
-                                <EnhancedTable inputDetails={this.state.inputDetails} selected={this.state.selected} state={this.state} setState={this.setState}
+                                {/* <EnhancedTable inputDetails={this.state.inputDetails} selected={this.state.selected} state={this.state} setState={this.setState}
                                     setSelected={this.setSelected}
                                     setView={this.setView}
-                                />
+                                /> */}
+                                {/* {
+                                    Object.keys(this.state.formDetails).length ? (
+                                        this.state.formDetails.division.formelements.map((item, index) => {
+                                            return (
+                                <BasicTable inputDetails={item}/>
+                                            )})
+                                    ): <div>No Data</div>} */}
+
+                                
+                            
+                                        
+
 
                             </>) : this.props.aev === 'view' ? (
                                 <div >
@@ -368,6 +357,18 @@ export class FormView extends Component {
                                                         <Grid key={index} item xs={12} sm={3} >
                                                             <ButtonClass formDetails={item} showData={this.showData} inputDetails={this.state.inputDetails} aev={this.props.aev} />
                                                             {/* <Buttons formDetails={item} showData={showData} inputDetails={inputDetails} aev={aev} /> */}
+                                                        </Grid>
+                                                    )
+                                                })
+                                            ) : <div>No Data</div>
+                                        }
+
+                            {
+                                            Object.keys(this.state.formDetails).length ? (
+                                                this.state.formDetails.division.edittable.map((item, index) => {
+                                                    return (
+                                                        <Grid key={index} item xs={12} sm={12} >
+                                                            <BasicTable formDetails = {this.state.formDetails.division.buttons[0]} tableData={this.state.formDetails.division.edittable} showData={this.showData} getApi={getApi}/>
                                                         </Grid>
                                                     )
                                                 })
