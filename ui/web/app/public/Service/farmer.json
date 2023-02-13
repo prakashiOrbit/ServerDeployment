@@ -1,22 +1,36 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> b7f219a4b8c6bcdf007d6233637736215ac64634
 {
   "division": {
     "name": "PO Header",
     "formelements": [
       {
         "id": "farmerId",
+<<<<<<< HEAD
         "label": "farmerId",
         "control": "textbox",
         "validation": "number",
+=======
+        "label": "FID(UNI)",
+        "control": "textbox",
+        "validate": "number",
+>>>>>>> b7f219a4b8c6bcdf007d6233637736215ac64634
         "disabled": true
       },
       {
         "id": "Name",
+<<<<<<< HEAD
         "label": "name",
+=======
+        "label": "Name",
+>>>>>>> b7f219a4b8c6bcdf007d6233637736215ac64634
         "control": "textbox"
       },
       {
         "label": "Phone NO",
+<<<<<<< HEAD
         "id": "Phone No",
         "control": "textbox",
         "validation": "phone"
@@ -29,16 +43,54 @@
       {
         "label": "Aadhar",
         "id": "aadhar_no",
+=======
+        "id": "Phone NO",
+        "control": "textbox",
+        "validate": "phone"
+      },
+      {
+        "label": "Address Book",
+        "id": "Address Book",
+        "control": "textbox",
+        "validate": "alphanumeric"
+      },
+      {
+        "label": "City",
+        "id": "City",
+        "control": "textbox",
+        "validate": "alphanumeric"
+      },
+      {
+        "label": "State",
+        "id": "State",
+        "control": "textbox"
+      },
+      {
+        "label": "Pin Code",
+        "id": "Pin Code",
+        "control": "textbox",
+        "validate": "alphanumeric"
+      },
+      {
+        "label": "Aadhar NO",
+        "id": "Aadhar NO",
+>>>>>>> b7f219a4b8c6bcdf007d6233637736215ac64634
         "control": "textbox",
         "validate": "aadhar"
       },
       {
+<<<<<<< HEAD
         "label": "PAN",
         "id": "pan",
+=======
+        "label": "Pan NO",
+        "id": "Pan NO",
+>>>>>>> b7f219a4b8c6bcdf007d6233637736215ac64634
         "control": "textbox",
         "validate": "pan"
       },
       {
+<<<<<<< HEAD
         "label": "Contact",
         "id": "contact",
         "control": "textbox",
@@ -50,6 +102,24 @@
         "control": "textbox",
         "validate": "alphanumeric"
       }
+=======
+        "label": "Payee Name",
+        "id": "Payee Name",
+        "control": "textbox"
+      },
+      {
+        "label": "Acc NO",
+        "id": "ACC NO",
+        "control": "textbox",
+        "validate": "number"
+      },
+      {
+        "label": "IFSC Code",
+        "id": "IFSC Code",
+        "control": "textbox",
+        "validation": "ifsc"
+      } 
+>>>>>>> b7f219a4b8c6bcdf007d6233637736215ac64634
     ],
     "buttons": [
       {
@@ -62,8 +132,25 @@
       {
         "id": "cancel",
         "label": "Cancel",
+<<<<<<< HEAD
         "control": "button"
       }
     ]
   }
 }
+=======
+        "control": "button",
+        "redirect": ""
+      }
+    ],
+    "edittable": [
+      {
+        "id": "abx",
+        "label": "Farmer Editable List",
+        "dataurl": "/Service/tabledata.json"
+      }
+    ]
+    
+  }
+}
+>>>>>>> b7f219a4b8c6bcdf007d6233637736215ac64634
