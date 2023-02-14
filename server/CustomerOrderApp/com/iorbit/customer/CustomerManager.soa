@@ -1,0 +1,30 @@
+name: CustomerView
+type: Transition
+flow: CustomerFlow
+foreach: CustomerOrder|ViewCustomer,FlowAdmin|SearchCustomer
+actions:
+  - name: viewCustomer
+    method: viewCustomer
+    parms: (event,srch.CustomerFlow.CustomerOrder.event.orderNo)
+    foreach: CustomerOrder|ViewCustomer
+    from: active,approved
+    to: active
+  - name: setupCustomerSearch
+    method: setupCustomerSearch
+    foreach: FlowAdmin|SearchCustomer
+    from: active
+    to: active
+  - name: viewCustomers
+    method: viewCustomers
+    runAfter: searchCustomer
+    foreach: FlowAdmin|SearchCustomer
+    from: active
+    to: active
+callservices:
+  - name: searchCustomer
+    service: AllFlows.SearchManager.searchService
+    parms: (CustomerFlow,CustomerOrder,event.search,event.customer)
+    runAfter: setupCustomerSearch
+    foreach: FlowAdmin|SearchCustomer
+    from: active
+    to: active

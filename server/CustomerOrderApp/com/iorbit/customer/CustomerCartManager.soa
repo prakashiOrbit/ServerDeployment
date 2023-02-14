@@ -1,0 +1,30 @@
+name: CustomerCartView
+type: Transition
+flow: CustomerFlow
+foreach: CustomerCart|ViewCustomerCart,FlowAdmin|SearchCustomerCart
+actions:
+  - name: viewCustomerCart
+    method: viewCustomerCart
+    parms: (event,srch.CustomerFlow.CustomerCart.event.itemName)
+    foreach: CustomerCart|ViewCart
+    from: active,approved
+    to: active
+  - name: setupCartSearch
+    method: setupCartSearch
+    foreach: FlowAdmin|SearchCustomerCart
+    from: active
+    to: active
+  - name: viewCustomerCarts
+    method: viewCustomerCarts
+    runAfter: searchCustomerCart
+    foreach: FlowAdmin|SearchCustomerCart
+    from: active
+    to: active
+callservices:
+  - name: searchCustomerCart
+    service: AllFlows.SearchManager.searchService
+    parms: (CustomerFlow,CustomerCart,event.search,event.cart)
+    runAfter: setupCartSearch
+    foreach: FlowAdmin|SearchCustomerCart
+    from: active
+    to: active
