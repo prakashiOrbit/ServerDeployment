@@ -1,0 +1,30 @@
+name: FarmerFlow
+defaultEnable: basic
+primeData:
+  - com.iorbit.farmer.Farmer
+events:
+  - com.iorbit.farmer.CreateFarmer
+  - com.iorbit.farmer.GetFarmer
+  - com.iorbit.farmer.SearchFarmers
+  - com.iorbit.farmer.EditFarmer
+  
+responses:
+  - com.iorbit.farmer.MessageResponse
+  - com.iorbit.farmer.FarmerDetails
+  - com.iorbit.farmer.FarmerList
+  - com.iorbit.farmer.EditFarmer
+transitions:
+  - com.iorbit.farmer.FarmerManager
+features:
+  - name: basic
+    artefacts:
+      - com.iorbit.farmer.Farmer
+      - com.iorbit.farmer.CreateFarmer
+      - com.iorbit.farmer.FarmerManager
+      - com.iorbit.farmer.MessageResponse
+      - com.iorbit.farmer.FarmerDetails
+      - com.iorbit.farmer.GetFarmer
+      - com.iorbit.farmer.SearchFarmers
+      - com.iorbit.farmer.FarmerList
+      - com.iorbit.farmer.EditFarmer
+      
