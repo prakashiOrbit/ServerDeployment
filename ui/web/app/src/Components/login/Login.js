@@ -12,7 +12,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import {config} from "../../Constants/constant";
 
-//import SmartConnect from "react-smart-connect";
+//import SmartConnect from "@iorbit-tech/smart-connect";
 import SmartConnect from "../smart-connect/smart-connect";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
