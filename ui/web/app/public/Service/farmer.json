@@ -4,51 +4,74 @@
     "formelements": [
       {
         "id": "farmerId",
-        "label": "farmerId",
+        "label": "FID(UNI)",
         "control": "textbox",
-        "validation": "number",
+        "validate": "number",
         "disabled": true
       },
       {
         "id": "Name",
-        "label": "name",
+        "label": "Name",
         "control": "textbox"
       },
       {
         "label": "Phone NO",
-        "id": "Phone No",
+        "id": "Phone NO",
         "control": "textbox",
-        "validation": "phone"
+        "validate": "phone"
       },
-	    {
-        "label": "Address",
-        "id": "Address",
+      {
+        "label": "Address Book",
+        "id": "Address Book",
+        "control": "textbox",
+        "validate": "alphanumeric"
+      },
+      {
+        "label": "City",
+        "id": "City",
+        "control": "textbox",
+        "validate": "alphanumeric"
+      },
+      {
+        "label": "State",
+        "id": "State",
         "control": "textbox"
       },
       {
-        "label": "Aadhar",
-        "id": "aadhar_no",
+        "label": "Pin Code",
+        "id": "Pin Code",
+        "control": "textbox",
+        "validate": "alphanumeric"
+      },
+      {
+        "label": "Aadhar NO",
+        "id": "Aadhar NO",
         "control": "textbox",
         "validate": "aadhar"
       },
       {
-        "label": "PAN",
-        "id": "pan",
+        "label": "Pan NO",
+        "id": "Pan NO",
         "control": "textbox",
         "validate": "pan"
       },
       {
-        "label": "Contact",
-        "id": "contact",
-        "control": "textbox",
-        "validate": "alphanumeric"
+        "label": "Payee Name",
+        "id": "Payee Name",
+        "control": "textbox"
       },
       {
-        "label": "Payment",
-        "id": "payment",
+        "label": "Acc NO",
+        "id": "ACC NO",
         "control": "textbox",
-        "validate": "alphanumeric"
-      }
+        "validate": "number"
+      },
+      {
+        "label": "IFSC Code",
+        "id": "IFSC Code",
+        "control": "textbox",
+        "validation": "ifsc"
+      } 
     ],
     "buttons": [
       {
@@ -56,14 +79,22 @@
         "label": "Create",
         "control": "button",
         "validationjs": "validatedata",
-        "submitURL": "CreateFarmer",
-        "submitURLForEdit": "EditFarmer"
+        "submitURL": "CreateFarmer"
       },
       {
         "id": "cancel",
         "label": "Cancel",
-        "control": "button"
+        "control": "button",
+        "redirect": ""
+      }
+    ],
+    "edittable": [
+      {
+        "id": "abx",
+        "label": "Farmer Editable List",
+        "dataurl": "/Service/tabledata.json"
       }
     ]
+    
   }
 }
