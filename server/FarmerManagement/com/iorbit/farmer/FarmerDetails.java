@@ -1,9 +1,6 @@
 package com.iorbit.farmer;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class FarmerDetails implements java.io.Serializable{
+public class FarmerDetails implements java.io.Serializable {
 	private String fId;
 	private String name;
 	private String phoneNo;
@@ -16,20 +13,20 @@ public class FarmerDetails implements java.io.Serializable{
 	private String payeeName;
 	private String accountNo;
 	private String ifscCode;
-	
+
 	public FarmerDetails(Farmer farmer) {
-		fId=farmer.getFId();
-		name=farmer.getName();
-		phoneNo=farmer.getPhoneNo();
-		streetAddress=farmer.getStreetAddress();
-		city=farmer.getCity();
-		state=farmer.getState();
-		pinCode=farmer.getPinCode();
-		aadharNo=farmer.getAadharNo();
-		panNo=farmer.getPanNo();
-		payeeName=farmer.getPayeeName();
-		accountNo=farmer.getAccountNo();
-		ifscCode=farmer.getIfscCode();
+		fId = farmer.getFId();
+		name = farmer.getName();
+		phoneNo = farmer.getPhoneNo();
+		streetAddress = farmer.getStreetAddress();
+		city = farmer.getCity();
+		state = farmer.getState();
+		pinCode = farmer.getPinCode();
+		aadharNo = farmer.getAadharNo();
+		panNo = farmer.getPanNo();
+		payeeName = farmer.getPayeeName();
+		accountNo = farmer.getAccountNo();
+		ifscCode = farmer.getIfscCode();
 	}
 
 	public String getfId() { return fId; }

@@ -15,18 +15,18 @@ public class EditFarmer implements java.io.Serializable {
 	private String ifscCode;
 
 	public EditFarmer(Farmer farmer) {
-		fId=farmer.getFId();
-		name=farmer.getName();
-		phoneNo=farmer.getPhoneNo();
-		streetAddress=farmer.getStreetAddress();
-		city=farmer.getCity();
-		state=farmer.getState();
-		pinCode=farmer.getPinCode();
-		aadharNo=farmer.getAadharNo();
-		panNo=farmer.getPanNo();
-		payeeName=farmer.getPayeeName();
-		accountNo=farmer.getAccountNo();
-		ifscCode=farmer.getIfscCode();
+		fId = farmer.getFId();
+		name = farmer.getName();
+		phoneNo = farmer.getPhoneNo();
+		streetAddress = farmer.getStreetAddress();
+		city = farmer.getCity();
+		state = farmer.getState();
+		pinCode = farmer.getPinCode();
+		aadharNo = farmer.getAadharNo();
+		panNo = farmer.getPanNo();
+		payeeName = farmer.getPayeeName();
+		accountNo = farmer.getAccountNo();
+		ifscCode = farmer.getIfscCode();
 	}
 
 	public String getfId() { return fId; }

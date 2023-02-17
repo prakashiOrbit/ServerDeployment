@@ -1,39 +1,6 @@
 package com.iorbit.farmer;
 
-public class Farmer implements java.io.Serializable{
-
-	public Farmer(String fId, String name, String phoneNo, String streetAddress, String city, String state,String pinCode, String aadharNo,String panNo,String payeeName,String accountNo,String ifscCode) {
-		this.fId = fId;
-		this.name = name;
-		this.phoneNo = phoneNo;
-		this.streetAddress = streetAddress;
-		this.city = city;
-		this.state = state;
-		this.pinCode = pinCode;
-		this.aadharNo = aadharNo;
-		this.panNo = panNo;
-		this.payeeName = payeeName;
-		this.accountNo = accountNo;
-		this.ifscCode = ifscCode;
-	}
-	
-	public Farmer(String name,String phoneNo,String streetAddress,String city,String state,String pinCode,String aadharNo,String panNo,String payeeName,String accountNo,String ifscCode) {
-		this.name = name;
-		this.phoneNo = phoneNo;
-		this.streetAddress = streetAddress;
-		this.city = city;
-		this.state = state;
-		this.pinCode = pinCode;
-		this.aadharNo = aadharNo;
-		this.panNo = panNo;
-		this.payeeName = payeeName;
-		this.accountNo = accountNo;
-		this.ifscCode = ifscCode;
-	}
-
-	public Farmer(String Searchable) {
-
-	}
+public class Farmer implements java.io.Serializable {
 
 	private String fId;
 	private String name;
@@ -48,10 +15,31 @@ public class Farmer implements java.io.Serializable{
 	private String accountNo;
 	private String ifscCode;
 	private String SearchableValue;
-	
+
+	public Farmer(String fId, String name, String phoneNo, String streetAddress, String city, String state,String pinCode, String aadharNo, String panNo, String payeeName, String accountNo, String ifscCode) {
+		setFId(fId);
+		setName(name);
+		
+		setPhoneNo(phoneNo);
+		setStreetAddress(streetAddress);
+		setCity(city);
+		setState(state);
+		setPinCode(pinCode);
+		setAadharNo(aadharNo);
+		setPanNo(panNo);
+		setPayeeName(payeeName);
+		setAccountNo(accountNo);
+		setIfscCode(ifscCode);
+	}
+
+	public Farmer(String Searchable) {
+
+	}
+
 	public String getFId() { return fId; }
+	public void setFId(String fId) { this.fId = fId; }
 	public String getName() { return name; }
-	public void setName(String Name) { this.name = name; }
+	public void setName(String name) { this.name = name; }
 	public String getPhoneNo() { return phoneNo; }
 	public void setPhoneNo(String phoneNo) { this.phoneNo = phoneNo; }
 	public String getStreetAddress() { return streetAddress; }
@@ -73,7 +61,9 @@ public class Farmer implements java.io.Serializable{
 	public String getIfscCode() { return ifscCode; }
 	public void setIfscCode(String ifscCode) { this.ifscCode = ifscCode; }
 	
+	
 	public void setSearchValues() {
-		SearchableValue = fId + "|" + name + "|" + phoneNo + "|" + streetAddress + "|" + city + "|" +  state + "|" + pinCode + "|" + aadharNo + "|"+ panNo + "|" + payeeName+ "|" + accountNo+ "|" + ifscCode;  
+		SearchableValue = fId + "|" + name + "|" + phoneNo + "|" + streetAddress + "|" + city + "|" + state + "|"
+				+ pinCode + "|" + aadharNo + "|" + panNo + "|" + payeeName + "|" + accountNo + "|" + ifscCode;
 	}
 }
