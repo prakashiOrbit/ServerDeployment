@@ -1,6 +1,7 @@
 package com.dml.application.Adapters;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,15 +58,16 @@ public class ProductAdapter  extends RecyclerView.Adapter<ProductAdapter.ViewHol
             ProductQty = itemView.findViewById(R.id.product_qty);
             ProductPrice = itemView.findViewById(R.id.product_price);
             ProductDisPrice = itemView.findViewById(R.id.product_dis_price);
+            ProductDisPrice.setPaintFlags(ProductDisPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
             Single_Product = itemView.findViewById(R.id.single_product);
         }
 
         public void bind(final ProductModel item, final OnItemClickListener listener) {
             ProductName.setText(item.getProductName());
             ProductQty.setText(item.getProductqty());
-           ProductPrice.setText("₹" + item.getProductPrice());
+           ProductPrice.setText( "₹"+ item.getProductPrice());
 //           ProductPrice.setPaintFlags(item.getProductPrice() );
-          ProductDisPrice.setText("₹" + item.getProductDisPrice());
+          ProductDisPrice.setText("₹"+item.getProductDisPrice());
            ProductImage.setImageResource(item.getProductImage());
 //            if (item.getImage() != null) {
 //                String Image = item.getImage();

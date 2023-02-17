@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PaymentActivity">
+   >
     <LinearLayout
         android:id="@+id/layoutheader"
         android:layout_width="match_parent"
@@ -322,7 +322,7 @@
                 android:text="Crited and Debit card"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
             <TextView
                 android:id="@+id/Home_no_name"
@@ -333,10 +333,10 @@
                 android:layout_marginEnd="15dp"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="Visa,master card,rupay and More"
+                android:hint="Visa,master card,rupay and More"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
@@ -393,7 +393,7 @@
                 android:layout_marginEnd="5dp"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="Pay thought your bank"
+                android:hint="Pay thought your bank"
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textSize="16sp"

@@ -56,9 +56,28 @@ public class ProductFragment extends Fragment {
     private void CallProducts() {
         if (id == 1) {
             productModels = new ArrayList<>();
-            productModels.add(new ProductModel("1", "Banana", "7 piece", "8", "75", "@string/discripation", R.drawable.onion));
-            productModels.add(new ProductModel("2", "Mango", "1 KG", "35", "25", "@string/discripation", R.drawable.onion));
-
+            productModels.add(new ProductModel("1", "Apple", "7 piece",
+                    "₹8", "₹75", "@string/discripation", R.drawable.apple));
+            productModels.add(new ProductModel("2", "Avacado", "7 piece",
+                    "8", "75", "@string/discripation", R.drawable.avacado));
+            productModels.add(new ProductModel("3", "Banana", "7 piece",
+                    "8", "75", "@string/discripation", R.drawable.banana));
+            productModels.add(new ProductModel("4", "Grape", "7 piece",
+                    "8", "75", "@string/discripation", R.drawable.grape));
+            productModels.add(new ProductModel("5", "Mango", "7 piece",
+                    "8", "75", "@string/discripation", R.drawable.mango));
+            productModels.add(new ProductModel("6", "Orange", "1 KG",
+                    "35", "25", "@string/discripation", R.drawable.orange));
+            productModels.add(new ProductModel("7", "Papaya", "1 KG",
+                    "35", "25", "@string/discripation", R.drawable.papaya));
+            productModels.add(new ProductModel("8", "Pineapple", "1 KG",
+                    "35", "25", "@string/discripation", R.drawable.pineapple));
+            productModels.add(new ProductModel("9", "Pineapple", "1 KG",
+                    "₹5", "25", "@string/discripation", R.drawable.pineapple));
+            productModels.add(new ProductModel("10", "Pomegranate", "1 KG",
+                    "35", "25", "@string/discripation", R.drawable.pomegranate));
+            productModels.add(new ProductModel("11", "Strawberry", "1 KG",
+                    "35", "25", "@string/discripation", R.drawable.strawberry));
             TextCatName.setText("Fruits");
             RecyclerviewProductList.setAdapter(new ProductAdapter(productModels, new ProductAdapter.OnItemClickListener() {
                 @Override
@@ -86,15 +105,30 @@ public class ProductFragment extends Fragment {
 
         } else if (id == 2) {
             productModels = new ArrayList<>();
-            productModels.add(new ProductModel("1", "Tomato", "1 KG", "35", "25", "hjshdjh", R.drawable.tomato));
-            productModels.add(new ProductModel("2", "Potato", "1 KG", "8", "5", "cgjsjs", R.drawable.potato));
-            productModels.add(new ProductModel("3", "Onion", "1 KG", "35", "25", "hggsga", R.drawable.onion));
-            productModels.add(new ProductModel("4", "Beans", "1 KG", "35", "25", "jsjsaj", R.drawable.beans));
-            productModels.add(new ProductModel("5", "Chilli", "1 KG", "35", "25", "bxbsx", R.drawable.chilli));
-            productModels.add(new ProductModel("6", "Capsicum", "1 KG", "35", "25", "hjhds", R.drawable.capcicum));
-            productModels.add(new ProductModel("7", "Broccoli", "1 KG", "35", "25", "dghjsaghda", R.drawable.brocoli));
-            TextCatName.setText("Vegtables");
+            productModels.add(new ProductModel("1", "Beans", "1 KG", "35",
+                    "25", "hjshdjh", R.drawable.beans));
+            productModels.add(new ProductModel("2", "Broccoli", "1 KG", "8",
+                    "5", "cgjsjs", R.drawable.brocoli));
+            productModels.add(new ProductModel("3", "Carrot", "1 KG", "35",
+                    "25", "hggsga", R.drawable.carrot));
+            productModels.add(new ProductModel("4", "Capsicum", "1 KG", "35",
+                    "25", "jsjsaj", R.drawable.capcicum));
+            productModels.add(new ProductModel("5", "Chilli", "1 KG", "35",
+                    "25", "bxbsx", R.drawable.chilli));
+            productModels.add(new ProductModel("5", "Coriander Leaves", "1 KG", "35",
+                    "25", "bxbsx", R.drawable.corieanderleaf));
+            productModels.add(new ProductModel("6", "Onion", "1 KG", "35",
+                    "25", "hjhds", R.drawable.onion));
+            productModels.add(new ProductModel("7", "Pumpkin", "1 KG", "35",
+                    "25", "dghjsaghda", R.drawable.pumpkin));
+            productModels.add(new ProductModel("8+", "Potato", "1 KG", "35",
+                    "25", "dghjsaghda", R.drawable.potato));
+            productModels.add(new ProductModel("9", "Sweet Corn", "1 KG", "35",
+                    "25", "dghjsaghda", R.drawable.sweetcorn));
 
+
+
+            TextCatName.setText("Vegtables");
             RecyclerviewProductList.setAdapter(new ProductAdapter(productModels, new ProductAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(ProductModel item) {

@@ -110,7 +110,7 @@
                 android:layout_marginTop="5dp"
                 android:textSize="12sp"
                 android:textColor="@color/black"
-                android:hint=" OTP veriﬁca on is send to you mobile "
+                android:hint=" OTP veriﬁcation is send to your mobile "
                 />
 
             <TextView

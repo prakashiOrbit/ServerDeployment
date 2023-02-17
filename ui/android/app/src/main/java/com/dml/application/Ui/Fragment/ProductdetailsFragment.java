@@ -3,6 +3,7 @@ package com.dml.application.Ui.Fragment;
 import static android.view.View.*;
 
 import android.annotation.SuppressLint;
+import android.graphics.Paint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -60,6 +61,7 @@ public class ProductdetailsFragment extends Fragment {
         Product_Discription.setText(ProductDis);
         Product_Rate.setText(ProductPrice);
         Product_Disount.setText(ProductDis);
+        Product_Disount.setPaintFlags(Product_Disount.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         Product_Discription.setText(ProductDiscription);
         database = Roomdatabase.getInstance(getActivity());
         dataBaseDAO = database.dataBaseDAO();

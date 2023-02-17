@@ -1,6 +1,7 @@
 package com.dml.application.Ui.Fragment;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.dml.application.Address_BookFragment;
 import com.dml.application.Database.DataBaseDAO;
 import com.dml.application.Database.Roomdatabase;
 import com.dml.application.Database.entities.Product;
@@ -46,10 +48,10 @@ public class CartFragment extends Fragment {
        materialButton.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               CreateAddressFragment createAddressFragment=new CreateAddressFragment();
+               Address_BookFragment address_bookFragment=new Address_BookFragment();
                FragmentManager fragmentManager=getFragmentManager();
                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-               fragmentTransaction.replace(R.id.frame_layout,createAddressFragment);
+               fragmentTransaction.replace(R.id.frame_layout,address_bookFragment);
                fragmentTransaction.commitNow();
            }
        });
@@ -108,6 +110,7 @@ private CartViewInterface cartViewInterface;
                 Cartproduct_qty = itemView.findViewById(R.id.Cartproduct_qty);
                 Cartproduct_pricetext = itemView.findViewById(R.id.Cartproduct_price2);
                 CartProduct_discount = itemView.findViewById(R.id.CartProduct_discount);
+                CartProduct_discount.setPaintFlags(CartProduct_discount.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                 CartqtyNum = itemView.findViewById(R.id.carttxt_qty);
                 main_layout = itemView.findViewById(R.id.main_layout);
                 Plus = itemView.findViewById(R.id.cartqty_add);
@@ -134,9 +137,9 @@ private CartViewInterface cartViewInterface;
             public void bind(final Product item) {
                 Cartproduct_name.setText(item.getProductName());
                 Cartproduct_qty.setText(item.getProductQty());
-                Cartproduct_pricetext.setText("₹" + item.getProductPrice());
+                Cartproduct_pricetext.setText( "₹" + item.getProductPrice());
 //           ProductPrice.setPaintFlags(item.getProductPrice() );
-                CartProduct_discount.setText("₹" + item.getProductDis());
+                CartProduct_discount.setText("₹"+ item.getProductDis());
                 CartqtyNum.setText(item.getProductNum());
                 //           ProductImage.setImageResource(item.getProductImage());
 //            if (item.getImage() != null) {

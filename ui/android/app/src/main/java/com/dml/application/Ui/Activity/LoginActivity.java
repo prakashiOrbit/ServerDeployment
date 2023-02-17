@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
             userPhoneNumber.setError("Field cannot be empty");
             return false;
         } else if(val.length()!=10){
-            userPhoneNumber.setError("Phone is too less");
+            userPhoneNumber.setError("Number must be 10 Digits");
         }
         else {
             userPhoneNumber.setError(null);

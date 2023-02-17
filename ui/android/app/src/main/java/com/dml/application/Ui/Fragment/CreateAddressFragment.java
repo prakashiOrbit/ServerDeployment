@@ -12,6 +12,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,10 +34,10 @@ import java.util.Locale;
 
 public class CreateAddressFragment extends Fragment {
     private static final int GPS_CODE = 9001;
-    TextInputEditText Houseno, Bulding, Landmark;
+    TextView Recipemt_Nmae,Phone_Number,Houseno, Street, Landmark;
     MaterialButton SaveADDRESS;
 
-    TextView Address,AddName;
+    TextView AddName;
 
     private Geocoder mGeocoder;
 
@@ -50,18 +52,19 @@ public class CreateAddressFragment extends Fragment {
     private FusedLocationProviderClient mFusedLocationClient;
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_create_address, container, false);
 
-
-        Houseno =view.findViewById(R.id.houseno);
-        Landmark =view. findViewById(R.id.landmark);
-        Bulding =view. findViewById(R.id.build);
+        Recipemt_Nmae =view.findViewById(R.id.Recipent_Textname);
+        Phone_Number =view.findViewById(R.id.Phonenumber_text);
+        Houseno =view.findViewById(R.id.house_Textname);
+        Landmark =view. findViewById(R.id.Landmark_Textname);
+        Street =view. findViewById(R.id.Street_textname);
         SaveADDRESS =view. findViewById(R.id.save_address);
-        Address =view. findViewById(R.id.place_address);
         AddName=view.findViewById(R.id.Select_addresstype);
 
 
@@ -80,15 +83,18 @@ public class CreateAddressFragment extends Fragment {
         SaveADDRESS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!validateHouseName()  | !validateBuilding() | !validateLandMark() | !validateSave()) {
+                if (!validateFullName() | !validatePhoneNo() | !validateHouseName()  | !validateLandMark() |!vlidateSterret() ) {
                     return;
+
 
                 }
 
+                PaymentFragment paymentFragment=new PaymentFragment();
+                FragmentManager fragmentManager=getFragmentManager();
+                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frame_layout,paymentFragment);
+                fragmentTransaction.commitNow();
 
-
-                Intent intent=new Intent(getActivity(), PaymentFragment.class);
-                startActivity(intent);
             }
         });
 
@@ -117,10 +123,12 @@ public class CreateAddressFragment extends Fragment {
                         if (addresses.size() > 0) {
                             Address address = addresses.get(0);
                             String street = address.getSubLocality();
-                            String city = address.getLocality();
-                            String state = address.getAdminArea();
+                            String landmark = address.getLocality();
+                            String city = address.getPostalCode();
                             String country = address.getCountryName();
-                            Landmark.setText(street);
+                            Street.setText(street);
+                            Landmark.setText(landmark);
+
                             // do something with the address
                         } else {
                             // handle failure
@@ -134,6 +142,33 @@ public class CreateAddressFragment extends Fragment {
             }
         });
     }
+
+    private boolean validateFullName() {
+        String val = Recipemt_Nmae.getText().toString().trim();
+        if (val.isEmpty()) {
+            Recipemt_Nmae.setError("Field cannot be empty");
+            return false;
+        } else {
+            Recipemt_Nmae.setError(null);
+            return true;
+
+        }
+    }
+    private Boolean validatePhoneNo() {
+        String val = Phone_Number.getText().toString();
+        if (val.isEmpty()) {
+            Phone_Number.setError("Field cannot be empty");
+            return false;
+        }else if(val.length()<10){
+            Phone_Number.setError("Please enter valid number");
+            return false;
+        }
+        else {
+            Phone_Number.setError(null);
+            return true;
+        }
+    }
+
     private boolean validateHouseName() {
         String val = Houseno.getText().toString().trim();
         if (val.isEmpty()) {
@@ -144,13 +179,13 @@ public class CreateAddressFragment extends Fragment {
             return true;
         }
     }
-    private boolean validateBuilding() {
-        String val = Bulding.getText().toString().trim();
+    private boolean vlidateSterret() {
+        String val = Street.getText().toString().trim();
         if (val.isEmpty()) {
-            Bulding.setError("Field cannot be empty");
+            Street.setError("Field cannot be empty");
             return false;
         } else {
-            Bulding.setError(null);
+            Street.setError(null);
 
             return true;
         }
@@ -167,17 +202,7 @@ public class CreateAddressFragment extends Fragment {
         }
     }
 
-    private boolean validateSave() {
-        String val = AddName.getText().toString().trim();
-        if (val.isEmpty()) {
-            AddName.setError("Field cannot be empty");
-            return false;
-        } else {
-            AddName.setError(null);
 
-            return true;
-        }
-    }
 
 
     }

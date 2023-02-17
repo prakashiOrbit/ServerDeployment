@@ -154,7 +154,7 @@
                         android:layout_centerVertical="true"
                         android:layout_weight="1"
                         android:background="@null"
-                        android:hint="Search for restaurant,item or more"
+                        android:hint="Search"
                         android:imeOptions="actionSearch"
                         android:importantForAutofill="no"
                         android:inputType="text"
@@ -346,7 +346,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="20dp"
                                 android:maxLines="1"
-                                android:text="Vegtables"
+                                android:text="vegetables"
                                 android:textAlignment="center"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
@@ -410,7 +410,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="20dp"
-                                android:text="Meat and Egg"
+                                android:text="Meat and Eggs"
                                 android:textAlignment="center"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
