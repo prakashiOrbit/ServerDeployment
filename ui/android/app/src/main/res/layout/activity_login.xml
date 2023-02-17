@@ -7,22 +7,26 @@
     android:background="@drawable/background_bag"
     tools:context=".Ui.Activity.LoginActivity">
 
-    <RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/background"
         >
+    </ImageView>
+
 
 
 
 
     <androidx.cardview.widget.CardView
+        android:layout_below="@id/back"
         android:layout_width="match_parent"
         android:layout_height="350dp"
         android:background="@drawable/text_backgrnd"
         app:cardCornerRadius="35dp"
-        android:layout_marginTop="150dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp">
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp">
 
 
 
@@ -31,10 +35,9 @@
             android:layout_width="match_parent"
             android:layout_height="350dp"
             android:orientation="vertical"
-            android:padding="20dp"
+            android:padding="10dp"
             android:background="@color/white"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+
             >
 
             <com.github.ybq.android.spinkit.SpinKitView
@@ -62,10 +65,11 @@
 
                 android:id="@+id/log_text1"
                 android:layout_below="@id/logo_image2"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Login with mobile number"
                 android:textStyle="bold"
+                android:layout_centerInParent="true"
                 android:textSize="16sp"
                 android:layout_marginTop="10dp"
                 android:gravity="center">
@@ -75,17 +79,21 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/txt_input"
                 android:layout_below="@+id/log_text1"
-                android:layout_width="match_parent"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_height="55.5dp"
-                android:hint="Mobile number"
-                app:endIconMode="clear_text"
-                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone Number"
+                android:layout_marginTop="10dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
+                android:textColorHint="@color/black"
+                app:endIconMode="clear_text"
                 app:endIconTint="@color/black"
                 app:hintTextColor="@color/black"
-                app:startIconTint="@color/Green4">
+                app:startIconDrawable="@drawable/ic_baseline_phone_24"
+                app:startIconTint="@color/Green2">
+
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/phonenumber_"
@@ -99,17 +107,18 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/log"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:layout_below="@id/txt_input"
                 android:layout_gravity="center"
                 android:layout_marginLeft="62dp"
                 android:layout_marginTop="30dp"
+                android:layout_centerInParent="true"
                 android:layout_marginRight="62dp"
                 android:background="@drawable/text_backgrnd"
-                android:backgroundTint="@color/Green4"
+                app:backgroundTint="@color/Green4"
                 android:gravity="center"
                 android:text="continue"
                 android:textColor="#ffffff"
@@ -123,4 +132,3 @@
 
 </RelativeLayout>
 
-</RelativeLayout>
