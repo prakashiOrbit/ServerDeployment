@@ -60,7 +60,7 @@ public class CreateAddressFragment extends Fragment {
         View view= inflater.inflate(R.layout.fragment_create_address, container, false);
 
         Recipemt_Nmae =view.findViewById(R.id.Recipent_Textname);
-        Phone_Number =view.findViewById(R.id.Phonenumber_text);
+
         Houseno =view.findViewById(R.id.house_Textname);
         Landmark =view. findViewById(R.id.Landmark_Textname);
         Street =view. findViewById(R.id.Street_textname);
@@ -83,7 +83,7 @@ public class CreateAddressFragment extends Fragment {
         SaveADDRESS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!validateFullName() | !validatePhoneNo() | !validateHouseName()  | !validateLandMark() |!vlidateSterret() ) {
+                if (!validateFullName() | !validateHouseName()  | !validateLandMark() |!vlidateSterret() ) {
                     return;
 
 
@@ -154,20 +154,20 @@ public class CreateAddressFragment extends Fragment {
 
         }
     }
-    private Boolean validatePhoneNo() {
-        String val = Phone_Number.getText().toString();
-        if (val.isEmpty()) {
-            Phone_Number.setError("Field cannot be empty");
-            return false;
-        }else if(val.length()<10){
-            Phone_Number.setError("Please enter valid number");
-            return false;
-        }
-        else {
-            Phone_Number.setError(null);
-            return true;
-        }
-    }
+//    private Boolean validatePhoneNo() {
+//        String val = Phone_Number.getText().toString();
+//        if (val.isEmpty()) {
+//            Phone_Number.setError("Field cannot be empty");
+//            return false;
+//        }else if(val.length()<10){
+//            Phone_Number.setError("Please enter valid number");
+//            return false;
+//        }
+//        else {
+//            Phone_Number.setError(null);
+//            return true;
+//        }
+//    }
 
     private boolean validateHouseName() {
         String val = Houseno.getText().toString().trim();

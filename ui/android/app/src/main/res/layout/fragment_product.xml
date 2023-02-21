@@ -16,11 +16,11 @@
             android:id="@+id/text_catname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fruits"
             android:layout_centerInParent="true"
             android:layout_marginTop="30dp"
-            android:textSize="24sp"
-            android:textColor="@color/black"/>
+            android:text="Fruits"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
 
     </RelativeLayout>
     <LinearLayout

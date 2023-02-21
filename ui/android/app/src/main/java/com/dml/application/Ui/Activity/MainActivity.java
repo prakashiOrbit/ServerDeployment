@@ -16,6 +16,16 @@ import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 public class MainActivity extends AppCompatActivity {
  MeowBottomNavigation bottomNavigation;
     Fragment fragment=null;
+
+
+    @Override
+    public void onBackPressed() {
+        Fragment fragment=getSupportFragmentManager().findFragmentById(R.id.frame_layout);
+        if (fragment instanceof HomeFragment)
+            Toast.makeText(this, "Backkk", Toast.LENGTH_SHORT).show();
+        super.onBackPressed();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +86,10 @@ bottomNavigation.setOnShowListener(new MeowBottomNavigation.ShowListener() {
    });
 
     }
+
+
+
+
 
     private void loadFragment(Fragment fragment) {
         getSupportFragmentManager()

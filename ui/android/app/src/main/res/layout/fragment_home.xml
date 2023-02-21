@@ -264,7 +264,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:src="@drawable/fruit"
-                                    android:scaleType="centerCrop"
+                                    android:scaleType="fitCenter"
                                     />
                             </RelativeLayout>
 
@@ -328,7 +328,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_centerInParent="true"
-                                    android:scaleType="centerCrop"
+                                    android:scaleType="fitCenter"
                                     android:src="@drawable/veg" />
                             </RelativeLayout>
 
@@ -346,7 +346,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="20dp"
                                 android:maxLines="1"
-                                android:text="vegetables"
+                                android:text="Vegetables"
                                 android:textAlignment="center"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
@@ -357,70 +357,195 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/layout_meat"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center">
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/layout_poultry1"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:gravity="center">-->
 
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical">
+<!--                    <RelativeLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:gravity="center"-->
+<!--                        android:orientation="vertical">-->
 
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/card_meat"
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginEnd="5dp"
-                            android:background="@drawable/text_backgrnd"
-                            android:backgroundTint="@color/white"
-                            app:cardCornerRadius="10dp"
-                            app:cardElevation="6dp">
+<!--                        <androidx.cardview.widget.CardView-->
+<!--                            android:id="@+id/card_poultry"-->
+<!--                            android:layout_width="80dp"-->
+<!--                            android:layout_height="80dp"-->
+<!--                            android:layout_centerHorizontal="true"-->
+<!--                            android:layout_marginStart="5dp"-->
+<!--                            android:layout_marginTop="5dp"-->
+<!--                            android:layout_marginEnd="5dp"-->
+<!--                            android:background="@drawable/text_backgrnd"-->
+<!--                            android:backgroundTint="@color/white"-->
+<!--                            app:cardCornerRadius="10dp"-->
+<!--                            app:cardElevation="6dp">-->
 
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+<!--                            <RelativeLayout-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="match_parent"-->
 
-                                >
+<!--                                >-->
 
-                                <ImageView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_centerInParent="true"
-                                    android:src="@drawable/meat"
-                                    android:scaleType="centerCrop"/>
-                            </RelativeLayout>
-
-
-                        </androidx.cardview.widget.CardView>
-
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/card_meat"
-                            android:layout_centerHorizontal="true">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="20dp"
-                                android:text="Meat and Eggs"
-                                android:textAlignment="center"
-                                android:textColor="@color/black"
-                                android:textSize="16sp" />
-                        </RelativeLayout>
+<!--                                <ImageView-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_centerInParent="true"-->
+<!--                                    android:scaleType="fitCenter"-->
+<!--                                    android:src="@drawable/eggg" />-->
+<!--                            </RelativeLayout>-->
 
 
-                    </RelativeLayout>
+<!--                        </androidx.cardview.widget.CardView>-->
 
-                </LinearLayout>
+<!--                        <RelativeLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_below="@+id/card_poultry"-->
+<!--                            android:layout_centerHorizontal="true">-->
 
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginTop="20dp"-->
+<!--                                android:text="Poultry"-->
+<!--                                android:textAlignment="center"-->
+<!--                                android:textColor="@color/black"-->
+<!--                                android:textSize="16sp" />-->
+<!--                        </RelativeLayout>-->
+
+
+<!--                    </RelativeLayout>-->
+
+<!--                </LinearLayout>-->
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/layout_seafood"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:gravity="center">-->
+
+<!--                    <RelativeLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:gravity="center"-->
+<!--                        android:orientation="vertical">-->
+
+<!--                        <androidx.cardview.widget.CardView-->
+<!--                            android:id="@+id/card_seafood1"-->
+<!--                            android:layout_width="80dp"-->
+<!--                            android:layout_height="80dp"-->
+<!--                            android:layout_centerHorizontal="true"-->
+<!--                            android:layout_marginStart="5dp"-->
+<!--                            android:layout_marginTop="5dp"-->
+<!--                            android:layout_marginEnd="5dp"-->
+<!--                            android:background="@drawable/text_backgrnd"-->
+<!--                            android:backgroundTint="@color/white"-->
+<!--                            app:cardCornerRadius="10dp"-->
+<!--                            app:cardElevation="6dp">-->
+
+<!--                            <RelativeLayout-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="match_parent"-->
+
+<!--                                >-->
+
+<!--                                <ImageView-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_centerInParent="true"-->
+<!--                                    android:scaleType="fitCenter"-->
+<!--                                    android:src="@drawable/fff" />-->
+<!--                            </RelativeLayout>-->
+
+
+<!--                        </androidx.cardview.widget.CardView>-->
+
+<!--                        <RelativeLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_below="@+id/card_seafood1"-->
+<!--                            android:layout_centerHorizontal="true">-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginTop="20dp"-->
+<!--                                android:text="Seafood"-->
+<!--                                android:textAlignment="center"-->
+<!--                                android:textColor="@color/black"-->
+<!--                                android:textSize="16sp" />-->
+<!--                        </RelativeLayout>-->
+
+
+<!--                    </RelativeLayout>-->
+
+<!--                </LinearLayout>-->
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/layout_meat"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:gravity="center">-->
+
+<!--                    <RelativeLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:gravity="center"-->
+<!--                        android:orientation="vertical">-->
+
+<!--                        <androidx.cardview.widget.CardView-->
+<!--                            android:id="@+id/card_meat1"-->
+<!--                            android:layout_width="80dp"-->
+<!--                            android:layout_height="80dp"-->
+<!--                            android:layout_centerHorizontal="true"-->
+<!--                            android:layout_marginStart="5dp"-->
+<!--                            android:layout_marginTop="5dp"-->
+<!--                            android:layout_marginEnd="5dp"-->
+<!--                            android:background="@drawable/text_backgrnd"-->
+<!--                            android:backgroundTint="@color/white"-->
+<!--                            app:cardCornerRadius="10dp"-->
+<!--                            app:cardElevation="6dp">-->
+
+<!--                            <RelativeLayout-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="match_parent"-->
+
+<!--                                >-->
+
+<!--                                <ImageView-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_centerInParent="true"-->
+<!--                                    android:scaleType="fitCenter"-->
+<!--                                    android:src="@drawable/meat" />-->
+<!--                            </RelativeLayout>-->
+
+
+<!--                        </androidx.cardview.widget.CardView>-->
+
+<!--                        <RelativeLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_below="@+id/card_meat1"-->
+<!--                            android:layout_centerHorizontal="true">-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginTop="20dp"-->
+<!--                                android:text="Meat"-->
+<!--                                android:textAlignment="center"-->
+<!--                                android:textColor="@color/black"-->
+<!--                                android:textSize="16sp" />-->
+<!--                        </RelativeLayout>-->
+
+
+<!--                    </RelativeLayout>-->
+
+<!--                </LinearLayout>-->
 
             </LinearLayout>
 

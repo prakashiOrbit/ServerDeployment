@@ -65,9 +65,9 @@ public class ProductAdapter  extends RecyclerView.Adapter<ProductAdapter.ViewHol
         public void bind(final ProductModel item, final OnItemClickListener listener) {
             ProductName.setText(item.getProductName());
             ProductQty.setText(item.getProductqty());
-           ProductPrice.setText( "₹"+ item.getProductPrice());
+           ProductPrice.setText(  item.getProductPrice());
 //           ProductPrice.setPaintFlags(item.getProductPrice() );
-          ProductDisPrice.setText("₹"+item.getProductDisPrice());
+          ProductDisPrice.setText(item.getProductDisPrice());
            ProductImage.setImageResource(item.getProductImage());
 //            if (item.getImage() != null) {
 //                String Image = item.getImage();

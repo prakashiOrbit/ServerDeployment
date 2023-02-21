@@ -45,11 +45,11 @@
         <ImageView
             android:id="@+id/product_ratingimage"
             android:layout_toRightOf="@id/product_name"
-            android:layout_width="30dp"
+            android:layout_width="25dp"
             android:layout_height="30dp"
-            android:layout_marginStart="125dp"
+            android:layout_marginStart="120dp"
             android:layout_marginTop="10dp"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
             android:src="@drawable/star"
             app:tint="@color/Green4" />
         <TextView
@@ -68,11 +68,13 @@
             android:id="@+id/product_Discription"
             style="@style/CardView"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="125dp"
             android:layout_below="@id/product_qty"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
-            android:text="@string/discripation"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="5dp"
+            android:justificationMode="inter_word"
+            android:layout_marginEnd="25dp"
+            android:text="@string/Description"
             android:textSize="16sp"
             android:textStyle="normal"
             />
@@ -91,7 +93,7 @@
             android:layout_marginStart="35dp"
             android:layout_marginTop="25dp"
             android:maxLines="1"
-            android:text="₹136"
+            android:text="Rs.136"
             android:textSize="24sp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
@@ -101,10 +103,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/product_Discription"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="-35dp"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="-44dp"
             android:maxLines="1"
-            android:text="₹125"
+            android:text="Rs.125"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="10dp"
@@ -129,7 +131,7 @@
 
             android:layout_below="@id/product_Discription"
             android:layout_toRightOf="@id/product_price"
-            android:text="Add tocart">
+            android:text="Addtocart">
 
         </com.google.android.material.button.MaterialButton>
     </LinearLayout>

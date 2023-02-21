@@ -17,7 +17,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.dml.application.Address_BookFragment;
 import com.dml.application.Database.DataBaseDAO;
 import com.dml.application.Database.Roomdatabase;
 import com.dml.application.Database.entities.Product;
@@ -137,9 +136,9 @@ private CartViewInterface cartViewInterface;
             public void bind(final Product item) {
                 Cartproduct_name.setText(item.getProductName());
                 Cartproduct_qty.setText(item.getProductQty());
-                Cartproduct_pricetext.setText( "₹" + item.getProductPrice());
+                Cartproduct_pricetext.setText( item.getProductPrice());
 //           ProductPrice.setPaintFlags(item.getProductPrice() );
-                CartProduct_discount.setText("₹"+ item.getProductDis());
+                CartProduct_discount.setText(item.getProductDis());
                 CartqtyNum.setText(item.getProductNum());
                 //           ProductImage.setImageResource(item.getProductImage());
 //            if (item.getImage() != null) {

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -41,8 +42,15 @@ public class LoginActivity extends AppCompatActivity {
 
                     spin_kit.setVisibility(View.GONE);
                     return;
+
                 }
-                checkUserExist();
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        checkUserExist();
+                    }
+                }, 3000);
             }
 
 
@@ -75,15 +83,16 @@ public class LoginActivity extends AppCompatActivity {
 
     private void checkUserExist() {
 
-        LOGIN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
+//        LOGIN.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+spin_kit.setVisibility(View.GONE);
                 Intent intent = new Intent(getApplicationContext(), OTPActivity.class);
                 intent.putExtra("key","1");
                 startActivity(intent);
 
             }
-        });
+//        });
 
-}}
+}

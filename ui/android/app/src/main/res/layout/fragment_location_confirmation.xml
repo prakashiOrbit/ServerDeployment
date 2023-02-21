@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Location_confirmationFragment">
+    tools:context=".Ui.Fragment.Location_confirmationFragment">
 
     <RelativeLayout
         android:id="@+id/layoutheader1"
@@ -78,7 +78,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="15dp"
-            android:src="@drawable/ic_baseline_search_24" />
+            android:src="@drawable/ic_baseline_search_24"/>
 
 
     </LinearLayout>
@@ -87,9 +87,15 @@
     android:layout_below="@id/search_linear"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/map">
+    >
 
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scaleType="fitXY"
+    android:src="@drawable/map">
 
+</ImageView>
 <androidx.cardview.widget.CardView
     android:layout_width="match_parent"
     android:layout_height="130dp"
@@ -127,6 +133,7 @@ android:id="@+id/textadd_2"
     android:layout_height="wrap_content"
     android:layout_marginStart="30dp"
     android:textSize="18sp"
+    android:textColor="@color/black"
     android:gravity="center_horizontal"
     android:layout_marginEnd="30dp">
 
@@ -139,6 +146,7 @@ android:id="@+id/textadd_2"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:textSize="18sp"
+        android:textColor="@color/black"
         android:gravity="center_horizontal"
         android:layout_marginEnd="30dp">
 
