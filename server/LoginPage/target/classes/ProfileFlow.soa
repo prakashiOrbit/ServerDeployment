@@ -1,0 +1,21 @@
+name: ProfileFlow
+defaultEnable: basic
+primeData:
+  - com.iorbit.login.Profile
+events:
+  - com.iorbit.login.CreateProfile
+responses:
+  - com.iorbit.login.MessageResponse
+transitions:
+  - com.iorbit.login.ProfileManager
+features:
+  - name: basic
+    artefacts:
+      - com.iorbit.login.Profile
+      - com.iorbit.login.CreateProfile
+      - com.iorbit.login.MessageResponse
+      - com.iorbit.login.ProfileManager
+      
+    
+      
+      
