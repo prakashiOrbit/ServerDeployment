@@ -1,10 +1,11 @@
 package com.dml.application.Ui.Fragment;
 
-import android.content.Context;
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.activity.OnBackPressedDispatcher;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -15,14 +16,21 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.dml.application.R;
-import com.dml.application.Utils.Backpressedlistener;
 
-public class HomeFragment extends Fragment implements Backpressedlistener{
+public class HomeFragment extends Fragment implements OnBackPressedCallback {
 
     LinearLayout Veg_layout,LayoutFruit,LayoutMeat;
 
+private OnBackPressedDispatcher onBackPressedDispatcher;
 
-public static HomeFragment baseKeyListener;
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        onBackPressedDispatcher=requireActivity().getOnBackPressedDispatcher();
+        onBackPressedDispatcher.addCallback(this);
+    }
+
     @Override
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,22 +47,7 @@ public static HomeFragment baseKeyListener;
 
     }
 
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        if (context instanceof AppCompatActivity){
-            ((AppCompatActivity) context).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-    }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-
-        if ( getActivity() instanceof AppCompatActivity){
-            ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        }
-    }
 
     private void callCategory() {
 
@@ -118,7 +111,7 @@ public static HomeFragment baseKeyListener;
 
 
     @Override
-    public void onBackPressed() {
+    public void handleOnBackPressed() {
 
     }
 }
