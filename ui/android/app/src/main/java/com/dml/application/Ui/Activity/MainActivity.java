@@ -3,6 +3,7 @@ package com.dml.application.Ui.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -18,13 +19,7 @@ public class MainActivity extends AppCompatActivity {
     Fragment fragment=null;
 
 
-    @Override
-    public void onBackPressed() {
-        Fragment fragment=getSupportFragmentManager().findFragmentById(R.id.frame_layout);
-        if (fragment instanceof HomeFragment)
-            Toast.makeText(this, "Backkk", Toast.LENGTH_SHORT).show();
-        super.onBackPressed();
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

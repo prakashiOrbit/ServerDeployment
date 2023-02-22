@@ -1,5 +1,7 @@
 package com.dml.application.Ui.Fragment;
 
+import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -10,26 +12,55 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.dml.application.App.MydialogFragment;
 import com.dml.application.R;
+import com.google.android.material.button.MaterialButton;
 
-public class HomeFragment extends Fragment implements OnBackPressedCallback {
+public class HomeFragment extends Fragment {
 
-    LinearLayout Veg_layout,LayoutFruit,LayoutMeat;
-
-private OnBackPressedDispatcher onBackPressedDispatcher;
-
+    LinearLayout Veg_layout, LayoutFruit, LayoutMeat;
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        onBackPressedDispatcher=requireActivity().getOnBackPressedDispatcher();
-        onBackPressedDispatcher.addCallback(this);
+    public void onResume() {
+        super.onResume();
+
+        if (getView() == null) {
+            return;
+        }
+
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+
+
+                if (keyEvent.getAction() == KeyEvent.ACTION_UP && i == KeyEvent.KEYCODE_BACK) {
+
+//                    ShowDialog();
+
+
+                    MydialogFragment mydialogFragment=new MydialogFragment();
+                    mydialogFragment.show(getFragmentManager(),"myFragment");
+
+                    return true;
+                }
+                return false;
+            }
+
+
+        });
+
     }
+
 
     @Override
 
@@ -37,16 +68,15 @@ private OnBackPressedDispatcher onBackPressedDispatcher;
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        Veg_layout=view.findViewById(R.id.layout_veg);
-        LayoutFruit =view.findViewById(R.id.layout_fruit);
+        Veg_layout = view.findViewById(R.id.layout_veg);
+        LayoutFruit = view.findViewById(R.id.layout_fruit);
 //        LayoutMeat = view.findViewById(R.id.layout_meat);
 
-       callCategory();
+        callCategory();
 
         return view;
 
     }
-
 
 
     private void callCategory() {
@@ -56,18 +86,17 @@ private OnBackPressedDispatcher onBackPressedDispatcher;
             public void onClick(View v) {
 
                 Bundle bundle = new Bundle();
-                bundle.putString("key","1");
+                bundle.putString("key", "1");
 
-               ProductFragment productFragment=new ProductFragment();
-                FragmentManager fragmentManager=getFragmentManager();
-                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                ProductFragment productFragment = new ProductFragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 productFragment.setArguments(bundle);
 
-                fragmentTransaction.replace(R.id.frame_layout,productFragment);
+                fragmentTransaction.replace(R.id.frame_layout, productFragment);
                 // Remove the fragment
 
                 fragmentTransaction.commitNow();
-
 
 
             }
@@ -78,40 +107,20 @@ private OnBackPressedDispatcher onBackPressedDispatcher;
             public void onClick(View v) {
 
                 Bundle bundle = new Bundle();
-                bundle.putString("key","2");
+                bundle.putString("key", "2");
 
-                ProductFragment productFragment=new ProductFragment();
-                FragmentManager fragmentManager=getFragmentManager();
-                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                ProductFragment productFragment = new ProductFragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 productFragment.setArguments(bundle);
-                fragmentTransaction.replace(R.id.frame_layout,productFragment);
+                fragmentTransaction.replace(R.id.frame_layout, productFragment);
                 fragmentTransaction.commitNow();
 
             }
         });
 
-//        LayoutMeat.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                Bundle bundle = new Bundle();
-//                bundle.putString("key","3");
-//
-//                ProductFragment productFragment=new ProductFragment();
-//                FragmentManager fragmentManager=getFragmentManager();
-//                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-//                productFragment.setArguments(bundle);
-//                fragmentTransaction.replace(R.id.frame_layout,productFragment);
-//                fragmentTransaction.commitNow();
-//
-//            }
-//        });
 
     }
 
 
-    @Override
-    public void handleOnBackPressed() {
-
-    }
 }

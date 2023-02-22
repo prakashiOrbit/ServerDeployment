@@ -2,13 +2,13 @@ package com.dml.application.Ui.Fragment;
 
 import android.os.Bundle;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,47 +16,54 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dml.application.Adapters.ProductAdapter;
+import com.dml.application.App.MydialogFragment;
+import com.dml.application.App.ViewClickListener;
+import com.dml.application.Database.DataBaseDAO;
+import com.dml.application.Database.Roomdatabase;
+import com.dml.application.Database.entities.Product;
 import com.dml.application.Models.ProductModel;
 import com.dml.application.R;
-import com.dml.application.Ui.Fragment.ProductdetailsFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductFragment extends Fragment {
+public class ProductFragment extends Fragment implements ViewClickListener {
     TextView TextCatName;
     int id;
     String KEY;
     RecyclerView RecyclerviewProductList;
     List<ProductModel> productModels;
+
+    Roomdatabase database;
+    DataBaseDAO dataBaseDAO;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_product, container, false);
-        TextCatName =view.findViewById(R.id.text_catname);
+        TextCatName = view.findViewById(R.id.text_catname);
         RecyclerviewProductList = view.findViewById(R.id.recyclerview_productList);
         RecyclerviewProductList.setHasFixedSize(true);
         RecyclerviewProductList.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        database = Roomdatabase.getInstance(getActivity());
+        dataBaseDAO = database.dataBaseDAO();
 
         Bundle bundle = this.getArguments();
 
-        if(bundle != null){
+        if (bundle != null) {
 
-            KEY=bundle.getString("key");
+            KEY = bundle.getString("key");
         }
 
         TextCatName.setText(KEY);
-        id= Integer.parseInt(KEY);
+        id = Integer.parseInt(KEY);
         CallProducts();
 
         return view;
 
     }
-
-
-
-
 
 
     private void CallProducts() {
@@ -84,29 +91,7 @@ public class ProductFragment extends Fragment {
             productModels.add(new ProductModel("10", "Strawberry", "1 KG",
                     "Rs.35", "Rs.25", "A strawberry is a small red fruit which is soft and juicy and has tiny yellow seeds on its skin", R.drawable.strawberry));
             TextCatName.setText("Fruits");
-            RecyclerviewProductList.setAdapter(new ProductAdapter(productModels, new ProductAdapter.OnItemClickListener() {
-                @Override
-                public void onItemClick(ProductModel item) {
-
-                    Bundle bundle = new Bundle();
-
-                    bundle.putString("pid", item.getProductId());
-                    bundle.putString("pname", item.getProductName());
-                    bundle.putString("pquant", item.getProductqty());
-                    bundle.putString("pidis", item.getProductDisPrice());
-                    bundle.putString("proprice", item.getProductPrice());
-                    bundle.putString("pdiscription", item.getProductDiscription());
-
-                    ProductdetailsFragment productdetailsFragment=new ProductdetailsFragment();
-                    FragmentManager fragmentManager=getFragmentManager();
-                    FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-                    productdetailsFragment.setArguments(bundle);
-                    fragmentTransaction.replace(R.id.frame_layout,productdetailsFragment);
-                    fragmentTransaction.commitNow();
-
-
-                }
-            }));
+            RecyclerviewProductList.setAdapter(new ProductAdapter(productModels, this));
 
         } else if (id == 2) {
             productModels = new ArrayList<>();
@@ -135,27 +120,8 @@ public class ProductFragment extends Fragment {
 
 
             TextCatName.setText("Vegetables");
-            RecyclerviewProductList.setAdapter(new ProductAdapter(productModels, new ProductAdapter.OnItemClickListener() {
-                @Override
-                public void onItemClick(ProductModel item) {
-                    Bundle bundle = new Bundle();
-                    bundle.putString("pid", item.getProductId());
-                    bundle.putString("pname", item.getProductName());
-                    bundle.putString("pquant", item.getProductqty());
-                    bundle.putString("pidis", item.getProductDisPrice());
-                    bundle.putString("proprice", item.getProductPrice());
-                    bundle.putString("pdiscription", item.getProductDiscription());
+            RecyclerviewProductList.setAdapter(new ProductAdapter(productModels, this));
 
-                    ProductdetailsFragment productdetailsFragment=new ProductdetailsFragment();
-                    FragmentManager fragmentManager=getFragmentManager();
-                    FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-                    productdetailsFragment.setArguments(bundle);
-                    fragmentTransaction.replace(R.id.frame_layout,productdetailsFragment);
-                    fragmentTransaction.commitNow();
-
-
-                }
-            }));
         } else {
             productModels = new ArrayList<>();
             productModels.add(new ProductModel("1", "Chicken", "1 KG", "35", "25", "HDHASDSAKD", R.drawable.onion));
@@ -164,32 +130,74 @@ public class ProductFragment extends Fragment {
 
 
             TextCatName.setText("Meats and Eggs");
-            RecyclerviewProductList.setAdapter(new ProductAdapter(productModels, new ProductAdapter.OnItemClickListener() {
-                @Override
-                public void onItemClick(ProductModel item) {
+            RecyclerviewProductList.setAdapter(new ProductAdapter(productModels, this));
 
-
-
-                    Bundle bundle = new Bundle();
-                    bundle.putString("pid", item.getProductId());
-                    bundle.putString("pname", item.getProductName());
-                    bundle.putString("pquant", item.getProductqty());
-                    bundle.putString("pidis", item.getProductDisPrice());
-                    bundle.putString("proprice", item.getProductPrice());
-                    bundle.putString("pdiscription", item.getProductDiscription());
-
-                    ProductdetailsFragment productdetailsFragment=new ProductdetailsFragment();
-                    FragmentManager fragmentManager=getFragmentManager();
-                    FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-                    productdetailsFragment.setArguments(bundle);
-                    fragmentTransaction.replace(R.id.frame_layout,productdetailsFragment);
-                    fragmentTransaction.commitNow();
-
-
-
-
-                }
-            }));
         }
     }
+
+    @Override
+    public void onItemclick(ProductModel item) {
+        Bundle bundle = new Bundle();
+        bundle.putString("pid", item.getProductId());
+        bundle.putString("pname", item.getProductName());
+        bundle.putString("pquant", item.getProductqty());
+        bundle.putString("pidis", item.getProductDisPrice());
+        bundle.putString("proprice", item.getProductPrice());
+        bundle.putString("pdiscription", item.getProductDiscription());
+        bundle.putString("key", KEY);
+
+        ProductdetailsFragment productdetailsFragment = new ProductdetailsFragment();
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        productdetailsFragment.setArguments(bundle);
+        fragmentTransaction.replace(R.id.frame_layout, productdetailsFragment);
+        fragmentTransaction.commitNow();
+    }
+
+    @Override
+    public void onItemPlusClick(ProductModel item) {
+        Product product = new Product(0, item.getProductId(), item.getProductName(), "1", item.getProductPrice(), item.getProductDisPrice(), item.getProductqty());
+        dataBaseDAO.insert(product);
+        Toast.makeText(getActivity(), "Added to cart", Toast.LENGTH_SHORT).show();
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if (getView() == null) {
+            return;
+        }
+
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+
+
+                if (keyEvent.getAction() == KeyEvent.ACTION_UP && i == KeyEvent.KEYCODE_BACK) {
+                    HomeFragment homeFragment = new HomeFragment();
+                    FragmentManager fragmentManager = getFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.frame_layout, homeFragment);
+                    // Remove the fragment
+
+                    fragmentTransaction.commitNow();
+
+//                    ShowDialog();
+
+
+                    return true;
+                }
+                return false;
+            }
+
+
+        });
+
+    }
+
 }
+

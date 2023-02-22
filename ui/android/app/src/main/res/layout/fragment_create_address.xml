@@ -88,7 +88,7 @@
                             android:id="@+id/Recipent_name1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:hint="Recipient Name"
+                            android:hint="Recipient Name *"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
@@ -193,7 +193,7 @@
                             android:id="@+id/house_name1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:hint="Apartment/Building Name"
+                            android:hint="Apartment/Building Name *"
 
                             android:textSize="16sp"
                             android:textStyle="bold" />
@@ -251,7 +251,7 @@
                             android:id="@+id/street_name1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:hint="Street,city,etc.."
+                            android:hint="Street,city,etc..*"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
@@ -306,7 +306,7 @@
                             android:id="@+id/landmark_name1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                                android:hint="Landmark/Area Name(Optional)"
+                                android:hint="Landmark/Area Name *"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
@@ -361,7 +361,7 @@
                             android:id="@+id/Select_addresstype"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Add Address Label"
+                            android:hint="Add Address Label *"
                             android:textColor="@color/black"
                             android:textStyle="bold"
                             android:textSize="16sp"/>
