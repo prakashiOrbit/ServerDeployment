@@ -11,7 +11,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class RetrofitClient {
-    public static final String BASE_URL = "http://localhost:9082/smarttest/ProfileFlow/";
+    public static final String BASE_URL = "http://192.168.64.59:9082/smarttest/";
+    public static final String HEADER="a0ee741b-04b8-41a5-a8bf-2f597b3c9dff";
+
 
 
     private Retrofit retrofit;

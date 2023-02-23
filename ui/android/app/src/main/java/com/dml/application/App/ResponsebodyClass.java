@@ -2,9 +2,16 @@ package com.dml.application.App;
 
 
 public class ResponsebodyClass{
+
     public FlowAdmin flowAdmin;
     public String phoneNumber;
     public String type;
+
+    public ResponsebodyClass( String phoneNumber,String type,FlowAdmin flowAdmin ) {
+           this.flowAdmin=flowAdmin;
+            this.phoneNumber=phoneNumber;
+            this.type=type;
+    }
 
     public FlowAdmin getFlowAdmin() {
         return flowAdmin;

@@ -1,5 +1,6 @@
 package com.dml.application.Ui.Fragment;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,6 +13,9 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,6 +47,9 @@ public class ProductFragment extends Fragment implements ViewClickListener {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_product, container, false);
+        View popupView = LayoutInflater.from(getContext()).inflate(R.layout.login_alert, null);
+        PopupWindow popupWindow = new PopupWindow(popupView, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
         TextCatName = view.findViewById(R.id.text_catname);
         RecyclerviewProductList = view.findViewById(R.id.recyclerview_productList);
         RecyclerviewProductList.setHasFixedSize(true);

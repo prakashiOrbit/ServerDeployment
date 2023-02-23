@@ -1,7 +1,9 @@
 package com.dml.application.Adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Paint;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import android.widget.TextView;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.dml.application.App.MydialogFragment;
 import com.dml.application.App.ViewClickListener;
 import com.dml.application.Models.ProductModel;
 import com.dml.application.R;
@@ -84,6 +87,7 @@ public class ProductAdapter  extends RecyclerView.Adapter<ProductAdapter.ViewHol
                 }
             });
         Addto_quantycart.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 viewClickListener.onItemPlusClick(item);

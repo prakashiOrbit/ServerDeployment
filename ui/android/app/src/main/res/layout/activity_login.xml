@@ -86,9 +86,9 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
                 app:endIconMode="clear_text"
+
                 app:endIconTint="@color/black"
                 app:hintTextColor="@color/black"
-                app:startIconDrawable="@drawable/ic_baseline_phone_24"
                 app:startIconTint="@color/Green2">
 
                 >
@@ -110,17 +110,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:layout_below="@id/txt_input"
+                android:layout_centerInParent="true"
                 android:layout_gravity="center"
                 android:layout_marginLeft="62dp"
                 android:layout_marginTop="30dp"
-                android:layout_centerInParent="true"
                 android:layout_marginRight="62dp"
                 android:background="@drawable/text_backgrnd"
-                app:backgroundTint="@color/Green4"
                 android:gravity="center"
                 android:text="continue"
                 android:textColor="#ffffff"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                app:backgroundTint="@color/Green4" />
 
 
         </RelativeLayout>
