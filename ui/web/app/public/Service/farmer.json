@@ -1,49 +1,21 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> b7f219a4b8c6bcdf007d6233637736215ac64634
 {
   "division": {
     "name": "PO Header",
     "formelements": [
       {
         "id": "farmerId",
-<<<<<<< HEAD
-        "label": "farmerId",
-        "control": "textbox",
-        "validation": "number",
-=======
         "label": "FID(UNI)",
         "control": "textbox",
         "validate": "number",
->>>>>>> b7f219a4b8c6bcdf007d6233637736215ac64634
         "disabled": true
       },
       {
         "id": "Name",
-<<<<<<< HEAD
-        "label": "name",
-=======
         "label": "Name",
->>>>>>> b7f219a4b8c6bcdf007d6233637736215ac64634
         "control": "textbox"
       },
       {
         "label": "Phone NO",
-<<<<<<< HEAD
-        "id": "Phone No",
-        "control": "textbox",
-        "validation": "phone"
-      },
-	    {
-        "label": "Address",
-        "id": "Address",
-        "control": "textbox"
-      },
-      {
-        "label": "Aadhar",
-        "id": "aadhar_no",
-=======
         "id": "Phone NO",
         "control": "textbox",
         "validate": "phone"
@@ -74,35 +46,16 @@
       {
         "label": "Aadhar NO",
         "id": "Aadhar NO",
->>>>>>> b7f219a4b8c6bcdf007d6233637736215ac64634
         "control": "textbox",
         "validate": "aadhar"
       },
       {
-<<<<<<< HEAD
-        "label": "PAN",
-        "id": "pan",
-=======
         "label": "Pan NO",
         "id": "Pan NO",
->>>>>>> b7f219a4b8c6bcdf007d6233637736215ac64634
         "control": "textbox",
         "validate": "pan"
       },
       {
-<<<<<<< HEAD
-        "label": "Contact",
-        "id": "contact",
-        "control": "textbox",
-        "validate": "alphanumeric"
-      },
-      {
-        "label": "Payment",
-        "id": "payment",
-        "control": "textbox",
-        "validate": "alphanumeric"
-      }
-=======
         "label": "Payee Name",
         "id": "Payee Name",
         "control": "textbox"
@@ -119,7 +72,6 @@
         "control": "textbox",
         "validation": "ifsc"
       } 
->>>>>>> b7f219a4b8c6bcdf007d6233637736215ac64634
     ],
     "buttons": [
       {
@@ -132,13 +84,6 @@
       {
         "id": "cancel",
         "label": "Cancel",
-<<<<<<< HEAD
-        "control": "button"
-      }
-    ]
-  }
-}
-=======
         "control": "button",
         "redirect": ""
       }
@@ -153,4 +98,3 @@
     
   }
 }
->>>>>>> b7f219a4b8c6bcdf007d6233637736215ac64634

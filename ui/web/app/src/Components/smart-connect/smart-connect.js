@@ -68,6 +68,7 @@ export default class SmartConnect extends Component {
         })
     }
 
+    // var pay = { "identity": "apptestadmin", "password": "apptestadmin", "type": "custom", "FlowAdmin": { "___smart_action___": "lookup", "___smart_value___": "Security" } }
     /** Method to authenticate, fetch and store the sessionId using which other API Calls can happen */
     authenticate(username, password) {
         var url = 'http://' + this.state.server + ':' + this.state.port + '/' + this.state.tenant + '/Security/Authenticate';

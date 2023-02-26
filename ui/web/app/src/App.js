@@ -10,6 +10,7 @@ import { getApi, postApi } from "./webservice"
 import Farmer from "./Components/Farmer/Farmer";
 import Po from "./Components/Po/po";
 import FarmerList from "./Components/Farmer/FarmerList";
+import Login from "./Components/login/Login";
 const App = () => {
   // const [view, setView] = React.useState("list");
   // const [selected, setSelected] = React.useState([]);
@@ -53,14 +54,18 @@ const App = () => {
           element={<Farmer />}
         />
          <Route
-          path="/list/j"
+          path="/login"
+          element={<Login />}
+        />
+         <Route
+          path="/list"
           element={<FarmerList />}
         />
         <Route
           path="/po"
           element={<Po />}
         />
-        <Route path="/list" element={<FormView aev={'list'} fields={fields} list={list} search={search} getApi={getApi} postApi={postApi} />} />
+        {/* <Route path="/list" element={<FormView aev={'list'} fields={fields} list={list} search={search} getApi={getApi} postApi={postApi} />} /> */}
         <Route path="/create" element={<FormView aev={'add'} fields={fields} list={list} search={search} getApi={getApi} postApi={postApi} />} />
         <Route path="/test/view" element={<FormView aev={'view'} fields={fields} list={list} navigate={navigate} search={search} getApi={getApi} postApi={postApi} />} />
         <Route path="/test/edit" element={<FormView aev={'edit'} fields={fields} list={list} getApi={getApi} search={search} postApi={postApi} />} />

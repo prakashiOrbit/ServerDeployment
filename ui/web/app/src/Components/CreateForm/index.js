@@ -93,7 +93,7 @@ export class FormView extends Component {
 
 
         const valid = false
-        this.state.formDetails.division.formelements.map((item, index) => {
+        this.state?.formDetails?.division?.formelements.map((item, index) => {
             if (item.validate) {
                 if (!this.state.inputDetails[item.id]) {
                     console.log(item.id, "validationnnn erre");

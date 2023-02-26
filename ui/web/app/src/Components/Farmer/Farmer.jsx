@@ -5,7 +5,7 @@ import FormView from "../CreateForm"
 import { getApi, postMethod } from "../../webservice";
 //import SmartConnect from "../Url/SmartConnect";
 import SmartConnect from "../smart-connect/smart-connect";
-
+import Datatable from "../../Modules/Datatable/datatable";
 //import farmerFields from "./farmerFields.json";
 
 class Farmer extends React.Component {
@@ -45,7 +45,8 @@ class Farmer extends React.Component {
                     </>) : (null)
     }
                 {/* <SmartConnect ref={this.child} flow={this.state.flow} tenant={this.state.tenant}/> */}
-                <SmartConnect server="localhost" port="9082" tenant="fresh2rely" flow="farmer" flowEvent="farmerEvent" />
+             
+                {/* <SmartConnect server="localhost" port="9082" tenant="fresh2rely" flow="farmer" flowEvent="farmerEvent" /> */}
             </div>
         );
     }

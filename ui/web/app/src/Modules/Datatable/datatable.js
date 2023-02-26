@@ -1,14 +1,14 @@
 import { debounce } from 'lodash';
 import MUIDataTable from "mui-datatables";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { IconButton } from '@mui/material';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import axios from 'axios';
 
-
-const  Datatable = ({onSearch}) => {
+const  Datatable = ({url,data,flow,handleOptions}) => {
   const [responsive, setResponsive] = useState("vertical");
 
   const [searchBtn, setSearchBtn] = useState(true);
@@ -16,33 +16,74 @@ const  Datatable = ({onSearch}) => {
   const [viewColumnBtn, setViewColumnBtn] = useState(true);
   const [filterBtn, setFilterBtn] = useState(true);
   const [anchorEl, setAnchorEl] =useState(null);
+  const[tableData,settableData]= useState([]);
   const open = Boolean(anchorEl);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
+  // useEffect(()=>{
+    
+  // })
+  
+useEffect(()=>{
+  getData("*");
+},[]);
 
 
+const getData = (searchString) =>{
+  const payloads = [
+    {id:1, Name: "Joe James", aadhar_no: "Test Corp", address: "Yonkers" },
+    { id:2,Name: "John Walsh", aadhar_no: "Test Corp", address: "Hartford" },
+    { id:3,Name: "Bob Herm", aadhar_no: "Test Corp", address: "Tampa" },
+    { id:4,Name: "James Houston", aadhar_no: "Test Corp", address: "Dallas"},
+  ];
+  settableData(payloads);
+  const config = {
+    headers:{ 'Content-Type': 'application/json', 'Session-Id': "433915e0-58e5-4533-8d66-c30bf402709b" }
+  };
+ const payload =  {"FlowAdmin": {"___smart_action___": "lookup","___smart_value___": flow},"searchString": searchString}
+axios.post(url,payload,config)
+ .then((res)=>{
 
-  const handleClose = (data) => {
-    console.log(data);
-    console.log(data.rowIndex);
-    console.log(data.tableData[data.rowIndex])
+
+  // settableData(res.data.responses[0].farmers);
+
+})
+}
+
+
+  const handleClose = (data,option) => {
+    // console.log(option);
+    // console.log(data.rowIndex);
+    // console.log(data.tableData[data.rowIndex])
+    handleOptions(data.tableData[data.rowIndex],option)
     setAnchorEl(null);
   };
 
   const options = [
     "Edit",
-    "Delete"
+    "Delete",
+    "Assign to CC"
   ];
 
   const ITEM_HEIGHT = 48;
 
   const columns = [
-    { name: "Name", options: { filterOptions: { fullWidth: true } } },
-   { name : "Title"},
-    {name:"Location"},
+    { name: "firstName", label:"Name"
+  //   options: {
+  //     customHeadRender: ({value, ...column}) => {
+  //         return (
+  //             <Button key={index}>
+  //                 Click
+  //             </Button>
+  //         )
+  //     }
+  // }
+ },
+   { name : "aadhar_no",label:"Aadhar No"},
+    {name:"address",label:"Location"},
     {
         name: "Action",
         options: {
@@ -74,7 +115,7 @@ const  Datatable = ({onSearch}) => {
         }}
       >
         {options.map((option) => (
-          <MenuItem key={option}  onClick={()=>{handleClose(rowdata)}}>
+          <MenuItem key={option}  onClick={()=>{handleClose(rowdata,option)}}>
             {option}
           </MenuItem>
         ))}
@@ -90,7 +131,7 @@ const  Datatable = ({onSearch}) => {
   ];
 
   const logValue = debounce((value) => {
-    onSearch(value);
+    getData(value+"*");
 }, 1000);
 
 
@@ -113,18 +154,12 @@ const  Datatable = ({onSearch}) => {
     }
   };
 
-  const data = [
-    { Name: "Joe James", Title: "Test Corp", Location: "Yonkers" },
-    { Name: "John Walsh", Title: "Test Corp", Location: "Hartford" },
-    { Name: "Bob Herm", Title: "Test Corp", Location: "Tampa" },
-    { Name: "James Houston", Title: "Test Corp", Location: "Dallas"},
-  ];
 
   return (
     <>
         <MUIDataTable
           title={"ACME Employee list"}
-          data={data}
+          data={tableData}
           columns={columns}
           options={option}
         />
