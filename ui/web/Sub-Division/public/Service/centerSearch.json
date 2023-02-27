@@ -1,0 +1,36 @@
+{
+  "division": {
+    "name": "Product Header",
+    "formelements": [
+      {
+        "id": "Center Name",
+        "label": "Center Name",
+        "control": "textbox",
+        "validation": "alphanumeric"
+      },
+      {
+        "id": "Center Address",
+        "label": "Center Address",
+        "control": "textbox",
+        "validation": "alphanumeric",
+        "disabled": true
+      }
+    ],
+    "buttons": [
+      {
+        "id": "search",
+        "label": "Search",
+        "control": "button",
+        "validationjs": "validatedata",
+        "submitURL": "SearchCenter"
+      },
+      {
+        "id": "create",
+        "label": "Create",
+        "control": "button",
+        "validationjs": "validatedata",
+        "redirect": "/CreateCenter"
+      }
+    ]
+  }
+}
