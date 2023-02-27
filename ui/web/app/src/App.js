@@ -10,6 +10,8 @@ import { getApi, postApi } from "./webservice"
 import Farmer from "./Components/Farmer/Farmer";
 import Po from "./Components/Po/po";
 import FarmerList from "./Components/Farmer/FarmerList";
+import Login from "./Components/login/Login"
+import Protected from "./Components/Protected"
 const App = () => {
   // const [view, setView] = React.useState("list");
   // const [selected, setSelected] = React.useState([]);
@@ -18,17 +20,27 @@ const App = () => {
   const search = "/Service/posearch.json"
   const field = "/Service/po.json";
 
+  const [isSignedIn, setIsSignedIn] = useState(false)
+
   //const list = "/Details/listOld.json"
   const navigate = useNavigate();
   useEffect(() => {
-    // nav("/test/list")
-  }, []);
+    
+  },[]);
+
+  const signin = () => {
+    setIsSignedIn(true)
+  }
+  const signout = () => {
+    setIsSignedIn(false)
+  }
 
   return (
     <Routes>
       {/* <Form /> */}
       {/* <Route path="/table" element={<TableView />} /> */}
-      <Route path="/" element={<Layout />}>
+      <Route path="/login" element={<Login />} />
+      <Route path="/" element={<Protected isSignedIn={isSignedIn}><Layout /></Protected>}>
         {/* <Route
           path="/form/list"
           element={
@@ -50,7 +62,7 @@ const App = () => {
         />*/}
         <Route
           path="/farmer"
-          element={<Farmer />}
+          element={<Protected isSignedIn={isSignedIn}><Farmer /></Protected>}
         />
          <Route
           path="/list/j"
