@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -128,6 +129,43 @@ public class Location_confirmationFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
 
+        if (getView() == null) {
+            return;
+        }
+
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+
+
+                if (keyEvent.getAction() == KeyEvent.ACTION_UP && i == KeyEvent.KEYCODE_BACK) {
+                    Address_BookFragment address_bookFragment = new Address_BookFragment();
+                    FragmentManager fragmentManager = getFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.frame_layout, address_bookFragment);
+                    // Remove the fragment
+
+                    fragmentTransaction.commitNow();
+
+//                    ShowDialog();
+
+
+
+
+                    return true;
+                }
+                return false;
+            }
+
+
+        });
+
+    }
 
 }

@@ -23,7 +23,7 @@ public class OTPActivity extends AppCompatActivity {
         VeryFy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                finish();
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra("key","1");
                 startActivity(intent);

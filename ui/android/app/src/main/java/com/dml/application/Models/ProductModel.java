@@ -7,11 +7,12 @@ public class ProductModel {
     private String Productqty;
     private String ProductPrice;
     private String ProductDisPrice;
+
     private String ProductDiscription;
     private int ProductImage;
 
 
-    public ProductModel(String productId, String productName, String productqty, String productPrice, String productDisPrice, String productDiscription, int productImage) {
+    public ProductModel(String productId, String productName, String productqty, String productPrice, String productDisPrice,String productDiscription, int productImage) {
         ProductId = productId;
         ProductName = productName;
         Productqty = productqty;
@@ -19,6 +20,7 @@ public class ProductModel {
         ProductDisPrice = productDisPrice;
         ProductDiscription = productDiscription;
         ProductImage = productImage;
+
     }
 
     public String getProductId() {
@@ -68,6 +70,7 @@ public class ProductModel {
     public void setProductImage(int productImage) {
         ProductImage = productImage;
     }
+
 
     public String getProductDiscription() {
         return ProductDiscription;

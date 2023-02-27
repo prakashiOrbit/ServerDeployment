@@ -1,16 +1,22 @@
 package com.dml.application.Adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Paint;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.dml.application.App.MydialogFragment;
+import com.dml.application.App.ViewClickListener;
 import com.dml.application.Models.ProductModel;
 import com.dml.application.R;
 
@@ -18,16 +24,14 @@ import java.util.List;
 
 public class ProductAdapter  extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
 
-    public interface OnItemClickListener {
-        void onItemClick(ProductModel item);
-    }
 
     private final List<ProductModel> items;
-    private final OnItemClickListener listener;
+  private ViewClickListener viewClickListener;
 
-    public ProductAdapter(List<ProductModel> items, OnItemClickListener listener) {
+    public ProductAdapter(List<ProductModel> items,ViewClickListener viewClickListener) {
         this.items = items;
-        this.listener = listener;
+        this.viewClickListener = viewClickListener;
+
     }
 
     @Override public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -36,7 +40,7 @@ public class ProductAdapter  extends RecyclerView.Adapter<ProductAdapter.ViewHol
     }
 
     @Override public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.bind(items.get(position), listener);
+        holder.bind(items.get(position));
 
     }
 
@@ -44,25 +48,28 @@ public class ProductAdapter  extends RecyclerView.Adapter<ProductAdapter.ViewHol
         return items.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView ProductImage;
         TextView ProductName,ProductQty,ProductPrice,ProductDisPrice;
         CardView Single_Product;
+        ImageView Addto_quantycart;
         private Context context;
 
         public ViewHolder(View itemView) {
             super(itemView);
+
             ProductImage = itemView.findViewById(R.id.product_img);
             ProductName = itemView.findViewById(R.id.product_name);
             ProductQty = itemView.findViewById(R.id.product_qty);
             ProductPrice = itemView.findViewById(R.id.product_price);
             ProductDisPrice = itemView.findViewById(R.id.product_dis_price);
+            Addto_quantycart=itemView.findViewById(R.id.add_cartquantity);
             ProductDisPrice.setPaintFlags(ProductDisPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
             Single_Product = itemView.findViewById(R.id.single_product);
         }
 
-        public void bind(final ProductModel item, final OnItemClickListener listener) {
+        public void bind(final ProductModel item) {
             ProductName.setText(item.getProductName());
             ProductQty.setText(item.getProductqty());
            ProductPrice.setText(  item.getProductPrice());
@@ -74,11 +81,18 @@ public class ProductAdapter  extends RecyclerView.Adapter<ProductAdapter.ViewHol
 //                Picasso.with(context).load(Image).fit().into(cat_image);
 //            }
 
-            Single_Product.setOnClickListener(new View.OnClickListener() {
+            ProductImage.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
-                    listener.onItemClick(item);
+                    viewClickListener.onItemclick(item);
                 }
             });
+        Addto_quantycart.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                viewClickListener.onItemPlusClick(item);
+            }
+        });
         }
     }
 }
