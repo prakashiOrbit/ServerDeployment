@@ -6,7 +6,7 @@ public class FarmerManager {
 	// Inserting the farmer data
 	public void createFarmer(CreateFarmer fc, Farmer exist)
 	{
-		if (fc.getfId() == null) {
+		if (fc.getFId() == null) {
 			new MessageResponse("FID Cannot be empty");
 			return;
 		}
@@ -46,16 +46,19 @@ public class FarmerManager {
 			new MessageResponse("Entered IFSC Code is not valid.Please enter Valid IFSC Code");
 			return;
 		}
-
 		if (exist != null) {
 			new MessageResponse("Farmer with the name " + exist.getName() + " Already exists.");
 			return;
 		}
-		Farmer f = new Farmer(fc.getfId(), fc.getName(), fc.getPhoneNo(), fc.getStreetAddress(), fc.getCity(),
+		Farmer f = new Farmer(fc.getFId(), fc.getName(), fc.getPhoneNo(), fc.getStreetAddress(), fc.getCity(),
 				fc.getState(), fc.getPinCode(), fc.getAadharNo(), fc.getPanNo(), fc.getPayeeName(), fc.getAccountNo(),
 				fc.getIfscCode());
 		f.setSearchValues();
+
+		FarmerLinks farmerl= new FarmerLinks(fc.getFId());
+
 		new MessageResponse("Farmer is successfully onboarded.");
+
 	}
 
 	// getting the farmer details
@@ -126,4 +129,16 @@ public class FarmerManager {
 		farmer.setSearchValues();
 		new MessageResponse("Farmer details has been updated.");
 	}
+
+	public void assignCCToFarmer(AssignCC acc, FarmerLinks fl, CollectionCenter obj) {
+		if(obj!=null) {
+			fl.setCenterID(acc.getCenterID());
+			fl.setCenterName(acc.getCenterName());
+			new MessageResponse("Collection Center details are Added");
+		}
+		else
+			new MessageResponse("Collection Center object is Null");
+	}
+	
+	public void 
 }

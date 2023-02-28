@@ -1,0 +1,11 @@
+name: FarmerLinks
+type: PrimeData
+flow: FarmerFlow
+attributes:
+  - attribute: fId
+    type: key
+states:
+  - name: active
+    startState: true
+  - name: inactive
+    endState: true
