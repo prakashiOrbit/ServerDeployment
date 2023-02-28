@@ -14,12 +14,13 @@ public class Farmer implements java.io.Serializable {
 	private String payeeName;
 	private String accountNo;
 	private String ifscCode;
+	private String centerId;
+	private String centerName;
 	private String SearchableValue;
 
-	public Farmer(String fId, String name, String phoneNo, String streetAddress, String city, String state,String pinCode, String aadharNo, String panNo, String payeeName, String accountNo, String ifscCode) {
+	public Farmer(String fId, String name, String phoneNo, String streetAddress, String city, String state,String pinCode, String aadharNo, String panNo, String payeeName, String accountNo, String ifscCode,String centerId,String centerName) {
 		setFId(fId);
 		setName(name);
-		
 		setPhoneNo(phoneNo);
 		setStreetAddress(streetAddress);
 		setCity(city);
@@ -30,6 +31,8 @@ public class Farmer implements java.io.Serializable {
 		setPayeeName(payeeName);
 		setAccountNo(accountNo);
 		setIfscCode(ifscCode);
+		setCenterId(centerId);
+		setCenterName(centerName);
 	}
 
 	public Farmer(String Searchable) {
@@ -60,6 +63,10 @@ public class Farmer implements java.io.Serializable {
 	public void setAccountNo(String accountNo) { this.accountNo = accountNo; }
 	public String getIfscCode() { return ifscCode; }
 	public void setIfscCode(String ifscCode) { this.ifscCode = ifscCode; }
+	public String getCenterID() { return centerId; }
+	public void setCenterId(String centerId) { this.centerId = centerId; }
+	public String geteCenterName() { return centerName; }
+	public void setCenterName(String centerName) { this.centerName = centerName; }
 	
 	
 	public void setSearchValues() {

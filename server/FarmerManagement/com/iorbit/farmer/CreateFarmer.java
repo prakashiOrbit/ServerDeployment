@@ -1,8 +1,10 @@
 package com.iorbit.farmer;
 
+import java.util.List;
+import java.util.UUID;
+
+
 public class CreateFarmer implements java.io.Serializable{
-	public CreateFarmer(){
-	}
 
 	private String fId;
 	private String name;
@@ -16,8 +18,10 @@ public class CreateFarmer implements java.io.Serializable{
 	private String payeeName;
 	private String accountNo;
 	private String ifscCode;
-
-	public String getfId() { return fId; }
+	private String centerId;
+	private String centerName;
+		
+	public String getFId() { return fId; }
 	public String getName() { return name; }
 	public String getPhoneNo() { return phoneNo; }
 	public String getStreetAddress() { return streetAddress; }
@@ -29,5 +33,7 @@ public class CreateFarmer implements java.io.Serializable{
 	public String getPayeeName() { return payeeName; }
 	public String getAccountNo() { return accountNo; }
 	public String getIfscCode() { return ifscCode; }
+	public String getCenterId() { return centerId; }
+	public String geteCenterName() { return centerName; }
 }
 
