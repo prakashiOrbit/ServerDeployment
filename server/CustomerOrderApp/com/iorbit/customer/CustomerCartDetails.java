@@ -17,7 +17,7 @@ public class CustomerCartDetails implements Serializable {
 		this.totalPriceWithGST = customer.getTotalPriceWithGST();
 	}
 
-	public String getItemName() {
+	public String getItemName() { 
 		return itemName;
 	}
 
