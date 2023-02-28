@@ -14,7 +14,7 @@ import Warehouse from "./Components/Warehouse/Warehouse";
 import Customer from "./Components/Customer/Customer";
 
 import Protected from "./Components/Protected";
-import Login from "./Components/CreateForm/login/Login";
+import Login from "./Components/login/Login";
 
 const App = () => {
   const fields = "/Service/farmer.json";
@@ -76,6 +76,7 @@ const App = () => {
           <Route
             path="/farmerList"
             element={
+              <Protected isSignedIn={isSignedIn}>
               <FormView
                 aev={"list"}
                 fields={fields}
@@ -84,11 +85,13 @@ const App = () => {
                 getApi={getApi}
                 postApi={postApi}
               />
+              </Protected>
             }
           />
           <Route
             path="/test/view"
             element={
+              <Protected isSignedIn={isSignedIn}>
               <FormView
                 aev={"view"}
                 fields={fields}
@@ -97,11 +100,13 @@ const App = () => {
                 getApi={getApi}
                 postApi={postApi}
               />
+              </Protected>
             }
           />
           <Route
             path="/test/edit"
             element={
+              <Protected isSignedIn={isSignedIn}>
               <FormView
                 aev={"edit"}
                 fields={fields}
@@ -110,12 +115,12 @@ const App = () => {
                 search={search}
                 postApi={postApi}
               />
+              </Protected>
             }
           />
         </Route>
       </Routes>
       <Routes>
-        <Route path="/login" element={<Login />} />
         <Route
           path="/"
           element={
@@ -136,6 +141,7 @@ const App = () => {
           <Route
             path="/poList"
             element={
+              <Protected isSignedIn={isSignedIn}>
               <FormView
                 aev={"list"}
                 fields={field}
@@ -144,11 +150,13 @@ const App = () => {
                 getApi={getApi}
                 postApi={postApi}
               />
+              </Protected>
             }
           />
           <Route
             path="/test/view"
             element={
+              <Protected isSignedIn={isSignedIn}>
               <FormView
                 aev={"view"}
                 fields={field}
@@ -157,11 +165,13 @@ const App = () => {
                 getApi={getApi}
                 postApi={postApi}
               />
+              </Protected>
             }
           />
           <Route
             path="/test/edit"
             element={
+              <Protected isSignedIn={isSignedIn}>
               <FormView
                 aev={"edit"}
                 fields={fields}
@@ -170,16 +180,18 @@ const App = () => {
                 search={search}
                 postApi={postApi}
               />
+              </Protected>
             }
           />
         </Route>
       </Routes>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/Product" element={<Product />} />
+          <Route path="/Product" element={<Protected isSignedIn={isSignedIn}><Product /></Protected>} />
           <Route
             path="/productList"
             element={
+              <Protected isSignedIn={isSignedIn}>
               <FormView
                 aev={"list"}
                 fields={products}
@@ -188,12 +200,14 @@ const App = () => {
                 getApi={getApi}
                 postApi={postApi}
               />
+              </Protected>
             }
           />
 
           <Route
             path="/CreateProduct"
             element={
+              <Protected isSignedIn={isSignedIn}>
               <FormView
                 aev={"add"}
                 fields={products}
@@ -202,11 +216,13 @@ const App = () => {
                 search={search}
                 postApi={postApi}
               />
+              </Protected>
             }
           />
           <Route
             path="/test/view"
             element={
+              <Protected isSignedIn={isSignedIn}>
               <FormView
                 aev={"view"}
                 fields={products}
@@ -215,11 +231,13 @@ const App = () => {
                 getApi={getApi}
                 postApi={postApi}
               />
+              </Protected>
             }
           />
           <Route
             path="/test/edit"
             element={
+              <Protected isSignedIn={isSignedIn}>
               <FormView
                 aev={"edit"}
                 fields={products}
@@ -228,6 +246,7 @@ const App = () => {
                 search={search}
                 postApi={postApi}
               />
+              </Protected>
             }
           />
         </Route>
@@ -238,6 +257,7 @@ const App = () => {
           <Route
             path="/truckList"
             element={
+              <Protected isSignedIn={isSignedIn}>
               <FormView
                 aev={"list"}
                 fields={trucks}
@@ -246,11 +266,13 @@ const App = () => {
                 getApi={getApi}
                 postApi={postApi}
               />
+              </Protected>
             }
           />
           <Route
             path="/CreateTruck"
             element={
+              <Protected isSignedIn={isSignedIn}>
               <FormView
                 aev={"add"}
                 fields={trucks}
@@ -259,16 +281,18 @@ const App = () => {
                 search={search}
                 postApi={postApi}
               />
+              </Protected>
             }
           />
         </Route>
       </Routes>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/Collection_Center" element={<Collection_Center />} />
+          <Route path="/Collection_Center" element={<Protected isSignedIn={isSignedIn}><Collection_Center /></Protected>} />
           <Route
             path="/centerList"
             element={
+              <Protected isSignedIn={isSignedIn}>
               <FormView
                 aev={"list"}
                 fields={centers}
@@ -277,11 +301,13 @@ const App = () => {
                 getApi={getApi}
                 postApi={postApi}
               />
+              </Protected>
             }
           />
           <Route
             path="/CreateCenter"
             element={
+              <Protected isSignedIn={isSignedIn}>
               <FormView
                 aev={"add"}
                 fields={centers}
@@ -290,16 +316,18 @@ const App = () => {
                 search={search}
                 postApi={postApi}
               />
+              </Protected>
             }
           />
         </Route>
       </Routes>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/Warehouse" element={<Warehouse />} />
+          <Route path="/Warehouse" element={<Protected isSignedIn={isSignedIn}><Warehouse /></Protected>} />
           <Route
             path="/warehouseList"
             element={
+              <Protected isSignedIn={isSignedIn}>
               <FormView
                 aev={"list"}
                 fields={warehouses}
@@ -308,11 +336,13 @@ const App = () => {
                 getApi={getApi}
                 postApi={postApi}
               />
+              </Protected>
             }
           />
           <Route
             path="/CreateWarehouse"
             element={
+              <Protected isSignedIn={isSignedIn}>
               <FormView
                 aev={"add"}
                 fields={warehouses}
@@ -321,6 +351,7 @@ const App = () => {
                 search={search}
                 postApi={postApi}
               />
+              </Protected>
             }
           />
         </Route>
