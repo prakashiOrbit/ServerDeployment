@@ -13,6 +13,8 @@ public class FarmerDetails implements java.io.Serializable {
 	private String payeeName;
 	private String accountNo;
 	private String ifscCode;
+	private String centerId;
+	private String centerName;
 
 	public FarmerDetails(Farmer farmer) {
 		fId = farmer.getFId();
@@ -27,6 +29,8 @@ public class FarmerDetails implements java.io.Serializable {
 		payeeName = farmer.getPayeeName();
 		accountNo = farmer.getAccountNo();
 		ifscCode = farmer.getIfscCode();
+		centerId = farmer.getCenterId();
+		centerName = farmer.geteCenterName();
 	}
 
 	public String getfId() { return fId; }
@@ -41,4 +45,6 @@ public class FarmerDetails implements java.io.Serializable {
 	public String getPayeeName() { return payeeName; }
 	public String getAccountNo() { return accountNo; }
 	public String getIfscCode() { return ifscCode; }
+	public String getCenterId() { return centerId; }
+	public String geteCenterName() { return centerName; }
 }
