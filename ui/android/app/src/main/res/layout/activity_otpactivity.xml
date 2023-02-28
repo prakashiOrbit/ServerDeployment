@@ -132,7 +132,7 @@
     android:layout_height="20dp"
     android:layout_marginTop="5dp"
     android:layout_alignParentEnd="true"
-    android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+    android:src="@drawable/ic_baseline_refresh_24"
 
     >
 
@@ -146,7 +146,7 @@
             android:layout_below="@id/otp_head1"
             android:layout_gravity="center"
             android:layout_marginLeft="62dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:layout_centerInParent="true"
             android:layout_marginRight="62dp"
             android:background="@drawable/text_backgrnd"

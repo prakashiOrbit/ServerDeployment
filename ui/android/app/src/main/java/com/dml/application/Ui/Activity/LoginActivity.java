@@ -11,14 +11,20 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.dml.application.App.ResponsebodyClass;
-import com.dml.application.Models.LoginModel;
+import com.dml.application.Models.ResponsebodyClass;
 import com.dml.application.R;
 import com.dml.application.Retrofit.RetrofitClient;
 import com.dml.application.Retrofit.ServiceApi;
 import com.github.ybq.android.spinkit.SpinKitView;
 import com.google.android.material.textfield.TextInputEditText;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -31,8 +37,9 @@ public class LoginActivity extends AppCompatActivity {
     TextInputEditText userPhoneNumber;
 
     SpinKitView spin_kit;
+    SessionManager sessionManager;
 
-
+  String OTP;
     private ProgressBar progressBar;
 
     @Override
@@ -42,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
         LOGIN = findViewById(R.id.log);
         userPhoneNumber = findViewById(R.id.phonenumber_);
         spin_kit = findViewById(R.id.spin_kit);//progressBar =findViewById(R.id.progress_bar);
-
+        sessionManager = new SessionManager(getApplicationContext());
 
         LOGIN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,12 +98,12 @@ public class LoginActivity extends AppCompatActivity {
 
     private void checkUserExist() {
 
-            String sessionId = "7be9be23-f7bb-4fd3-add4-cfa9c018b0d8";
+            String sessionId = "8ca3696b-f4c2-4e6b-a555-ddf9a52bea56";
 
             ResponsebodyClass.FlowAdmin requestBody = new ResponsebodyClass.FlowAdmin("lookup","ProfileFlow");
-            ResponsebodyClass responsebodyClass= new ResponsebodyClass("9657972894","custom",requestBody);
+            ResponsebodyClass responsebodyClass= new ResponsebodyClass(userPhoneNumber.getText().toString(),"custom",requestBody);
 
-
+            Log.e("Error", String.valueOf(responsebodyClass));
 
             spin_kit.setVisibility(View.GONE);
 
@@ -108,20 +115,29 @@ public class LoginActivity extends AppCompatActivity {
             }
 
 
-        Call<LoginModel> call = retrofitClient.create(ServiceApi.class).LoginToken(sessionId, responsebodyClass);
-            call.enqueue(new Callback<LoginModel>() {
+        Call<ResponseBody> call = retrofitClient.create(ServiceApi.class).LoginToken(sessionId, responsebodyClass);
+            call.enqueue(new Callback<ResponseBody>() {
                 @Override
-                public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
                     if (!response.isSuccessful()) {
-                        Toast.makeText(LoginActivity.this, "success", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), OTPActivity.class));
-                        finish();
+                        Toast.makeText(LoginActivity.this, "something went wrong please try again!!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        try {
+
+                            extractLoginResponse(response.body().string());
+                        } catch (JSONException | IOException e) {
+                            e.printStackTrace();
+
+                        }
+
                     }
+
                 }
 
                 @Override
-                public void onFailure(Call<LoginModel> call, Throwable t) {
-                    Log.e("Error", t.getMessage());
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+
                     Toast.makeText(LoginActivity.this, "something went wrong please try again!!", Toast.LENGTH_SHORT).show();
                 }
             });
@@ -129,5 +145,25 @@ public class LoginActivity extends AppCompatActivity {
 
         }
 
+    private void extractLoginResponse(String string) throws JSONException {
+
+
+        JSONObject object = new JSONObject(string);
+        //productList = new ArrayList<String>();
+        // Locate the NodeList name
+        JSONArray jsonarray = object.getJSONArray("responses");
+        for (int i = 0; i < jsonarray.length(); i++) {
+            JSONObject jsonobject = jsonarray.getJSONObject(i);
+            OTP=jsonobject.getString("message");
+
+
+         //   Toast.makeText(this, jsonobject.getString("message"), Toast.LENGTH_SHORT).show();
+
+
+        }
+        Intent intent=new Intent(getApplicationContext(),OTPActivity.class);
+        intent.putExtra("OTP",OTP);
+        startActivity(intent);
 
     }
+}
