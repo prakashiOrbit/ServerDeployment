@@ -1,10 +1,10 @@
 {
   "division": {
-    "name": "PO Header",
+    "name": "Farmer Header",
     "formelements": [
       {
-        "id": "POID",
-        "label": "PO ID",
+        "id": "Farmer Name",
+        "label": "name",
         "control": "textbox",
         "validation": "alphanumeric",
         "disabled": true
@@ -13,15 +13,15 @@
     "buttons": [
       {
         "id": "search",
-        "label": "Search",
+        "label": "search",
         "control": "button",
-        "submitURL": "/SearchPO"
+        "submitURL": "SearchFarmers"
       },
       {
-        "id": "create",
-        "label": "Create new PO Template",
+        "id": "onboard",
+        "label": "onboard farmer",
         "control": "button",
-        "redirect": "/po"
+        "redirect": "/farmer"
       }
     ]
   }
