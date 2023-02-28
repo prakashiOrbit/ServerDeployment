@@ -1,72 +1,112 @@
 {
-    "division": {
-      "name": "PO Header",
-      "formelements": [
+  "division": {
+    "name": "PO Header",
+    "formelements": {
+      "title": "CREATE PO TEMPLATE",
+      "generalDetails": [
         {
-          "id": "PO Fields",
-          "label": "PO Fields",
-          "control": "textbox",
-          "validation": "alphanumeric",
-          "disabled": true
-        },
-        {
-          "id": "poId",
-          "label": "PO number",
+          "id": "POID",
+          "label": "poid",
           "control": "textbox"
         },
+
         {
-          "id": "farmerName",
-          "label": "Farmer Name",
-          "control": "textbox"
+          "id": "Date",
+          "label": "date",
+          "control": "date"
         },
         {
-          "id": "collection_center_name",
-          "label": "Collection centre name",
+          "id": "Ship Address",
+          "label": "address",
           "control": "textbox",
-          "validate": "alphanumeric"
+          "isMultiline": true,
+          "rows": "6",
+          "fields": "4",
+          "addressFields": [
+            {
+              "id": "Street",
+              "label": "street",
+              "control": "textbox",
+              "field1": "1",
+              "validate": "alphanumeric"
+            },
+            {
+              "id": "City",
+              "label": "city",
+              "control": "textbox",
+              "field2": "2",
+              "validate": "alphanumeric"
+            },
+            {
+              "id": "State",
+              "label": "state",
+              "control": "textbox",
+              "field3": "3",
+              "validate": "alphanumeric"
+            },
+            {
+              "id": "Pin Code",
+              "label": "pin",
+              "control": "textbox",
+              "field4": "4",
+              "validate": "number"
+            }
+          ]
         },
         {
-          "id": "produce",
-          "label": "Produce",
+          "id": "Bill Address",
+          "label": "address",
           "control": "textbox",
-          "validate": "alphanumeric"
-        },
-        {
-          "id": "quantity",
-          "label": "Quantity",
-          "control": "textbox",
-          "validate": "alphanumeric"
-        },
-  
-        {
-          "id": "pickup_Date",
-          "label": "Pickup Date",
-          "control": "textbox",
-          "validate": "alphanumeric"
-        },
-        {
-          "id": "payment_Status",
-          "label": "Payment status",
-          "control": "textbox",
-          "validate": "alphanumeric"
-        }
-      ],
-      "buttons": [
-        {
-          "id": "create",
-          "label": "Create",
-          "control": "button",
-          "validationjs": "validatedata",
-          
-          "submitURL": "CreatePo"
-        },
-        {
-          "id": "cancel",
-          "label": "Cancel",
-          "control": "button",
-          "redirect": "polist"
+          "isMultiline": true,
+          "rows": "6",
+          "addressFields": [
+            {
+              "id": "Street",
+              "label": "street",
+              "control": "textbox",
+              "field1": "1",
+              "validate": "alphanumeric"
+            },
+            {
+              "id": "City",
+              "label": "city",
+              "control": "textbox",
+              "field2": "2",
+              "validate": "alphanumeric"
+            },
+            {
+              "id": "State",
+              "label": "state",
+              "control": "textbox",
+              "field3": "3",
+              "validate": "alphanumeric"
+            },
+            {
+              "id": "Pin Code",
+              "label": "pin",
+              "control": "textbox",
+              "field4": "4",
+              "validate": "number"
+            }
+          ]
         }
       ]
-    }
+    },
+    "buttons": [
+      {
+        "id": "create",
+        "label": "Create",
+        "control": "button",
+        "validationjs": "validatedata",
+
+        "submitURL": "CreatePo"
+      },
+      {
+        "id": "cancel",
+        "label": "Cancel",
+        "control": "button",
+        "redirect": "polist"
+      }
+    ]
   }
-  
+}

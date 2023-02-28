@@ -1,78 +1,91 @@
 {
   "division": {
-    "name": "PO Header",
-    "formelements": [
-      {
-        "id": "farmerId",
-        "label": "FID(UNI)",
-        "control": "textbox",
-        "validate": "number",
-        "disabled": true
-      },
-      {
-        "id": "Name",
-        "label": "Name",
-        "control": "textbox"
-      },
-      {
-        "label": "Phone NO",
-        "id": "Phone NO",
-        "control": "textbox",
-        "validate": "phone"
-      },
-      {
-        "label": "Address Book",
-        "id": "Address Book",
-        "control": "textbox",
-        "validate": "alphanumeric"
-      },
-      {
-        "label": "City",
-        "id": "City",
-        "control": "textbox",
-        "validate": "alphanumeric"
-      },
-      {
-        "label": "State",
-        "id": "State",
-        "control": "textbox"
-      },
-      {
-        "label": "Pin Code",
-        "id": "Pin Code",
-        "control": "textbox",
-        "validate": "alphanumeric"
-      },
-      {
-        "label": "Aadhar NO",
-        "id": "Aadhar NO",
-        "control": "textbox",
-        "validate": "aadhar"
-      },
-      {
-        "label": "Pan NO",
-        "id": "Pan NO",
-        "control": "textbox",
-        "validate": "pan"
-      },
-      {
-        "label": "Payee Name",
-        "id": "Payee Name",
-        "control": "textbox"
-      },
-      {
-        "label": "Acc NO",
-        "id": "ACC NO",
-        "control": "textbox",
-        "validate": "number"
-      },
-      {
-        "label": "IFSC Code",
-        "id": "IFSC Code",
-        "control": "textbox",
-        "validation": "ifsc"
-      } 
-    ],
+    "name": "Farmer Header",
+    "formelements": {
+      "title": "GENERAL DETAILS ",
+      "generalDetails": [
+        {
+          "id": "fid",
+          "label": "fid",
+          "control": "textbox",
+          "validation": "alphanumeric",
+          "disabled": true
+        },
+        {
+          "id": "name",
+          "label": "name",
+          "control": "textbox",
+          "validation": "alphanumeric"
+        },
+        {
+          "id": "phoneNo",
+          "label": "phoneNo",
+          "control": "textbox",
+          "validation": "phone"
+        },
+        {
+          "id": "Aadhar No",
+          "label": "aadhar_no",
+          "control": "textbox",
+          "validate": "alphanumeric"
+        },
+        {
+          "label": "pan",
+          "id": "PAN",
+          "control": "textbox",
+          "validate": "alphanumeric"
+        }
+      ],
+      "title2": "ADDRESS DETAILS",
+      "addressDetails": [
+        {
+          "id": "Street Address",
+          "label": "street",
+          "control": "textbox",
+          "validate": "alphanumeric"
+        },
+        {
+          "id": "City",
+          "label": "city",
+          "control": "textbox",
+          "validate": "alphanumeric"
+        },
+        {
+          "id": "State",
+          "label": "state",
+          "control": "textbox",
+          "validate": "alphanumeric"
+        },
+        {
+          "id": "Pin Code",
+          "label": "pin",
+          "control": "textbox",
+          "validate": "number"
+        }
+      ],
+
+      "title1": "PAYMENT DETAILS",
+      "paymentDetails": [
+        {
+          "id": "Payee Name",
+          "label": "payee",
+          "control": "textbox",
+          "validate": "alphanumeric"
+        },
+        {
+          "id": "Account Number",
+          "label": "account",
+          "control": "textbox",
+          "validate": "number"
+        },
+        {
+          "id": "IFSC  Code",
+          "label": "ifsc",
+          "control": "textbox",
+          "validate": "number"
+        }
+      ]
+    },
     "buttons": [
       {
         "id": "create",
@@ -85,16 +98,8 @@
         "id": "cancel",
         "label": "Cancel",
         "control": "button",
-        "redirect": ""
-      }
-    ],
-    "edittable": [
-      {
-        "id": "abx",
-        "label": "Farmer Editable List",
-        "dataurl": "/Service/tabledata.json"
+        "redirect": "/polist"
       }
     ]
-    
   }
 }
