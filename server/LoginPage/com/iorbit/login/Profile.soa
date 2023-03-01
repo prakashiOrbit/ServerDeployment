@@ -1,0 +1,13 @@
+name: Profile
+type: PrimeData
+flow: ProfileFlow
+attributes:
+  - attribute: phoneNumber
+    type: key
+states:
+  - name: active
+    startState: true
+  - name: approved
+    startState: false
+  - name: inactive
+    endState: true
