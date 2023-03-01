@@ -5,27 +5,27 @@ import org.apache.commons.lang.RandomStringUtils;
 
 public class Profile implements java.io.Serializable
 {
-    private String userId;
+  
     private String phoneNumber;
     private String oneTimePassword;
     private long generatedTime;
 
-    public Profile(String ui, String pn)
+    public Profile( String pn)
     {                            
     	
-    	userId = ui;
+    	
     	phoneNumber = pn;
         generateOTP();
     }
 
     public void generateOTP()
     {
-        oneTimePassword = RandomStringUtils.randomNumeric(5);
+        oneTimePassword = RandomStringUtils.randomNumeric(4);
         generatedTime = System.currentTimeMillis();
-        new MessageResponse("OTP is generated" +oneTimePassword);
+        new MessageResponse("" + oneTimePassword);
     }
 
-    public String getUserId() { return userId; }
+   
     public String getPhoneNumber() { return phoneNumber; }
   
     public boolean verifyOneTimePassword(String otp)

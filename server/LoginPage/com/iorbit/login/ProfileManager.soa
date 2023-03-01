@@ -6,7 +6,7 @@ actions:
   - name:      createLogin
     method:    createLogin
     foreach:   FlowAdmin|CreateProfile
-    parms:     (event,srch.ProfileFlow.Profile.event.userId)
+    parms:     (event,srch.ProfileFlow.Profile.event.phoneNumber)
     from:      active
     to:        active
   - name:      verifyLogin
@@ -23,9 +23,9 @@ actions:
 callservices:
    -  name:      searchUser
       service:   AllFlows.SearchManager.searchService
-      parms:     (ProfileFlow,Profile,event.search,event.userId)
+      parms:     (ProfileFlow,Profile,event.search,event.phoneNumber)
       runAfter:  createLogin
-      foreach:   FlowAdmin|VerifyParent
+      foreach:   FlowAdmin|VerifyProfile
       from:      active
       to:        active
    -  name:      createProfileUser

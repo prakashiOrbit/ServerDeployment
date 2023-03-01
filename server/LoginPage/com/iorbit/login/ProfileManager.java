@@ -3,11 +3,16 @@ package com.iorbit.login;
 
 	import java.util.List;
 
+import org.apache.commons.lang.RandomStringUtils;
+
 
 
 	public class ProfileManager
 	{
-	    public ProfileManager()
+	    private String oneTimePassword;
+
+
+		public ProfileManager()
 	    {
 	    }
 
@@ -16,11 +21,13 @@ package com.iorbit.login;
 	    {
 	        if (exist != null)
 	        {
-	            new MessageResponse("Already exists.");
+	        	 oneTimePassword = RandomStringUtils.randomNumeric(4);
+	            
+	             new MessageResponse("" + oneTimePassword);
 	            return;
 	        }
 
-	        Profile l = new Profile(login.getUserId(), login.getPhoneNumber());
+	        Profile l = new Profile(login.getPhoneNumber());
 	        new MessageResponse("Created Login: " + login.getPhoneNumber());
 	    }
 
@@ -37,7 +44,7 @@ package com.iorbit.login;
 	    public void addUser(VerifyProfile v, Profile p)
 	            throws Exception
 	        {
-	            List profile = v.getUserId();
+	            List profile = v.getPhoneNumber();
 	            if ((profile == null) || (profile.size() <= 0))
 	                throw new Exception("No profile found with given phone and OTP.");
 

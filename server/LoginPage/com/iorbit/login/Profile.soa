@@ -2,7 +2,7 @@ name: Profile
 type: PrimeData
 flow: ProfileFlow
 attributes:
-  - attribute: userId
+  - attribute: phoneNumber
     type: key
 states:
   - name: active

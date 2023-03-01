@@ -8,16 +8,16 @@ import java.util.HashMap;
 
 	public class VerifyProfile implements java.io.Serializable
 	{
-		private String userId;
-		private String phoneNumber;
+		
+		
 	    private String oneTimePassword;
-	    private String password;
+	  
 
 	    private List<String> role;
 	    private String identityType;
 	    
 	    
-	    private List userid;
+	    private List phoneNumber;
 	    private Map<String, Object> search;
 
 	    public VerifyProfile()
@@ -25,8 +25,8 @@ import java.util.HashMap;
 	    }
         
 	    public String getOTP() { return oneTimePassword; }
-	    public List getUserId() { return userid; }
-	    public String getPhoneNumber() { return phoneNumber; }
+	    public List getPhoneNumber() { return phoneNumber; }
+	   
 	   
 	    public void setRole() 
 	    { 
@@ -36,6 +36,6 @@ import java.util.HashMap;
 	        search = new HashMap<String, Object>();
 	        search.put("Phone", phoneNumber);
 	        search.put("oneTimePassword", oneTimePassword);
-	        userid = new ArrayList();
+	        phoneNumber = new ArrayList();
 	    }
 	}
