@@ -12,9 +12,8 @@ import Truck from "./Components/Truck/Truck";
 import Collection_Center from "./Components/Collection_Center/Collection_Center";
 import Warehouse from "./Components/Warehouse/Warehouse";
 import Customer from "./Components/Customer/Customer";
-
-import Protected from "./Components/Protected";
 import Login from "./Components/login/Login";
+import Protected from "./Components/Protected";
 
 const App = () => {
   const fields = "/Service/farmer.json";
@@ -39,8 +38,7 @@ const App = () => {
   const field = "/Service/po.json";
   const fieldss = "/Service/customer.json";
 
-  const [isSignedIn, setIsSignedIn] = useState(false)
-  console.log('isSignedIn --------------- '+ isSignedIn);
+  const [isSignedIn, setIsSignedIn] = useState(false);
   //const list = "/Details/listOld.json"
   const navigate = useNavigate();
   useEffect(() => {
@@ -55,8 +53,7 @@ const App = () => {
   return (
     <>
       <Routes>
-        <Route path="/login" element={<Login />} />
-
+        <Route path="/login" element={<Login />}></Route>
         <Route
           path="/"
           element={
@@ -73,10 +70,10 @@ const App = () => {
               </Protected>
             }
           />
+
           <Route
             path="/farmerList"
             element={
-              <Protected isSignedIn={isSignedIn}>
               <FormView
                 aev={"list"}
                 fields={fields}
@@ -85,13 +82,24 @@ const App = () => {
                 getApi={getApi}
                 postApi={postApi}
               />
-              </Protected>
+            }
+          />
+          <Route
+            path="/create"
+            element={
+              <FormView
+                aev={"add"}
+                fields={fields}
+                list={list}
+                search={search}
+                getApi={getApi}
+                postApi={postApi}
+              />
             }
           />
           <Route
             path="/test/view"
             element={
-              <Protected isSignedIn={isSignedIn}>
               <FormView
                 aev={"view"}
                 fields={fields}
@@ -100,13 +108,11 @@ const App = () => {
                 getApi={getApi}
                 postApi={postApi}
               />
-              </Protected>
             }
           />
           <Route
             path="/test/edit"
             element={
-              <Protected isSignedIn={isSignedIn}>
               <FormView
                 aev={"edit"}
                 fields={fields}
@@ -115,33 +121,14 @@ const App = () => {
                 search={search}
                 postApi={postApi}
               />
-              </Protected>
             }
           />
-        </Route>
-      </Routes>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Protected isSignedIn={isSignedIn}>
-              <Layout />
-            </Protected>
-          }
-        >
-          <Route
-            path="/po"
-            element={
-              <Protected isSignedIn={isSignedIn}>
-                <Po />
-              </Protected>
-            }
-          />
+
+          <Route path="/po" element={<Po />} />
 
           <Route
             path="/poList"
             element={
-              <Protected isSignedIn={isSignedIn}>
               <FormView
                 aev={"list"}
                 fields={field}
@@ -150,13 +137,24 @@ const App = () => {
                 getApi={getApi}
                 postApi={postApi}
               />
-              </Protected>
+            }
+          />
+          <Route
+            path="/create"
+            element={
+              <FormView
+                aev={"add"}
+                fields={fields}
+                list={list}
+                search={search}
+                getApi={getApi}
+                postApi={postApi}
+              />
             }
           />
           <Route
             path="/test/view"
             element={
-              <Protected isSignedIn={isSignedIn}>
               <FormView
                 aev={"view"}
                 fields={field}
@@ -165,13 +163,11 @@ const App = () => {
                 getApi={getApi}
                 postApi={postApi}
               />
-              </Protected>
             }
           />
           <Route
             path="/test/edit"
             element={
-              <Protected isSignedIn={isSignedIn}>
               <FormView
                 aev={"edit"}
                 fields={fields}
@@ -180,18 +176,13 @@ const App = () => {
                 search={search}
                 postApi={postApi}
               />
-              </Protected>
             }
           />
-        </Route>
-      </Routes>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route path="/Product" element={<Protected isSignedIn={isSignedIn}><Product /></Protected>} />
+
+          <Route path="/Product" element={<Product />} />
           <Route
             path="/productList"
             element={
-              <Protected isSignedIn={isSignedIn}>
               <FormView
                 aev={"list"}
                 fields={products}
@@ -200,14 +191,12 @@ const App = () => {
                 getApi={getApi}
                 postApi={postApi}
               />
-              </Protected>
             }
           />
 
           <Route
             path="/CreateProduct"
             element={
-              <Protected isSignedIn={isSignedIn}>
               <FormView
                 aev={"add"}
                 fields={products}
@@ -216,13 +205,11 @@ const App = () => {
                 search={search}
                 postApi={postApi}
               />
-              </Protected>
             }
           />
           <Route
             path="/test/view"
             element={
-              <Protected isSignedIn={isSignedIn}>
               <FormView
                 aev={"view"}
                 fields={products}
@@ -231,13 +218,11 @@ const App = () => {
                 getApi={getApi}
                 postApi={postApi}
               />
-              </Protected>
             }
           />
           <Route
             path="/test/edit"
             element={
-              <Protected isSignedIn={isSignedIn}>
               <FormView
                 aev={"edit"}
                 fields={products}
@@ -246,18 +231,13 @@ const App = () => {
                 search={search}
                 postApi={postApi}
               />
-              </Protected>
             }
           />
-        </Route>
-      </Routes>
-      <Routes>
-        <Route path="/" element={<Layout />}>
+
           <Route path="/Truck" element={<Truck />} />
           <Route
             path="/truckList"
             element={
-              <Protected isSignedIn={isSignedIn}>
               <FormView
                 aev={"list"}
                 fields={trucks}
@@ -266,13 +246,11 @@ const App = () => {
                 getApi={getApi}
                 postApi={postApi}
               />
-              </Protected>
             }
           />
           <Route
             path="/CreateTruck"
             element={
-              <Protected isSignedIn={isSignedIn}>
               <FormView
                 aev={"add"}
                 fields={trucks}
@@ -281,18 +259,39 @@ const App = () => {
                 search={search}
                 postApi={postApi}
               />
-              </Protected>
             }
           />
-        </Route>
-      </Routes>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route path="/Collection_Center" element={<Protected isSignedIn={isSignedIn}><Collection_Center /></Protected>} />
+          <Route
+            path="/test/view"
+            element={
+              <FormView
+                aev={"view"}
+                fields={products}
+                list={list}
+                search={search}
+                getApi={getApi}
+                postApi={postApi}
+              />
+            }
+          />
+          <Route
+            path="/test/edit"
+            element={
+              <FormView
+                aev={"edit"}
+                fields={products}
+                list={list}
+                getApi={getApi}
+                search={search}
+                postApi={postApi}
+              />
+            }
+          />
+
+          <Route path="/Collection_Center" element={<Collection_Center />} />
           <Route
             path="/centerList"
             element={
-              <Protected isSignedIn={isSignedIn}>
               <FormView
                 aev={"list"}
                 fields={centers}
@@ -301,13 +300,11 @@ const App = () => {
                 getApi={getApi}
                 postApi={postApi}
               />
-              </Protected>
             }
           />
           <Route
             path="/CreateCenter"
             element={
-              <Protected isSignedIn={isSignedIn}>
               <FormView
                 aev={"add"}
                 fields={centers}
@@ -316,18 +313,13 @@ const App = () => {
                 search={search}
                 postApi={postApi}
               />
-              </Protected>
             }
           />
-        </Route>
-      </Routes>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route path="/Warehouse" element={<Protected isSignedIn={isSignedIn}><Warehouse /></Protected>} />
+
+          <Route path="/Warehouse" element={<Warehouse />} />
           <Route
             path="/warehouseList"
             element={
-              <Protected isSignedIn={isSignedIn}>
               <FormView
                 aev={"list"}
                 fields={warehouses}
@@ -336,13 +328,11 @@ const App = () => {
                 getApi={getApi}
                 postApi={postApi}
               />
-              </Protected>
             }
           />
           <Route
             path="/CreateWarehouse"
             element={
-              <Protected isSignedIn={isSignedIn}>
               <FormView
                 aev={"add"}
                 fields={warehouses}
@@ -351,38 +341,62 @@ const App = () => {
                 search={search}
                 postApi={postApi}
               />
-              </Protected>
+            }
+          />
+          <Route path="/customer" element={<Customer />} />
+          <Route
+            path="/customerList"
+            element={
+              <FormView
+                aev={"list"}
+                fields={fieldss}
+                list={customerList}
+                search={customerSearch}
+                getApi={getApi}
+                postApi={postApi}
+              />
+            }
+          />
+          <Route
+            path="/create"
+            element={
+              <FormView
+                aev={"add"}
+                fields={fieldss}
+                list={customerList}
+                search={customerSearch}
+                getApi={getApi}
+                postApi={postApi}
+              />
+            }
+          />
+          <Route
+            path="/test/view"
+            element={
+              <FormView
+                aev={"view"}
+                fields={fieldss}
+                list={customerList}
+                search={customerSearch}
+                getApi={getApi}
+                postApi={postApi}
+              />
+            }
+          />
+          <Route
+            path="/test/edit"
+            element={
+              <FormView
+                aev={"edit"}
+                fields={fieldss}
+                list={customerList}
+                getApi={getApi}
+                search={customerSearch}
+                postApi={postApi}
+              />
             }
           />
         </Route>
-      </Routes>
-      <Routes>
-        <Route
-          path="/customerList"
-          element={
-            <FormView
-              aev={"list"}
-              fields={fieldss}
-              list={customerList}
-              search={customerSearch}
-              getApi={getApi}
-              postApi={postApi}
-            />
-          }
-        />
-        <Route
-          path="/create"
-          element={
-            <FormView
-              aev={"add"}
-              fields={fields}
-              list={list}
-              search={search}
-              getApi={getApi}
-              postApi={postApi}
-            />
-          }
-        />
         {/* <Route
           path="/test/view"
           element={

@@ -2,6 +2,7 @@
   "division": {
     "name": "Warehouse Header",
     "formelements": {
+      "title": "CREATE WAREHOUSE",
       "generalDetails": [
         {
           "label": "address",
