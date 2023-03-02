@@ -48,9 +48,8 @@ export class FormView extends Component {
     console.log("from handle button");
     const ress = {};
     const newDescData = this.state.view[0].map((item, index) => {
-      ress[this.state.view[0][index].dataAttribute] = this.state.view[1][0][
-        index
-      ];
+      ress[this.state.view[0][index].dataAttribute] =
+        this.state.view[1][0][index];
     });
     this.setState({
       inputDetails: { ...ress },
@@ -131,16 +130,18 @@ export class FormView extends Component {
   onChange(e) {
     const name = e.target.name;
     const value = e.target.value;
-    const component = this.state.formDetails.division.formelements.generalDetails.filter(
-      (item) => {
-        if (item.id === name) return item;
-      }
-    );
-    const component1 = this.state.formDetails.division.formelements.paymentDetails.filter(
-      (item) => {
-        if (item.id === name) return item;
-      }
-    );
+    const component =
+      this.state.formDetails.division.formelements.generalDetails.filter(
+        (item) => {
+          if (item.id === name) return item;
+        }
+      );
+    const component1 =
+      this.state.formDetails.division.formelements.paymentDetails?.filter(
+        (item) => {
+          if (item.id === name) return item;
+        }
+      );
 
     //const isValid = validation(value, component[0].item.validate);
     //console.log(validation(value, component[0].validate), "validation");
@@ -430,7 +431,7 @@ export class FormView extends Component {
                         {this.state.formDetails.division.formelements.addressDetails?.map(
                           (item, index) => {
                             return (
-                              <Grid key={index} item xs={10} sm={10}>
+                              <Grid key={index} item xs={11} sm={11}>
                                 {item.control === "select" ? (
                                   <SelectClass
                                     formDetails={item}

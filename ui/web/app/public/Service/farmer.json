@@ -5,72 +5,96 @@
       "title": "GENERAL DETAILS ",
       "generalDetails": [
         {
-          "id": "fid",
+          "id": "FID",
           "label": "fid",
           "control": "textbox",
           "validation": "alphanumeric",
           "disabled": true
         },
         {
-          "id": "name",
+          "id": "Name",
           "label": "name",
           "control": "textbox",
           "validation": "alphanumeric"
         },
+
         {
-          "id": "phoneNo",
-          "label": "phoneNo",
-          "control": "textbox",
-          "validation": "phone"
-        },
-        {
-          "id": "Aadhar No",
+          "id": "Aadhar Number",
           "label": "aadhar_no",
           "control": "textbox",
           "validate": "alphanumeric"
         },
         {
           "label": "pan",
-          "id": "PAN",
+          "id": "PAN Number",
           "control": "textbox",
           "validate": "alphanumeric"
+        },
+        {
+          "label": "produce",
+          "id": "Produce",
+          "control": "textbox",
+          "validate": "alphanumeric"
+        },
+        {
+          "id": "Contact Number",
+          "label": "contact",
+          "control": "textbox",
+          "validation": "phone"
+        },
+        {
+          "id": "Email Address",
+          "label": "email",
+          "control": "textbox"
         }
       ],
       "title2": "ADDRESS DETAILS",
       "addressDetails": [
         {
-          "id": "Street Address",
-          "label": "street",
+          "id": "Village",
+          "label": "village",
           "control": "textbox",
           "validate": "alphanumeric"
         },
         {
-          "id": "City",
-          "label": "city",
+          "id": "Panchayat",
+          "label": "panchayat",
           "control": "textbox",
           "validate": "alphanumeric"
         },
         {
-          "id": "State",
-          "label": "state",
+          "id": "Taluk",
+          "label": "taluk",
           "control": "textbox",
           "validate": "alphanumeric"
         },
         {
-          "id": "Pin Code",
-          "label": "pin",
+          "id": "District",
+          "label": "district",
           "control": "textbox",
           "validate": "number"
         }
       ],
 
-      "title1": "PAYMENT DETAILS",
+      "title1": "E-PAYMENT DETAILS",
       "paymentDetails": [
         {
-          "id": "Payee Name",
-          "label": "payee",
+          "id": "Vendor Code",
+          "label": "vendor",
           "control": "textbox",
           "validate": "alphanumeric"
+        },
+        {
+          "id": "Bank Name",
+          "label": "bank",
+          "control": "textbox",
+          "validate": "alphanumeric"
+        },
+        {
+          "id": "Account Type",
+          "label": "account",
+          "control": "textbox",
+          "validate": "number"
         },
         {
           "id": "Account Number",
@@ -79,10 +103,16 @@
           "validate": "number"
         },
         {
+          "id": "Bank Address",
+          "label": "address",
+          "control": "textbox",
+          "validate": "alphanumeric"
+        },
+        {
           "id": "IFSC  Code",
           "label": "ifsc",
           "control": "textbox",
-          "validate": "number"
+          "validate": "ifsc"
         }
       ]
     },
