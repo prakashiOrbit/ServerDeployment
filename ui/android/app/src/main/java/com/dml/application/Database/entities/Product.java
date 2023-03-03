@@ -11,6 +11,8 @@ public class Product implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     int ID = 0;
+    @ColumnInfo(name = "Phonenumber")
+    String Phonenumber = "";
 
     @ColumnInfo(name = "ProductId")
     String ProductId = "";
@@ -31,9 +33,9 @@ public class Product implements Serializable {
     @ColumnInfo(name = "ProductQty")
     String ProductQty = "";
 
-
-    public Product(int ID, String productId, String productName, String productNum, String productPrice, String productDis, String productQty) {
+    public Product(int ID, String phonenumber, String productId, String productName, String productNum, String productPrice, String productDis, String productQty) {
         this.ID = ID;
+        Phonenumber = phonenumber;
         ProductId = productId;
         ProductName = productName;
         ProductNum = productNum;
@@ -44,6 +46,14 @@ public class Product implements Serializable {
 
     public Product() {
 
+    }
+
+    public String getPhonenumber() {
+        return Phonenumber;
+    }
+
+    public void setPhonenumber(String phonenumber) {
+        Phonenumber = phonenumber;
     }
 
     public int getID() {

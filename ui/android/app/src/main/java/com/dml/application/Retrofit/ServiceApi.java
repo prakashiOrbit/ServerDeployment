@@ -1,5 +1,6 @@
 package com.dml.application.Retrofit;
 
+import com.dml.application.Models.LoginModel;
 import com.dml.application.Models.ResponsebodyClass;
 
 import okhttp3.ResponseBody;
@@ -12,6 +13,6 @@ public interface ServiceApi {
 
 
     @POST("ProfileFlow/CreateProfile")
-    Call<ResponseBody> LoginToken(@Header("Session-Id")String sessionId, @Body ResponsebodyClass requestBody );
+    Call<LoginModel> LoginToken(@Header("Session-Id")String sessionId, @Body ResponsebodyClass requestBody );
 
 }

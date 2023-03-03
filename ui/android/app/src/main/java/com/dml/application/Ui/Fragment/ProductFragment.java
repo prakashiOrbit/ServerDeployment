@@ -1,6 +1,14 @@
 package com.dml.application.Ui.Fragment;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,6 +21,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -20,27 +29,33 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dml.application.Adapters.ProductAdapter;
+import com.dml.application.App.Loginalertfragment;
 import com.dml.application.App.MydialogFragment;
+import com.dml.application.App.SessionManager;
 import com.dml.application.App.ViewClickListener;
 import com.dml.application.Database.DataBaseDAO;
 import com.dml.application.Database.Roomdatabase;
 import com.dml.application.Database.entities.Product;
 import com.dml.application.Models.ProductModel;
 import com.dml.application.R;
+import com.dml.application.Ui.Activity.LoginActivity;
+import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class ProductFragment extends Fragment implements ViewClickListener {
     TextView TextCatName;
     int id;
     String KEY;
+    SessionManager sessionManager;
     RecyclerView RecyclerviewProductList;
     List<ProductModel> productModels;
-
+    Dialog dialog;
     Roomdatabase database;
     DataBaseDAO dataBaseDAO;
-
+    String flag;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,7 +64,7 @@ public class ProductFragment extends Fragment implements ViewClickListener {
         View view = inflater.inflate(R.layout.fragment_product, container, false);
         View popupView = LayoutInflater.from(getContext()).inflate(R.layout.login_alert, null);
         PopupWindow popupWindow = new PopupWindow(popupView, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-
+        sessionManager = new SessionManager(getActivity());
         TextCatName = view.findViewById(R.id.text_catname);
         RecyclerviewProductList = view.findViewById(R.id.recyclerview_productList);
         RecyclerviewProductList.setHasFixedSize(true);
@@ -163,11 +178,95 @@ public class ProductFragment extends Fragment implements ViewClickListener {
 
     @Override
     public void onItemPlusClick(ProductModel item) {
-        Product product = new Product(0, item.getProductId(), item.getProductName(), "1", item.getProductPrice(), item.getProductDisPrice(), item.getProductqty());
-        dataBaseDAO.insert(product);
-        Toast.makeText(getActivity(), "Added to cart", Toast.LENGTH_SHORT).show();
+
+        if (isConnected()) {
+
+            if (sessionManager.getLogin()) {
+
+
+                HashMap<String, String> user = sessionManager.getuserDetail();
+                String phonenumber = user.get(SessionManager.KEY_UserPhoneNumber);
+
+                Product product = new Product(0, phonenumber, item.getProductId(), item.getProductName(), "1", item.getProductPrice(), item.getProductDisPrice(), item.getProductqty());
+
+                dataBaseDAO.insert(product);
+                Toast.makeText(getActivity(), "Added to cart", Toast.LENGTH_SHORT).show();
+
+            } else {
+                showCustomDialog();
+            }
+
+
+        } else {
+
+
+            showpopup();
+        }
     }
 
+    public boolean isConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info = cm.getActiveNetworkInfo();
+        return (info != null && info.isConnected());
+    }
+
+    private void showpopup() {
+        dialog = new Dialog(getActivity());
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setContentView(R.layout.alert_dialog_layout);
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(dialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.show();
+        dialog.getWindow().setAttributes(lp);
+        @SuppressLint("WrongViewCast")
+        Button Reload = dialog.findViewById(R.id.Reload);
+        Reload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isConnected()) {
+                    dialog.cancel();
+                }
+
+            }
+        });
+
+
+    }
+
+    private void showCustomDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        View view = getLayoutInflater().inflate(R.layout.login_alert, null);
+
+        MaterialButton YES = view.findViewById(R.id.Continue);
+        MaterialButton NO = view.findViewById(R.id.cancel);
+
+        builder.setView(view);
+        AlertDialog dialog = builder.create();
+        YES.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+                dialog.cancel();
+
+
+            }
+        });
+        NO.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.cancel();
+            }
+
+        });
+
+        dialog.show();
+
+    }
 
     @Override
     public void onResume() {

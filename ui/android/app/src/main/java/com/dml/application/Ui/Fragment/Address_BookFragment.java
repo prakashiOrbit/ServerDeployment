@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.dml.application.App.SessionManager;
 import com.dml.application.R;
 import com.dml.application.Ui.Fragment.Location_confirmationFragment;
 import com.google.android.material.button.MaterialButton;
@@ -18,7 +19,7 @@ import com.google.android.material.button.MaterialButton;
 
 public class Address_BookFragment extends Fragment {
 
-
+SessionManager sessionManager;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

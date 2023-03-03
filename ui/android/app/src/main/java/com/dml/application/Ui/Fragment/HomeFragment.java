@@ -45,11 +45,9 @@ public class HomeFragment extends Fragment {
 
                 if (keyEvent.getAction() == KeyEvent.ACTION_UP && i == KeyEvent.KEYCODE_BACK) {
 
-//                    ShowDialog();
 
-
-                    MydialogFragment mydialogFragment=new MydialogFragment();
-                    mydialogFragment.show(getFragmentManager(),"myFragment");
+                    MydialogFragment mydialogFragment = new MydialogFragment();
+                    mydialogFragment.show(getFragmentManager(), "myFragment");
 
                     return true;
                 }

@@ -1,16 +1,30 @@
 package com.dml.application.Ui.Activity;
 
+import android.annotation.SuppressLint;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.dml.application.App.F2R;
+import com.dml.application.App.Loginalertfragment;
+import com.dml.application.App.SessionManager;
+import com.dml.application.Models.LoginModel;
 import com.dml.application.Models.ResponsebodyClass;
 import com.dml.application.R;
 import com.dml.application.Retrofit.RetrofitClient;
@@ -23,6 +37,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Objects;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -37,9 +53,9 @@ public class LoginActivity extends AppCompatActivity {
     TextInputEditText userPhoneNumber;
 
     SpinKitView spin_kit;
-    SessionManager sessionManager;
-
-  String OTP;
+    Dialog mydialoge;
+    Dialog dialog;
+    String OTP;
     private ProgressBar progressBar;
 
     @Override
@@ -48,35 +64,30 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         LOGIN = findViewById(R.id.log);
         userPhoneNumber = findViewById(R.id.phonenumber_);
+
         spin_kit = findViewById(R.id.spin_kit);//progressBar =findViewById(R.id.progress_bar);
-        sessionManager = new SessionManager(getApplicationContext());
+
 
         LOGIN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                spin_kit.setVisibility(View.VISIBLE);
+
                 String phonenumber = userPhoneNumber.getText().toString().trim();
                 if (!validatePhonenumber()) {
 
-                    spin_kit.setVisibility(View.GONE);
-                    checkUserExist();
+
                     return;
 
                 }
-
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        checkUserExist();
-                    }
-                }, 00);
+                checkUserExist();
             }
 
 
         });
 
+  }
 
-    }
+
 
 
     private boolean validatePhonenumber() {
@@ -98,10 +109,13 @@ public class LoginActivity extends AppCompatActivity {
 
     private void checkUserExist() {
 
-            String sessionId = "8ca3696b-f4c2-4e6b-a555-ddf9a52bea56";
+        if(isConnected()) {
 
-            ResponsebodyClass.FlowAdmin requestBody = new ResponsebodyClass.FlowAdmin("lookup","ProfileFlow");
-            ResponsebodyClass responsebodyClass= new ResponsebodyClass(userPhoneNumber.getText().toString(),"custom",requestBody);
+
+            String sessionId = "23e1ab2b-b9ff-4935-a17a-dc56a686b5ef";
+
+            ResponsebodyClass.FlowAdmin requestBody = new ResponsebodyClass.FlowAdmin("lookup", "ProfileFlow");
+            ResponsebodyClass responsebodyClass = new ResponsebodyClass(userPhoneNumber.getText().toString(), "custom", requestBody);
 
             Log.e("Error", String.valueOf(responsebodyClass));
 
@@ -115,55 +129,83 @@ public class LoginActivity extends AppCompatActivity {
             }
 
 
-        Call<ResponseBody> call = retrofitClient.create(ServiceApi.class).LoginToken(sessionId, responsebodyClass);
-            call.enqueue(new Callback<ResponseBody>() {
-                @Override
-                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            Call<LoginModel> call = retrofitClient.create(ServiceApi.class).LoginToken(sessionId, responsebodyClass);
+           call.enqueue(new Callback<LoginModel>() {
+               @Override
+               public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
+ if (response.isSuccessful()){
+     List<LoginModel.Response> responses = response.body().getResponses();
+     for (LoginModel.Response r : responses) {
+         if (r.getOtp() != null ) {
 
-                    if (!response.isSuccessful()) {
-                        Toast.makeText(LoginActivity.this, "something went wrong please try again!!", Toast.LENGTH_SHORT).show();
-                    } else {
-                        try {
+             String otp = r.getOtp();
+             Log.d("LoginActivity", "OTP: " + otp );
+             Toast.makeText(LoginActivity.this, otp, Toast.LENGTH_SHORT).show();
+             Intent intent = new Intent(getApplicationContext(), OTPActivity.class);
+             intent.putExtra("OTP", otp);
+             intent.putExtra("phonenumber",phone_number);
 
-                            extractLoginResponse(response.body().string());
-                        } catch (JSONException | IOException e) {
-                            e.printStackTrace();
+             startActivity(intent);
 
-                        }
-
-                    }
-
-                }
-
-                @Override
-                public void onFailure(Call<ResponseBody> call, Throwable t) {
-
-                    Toast.makeText(LoginActivity.this, "something went wrong please try again!!", Toast.LENGTH_SHORT).show();
-                }
-            });
+         }
+ }
 
 
+                   }else {
+     Toast.makeText(LoginActivity.this, "something went wrong", Toast.LENGTH_SHORT).show();
+ }
+               }
+               @Override
+               public void onFailure(Call<LoginModel> call, Throwable t) {
+                   Toast.makeText(LoginActivity.this, "something went wrong", Toast.LENGTH_SHORT).show();
+               }
+           });
+         }else {
+
+        Toast.makeText(LoginActivity.this, "not ok", Toast.LENGTH_SHORT).show();
+
+           showpopup();
         }
-
-    private void extractLoginResponse(String string) throws JSONException {
-
-
-        JSONObject object = new JSONObject(string);
-        //productList = new ArrayList<String>();
-        // Locate the NodeList name
-        JSONArray jsonarray = object.getJSONArray("responses");
-        for (int i = 0; i < jsonarray.length(); i++) {
-            JSONObject jsonobject = jsonarray.getJSONObject(i);
-            OTP=jsonobject.getString("message");
-
-
-         //   Toast.makeText(this, jsonobject.getString("message"), Toast.LENGTH_SHORT).show();
-
-
-        }
-        Intent intent=new Intent(getApplicationContext(),OTPActivity.class);
-        intent.putExtra("OTP",OTP);
-        startActivity(intent);
 
     }
+
+    private void showpopup() {
+            dialog = new Dialog(this);
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.setContentView(R.layout.alert_dialog_layout);
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(dialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.show();
+        dialog.getWindow().setAttributes(lp);
+        @SuppressLint("WrongViewCast")
+        Button Reload =dialog.findViewById(R.id.Reload);
+        Reload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isConnected()){
+                    dialog.cancel();
+                }
+
+            }
+        });
+
+
+
+    }
+
+
+    public boolean isConnected(){
+        ConnectivityManager cm = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info = cm.getActiveNetworkInfo();
+        return (info != null && info.isConnected());
+    }
+
+
+
+
+
+
 }
