@@ -47,7 +47,7 @@ public class ConnectionRecevier extends BroadcastReceiver {
         AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.alert_dialog_layout,null);
-        Button btnok= view.findViewById(R.id.btn_OK);
+        Button btnok= view.findViewById(R.id.Reload);
         builder.setView(view);
 
         final Dialog dialog = builder.create();
