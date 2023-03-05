@@ -3,7 +3,10 @@ import React from "react";
 
 import FormView from "../CreateForm"
 import { getApi, postMethod } from "../../webservice";
-import SmartConnect from "../Url/SmartConnect";
+//import SmartConnect from "../smart-connect/smart-connect";
+import SmartConnect from "../smart-connect/smart-connect";
+//import SmartConnect from "../Url/SmartConnect";
+import {config} from "../../Constants/constant";
 
 //import farmerFields from "./farmerFields.json";
 
@@ -14,31 +17,48 @@ class Po extends React.Component {
         super(props);
         this.child = React.createRef();
 
-        this.state = {
-            functions: this.child,
-            handleClick: null,
-            flow:"PoFlow",
-            tenant:"apptest/"
-        }
-        console.log(this.child, "child propss");
+        
+        //console.log(this.child, "child propss");
+        this.insertData = this.insertData.bind(this);
 
 
     }
-    componentDidMount() {
-        this.setState({
-            handleClick: this.state.functions.current ? this.state.functions.current.handleClick : {}
-        })
+    componentDidMount() {       
+     
+         this.setState({
+             childval: this.child
+         })
+        
+       
     }
 
+    insertData(poData) {
+        //this.child = React.createRef();
+        console.log("pooo",poData)
+        const smartlook = {"FlowAdmin": {
+            "___smart_action___": "lookup",
+            "___smart_value___": "PurchaseOrderTemplateFlow"
+          },};
+          //const result = Object.assign(smartlook, poData)
+        //   poData = { ...poData, "FlowAdmin": {
+        //     "___smart_action___": "lookup",
+        //     "___smart_value___": "PurchaseOrderTemplateFlow"
+        //   } }
+          let resultdata = Object.create(null);
+          resultdata = Object.assign(smartlook, poData)
+         console.log("curree",resultdata)
+        var test = this.child.current.postMethod({ "FlowAdmin": { "___smart_action___": "lookup", "___smart_value___": "PurchaseOrderTemplateFlow" }, ...poData });
+      console.log(test);
+    }
+    
     render() {
         return (
             <div>
-                {
-                    this.state.handleClick ? (<>
-                        <FormView aev="add" fields={"/Service/po.json"} search={"/Service/posearch.json"} getApi={getApi} postApi={this.state.functions.current ? this.state.functions.current.handleClick : null} />
-                    </>) : (null)
-                }
-                <SmartConnect ref={this.child} flow={this.state.flow} tenant={this.state.tenant}/>
+               
+                        <FormView aev="add" fields={"/Service/po.json"} search={"/Service/posearch.json"} getApi={getApi} postApi={this.insertData }/>
+                    
+                
+                <SmartConnect server={config.host} port={config.port} tenant={config.tenant} flow= "PurchaseOrderTemplateFlow" flowEvent="CreatePurchaseOrderTemplate" ref={this.child} />
             </div>
 
 
