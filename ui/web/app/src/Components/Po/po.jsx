@@ -38,15 +38,8 @@ class Po extends React.Component {
         const smartlook = {"FlowAdmin": {
             "___smart_action___": "lookup",
             "___smart_value___": "PurchaseOrderTemplateFlow"
-          },};
-          //const result = Object.assign(smartlook, poData)
-        //   poData = { ...poData, "FlowAdmin": {
-        //     "___smart_action___": "lookup",
-        //     "___smart_value___": "PurchaseOrderTemplateFlow"
-        //   } }
-          let resultdata = Object.create(null);
-          resultdata = Object.assign(smartlook, poData)
-         console.log("curree",resultdata)
+          },};          
+        
         var test = this.child.current.postMethod({ "FlowAdmin": { "___smart_action___": "lookup", "___smart_value___": "PurchaseOrderTemplateFlow" }, ...poData });
       console.log(test);
     }
