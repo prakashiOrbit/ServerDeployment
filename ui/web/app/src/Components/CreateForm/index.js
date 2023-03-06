@@ -13,6 +13,10 @@ import DateClass from "./DateClass";
 import ButtonClass from "./ButtonClass";
 import { validation } from "./Validattion";
 
+import BasicTable from '../BasicTable'
+
+import { getApi, postMethod} from "../../webservice";
+
 import EnhancedTable from "./DataTable";
 //import { Navigate, Outlet, useNavigate } from "react-router-dom";
 
@@ -86,25 +90,27 @@ export class FormView extends Component {
       }
     );
 
-    this.state.formDetails.division.formelements.paymentDetails.map(
-      (item, index) => {
-        if (item.validate) {
-          if (!this.state.inputDetails[item.id]) {
-            console.log(item.id, "validationnnn erre");
-          }
-        }
-      }
-    );
+    // this.state.formDetails.division.formelements.paymentDetails.map(
+    //   (item, index) => {
+    //     if (item.validate) {
+    //       if (!this.state.inputDetails[item.id]) {
+    //         console.log(item.id, "validationnnn erre");
+    //       }
+    //     }
+    //   }
+    // );
+
+    console.log("inpuuu",this.state.inputDetails)
 
     this.props
       .postApi(
-        url,
-        search ? this.state.searchInputDetails.farmer : this.state.inputDetails
+        
+        this.state.inputDetails
       )
-      .then((resp) => {
-        // setFormDetails(resp.data)
-        console.log(resp, "respo from postapi");
-      });
+      // .then((resp) => {
+      //   // setFormDetails(resp.data)
+      //   console.log(resp, "respo from postapi");
+      // });
   }
   onChangeSearch(e) {
     console.log(e);
@@ -137,7 +143,7 @@ export class FormView extends Component {
         }
       );
     const component1 =
-      this.state.formDetails.division.formelements.paymentDetails?.filter(
+      this.state.formDetails.division.formelements?.paymentDetails?.filter(
         (item) => {
           if (item.id === name) return item;
         }
@@ -160,6 +166,7 @@ export class FormView extends Component {
         //[name]: !validation(value, component[0].validate),
       },
     });
+    console.log("input in onchange",this.state.inputDetails)
   }
   getData() {
     console.log("component did mount getdata");
@@ -201,7 +208,7 @@ export class FormView extends Component {
                     searchBar: resp.data,
                   });
 
-                  console.log(resp, "search f");
+                  console.log(resp, "serach f");
                 });
             }
           })
@@ -357,11 +364,7 @@ export class FormView extends Component {
                       container
                       spacing={5}
                       style={{
-                        border:
-                          this.state.formDetails.division.formelements.title ===
-                          "GENERAL DETAILS"
-                            ? "none"
-                            : "3px solid #ace",
+                        border: "3px solid #ace",
                         padding: "30px",
                         boxSizing: "borderBox",
                         marginTop: "20px",
@@ -386,8 +389,8 @@ export class FormView extends Component {
                                   editFlag={this.props.aev}
                                   formErrors={this.state.formErrors}
                                   labelInside={true}
-                                  // isMultiline={true}
-                                  // rows={6}
+                                  rows={item.rows?item.rows:1}
+                                  minRows={item.minRows?item.minRows : 1}
                                 />
                               ) : item.control === "date" ? (
                                 <DateClass
@@ -397,41 +400,34 @@ export class FormView extends Component {
                                   editFlag={this.props.aev}
                                 />
                               ) : (
-                                <>No Data Box</>
+                                <span></span>
                               )}
-                            </Grid>
-                          );
-                        }
-                      )}
 
-                      <Grid
-                        container
-                        spacing={2}
-                        style={{
-                          border:
-                            this.state.formDetails.division.formelements
-                              .title === "GENERAL DETAILS"
-                              ? "none"
-                              : "3px solid #ace",
-                          padding: "10px",
-
-                          marginTop: "70px",
-                        }}
-                      >
-                        <span
-                          style={{
-                            fontSize: "18px",
-                            fontWeight: "bold",
-                            //marginTop: "15px",
-                            color: "navy",
-                          }}
-                        >
-                          {this.state.formDetails.division.formelements.title2}
-                        </span>
-                        {this.state.formDetails.division.formelements.addressDetails?.map(
+                            <Grid
+                              container
+                              display = {item.addressFields?"block":"none"}
+                              spacing={2}
+                              style={{
+                                border: "3px solid #ace",
+                                padding: "30px",
+                                boxSizing: "borderBox",
+                                marginTop: "50px",
+                              }}
+                            >   
+                      <span
+                      style={{
+                        fontSize: "25px",
+                        fontWeight: "bold",
+                        color: "navy"                       
+                      }}
+                    >
+                      {item.label}
+                    </span>
+                       
+                        {item.addressFields?.map(
                           (item, index) => {
                             return (
-                              <Grid key={index} item xs={11} sm={11}>
+                              <Grid key={index} item xs={10} sm={10}>                                
                                 {item.control === "select" ? (
                                   <SelectClass
                                     formDetails={item}
@@ -447,8 +443,8 @@ export class FormView extends Component {
                                     editFlag={this.props.aev}
                                     formErrors={this.state.formErrors}
                                     labelInside={true}
-                                    // isMultiline={true}
-                                    // rows={6}
+                                    rows={item.rows?item.rows:1}
+                                    minRows={item.minRows?item.minRows : 1}
                                   />
                                 ) : item.control === "date" ? (
                                   <DateClass
@@ -465,13 +461,20 @@ export class FormView extends Component {
                           }
                         )}
                       </Grid>
+
+                            </Grid>
+                          );
+                        }
+                      )}
+
+                      
                     </Grid>
                   </Grid>
                 ) : (
                   <div>No Data</div>
                 )}
 
-                {Object.keys(this.state.formDetails).length ? (
+                {Object.keys(this.state.formDetails).length && this.state.formDetails.division.formelements.section > 1 ? (
                   <>
                     <span
                       style={{
@@ -488,11 +491,7 @@ export class FormView extends Component {
                       container
                       spacing={2}
                       style={{
-                        border:
-                          this.state.formDetails.division.formelements.title ===
-                          "PAYMENT DETAILS"
-                            ? "none"
-                            : "3px solid #ace",
+                        border: "3px solid #ace",
                         padding: "30px",
                         boxSizing: "borderBox",
                         marginTop: "50px",
@@ -538,6 +537,18 @@ export class FormView extends Component {
                   <div>No Data</div>
                 )}
 
+                  {
+                                            Object.keys(this.state.formDetails).length ? (
+                                                this.state.formDetails.division.edittable.map((item, index) => {
+                                                    return (
+                                                        <Grid key={index} item xs={12} sm={12} >
+                                                            <BasicTable formDetails = {this.state.formDetails.division.buttons[0]} tableData={this.state.formDetails.division.edittable} showData={this.showData} getApi={getApi}/>
+                                                        </Grid>
+                                                    )
+                                                })
+                                            ) : <div>No Data</div>
+                                        }
+
                 {Object.keys(this.state.formDetails).length ? (
                   this.state.formDetails.division.buttons?.map(
                     (item, index) => {
@@ -556,6 +567,7 @@ export class FormView extends Component {
                 ) : (
                   <div>No Data</div>
                 )}
+               
               </Grid>
             )}
           </Box>

@@ -3,98 +3,75 @@
     "name": "Farmer Header",
     "formelements": {
       "title": "GENERAL DETAILS ",
+      "section": 2,
       "generalDetails": [
         {
-          "id": "FID",
+          "id": "fid",
           "label": "fid",
           "control": "textbox",
           "validation": "alphanumeric",
           "disabled": true
         },
         {
-          "id": "Name",
+          "id": "name",
           "label": "name",
           "control": "textbox",
           "validation": "alphanumeric"
         },
-
         {
-          "id": "Aadhar Number",
+          "id": "phoneNo",
+          "label": "phoneNo",
+          "control": "textbox",
+          "validation": "phone"
+        },
+        {
+          "id": "Aadhar No",
           "label": "aadhar_no",
           "control": "textbox",
           "validate": "alphanumeric"
         },
         {
           "label": "pan",
-          "id": "PAN Number",
+          "id": "PAN",
           "control": "textbox",
           "validate": "alphanumeric"
-        },
-        {
-          "label": "produce",
-          "id": "Produce",
-          "control": "textbox",
-          "validate": "alphanumeric"
-        },
-        {
-          "id": "Contact Number",
-          "label": "contact",
-          "control": "textbox",
-          "validation": "phone"
-        },
-        {
-          "id": "Email Address",
-          "label": "email",
-          "control": "textbox"
         }
       ],
       "title2": "ADDRESS DETAILS",
       "addressDetails": [
         {
-          "id": "Village",
-          "label": "village",
+          "id": "Street Address",
+          "label": "street",
           "control": "textbox",
           "validate": "alphanumeric"
         },
         {
-          "id": "Panchayat",
-          "label": "panchayat",
+          "id": "City",
+          "label": "city",
           "control": "textbox",
           "validate": "alphanumeric"
         },
         {
-          "id": "Taluk",
-          "label": "taluk",
+          "id": "State",
+          "label": "state",
           "control": "textbox",
           "validate": "alphanumeric"
         },
         {
-          "id": "District",
-          "label": "district",
+          "id": "Pin Code",
+          "label": "pin",
           "control": "textbox",
           "validate": "number"
         }
       ],
 
-      "title1": "E-PAYMENT DETAILS",
+      "title1": "PAYMENT DETAILS",
       "paymentDetails": [
         {
-          "id": "Vendor Code",
-          "label": "vendor",
+          "id": "Payee Name",
+          "label": "payee",
           "control": "textbox",
           "validate": "alphanumeric"
-        },
-        {
-          "id": "Bank Name",
-          "label": "bank",
-          "control": "textbox",
-          "validate": "alphanumeric"
-        },
-        {
-          "id": "Account Type",
-          "label": "account",
-          "control": "textbox",
-          "validate": "number"
         },
         {
           "id": "Account Number",
@@ -103,16 +80,10 @@
           "validate": "number"
         },
         {
-          "id": "Bank Address",
-          "label": "address",
-          "control": "textbox",
-          "validate": "alphanumeric"
-        },
-        {
           "id": "IFSC  Code",
           "label": "ifsc",
           "control": "textbox",
-          "validate": "ifsc"
+          "validate": "number"
         }
       ]
     },
@@ -129,6 +100,13 @@
         "label": "Cancel",
         "control": "button",
         "redirect": "/polist"
+      }
+    ],
+    "edittable": [
+      {
+        "id": "abx",
+        "label": "Farmer Data",
+        "dataurl": "/Service/tabledata.json"
       }
     ]
   }
