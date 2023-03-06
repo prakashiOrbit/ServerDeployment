@@ -36,6 +36,7 @@ export default class TextFieldClass extends Component {
             fullWidth
             onChange={this.props.onChange}
             name={this.props.formDetails.id}
+            defaultValue={this.props.value}
             value={this.props.inputDetails[this.props.formDetails.id]}
             InputProps={{
               readOnly:

@@ -1,14 +1,11 @@
-<<<<<<< HEAD
-import React, { Component } from 'react';
-=======
 import React, { Component } from "react";
->>>>>>> ad36d144be051393a783b52b315adf7337e0f98b
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 //import FarmerComponent from "./FarmerComponent";
 import Container from "@mui/material/Container";
+import { postApi } from "../../webservice";
 
 import { withRouter } from "./WithRouter";
 import SelectClass from "./SelectClass";
@@ -101,8 +98,8 @@ export class FormView extends Component {
       }
     );
 
-    this.props
-      .postApi(
+    
+      postApi(
         url,
         search ? this.state.searchInputDetails.farmer : this.state.inputDetails
       )

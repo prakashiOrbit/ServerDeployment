@@ -15,6 +15,7 @@ import Customer from "./Components/Customer/Customer";
 
 import Protected from "./Components/Protected";
 import Login from "./Components/login/Login";
+import FarmerEdit from "./Components/Farmer/FarmerEdit";
 
 const App = () => {
   const fields = "/Service/farmer.json";
@@ -73,18 +74,29 @@ const App = () => {
               </Protected>
             }
           />
+
+<Route
+            path="/farmer-edit"
+            element={
+              <Protected isSignedIn={isSignedIn}>
+                <FarmerEdit />
+              </Protected>
+            }
+          />
+
           <Route
             path="/farmerList"
             element={
               <Protected isSignedIn={isSignedIn}>
-              <FormView
+              {/* <FormView
                 aev={"list"}
                 fields={fields}
                 list={list}
                 search={search}
                 getApi={getApi}
                 postApi={postApi}
-              />
+              /> */}
+              <FarmerList/>
               </Protected>
             }
           />

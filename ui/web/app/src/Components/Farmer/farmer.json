@@ -3,7 +3,6 @@
     "name": "Farmer Header",
     "formelements": {
       "title": "GENERAL DETAILS ",
-      "url":"",
       "generalDetails": [
         {
           "id": "fId",
@@ -38,7 +37,6 @@
         }
       ],
       "title2": "ADDRESS DETAILS",
-   
       "addressDetails": [
         {
           "id": "Street Address",
@@ -94,13 +92,13 @@
         "label": "Create",
         "control": "button",
         "validationjs": "validatedata",
-        "submitURL": "CreateFarmer"
+        "submitURL": "/farmerList"
       },
       {
         "id": "cancel",
         "label": "Cancel",
         "control": "button",
-        "redirect": "/polist"
+        "redirect": "/farmerList"
       }
     ]
   }

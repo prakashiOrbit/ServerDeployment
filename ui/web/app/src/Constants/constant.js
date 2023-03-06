@@ -76,5 +76,5 @@ export const sideMenu = [
 export const config = {
   host: "localhost",
   port: "9082",
-  tenant: "fresh2rely",
+  tenant: "apptest",
 };
