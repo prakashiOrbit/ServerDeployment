@@ -21,7 +21,7 @@
           "label": "Ship Address",          
           "addressFields": [
             {
-              "id": "Address",
+              "id": "Ship Address",
               "label": "Address",
               "control": "textbox",
               "rows": 3,
@@ -57,8 +57,8 @@
           "label": "Bill Address",        
           "addressFields": [
             {
-              "id": "Address",
-              "label": "Address",
+              "id": "Bill Address",
+              "label": "ToAddress",
               "control": "textbox",
               "rows": 3,
               "minRows": 15,

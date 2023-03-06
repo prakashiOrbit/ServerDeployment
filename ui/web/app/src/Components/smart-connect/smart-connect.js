@@ -36,7 +36,7 @@ export default class SmartConnect extends Component {
 
     /** Method to used internally to construct a URL */
     _computeURL = () => {
-        var computedUrl = "https://" + this.state.server + ":" + this.state.port + "/";
+        var computedUrl = "http://" + this.state.server + ":" + this.state.port + "/";
         computedUrl += this.state.tenant + "/" + this.state.flow + "/" + this.state.flowEvent;
 
         return computedUrl;
@@ -63,6 +63,7 @@ export default class SmartConnect extends Component {
                     console.log(res);
                 })
                 .catch(err => {
+                    console.log("error",err)
                     reject(err)
                 })
         })
