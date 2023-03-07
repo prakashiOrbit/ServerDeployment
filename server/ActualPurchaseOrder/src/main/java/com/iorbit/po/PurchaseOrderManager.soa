@@ -1,0 +1,40 @@
+name: CreatePurchaseOrder
+type: Transition
+flow: PurchaseOrderFlow
+foreach: FlowAdmin|CreatePurchaseOrder,PurchaseOrder|GetPurchaseOrder,FlowAdmin|SearchPurchaseOrders,PurchaseOrder|EditPurchaseOrder
+actions:
+  - name: createPo
+    method: createPo
+    foreach: FlowAdmin|CreatePurchaseOrder
+    parms: (event,srch.PurchaseOrderFlow.PurchaseOrder.event.PoId)
+    from: active
+    to: active
+  - name: getPo
+    method: getPo
+    foreach: PurchaseOrder|GetPurchaseOrder
+    from: active
+    to: active
+  - name: setupPosSearch
+    method: setupPosSearch
+    foreach: FlowAdmin|SearchPurchaseOrders
+    from: active
+    to: active
+  - name: getPos
+    method: getPos
+    runAfter: searchPos
+    foreach: FlowAdmin|SearchPurchaseOrders
+    from: active
+    to: active
+  - name: editPo
+    method: editPo
+    foreach: PurchaseOrder|EditPurchaseOrder
+    from: active
+    to: active
+callservices:
+  - name: searchPos
+    service: AllFlows.SearchManager.searchService
+    parms: (PurchaseOrderFlow,PurchaseOrder,event.search,event.po)
+    runAfter: setupPosSearch
+    foreach: FlowAdmin|SearchPurchaseOrders
+    from: active
+    to: active

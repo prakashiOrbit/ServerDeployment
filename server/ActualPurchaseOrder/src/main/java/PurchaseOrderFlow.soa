@@ -1,0 +1,29 @@
+name: PurchaseOrderFlow
+defaultEnable: basic
+primeData:
+  - com.iorbit.po.PurchaseOrder
+events:
+  - com.iorbit.po.CreatePurchaseOrder
+  - com.iorbit.po.GetPurchaseOrder
+  - com.iorbit.po.SearchPurchaseOrders
+  - com.iorbit.po.EditPurchaseOrder
+responses:
+  - com.iorbit.po.MessageResponse
+  - com.iorbit.po.PurchaseOrderDetails
+  - com.iorbit.po.PurchaseOrderList
+  - com.iorbit.po.EditPurchaseOrder
+transitions:
+  - com.iorbit.po.PurchaseOrderManager
+features:
+  - name: basic
+    artefacts:
+      - com.iorbit.po.PurchaseOrder
+      - com.iorbit.po.CreatePurchaseOrder 
+      - com.iorbit.po.MessageResponse
+      - com.iorbit.po.PurchaseOrderManager
+      - com.iorbit.po.PurchaseOrderDetails
+      - com.iorbit.po.GetPurchaseOrder
+      - com.iorbit.po.SearchPurchaseOrders
+      - com.iorbit.po.PurchaseOrderList
+      - com.iorbit.po.EditPurchaseOrder
+      
