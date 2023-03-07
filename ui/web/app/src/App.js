@@ -15,6 +15,7 @@ import Customer from "./Components/Customer/Customer";
 import Login from "./Components/login/Login";
 import FarmerEdit from "./Components/Farmer/FarmerEdit";
 import FarmerOnboard from "./Components/Farmer/FarmerOnboard";
+import Protected from "./Components/Protected";
 
 const App = () => {
   const fields = "/Service/farmer.json";

@@ -16,7 +16,7 @@ import { validation } from "./Validattion";
 
 import BasicTable from '../BasicTable'
 
-import { getApi, postMethod} from "../../webservice";
+import { getApi} from "../../webservice";
 
 import EnhancedTable from "./DataTable";
 //import { Navigate, Outlet, useNavigate } from "react-router-dom";
@@ -104,17 +104,6 @@ export class FormView extends Component {
 
     console.log("inpuuu",this.state.inputDetails)
 
-<<<<<<< HEAD
-    
-    this.child.current.postMethod(
-        url,
-        search ? this.state.searchInputDetails.farmer : this.state.inputDetails
-      )
-      .then((resp) => {
-        // setFormDetails(resp.data)
-        console.log(resp, "respo from postMethod");
-      });
-=======
     this.props
       .postApi(
         
@@ -124,7 +113,6 @@ export class FormView extends Component {
       //   // setFormDetails(resp.data)
       //   console.log(resp, "respo from postapi");
       // });
->>>>>>> e57257986fbf7b7931a6c082b81e29bd0e2b3028
   }
   onChangeSearch(e) {
     console.log(e);

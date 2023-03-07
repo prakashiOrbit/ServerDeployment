@@ -11,40 +11,6 @@ export default class TextFieldClass extends Component {
             <>
                 {
 
-<<<<<<< HEAD
-    return (
-      <>
-        {labelInside ? (
-          <TextField
-            error={
-              this.props.formErrors[this.props.formDetails.id]
-                ? this.props.formErrors[this.props.formDetails.id]
-                : false
-            }
-            id="outlined-read-only-input"
-            required={this.props.formDetails.validate ? true : false}
-            label={this.props.formDetails.id}
-            variant="outlined"
-            fullWidth
-            onChange={this.props.onChange}
-            name={this.props.formDetails.id}
-            defaultValue={this.props.value}
-            value={this.props.inputDetails[this.props.formDetails.id]}
-            InputProps={{
-              readOnly:
-                this.props.editFlag == "edit"
-                  ? this.props.formDetails.disabled
-                  : this.props.editFlag == "view"
-                  ? true
-                  : false,
-            }}
-            // multiline={isMultiline}
-            // rows={rows * 1}
-          />
-        ) : (
-          <div>
-            <label>{this.props.formDetails.id}</label>
-=======
                     <TextField
                        error={this.props.formErrors[this.props.formDetails.id] ? this.props.formErrors[this.props.formDetails.id] : false}
                         //helperText="Validation error"
@@ -65,7 +31,6 @@ export default class TextFieldClass extends Component {
                         }}
 
                     />
->>>>>>> e57257986fbf7b7931a6c082b81e29bd0e2b3028
 
                 }
             </>
