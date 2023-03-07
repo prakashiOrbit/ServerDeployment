@@ -1,0 +1,11 @@
+name: PurchaseOrderTemplate
+type: PrimeData
+flow: PurchaseOrderTemplateFlow
+attributes:
+  - attribute: poId
+    type: key
+states:
+  - name: active
+    startState: true
+  - name: inactive
+    endState: true
