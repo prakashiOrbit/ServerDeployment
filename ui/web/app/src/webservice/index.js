@@ -98,7 +98,7 @@ export function postMethod(payload, protocol, domain, tenant, object, endpoint) 
   //call authenticate function
   var fun = authenticate('http://', 'localhost:9082/', 'apptest/', 'Security', 'Authenticate')
   //localstorage getitem - store the session in a variable
-  var id = localStorage.getItem('session', fun)
+  var id = localStorage.getItem('sessionId', fun)
   //Pass the variable in the header
   console.log(id,"-------------------------->session-id");
   const req = {
@@ -129,6 +129,6 @@ function authenticate(protocol, domain, tenant, object, endpoint) {
       .then((resp) => {
         var id = (resp.responses[0].sessionId);
         console.log(id);
-        localStorage.setItem('session', id);
+        localStorage.setItem('sessionId', id);
       }))
 };

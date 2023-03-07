@@ -3,19 +3,13 @@
     "name": "Farmer Header",
     "formelements": {
       "title": "GENERAL DETAILS ",
-<<<<<<< HEAD
-      "url":"",
-=======
-      "section": 2,
->>>>>>> e57257986fbf7b7931a6c082b81e29bd0e2b3028
       "generalDetails": [
         {
           "id": "fId",
           "label": "fId",
           "control": "textbox",
           "validation": "alphanumeric",
-          "disabled": true,
-          "hidden":true
+          "disabled": true
         },
         {
           "id": "name",
@@ -43,7 +37,6 @@
         }
       ],
       "title2": "ADDRESS DETAILS",
-   
       "addressDetails": [
         {
           "id": "Street Address",
@@ -99,20 +92,13 @@
         "label": "Create",
         "control": "button",
         "validationjs": "validatedata",
-        "submitURL": "CreateFarmer"
+        "submitURL": "/farmerList"
       },
       {
         "id": "cancel",
         "label": "Cancel",
         "control": "button",
-        "redirect": "/polist"
-      }
-    ],
-    "edittable": [
-      {
-        "id": "abx",
-        "label": "Farmer Data",
-        "dataurl": "/Service/tabledata.json"
+        "redirect": "/farmerList"
       }
     ]
   }

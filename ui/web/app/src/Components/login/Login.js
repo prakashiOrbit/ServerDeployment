@@ -149,7 +149,7 @@ class Login extends Component {
         </DialogActions>
       </Dialog>
 
-      <SmartConnect server={config.host} port={config.port} tenant={config.tenant} flow="farmer" flowEvent="farmerEvent" ref={this.child} />
+      <SmartConnect server={config.host} port={config.port} tenant={config.tenant} flow="farmer" flowEvent="farmerEvent" ref={this.child} /> 
       </Container>
     );
   }

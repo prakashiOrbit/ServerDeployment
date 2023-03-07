@@ -5,6 +5,7 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 //import FarmerComponent from "./FarmerComponent";
 import Container from "@mui/material/Container";
+import { postMethod } from "../smart-connect/smart-connect";
 
 import { withRouter } from "./WithRouter";
 import SelectClass from "./SelectClass";
@@ -15,7 +16,7 @@ import { validation } from "./Validattion";
 
 import BasicTable from '../BasicTable'
 
-import { getApi, postMethod} from "../../webservice";
+import { getApi} from "../../webservice";
 
 import EnhancedTable from "./DataTable";
 //import { Navigate, Outlet, useNavigate } from "react-router-dom";
@@ -31,10 +32,11 @@ export class FormView extends Component {
     this.setSelected = this.setSelected.bind(this);
     this.setView = this.setView.bind(this);
     this.handleEditButton = this.handleEditButton.bind(this);
+    this.child = React.createRef();
 
     //console.log(,this.props.aev"aev propsss");
     const { aev } = this.props.aev;
-
+    
     this.state = {
       inputDetails: {},
       searchInputDetails: {},
@@ -346,6 +348,7 @@ export class FormView extends Component {
                 </Grid>
               </div>
             ) : (
+              //function for adding 
               <Grid container spacing={8}>
                 {Object.keys(this.state.formDetails).length ? (
                   <Grid>

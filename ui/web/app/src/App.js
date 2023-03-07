@@ -13,6 +13,8 @@ import Collection_Center from "./Components/Collection_Center/Collection_Center"
 import Warehouse from "./Components/Warehouse/Warehouse";
 import Customer from "./Components/Customer/Customer";
 import Login from "./Components/login/Login";
+import FarmerEdit from "./Components/Farmer/FarmerEdit";
+import FarmerOnboard from "./Components/Farmer/FarmerOnboard";
 import Protected from "./Components/Protected";
 
 const App = () => {
@@ -66,7 +68,16 @@ const App = () => {
             path="/farmer"
             element={
               <Protected isSignedIn={isSignedIn}>
-                <Farmer />
+                <FarmerOnboard />
+              </Protected>
+            }
+          />
+
+<Route
+            path="/farmer-edit"
+            element={
+              <Protected isSignedIn={isSignedIn}>
+                <FarmerEdit />
               </Protected>
             }
           />
@@ -74,27 +85,17 @@ const App = () => {
           <Route
             path="/farmerList"
             element={
-              <FormView
+              <Protected isSignedIn={isSignedIn}>
+              {/* <FormView
                 aev={"list"}
                 fields={fields}
                 list={list}
                 search={search}
                 getApi={getApi}
                 postApi={postApi}
-              />
-            }
-          />
-          <Route
-            path="/create"
-            element={
-              <FormView
-                aev={"add"}
-                fields={fields}
-                list={list}
-                search={search}
-                getApi={getApi}
-                postApi={postApi}
-              />
+              /> */}
+              <FarmerList/>
+              </Protected>
             }
           />
           <Route
