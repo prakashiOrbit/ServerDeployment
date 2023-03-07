@@ -1,24 +1,24 @@
-package com.dml.application.App;
+package com.dml.application.Models;
 
 
 public class ResponsebodyClass{
 
-    public FlowAdmin flowAdmin;
+    public FlowAdmin FlowAdmin;
     public String phoneNumber;
     public String type;
 
-    public ResponsebodyClass( String phoneNumber,String type,FlowAdmin flowAdmin ) {
-           this.flowAdmin=flowAdmin;
+    public ResponsebodyClass( String phoneNumber,String type,FlowAdmin FlowAdmin ) {
+           this.FlowAdmin=FlowAdmin;
             this.phoneNumber=phoneNumber;
             this.type=type;
     }
 
     public FlowAdmin getFlowAdmin() {
-        return flowAdmin;
+        return FlowAdmin;
     }
 
-    public void setFlowAdmin(FlowAdmin flowAdmin) {
-        this.flowAdmin = flowAdmin;
+    public void setFlowAdmin(FlowAdmin FlowAdmin) {
+        this.FlowAdmin = FlowAdmin;
     }
 
     public String getPhoneNumber() {

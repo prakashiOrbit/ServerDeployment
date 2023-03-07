@@ -1,21 +1,20 @@
 {
   "division": {
-    "name": "PO Header",
+    "name": "Product Header",
     "formelements": {
+      "title": "CREATE NEW PRODUCT",
       "generalDetails": [
         {
           "label": "sku",
           "id": "SKU",
           "control": "textbox",
-          "validation": "alphanumeric",
-          "disabled": true
+          "validation": "alphanumeric"
         },
         {
           "label": "item",
           "id": "Item Name",
           "control": "textbox",
-          "validation": "alphanumeric",
-          "disabled": true
+          "validation": "alphanumeric"
         },
         {
           "label": "Item Category",

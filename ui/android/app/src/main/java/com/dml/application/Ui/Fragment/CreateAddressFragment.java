@@ -14,6 +14,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -24,8 +25,10 @@ import android.widget.TextView;
 import com.dml.application.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.places.Place;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.libraries.places.api.Places;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -35,9 +38,9 @@ import java.util.Locale;
 
 public class CreateAddressFragment extends Fragment {
     private static final int GPS_CODE = 9001;
-    TextView Recipemt_Nmae,Phone_Number,Houseno, Street, Landmark;
+    TextView Recipemt_Nmae, Phone_Number, Houseno, Street, Landmark;
     MaterialButton SaveADDRESS;
-
+    RecyclerView Street_View, Landmark_View;
     TextView AddName;
 
     private Geocoder mGeocoder;
@@ -58,17 +61,17 @@ public class CreateAddressFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_create_address, container, false);
+        View view = inflater.inflate(R.layout.fragment_create_address, container, false);
 
-        Recipemt_Nmae =view.findViewById(R.id.Recipent_Textname);
+        Recipemt_Nmae = view.findViewById(R.id.Recipent_Textname);
 
-        Houseno =view.findViewById(R.id.house_Textname);
-        Landmark =view. findViewById(R.id.Landmark_Textname);
-        Street =view. findViewById(R.id.Street_textname);
-        SaveADDRESS =view. findViewById(R.id.save_address);
-        AddName=view.findViewById(R.id.Select_addresstype);
-
-
+        Houseno = view.findViewById(R.id.house_Textname);
+        Landmark = view.findViewById(R.id.Landmark_Textname);
+        Street = view.findViewById(R.id.Street_textname);
+        SaveADDRESS = view.findViewById(R.id.save_address);
+        AddName = view.findViewById(R.id.Select_addresstype);
+        Street_View = view.findViewById(R.id.Street_recycler);
+        Landmark_View = view.findViewById(R.id.landmark_recycler);
 
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
@@ -84,20 +87,24 @@ public class CreateAddressFragment extends Fragment {
         SaveADDRESS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!validateFullName() | !validateHouseName()  | !validateLandMark() |!vlidateSterret() ) {
+                if (!validateFullName() | !validateHouseName() | !validateLandMark() | !vlidateSterret()) {
                     return;
 
 
                 }
 
-                PaymentFragment paymentFragment=new PaymentFragment();
-                FragmentManager fragmentManager=getFragmentManager();
-                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frame_layout,paymentFragment);
+                PaymentFragment paymentFragment = new PaymentFragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frame_layout, paymentFragment);
                 fragmentTransaction.commitNow();
 
             }
         });
+
+
+
+
 
         return view;
     }
@@ -180,6 +187,7 @@ public class CreateAddressFragment extends Fragment {
             return true;
         }
     }
+
     private boolean vlidateSterret() {
         String val = Street.getText().toString().trim();
         if (val.isEmpty()) {
@@ -191,6 +199,7 @@ public class CreateAddressFragment extends Fragment {
             return true;
         }
     }
+
     private boolean validateLandMark() {
         String val = Landmark.getText().toString().trim();
         if (val.isEmpty()) {
@@ -230,8 +239,6 @@ public class CreateAddressFragment extends Fragment {
 //                    ShowDialog();
 
 
-
-
                     return true;
                 }
                 return false;
@@ -243,7 +250,7 @@ public class CreateAddressFragment extends Fragment {
     }
 
 
-    }
+}
 
 
 

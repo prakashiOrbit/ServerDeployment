@@ -1,92 +1,96 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/popup_container"
-    android:layout_width="match_parent"
-    android:background="@drawable/slide_background"
-    android:layout_height="wrap_content">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:background="@drawable/alertdialog_background"
+    android:orientation="vertical"
+
+    >
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-
-        android:orientation="vertical"
-        android:padding="20dp"
         android:id="@+id/linearLayout7"
-        android:weightSum="1"
-        android:layout_centerHorizontal="true"
+        android:layout_width="fill_parent"
 
-        >
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="1"
+      >
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:orientation="vertical"
-
-            android:padding="5dp"
-            android:background="@drawable/slide_background">
+            android:padding="5dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:orientation="vertical"
+
                 android:padding="5dp">
 
                 <TextView
                     android:id="@+id/txt_popup_loginmessage"
-                    android:layout_width="match_parent"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
+                    android:layout_below="@id/product_qty"
+                    android:layout_marginTop="5dp"
+                    android:justificationMode="inter_word"
+                    android:padding="5dp"
                     android:text="We've added something to your cart! But before you can complete your order, please log in or create an account."
-                    android:padding="10dp"
-                    android:textAlignment="center"
-                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+
                     android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp"
+                  />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="5dp"
+                    android:layout_margin="20dp">
+
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1">
+
                         <com.google.android.material.button.MaterialButton
-                            android:id="@+id/yes"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Continue"
-                            android:textAllCaps="false"
-                            android:textColor="@color/Green4"
+                            android:id="@+id/Continue"
+                            android:layout_width="fill_parent"
+                            android:layout_height="40dp"
                             android:layout_marginEnd="5dp"
+                            android:background="@drawable/button_back"
                             android:backgroundTint="@color/white"
-                            />
+                            android:text="Continue"
+                            app:backgroundTint="@color/white"
+                            android:textAllCaps="false"
+                            android:textColor="@color/Green4" />
                     </LinearLayout>
+
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1">
+
                         <com.google.android.material.button.MaterialButton
-                            android:id="@+id/no"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Cancel"
-                            android:textAllCaps="false"
+                            android:id="@+id/cancel"
+                            android:layout_width="fill_parent"
+                            android:layout_height="40dp"
                             android:layout_marginStart="5dp"
-                            android:textColor="@color/Green4"
+                            android:background="@drawable/button_back"
                             android:backgroundTint="@color/white"
-                            />
+                            android:text="Cancel"
+                            app:backgroundTint="@color/white"
+                            android:textAllCaps="false"
+                            android:textColor="@color/Green4" />
                     </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
-
-
 
 
 </RelativeLayout>

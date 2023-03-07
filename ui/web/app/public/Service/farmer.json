@@ -3,7 +3,11 @@
     "name": "Farmer Header",
     "formelements": {
       "title": "GENERAL DETAILS ",
+<<<<<<< HEAD
       "url":"",
+=======
+      "section": 2,
+>>>>>>> e57257986fbf7b7931a6c082b81e29bd0e2b3028
       "generalDetails": [
         {
           "id": "fId",
@@ -102,6 +106,13 @@
         "label": "Cancel",
         "control": "button",
         "redirect": "/polist"
+      }
+    ],
+    "edittable": [
+      {
+        "id": "abx",
+        "label": "Farmer Data",
+        "dataurl": "/Service/tabledata.json"
       }
     ]
   }

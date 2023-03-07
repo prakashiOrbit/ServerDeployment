@@ -3,49 +3,48 @@
     "name": "PO Header",
     "formelements": {
       "title": "CREATE PO TEMPLATE",
+      "section": 1,
       "generalDetails": [
         {
-          "id": "POID",
+          "id": "poId",
           "label": "poid",
           "control": "textbox"
         },
 
         {
-          "id": "Date",
+          "id": "date",
           "label": "date",
           "control": "date"
         },
         {
           "id": "Ship Address",
-          "label": "address",
-          "control": "textbox",
-          "isMultiline": true,
-          "rows": "6",
-          "fields": "4",
+          "label": "Ship Address",          
           "addressFields": [
             {
-              "id": "Street",
-              "label": "street",
+              "id": "Ship Address",
+              "label": "Address",
               "control": "textbox",
+              "rows": 3,
+              "minRows": 15,
               "field1": "1",
               "validate": "alphanumeric"
-            },
+            },            
             {
-              "id": "City",
+              "id": "shipToCity",
               "label": "city",
               "control": "textbox",
               "field2": "2",
               "validate": "alphanumeric"
             },
             {
-              "id": "State",
+              "id": "shipToState",
               "label": "state",
               "control": "textbox",
               "field3": "3",
               "validate": "alphanumeric"
             },
             {
-              "id": "Pin Code",
+              "id": "shipToPinCode",
               "label": "pin",
               "control": "textbox",
               "field4": "4",
@@ -55,34 +54,33 @@
         },
         {
           "id": "Bill Address",
-          "label": "address",
-          "control": "textbox",
-          "isMultiline": true,
-          "rows": "6",
+          "label": "Bill Address",        
           "addressFields": [
             {
-              "id": "Street",
-              "label": "street",
+              "id": "Bill Address",
+              "label": "ToAddress",
               "control": "textbox",
+              "rows": 3,
+              "minRows": 15,
               "field1": "1",
               "validate": "alphanumeric"
-            },
+            }, 
             {
-              "id": "City",
+              "id": "billToCity",
               "label": "city",
               "control": "textbox",
               "field2": "2",
               "validate": "alphanumeric"
             },
             {
-              "id": "State",
+              "id": "billToState",
               "label": "state",
               "control": "textbox",
               "field3": "3",
               "validate": "alphanumeric"
             },
             {
-              "id": "Pin Code",
+              "id": "billToPinCode",
               "label": "pin",
               "control": "textbox",
               "field4": "4",
@@ -99,13 +97,20 @@
         "control": "button",
         "validationjs": "validatedata",
 
-        "submitURL": "CreatePo"
+        "submitURL": "CreatePurchaseOrderTemplate"
       },
       {
         "id": "cancel",
         "label": "Cancel",
         "control": "button",
         "redirect": "polist"
+      }
+    ],
+    "edittable": [
+      {
+        "id": "abx",
+        "label": "PO Template Data",
+        "dataurl": "/Service/poTableData.json"
       }
     ]
   }

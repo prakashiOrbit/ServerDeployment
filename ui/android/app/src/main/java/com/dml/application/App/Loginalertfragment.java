@@ -19,18 +19,16 @@ public class Loginalertfragment extends DialogFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View view=  inflater.inflate(R.layout.alertdialog,container,false);
+        View view=  inflater.inflate(R.layout.login_alert,container,false);
 
-        MaterialButton YES= view.findViewById(R.id.yes);
-        MaterialButton NO= view.findViewById(R.id.no);
+        MaterialButton YES= view.findViewById(R.id.Continue);
+        MaterialButton NO= view.findViewById(R.id.cancel);
         YES.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_MAIN);
-                intent.addCategory(Intent.CATEGORY_HOME);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.setFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+                Intent intent = new Intent(getActivity(),LoginActivity.class);
                 startActivity(intent);
+
                 getDialog().dismiss();
 
             }
@@ -40,6 +38,7 @@ public class Loginalertfragment extends DialogFragment {
             public void onClick(View view) {
                 getDialog().dismiss();
             }
+
         });
         return view;
 

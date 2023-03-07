@@ -1,0 +1,44 @@
+name: ProfileCreate
+type: Transition
+flow: ProfileFlow
+foreach: FlowAdmin|CreateProfile,Login|VerifyProfile,FlowAdmin|VerifyProfile,Profile|VerifyProfile
+actions:
+  - name:      createLogin
+    method:    createLogin
+    foreach:   FlowAdmin|CreateProfile
+    parms:     (event,srch.ProfileFlow.Profile.event.phoneNumber)
+    from:      active
+    to:        active
+  - name:      verifyLogin
+    method:    verifyLogin
+    foreach:   Login|VerifyProfile
+    from:      active
+    to:        active
+  - name:      addUser
+    method:    addUser
+    foreach:   FlowAdmin|VerifyProfile
+    parms:     (event,txn.Profile)
+    from:      active
+    to:        active
+callservices:
+   -  name:      searchUser
+      service:   AllFlows.SearchManager.searchService
+      parms:     (ProfileFlow,Profile,event.search,event.phoneNumber)
+      runAfter:  createLogin
+      foreach:   FlowAdmin|VerifyProfile
+      from:      active
+      to:        active
+   -  name:      createProfileUser
+      service:   Security.ManageUsers.createUserService
+      parms:     (event.phoneNumber, event.password, event.role)
+      runAfter:  addUser
+      foreach:   FlowAdmin|VerifyProfile
+      from:      active
+      to:        active
+   -  name:      addProfileIdentity
+      service:   Security.ManageUsers.addIdentityService
+      parms:     (txn.SmartUser, event.phoneNumber, event.phoneNumber, event.password, event.identityType)
+      runAfter:  createProfileUser
+      foreach:   FlowAdmin|VerifyProfile
+      from:      active
+      to:        active

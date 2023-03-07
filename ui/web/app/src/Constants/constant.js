@@ -77,8 +77,11 @@ export const config = {
   host: "localhost",
   port: "9082",
   tenant: "apptest",
+<<<<<<< HEAD
   editFarmer:"/FarmerFlow/EditFarmer",
   addfarmer:"/FarmerFlow/CreateFarmer",
   getfarmer:"/FarmerFlow/SearchFarmers",
   getcc:"/MasterDataFlow/SearchCollectionCenter"
+=======
+>>>>>>> e57257986fbf7b7931a6c082b81e29bd0e2b3028
 };
