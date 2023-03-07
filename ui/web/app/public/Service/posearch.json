@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
     "division": {
         "name": "PO Header",
         "formelements": [
@@ -28,32 +27,4 @@
             }
         ]
     }
-=======
-  "division": {
-    "name": "PO Header",
-    "formelements": [
-      {
-        "id": "POID",
-        "label": "PO ID",
-        "control": "textbox",
-        "validation": "alphanumeric",
-        "disabled": true
-      }
-    ],
-    "buttons": [
-      {
-        "id": "search",
-        "label": "Search",
-        "control": "button",
-        "submitURL": "/SearchPO"
-      },
-      {
-        "id": "create",
-        "label": "Create new PO Template",
-        "control": "button",
-        "redirect": "/po"
-      }
-    ]
-  }
->>>>>>> ad36d144be051393a783b52b315adf7337e0f98b
 }

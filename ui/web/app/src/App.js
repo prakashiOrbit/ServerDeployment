@@ -4,7 +4,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import FormView from "./Components/CreateForm";
 import { useEffect } from "react";
 import { getApi, postApi } from "./webservice";
-import Farmer from "./Components/Farmer/Farmer";
+//import Farmer from "./Components/Farmer/Farmer.jsx";
 import Po from "./Components/Po/po";
 import FarmerList from "./Components/Farmer/FarmerList";
 import Product from "./Components/Product/Product";
