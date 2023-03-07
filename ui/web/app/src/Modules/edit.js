@@ -4,10 +4,8 @@ import ButtonClass from "../Components/CreateForm/ButtonClass";
 import TextFieldClass from "../Components/CreateForm/TextFieldClass";
 import CustomTextField from "./Textfield";
 
-const EditComponent = ({formDetails,rowdata,onSubmit}) =>{
-console.log(formDetails);
-console.log(rowdata);
-const [formdata,setformdata]= useState(rowdata);
+const EditComponent = ({formDetails,rowdata,onSubmit,type}) =>{
+const [formdata,setformdata]= useState(rowdata?rowdata:{});
 
 
 const onClick = (e) =>{
@@ -61,10 +59,10 @@ console.log(formdata);
                              
                                {  item.control === "textbox" ? (
                                 <CustomTextField
-                                 value={rowdata[item.label]}
+                                 value={rowdata?.[item.label]}
                                   onChange={onChange}
-                                  label={item.id}
-                                  disabled={item?.disabled}
+                                  label={item.label}
+                                  //disabled={item?.disabled}
                                 
                                  // defaultValue={rowdata[item.label]}
                                   
@@ -107,9 +105,9 @@ console.log(formdata);
                               <Grid key={index} item xs={10} sm={10}>
                                 {item.control === "textbox" ? (
                                   <CustomTextField
-                                  value={rowdata[item.label]}
+                                  value={rowdata?.[item.label]}
                                    onChange={onChange}
-                                   label={item.id}
+                                   label={item.label}
                                  
                                   // defaultValue={rowdata[item.label]}
                                    
@@ -161,9 +159,9 @@ console.log(formdata);
                             <Grid key={index} item xs={4} sm={8}>
                              {item.control === "textbox" ? (
                                 <CustomTextField
-                                value={rowdata[item.label]}
+                                value={rowdata?.[item.label]}
                                  onChange={onChange}
-                                 label={item.id}
+                                 label={item.label}
                                
                                 // defaultValue={rowdata[item.label]}
                                  
@@ -183,7 +181,7 @@ console.log(formdata);
 
                
                         <Grid  item xs={12} sm={3}>
-                        <Button style={{marginRight:"10px"}} variant="contained" name="submit" onClick={onClick}>Edit</Button>
+                        <Button style={{marginRight:"10px"}} variant="contained" name="submit" onClick={onClick}>{type=="edit"?"Save":"Add"}</Button>
                         <Button variant="contained" onClick={onClick} name="cancel">Cancel</Button>
                 
                         </Grid>

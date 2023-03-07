@@ -1,6 +1,6 @@
 
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Datatable from "../../Modules/Datatable/datatable";
 import Dialog from '@mui/material/Dialog';
@@ -17,8 +17,9 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import FRSelect from "../../Modules/select";
-const flow =  "FarmerFlow";
-const tenant = "apptest/";
+import postMethod from "../../Modules/service";
+import { config } from "../../Constants/constant";
+
 
 const FarmerList = () => {
 
@@ -82,12 +83,14 @@ const FarmerList = () => {
     const handleClose =() =>{
         setopen(false);
     }
+
+ 
     
         return (
             <div style={{margin:"10%"}}>
      
     
-<Datatable  url="http://localhost:9082/apptest/FarmerFlow/SearchFarmers" handleOptions={handleOptions} flowEvent="farmerEvent" flow="FarmerFlow"  header_data={header_data}/>
+<Datatable  url={config.getfarmer} handleOptions={handleOptions} flowEvent="farmerEvent" flow="FarmerFlow"  header_data={header_data}/>
 
 <Dialog
         open={open}

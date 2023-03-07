@@ -16,6 +16,7 @@ import Customer from "./Components/Customer/Customer";
 import Protected from "./Components/Protected";
 import Login from "./Components/login/Login";
 import FarmerEdit from "./Components/Farmer/FarmerEdit";
+import FarmerOnboard from "./Components/Farmer/FarmerOnboard";
 
 const App = () => {
   const fields = "/Service/farmer.json";
@@ -70,7 +71,7 @@ const App = () => {
             path="/farmer"
             element={
               <Protected isSignedIn={isSignedIn}>
-                <Farmer />
+                <FarmerOnboard />
               </Protected>
             }
           />

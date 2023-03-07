@@ -5,7 +5,7 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 //import FarmerComponent from "./FarmerComponent";
 import Container from "@mui/material/Container";
-import { postApi } from "../../webservice";
+import { postMethod } from "../smart-connect/smart-connect";
 
 import { withRouter } from "./WithRouter";
 import SelectClass from "./SelectClass";
@@ -28,10 +28,11 @@ export class FormView extends Component {
     this.setSelected = this.setSelected.bind(this);
     this.setView = this.setView.bind(this);
     this.handleEditButton = this.handleEditButton.bind(this);
+    this.child = React.createRef();
 
     //console.log(,this.props.aev"aev propsss");
     const { aev } = this.props.aev;
-
+    
     this.state = {
       inputDetails: {},
       searchInputDetails: {},
@@ -99,13 +100,13 @@ export class FormView extends Component {
     );
 
     
-      postApi(
+    this.child.current.postMethod(
         url,
         search ? this.state.searchInputDetails.farmer : this.state.inputDetails
       )
       .then((resp) => {
         // setFormDetails(resp.data)
-        console.log(resp, "respo from postapi");
+        console.log(resp, "respo from postMethod");
       });
   }
   onChangeSearch(e) {
@@ -339,6 +340,7 @@ export class FormView extends Component {
                 </Grid>
               </div>
             ) : (
+              //function for adding 
               <Grid container spacing={8}>
                 {Object.keys(this.state.formDetails).length ? (
                   <Grid>

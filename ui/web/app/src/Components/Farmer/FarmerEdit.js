@@ -3,6 +3,7 @@ import { useLocation, useNavigate, useParams, useRoutes } from 'react-router-dom
 import EditComponent from '../../Modules/edit';
 import postMethod from '../../Modules/service';
 import farmer from "./farmer.json";
+import { config } from '../../Constants/constant';
 
 const FarmerEdit =()=>{
     
@@ -16,14 +17,17 @@ console.log(data,text);
 
 if(text=="submit"){
 
-const url = "http://localhost:9082/apptest/FarmerFlow/EditFarmer";
-const payload = { "FlowAdmin": {
-    "___smart_action___": "lookup",
-    "___smart_value___": "FarmerFlow"
-  }};
-postMethod(url,payload)
+const sendpayload = {...data,"Farmer":{ "___smart_action___": "lookup",
+"___smart_value___": data.fId}}
+
+postMethod(config.editFarmer,sendpayload)
 .then((res)=>{
-  console.log(res);
+    console.log(res.data.responses[0].message);
+    if(res.data.responses[0].message == "Farmer details has been updated."){
+      
+        navigate("/farmerList")
+    }
+
 
 });
 
@@ -31,13 +35,17 @@ postMethod(url,payload)
 else {
     navigate("/farmerList")
 }
-// http://localhost:9082/apptest/FarmerFlow/EditFarmer
+
     }
     
+
+
+
+
     return(
         <>
 
-<EditComponent   rowdata={data}   formDetails={farmer} onSubmit={onSubmit} />
+<EditComponent   rowdata={data} type="edit" formDetails={farmer} onSubmit={onSubmit} />
         </>
     )
 };

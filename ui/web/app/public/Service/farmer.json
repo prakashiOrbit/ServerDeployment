@@ -10,7 +10,8 @@
           "label": "fId",
           "control": "textbox",
           "validation": "alphanumeric",
-          "disabled": true
+          "disabled": true,
+          "hidden":true
         },
         {
           "id": "name",

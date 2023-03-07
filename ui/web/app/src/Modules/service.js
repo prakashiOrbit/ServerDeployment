@@ -1,6 +1,7 @@
 import axios from "axios";
 const postMethod = async (url,payload) => {
     
+  
     var id = localStorage.getItem('sessionId');
     const req = {
         method: 'POST',
@@ -13,8 +14,8 @@ const postMethod = async (url,payload) => {
     const config = {
         headers:{ 'Content-Type': 'application/json',  'Session-Id': id }
       };
-    console.log(url, payload)
-    return await axios.post(url, payload,config)
+    console.log("http://localhost:9082/apptest"+url, payload)
+    return await axios.post("http://localhost:9082/apptest"+url, payload,config)
             .then((res) => {
           
                 return res;

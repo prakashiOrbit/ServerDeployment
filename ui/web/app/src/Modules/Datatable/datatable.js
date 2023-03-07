@@ -301,7 +301,7 @@ postMethod(url,payload)
   return (
     <>
         <MUIDataTable
-          title={"ACME Employee list"}
+       
           data={tableData}
           columns={columns}
           options={option}
