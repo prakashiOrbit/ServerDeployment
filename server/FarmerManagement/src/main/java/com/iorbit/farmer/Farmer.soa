@@ -1,4 +1,4 @@
-name: FarmerLinks
+name: Farmer
 type: PrimeData
 flow: FarmerFlow
 attributes:
@@ -7,5 +7,7 @@ attributes:
 states:
   - name: active
     startState: true
+  - name: approved
+    startState: false
   - name: inactive
     endState: true

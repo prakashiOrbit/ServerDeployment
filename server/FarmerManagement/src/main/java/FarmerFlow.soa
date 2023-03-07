@@ -2,19 +2,16 @@ name: FarmerFlow
 defaultEnable: basic
 primeData:
   - com.iorbit.farmer.Farmer
-  - com.iorbit.farmer.FarmerLinks
 events:
   - com.iorbit.farmer.CreateFarmer
   - com.iorbit.farmer.GetFarmer
   - com.iorbit.farmer.SearchFarmers
   - com.iorbit.farmer.EditFarmer
-  - com.iorbit.farmer.AssignCC
 responses:
   - com.iorbit.farmer.MessageResponse
   - com.iorbit.farmer.FarmerDetails
   - com.iorbit.farmer.FarmerList
   - com.iorbit.farmer.EditFarmer
-  - com.iorbit.farmer.AssignCC
 transitions:
   - com.iorbit.farmer.FarmerManager
 features:
@@ -29,6 +26,4 @@ features:
       - com.iorbit.farmer.SearchFarmers
       - com.iorbit.farmer.FarmerList
       - com.iorbit.farmer.EditFarmer
-      - com.iorbit.farmer.FarmerLinks
-      - com.iorbit.farmer.AssignCC
       
