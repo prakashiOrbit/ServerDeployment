@@ -6,7 +6,7 @@ actions:
   - name: createFarmer
     method: createFarmer
     foreach: FlowAdmin|CreateFarmer
-    parms: (event,srch.FarmerFlow.Farmer.event.name)
+    parms: (event,srch.FarmerFlow.Farmer.event.fId)
     from: active
     to: active
   - name: getFarmer
@@ -30,13 +30,6 @@ actions:
     foreach: Farmer|EditFarmer
     from: active
     to: active
-  - name: assignCCToFarmer
-    method: assignCCToFarmer
-    foreach: FarmerLinks|AssignCC
-    parms: (event,srch.MasterDataFlow.CollectionCenter.event.centerID)
-    from: active
-    to: active
-    
 callservices:
   - name: searchFarmers
     service: AllFlows.SearchManager.searchService

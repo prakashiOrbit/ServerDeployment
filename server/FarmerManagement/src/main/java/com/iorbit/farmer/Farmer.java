@@ -63,7 +63,7 @@ public class Farmer implements java.io.Serializable {
 	public void setAccountNo(String accountNo) { this.accountNo = accountNo; }
 	public String getIfscCode() { return ifscCode; }
 	public void setIfscCode(String ifscCode) { this.ifscCode = ifscCode; }
-	public String getCenterID() { return centerId; }
+	public String getCenterId() { return centerId; }
 	public void setCenterId(String centerId) { this.centerId = centerId; }
 	public String geteCenterName() { return centerName; }
 	public void setCenterName(String centerName) { this.centerName = centerName; }
@@ -71,6 +71,6 @@ public class Farmer implements java.io.Serializable {
 	
 	public void setSearchValues() {
 		SearchableValue = fId + "|" + name + "|" + phoneNo + "|" + streetAddress + "|" + city + "|" + state + "|"
-				+ pinCode + "|" + aadharNo + "|" + panNo + "|" + payeeName + "|" + accountNo + "|" + ifscCode;
+				+ pinCode + "|" + aadharNo + "|" + panNo + "|" + payeeName + "|" + accountNo + "|" + ifscCode +"|" + centerId +"|" + centerName;
 	}
 }

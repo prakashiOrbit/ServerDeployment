@@ -47,15 +47,13 @@ public class FarmerManager {
 			return;
 		}
 		if (exist != null) {
-			new MessageResponse("Farmer with the name " + exist.getName() + " Already exists.");
+			new MessageResponse("Farmer with the FID " + exist.getFId() + " is Already exists.");
 			return;
 		}
 		Farmer f = new Farmer(fc.getFId(), fc.getName(), fc.getPhoneNo(), fc.getStreetAddress(), fc.getCity(),
 				fc.getState(), fc.getPinCode(), fc.getAadharNo(), fc.getPanNo(), fc.getPayeeName(), fc.getAccountNo(),
-				fc.getIfscCode());
+				fc.getIfscCode(),fc.getCenterId(),fc.geteCenterName());
 		f.setSearchValues();
-
-		FarmerLinks farmerl= new FarmerLinks(fc.getFId());
 
 		new MessageResponse("Farmer is successfully onboarded.");
 
@@ -126,19 +124,9 @@ public class FarmerManager {
 		farmer.setPayeeName(edit.getPayeeName());
 		farmer.setAccountNo(edit.getAccountNo());
 		farmer.setIfscCode(edit.getIfscCode());
+		farmer.setCenterId(edit.getCenterId());
+		farmer.setCenterName(edit.geteCenterName());
 		farmer.setSearchValues();
 		new MessageResponse("Farmer details has been updated.");
 	}
-
-	public void assignCCToFarmer(AssignCC acc, FarmerLinks fl, CollectionCenter obj) {
-		if(obj!=null) {
-			fl.setCenterID(acc.getCenterID());
-			fl.setCenterName(acc.getCenterName());
-			new MessageResponse("Collection Center details are Added");
-		}
-		else
-			new MessageResponse("Collection Center object is Null");
-	}
-	
-	public void 
 }
