@@ -80,4 +80,5 @@ export const config = {
   editFarmer:"/FarmerFlow/EditFarmer",
   addfarmer:"/FarmerFlow/CreateFarmer",
   getfarmer:"/FarmerFlow/SearchFarmers",
+  getcc:"/MasterDataFlow/SearchCollectionCenter"
 };
