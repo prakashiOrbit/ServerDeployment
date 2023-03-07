@@ -1,0 +1,41 @@
+name: CollectionCenterCreate
+type: Transition
+flow: MasterDataFlow
+foreach: FlowAdmin|CreateCollectionCenter,CollectionCenter|GetCollectionCenter,FlowAdmin|SearchCollectionCenter,CollectionCenter|EditCollectionCenter
+actions:
+  - name: createCollectionCenter
+    method: createCollectionCenter
+    foreach: FlowAdmin|CreateCollectionCenter
+    parms: (event,srch.MasterDataFlow.CollectionCenter.event.centerId)
+    from: active
+    to: active
+  - name: getCollectionCenter
+    method: getCollectionCenter
+    foreach: CollectionCenter|GetCollectionCenter
+    from: active,approved
+    to: active
+  - name: setupCollectionCenterSearch
+    method: setupCollectionCenterSearch
+    foreach: FlowAdmin|SearchCollectionCenter
+    from: active
+    to: active
+  - name: getCollectionCenters
+    method: getCollectionCenters
+    runAfter: searchCollectionCenter
+    foreach: FlowAdmin|SearchCollectionCenter
+    from: active
+    to: active
+  - name: editCollectionCenter
+    method: editCollectionCenter
+    foreach: CollectionCenter|EditCollectionCenter
+    from: active
+    to: active
+callservices:
+  - name: searchCollectionCenter
+    service: AllFlows.SearchManager.searchService
+    parms: (MasterDataFlow,CollectionCenter,event.search,event.collectionCenter)
+    runAfter: setupCollectionCenterSearch
+    foreach: FlowAdmin|SearchCollectionCenter
+    from: active
+    to: active
+ 

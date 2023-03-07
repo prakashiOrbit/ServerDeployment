@@ -1,0 +1,13 @@
+name:   CollectionCenter
+type:   PrimeData
+flow:   MasterDataFlow
+attributes:
+    - attribute:    centerId
+      type:         key
+states:
+    - name:         active
+      startState:   true
+    - name: approved
+      startState: false
+    - name:         inactive
+      endState:     true
