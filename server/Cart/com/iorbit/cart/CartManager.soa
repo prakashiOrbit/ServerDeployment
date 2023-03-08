@@ -1,0 +1,41 @@
+name: CartCreate
+type: Transition
+flow: CartFlow
+foreach: FlowAdmin|CreateCart,Cart|GetCart,FlowAdmin|SearchCart, Item|EditCart
+actions:
+  - name: createCart
+    method: createCart
+    foreach: FlowAdmin|CreateCart
+    parms: (event,srch.CartFlow.Cart.event.itemId)
+    from: active
+    to: active
+  - name: getCart
+    method: getCart
+    foreach: Cart|GetCart
+    from: active,approved
+    to: active
+  - name: setupCartSearch
+    method: setupCartSearch
+    foreach: FlowAdmin|SearchCart
+    from: active
+    to: active
+  - name: getCarts
+    method: getCarts
+    runAfter: searchCart
+    foreach: FlowAdmin|SearchCart
+    from: active
+    to: active
+  - name: editCart
+    method: editCart
+    foreach: Item|EditCart
+    from: active
+   
+callservices:
+  - name: searchCart
+    service: AllFlows.SearchManager.searchService
+    parms: (CartFlow,Cart,event.search,event.cart)
+    runAfter: setupCartSearch
+    foreach: FlowAdmin|SearchCart
+    from: active
+    to: active
+    
