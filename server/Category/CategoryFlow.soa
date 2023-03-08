@@ -1,0 +1,35 @@
+name: CategoryFlow
+defaultEnable: all
+primeData:
+  - com.iorbit.category.Category
+events:
+  
+  - com.iorbit.category.GetCategory
+  - com.iorbit.category.SearchCategory
+  - com.iorbit.category.CreateCategory
+  - com.iorbit.category.EditCategory
+  
+ 
+responses:
+  - com.iorbit.category.MessageResponse
+  - com.iorbit.category.CategoryDetails
+  - com.iorbit.category.CategoryList
+  - com.iorbit.category.EditCategory
+ 
+ 
+transitions:
+  - com.iorbit.category.CategoryManager
+features:
+  - name: all
+    artefacts:
+      - com.iorbit.category.Category
+      - com.iorbit.category.CreateCategory
+      - com.iorbit.category.CategoryManager
+      - com.iorbit.category.MessageResponse
+      - com.iorbit.category.CategoryDetails
+      - com.iorbit.category.GetCategory
+      - com.iorbit.category.SearchCategory
+      - com.iorbit.category.CategoryList
+      - com.iorbit.category.EditCategory
+    
+      
