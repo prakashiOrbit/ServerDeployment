@@ -1,12 +1,6 @@
 export const header_data = [
 
-    {
-        "label": "flabel",
-        "name": "flabel",
-        "control": "textbox",
-        "vallabelation": "alphanumeric",
-        "disabled": true
-    },
+  
     {
         "label": "name",
         "name": "name",
@@ -23,20 +17,32 @@ export const header_data = [
         "label": "Aadhar No",
         "name": "aadharNo",
         "control": "textbox",
-        "vallabelate": "alphanumeric"
+        "vallabelate": "alphanumeric",
+        options:{
+            display:false,
+         
+          }
     },
     {
         "name": "panNo",
         "label": "pan",
         "control": "textbox",
-        "vallabelate": "alphanumeric"
+        "vallabelate": "alphanumeric",
+        options:{
+            display:false,
+         
+          }
     },
        
           {
         "label": "Street Address",
         "name": "streetAddress",
         "control": "textbox",
-        "vallabelate": "alphanumeric"
+        "vallabelate": "alphanumeric",
+        options:{
+            display:false,
+         
+          }
     },
     {
         "label": "City",
@@ -54,27 +60,31 @@ export const header_data = [
         "label": "Pin Code",
         "name": "pinCode",
         "control": "textbox",
-        "vallabelate": "number"
+        "vallabelate": "number",
+        options:{
+            display:false,
+         
+          }
     },
     
-         { 
-        "label": "Payee Name",
-        "name": "payeeName",
-        "control": "textbox",
-        "vallabelate": "alphanumeric"
-    },
-    {
-        "label": "Account Number",
-        "name": "accountNo",
-        "control": "textbox",
-        "vallabelate": "number"
-    },
-    {
-        "label": "IFSC  Code",
-        "name": "ifscCode",
-        "control": "textbox",
-        "vallabelate": "number"
-    },
+    //      { 
+    //     "label": "Payee Name",
+    //     "name": "payeeName",
+    //     "control": "textbox",
+    //     "vallabelate": "alphanumeric"
+    // },
+    // {
+    //     "label": "Account Number",
+    //     "name": "accountNo",
+    //     "control": "textbox",
+    //     "vallabelate": "number"
+    // },
+    // {
+    //     "label": "IFSC  Code",
+    //     "name": "ifscCode",
+    //     "control": "textbox",
+    //     "vallabelate": "number"
+    // },
    
 ];
 
