@@ -1,0 +1,13 @@
+name: Item
+type: PrimeData
+flow: ItemFlow
+attributes:
+  - attribute: skuId
+    type: key
+states:
+  - name: active
+    startState: true
+  - name: approved
+    startState: false
+  - name: inactive
+    endState: true

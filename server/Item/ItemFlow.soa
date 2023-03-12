@@ -1,0 +1,33 @@
+name: ItemFlow
+defaultEnable: all
+primeData:
+  - com.iorbit.item.Item
+ 
+events:
+  
+  - com.iorbit.item.GetItem
+  - com.iorbit.item.SearchItem
+  - com.iorbit.item.CreateItem
+  - com.iorbit.item.EditItem
+responses:
+  - com.iorbit.item.MessageResponse
+  - com.iorbit.item.ItemDetails
+  - com.iorbit.item.ItemList
+  - com.iorbit.item.EditItem
+  
+ 
+transitions:
+  - com.iorbit.item.ItemManager
+features:
+  - name: all
+    artefacts:
+      - com.iorbit.item.Item
+      - com.iorbit.item.ItemManager
+      - com.iorbit.item.MessageResponse
+      - com.iorbit.item.ItemDetails
+      - com.iorbit.item.SearchItem
+      - com.iorbit.item.ItemList
+      - com.iorbit.item.GetItem
+      - com.iorbit.item.EditItem
+      - com.iorbit.item.CreateItem
+     
