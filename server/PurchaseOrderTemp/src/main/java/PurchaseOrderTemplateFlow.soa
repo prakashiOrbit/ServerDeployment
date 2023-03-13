@@ -1,0 +1,29 @@
+name: PurchaseOrderTemplateFlow
+defaultEnable: basic
+primeData:
+  - com.iorbit.po.PurchaseOrderTemplate
+events:
+  - com.iorbit.po.CreatePurchaseOrderTemplate
+  - com.iorbit.po.GetPurchaseOrderTemplate
+  - com.iorbit.po.SearchPurchaseOrdersTemplate
+  - com.iorbit.po.EditPurchaseOrderTemplate
+responses:
+  - com.iorbit.po.MessageResponse
+  - com.iorbit.po.PurchaseOrderTemplateDetails
+  - com.iorbit.po.PurchaseOrderTemplateList
+  - com.iorbit.po.EditPurchaseOrderTemplate
+transitions:
+  - com.iorbit.po.PurchaseOrderTemplateManager
+features:
+  - name: basic
+    artefacts:
+      - com.iorbit.po.PurchaseOrderTemplate
+      - com.iorbit.po.CreatePurchaseOrderTemplate
+      - com.iorbit.po.MessageResponse
+      - com.iorbit.po.PurchaseOrderTemplateManager
+      - com.iorbit.po.PurchaseOrderTemplateDetails
+      - com.iorbit.po.GetPurchaseOrderTemplate
+      - com.iorbit.po.SearchPurchaseOrdersTemplate
+      - com.iorbit.po.PurchaseOrderTemplateList
+      - com.iorbit.po.EditPurchaseOrderTemplate
+      

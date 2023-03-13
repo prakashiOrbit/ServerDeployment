@@ -1,0 +1,13 @@
+name: Category
+type: PrimeData
+flow: CategoryFlow
+attributes:
+  - attribute: categoryId
+    type: key
+states:
+  - name: active
+    startState: true
+  - name: approved
+    startState: false
+  - name: inactive
+    endState: true

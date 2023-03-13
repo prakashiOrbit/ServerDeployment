@@ -1,0 +1,40 @@
+name: CreatePurchaseOrderTemplate
+type: Transition
+flow: PurchaseOrderTemplateFlow
+foreach: FlowAdmin|CreatePurchaseOrderTemplate,PurchaseOrderTemplate|GetPurchaseOrderTemplate,FlowAdmin|SearchPurchaseOrdersTemplate,PurchaseOrderTemplate|EditPurchaseOrderTemplate
+actions:
+  - name: createPo
+    method: createPo
+    foreach: FlowAdmin|CreatePurchaseOrderTemplate
+    parms: (event,srch.PurchaseOrderTemplateFlow.PurchaseOrderTemplate.event.poId)
+    from: active
+    to: active
+  - name: getPo
+    method: getPo
+    foreach: PurchaseOrderTemplate|GetPurchaseOrderTemplate
+    from: active, approved
+    to: active
+  - name: setupPosSearch
+    method: setupPosSearch
+    foreach: FlowAdmin|SearchPurchaseOrdersTemplate
+    from: active
+    to: active
+  - name: getPos
+    method: getPos
+    runAfter: searchPos
+    foreach: FlowAdmin|SearchPurchaseOrdersTemplate
+    from: active
+    to: active
+  - name: editPo
+    method: editPo
+    foreach: PurchaseOrderTemplate|EditPurchaseOrderTemplate
+    from: active
+    to: active
+callservices:
+  - name: searchPos
+    service: AllFlows.SearchManager.searchService
+    parms: (PurchaseOrderTemplateFlow,PurchaseOrderTemplate,event.search,event.po)
+    runAfter: setupPosSearch
+    foreach: FlowAdmin|SearchPurchaseOrdersTemplate
+    from: active
+    to: active

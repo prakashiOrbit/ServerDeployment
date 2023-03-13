@@ -1,0 +1,43 @@
+name: CategoryCreate
+type: Transition
+flow: CategoryFlow
+foreach: FlowAdmin|CreateCategory,Category|GetCategory,FlowAdmin|SearchCategory,Category|EditCategory
+actions:
+  
+  - name: createCategory
+    method: createCategory
+    foreach: FlowAdmin|CreateCategory
+    parms: (event,srch.CategoryFlow.Category.event.categoryId)
+    from: active
+    to: active
+  - name: getCategory
+    method: getCategory
+    foreach: Category|GetCategory
+    from: active,approved
+    to: active
+  - name: setupCategorySearch
+    method: setupCategorySearch
+    foreach: FlowAdmin|SearchCategory
+    from: active
+    to: active
+  - name: getCategories
+    method: getCategories
+    runAfter: searchCategory
+    foreach: FlowAdmin|SearchCategory
+    from: active
+    to: active
+  - name: editCategory
+    method: editCategory
+    foreach: Category|EditCategory
+    from: active
+    to: active
+   
+callservices:
+  - name: searchCategory
+    service: AllFlows.SearchManager.searchService
+    parms: (CategoryFlow,Category,event.search,event.category)
+    runAfter: setupCategorySearch
+    foreach: FlowAdmin|SearchCategory
+    from: active
+    to: active
+    
