@@ -1,5 +1,5 @@
 import * as React from "react";
-import { styled, useTheme } from "@mui/material/styles";
+import { styled} from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -12,24 +12,16 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import ListItem from "@mui/material/ListItem";
+import f2rrr from "../f2rrr.png";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { Navigate, Outlet, useNavigate } from "react-router-dom";
-import ListAltRoundedIcon from '@mui/icons-material/ListAltRounded';
-import PlaylistAddRoundedIcon from '@mui/icons-material/PlaylistAddRounded';
-// import Logo from '../images/logo.png'
-import EventBusyRoundedIcon from '@mui/icons-material/EventBusyRounded';
-import PlaylistAddCheckRoundedIcon from '@mui/icons-material/PlaylistAddCheckRounded';
-// import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from "@mui/icons-material/Mail";
-import ArticleIcon from "@mui/icons-material/Article";
-import { ExpandLess, ExpandMore, Paragliding } from "@mui/icons-material";
+import { Outlet, useNavigate } from "react-router-dom";
+import { ExpandLess, ExpandMore} from "@mui/icons-material";
 import SmartConnect from "../Components/Url/SmartConnect";
 import { sideMenu } from "../Constants/constant";
 import { Collapse } from "@mui/material";
-//import { farmerPo } from "../Constants/constant";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const drawerWidth = 240;
 
@@ -82,21 +74,17 @@ export default function Layout() {
 
   const [openMenu, setOpenMenu] = React.useState(true);
 
-  const theme = useTheme();
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#1A5701',
+      },
+    },
+    spacing: (factor) => `${0.25 * factor}rem`,
+  });
 
   const navigate = useNavigate();
-  const sideBarData = [
-    {
-      text: "Create",
-      icon: <MailIcon />,
-      nav: "test/add",
-    },
-    {
-      text: "List",
-      icon: <ArticleIcon />,
-      nav: "test/list",
-    },
-  ];
+  
   const [open, setOpen] = React.useState(
     window.innerWidth < 500 ? false : true
   );
@@ -109,18 +97,20 @@ export default function Layout() {
     setOpen(false);
   };
 
-  const handleClick = (nav) => {
-    console.log(nav);
-    navigate(nav);
-  };
+  
   const handleClickMenu = () => {
     setOpenMenu(!openMenu)
   };
 
   return (
+    <ThemeProvider theme={theme}>
+      
     <Box sx={{ display: "flex" }}>
+    
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      
+      <AppBar position="fixed" open={open} sx={{padding: '10px'}}>
+      
         <Toolbar>
           <IconButton
             color="inherit"
@@ -131,9 +121,12 @@ export default function Layout() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Fresh2Rely
-          </Typography>
+          <div style={{ display: "flex", alignItems: "center" }}>
+  <img src={f2rrr} alt="f2rrr" width="60" height="60" style={{ marginRight: "10px" }} />
+  <Typography variant="h6" noWrap component="div" style={{ fontWeight: "bold" }}>
+    Fresh2Rely
+  </Typography>
+</div>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -150,77 +143,55 @@ export default function Layout() {
         open={open}
       >
         <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "ltr" ? (
-              <ChevronLeftIcon />
-            ) : (
-              <ChevronRightIcon />
-            )}
-          </IconButton>
-        </DrawerHeader>
-        <Divider />
-        <List>
-          {sideMenu.map((item, index) => (
-            <>
-              <ListItemButton onClick={handleClickMenu}>
-                <ListItemIcon>
-                  <ListAltRoundedIcon />
-                </ListItemIcon>
-                <ListItemText primary={item.text} />
-                {openMenu ? <ExpandLess /> : <ExpandMore />}
-              </ListItemButton>
-              <Collapse in={!openMenu} timeout="auto" unmountOnExit>
-                <List component="div" disablePadding>
-                  {
-                    item.options.map((item, index) => {
-                      return (
-                        <ListItemButton sx={{ pl: 4 }} onClick={() => navigate(item.link)} >
-                          <ListItemIcon>
-                            <PlaylistAddRoundedIcon />
-                          </ListItemIcon>
-                          <ListItemText primary={item.text} />
-                        </ListItemButton>
-                      )
-                    })
-                  }
-
-
-                </List>
-              </Collapse>
-            </>
-            // <ListItem
-            //   key={item.text}
-            //   disablePadding
-            //   onClick={() => handleClick(item.nav)}
-            // >
-            //   <ListItemButton>
-            //     {/* <ListItemIcon>{item.icon}</ListItemIcon> */}
-            //     <ListItemText primary={item.text} />
-            //   </ListItemButton>
-            // </ListItem>
-          ))}
+  <IconButton onClick={handleDrawerClose}>
+    {theme.direction === "ltr" ? (
+      <ChevronLeftIcon />
+    ) : (
+      <ChevronRightIcon />
+    )}
+  </IconButton>
+</DrawerHeader>
+<Divider />
+<List>
+  {sideMenu.map((item, index) => (
+    <>
+      <ListItemButton onClick={handleClickMenu}>
+        <ListItemIcon>
+          {item.icon}
+        </ListItemIcon>
+        <ListItemText primary={item.text} />
+        {openMenu ? <ExpandLess /> : <ExpandMore />}
+      </ListItemButton>
+      <Collapse in={!openMenu} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          
+            {item.options.map((option, index) => {
+              return (
+                <ListItemButton sx={{ pl: 4 }} onClick={() => navigate(option.link)} >
+                  <ListItemIcon>
+                    {option.icon}
+                  </ListItemIcon>
+                  <ListItemText primary={option.text} />
+                </ListItemButton>
+              )
+            })}
         </List>
-        <Divider />
-        {/* <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? "<InboxIcon />" : "<MailIcon />"}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List> */}
+      </Collapse>
+    </>
+  ))}
+</List>
+<Divider />
+
+       
       </Drawer >
       <Main open={open}>
-        {/* <DrawerHeader /> */}
+        
         <div className="route-container">
           <SmartConnect />
           <Outlet />
         </div>
       </Main>
     </Box >
+    </ThemeProvider>
   );
 }
