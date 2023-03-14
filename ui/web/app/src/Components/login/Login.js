@@ -123,7 +123,7 @@ class Login extends Component {
         <DialogTitle>{"Error"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
-            User name or password missing.
+            User name or Password missing.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
