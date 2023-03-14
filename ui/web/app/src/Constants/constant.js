@@ -80,5 +80,9 @@ export const config = {
   editFarmer:"/FarmerFlow/EditFarmer",
   addfarmer:"/FarmerFlow/CreateFarmer",
   getfarmer:"/FarmerFlow/SearchFarmers",
-  getcc:"/MasterDataFlow/SearchCollectionCenter"
+  getcc:"/MasterDataFlow/SearchCollectionCenter",
+  editPO:"/PurchaseOrderTemplateFlow/EditPurchaseOrderTemplate",
+  addPO:"/PurchaseOrderTemplateFlow/CreatePurchaseOrderTemplate",
+  getPO:"/PurchaseOrderTemplateFlow/SearchPurchaseOrdersTemplate",
+  getcc:"/PurchaseOrderTemplateFlow/SearchCollectionCenter"
 };

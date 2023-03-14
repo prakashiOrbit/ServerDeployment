@@ -14,6 +14,8 @@ import DateClass from "./DateClass";
 import ButtonClass from "./ButtonClass";
 import { validation } from "./Validattion";
 
+import POList from '../Po/POList';
+
 import BasicTable from '../BasicTable'
 
 import { getApi} from "../../webservice";
@@ -33,6 +35,7 @@ export class FormView extends Component {
     this.setView = this.setView.bind(this);
     this.handleEditButton = this.handleEditButton.bind(this);
     this.child = React.createRef();
+   
 
     //console.log(,this.props.aev"aev propsss");
     const { aev } = this.props.aev;
@@ -47,8 +50,12 @@ export class FormView extends Component {
       selected: [],
       isSubmit: "",
       formErrors: {},
+      
+
     };
   }
+
+ 
 
   handleEditButton() {
     console.log("from handle button");
@@ -78,6 +85,8 @@ export class FormView extends Component {
       selected: selection,
     });
   }
+  
+
   showData(url, search) {
     console.log(url, "url :", search, "#########################");
 
@@ -91,18 +100,11 @@ export class FormView extends Component {
         }
       }
     );
-
-    // this.state.formDetails.division.formelements.paymentDetails.map(
-    //   (item, index) => {
-    //     if (item.validate) {
-    //       if (!this.state.inputDetails[item.id]) {
-    //         console.log(item.id, "validationnnn erre");
-    //       }
-    //     }
-    //   }
-    // );
-
-    console.log("inpuuu",this.state.inputDetails)
+    
+   
+    
+    
+    
 
     this.props
       .postApi(
@@ -113,7 +115,9 @@ export class FormView extends Component {
       //   // setFormDetails(resp.data)
       //   console.log(resp, "respo from postapi");
       // });
-  }
+      
+  
+          };
   onChangeSearch(e) {
     console.log(e);
     console.log(this.state.searchInputDetails);
@@ -545,7 +549,7 @@ export class FormView extends Component {
                                                 this.state.formDetails.division.edittable.map((item, index) => {
                                                     return (
                                                         <Grid key={index} item xs={12} sm={12} >
-                                                            <BasicTable formDetails = {this.state.formDetails.division.buttons[0]} tableData={this.state.formDetails.division.edittable} showData={this.showData} getApi={getApi}/>
+                                                            <POList />
                                                         </Grid>
                                                     )
                                                 })
