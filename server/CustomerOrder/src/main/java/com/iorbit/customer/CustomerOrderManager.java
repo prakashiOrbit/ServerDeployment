@@ -29,7 +29,7 @@ public class CustomerOrderManager {
 		CustomerOrder co = new CustomerOrder(cco.getCoId(),cco.getPhoneNo(),cco.getSource(),cco.getTotalAmount(),cco.getProducts(),cco.getAddress());
 		co.setSearchValues();
 
-		new MessageResponse("Customer Order created is successfully");
+		new MessageResponse("Customer Order created successfully");
 
 	}
 	
