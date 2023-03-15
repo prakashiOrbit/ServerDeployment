@@ -5,8 +5,8 @@ import java.util.UUID;
 
 
 public class CreateFarmer implements java.io.Serializable{
-
-	private String fId;
+	private UUID fId;
+	private String farmerId;
 	private String name;
 	private String phoneNo;
 	private String streetAddress;
@@ -21,7 +21,8 @@ public class CreateFarmer implements java.io.Serializable{
 	private String centerId;
 	private String centerName;
 		
-	public String getFId() { return fId; }
+	public UUID getFId() {return fId; }
+	public String getFarmerId() { return farmerId; }
 	public String getName() { return name; }
 	public String getPhoneNo() { return phoneNo; }
 	public String getStreetAddress() { return streetAddress; }
