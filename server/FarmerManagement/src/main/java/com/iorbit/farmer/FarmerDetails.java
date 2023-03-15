@@ -1,7 +1,7 @@
 package com.iorbit.farmer;
 
 public class FarmerDetails implements java.io.Serializable {
-	private String fId;
+	private String farmerId;
 	private String name;
 	private String phoneNo;
 	private String streetAddress;
@@ -17,7 +17,6 @@ public class FarmerDetails implements java.io.Serializable {
 	private String centerName;
 
 	public FarmerDetails(Farmer farmer) {
-		fId = farmer.getFId();
 		name = farmer.getName();
 		phoneNo = farmer.getPhoneNo();
 		streetAddress = farmer.getStreetAddress();
@@ -33,7 +32,7 @@ public class FarmerDetails implements java.io.Serializable {
 		centerName = farmer.geteCenterName();
 	}
 
-	public String getfId() { return fId; }
+	public String getfarmerId() { return farmerId; }
 	public String getName() { return name; }
 	public String getPhoneNo() { return phoneNo; }
 	public String getStreetAddress() { return streetAddress; }
