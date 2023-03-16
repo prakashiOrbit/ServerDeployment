@@ -1,0 +1,41 @@
+{
+  "division": {
+    "name": "Truck",
+    "formelements": {
+      "title": "CREATE TRUCK AND DRIVER",
+      "generalDetails": [
+        {
+          "label": "licenseNo",
+          "id": "licenseNo",
+          "control": "textbox",
+          "validate": "alphanumeric"
+        },
+        {
+          "id": "registrationDate",
+          "label": "registrationDate",
+          "control": "textbox",
+          "validate": "alphanumeric"
+        },
+        {
+          "id": "VinNo",
+          "label": "VinNo",
+          "control": "textbox",
+          "validate": "time"
+        },
+        {
+          "id": "chassisNo",
+          "label": "chassisNo",
+          "control": "textbox",
+          "validate": "alphanumeric"
+        },
+
+        {
+          "id": "regAddress",
+          "label": "regAddress",
+          "control": "textbox",
+          "validate": "alphanumeric"
+        }
+      ]
+    }
+  }
+}

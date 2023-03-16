@@ -6,31 +6,24 @@ import Datatable from "../../Modules/Datatable/datatable";
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Button } from "@mui/material";
-import { header_data } from "./farmer_headerdata";
-import axios from "axios";
+import { header_data } from "./truck_headerdata";
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-import FRSelect from "../../Modules/select";
-import postMethod, { getMethod } from "../../Modules/service";
+import postMethod from "../../Modules/service";
 import { config } from "../../Constants/constant";
 
 
-const FarmerList = () => {
-
-  //   fields = "./Service/po.json";
-  //   farmerFields = "./Service/farmer.json";
-
+const TruckList = () => {
 
   const navigate = useNavigate();
   const [open, setopen] = useState(false);
   const [ccdata, setccdata] = useState([{ name: "check", label: "check" }]);
-  const [farmerdata, setfarmerdata] = useState({});
+  const [truckdata, settruckdata] = useState({});
 
 
 
@@ -39,15 +32,7 @@ const FarmerList = () => {
   }, [])
 
 
-  const handleChange = (e) => {
-
-    var name = e.target.name;
-    var value = e.target.value;
-
-    setfarmerdata({ ...farmerdata, "centerId": value, "centerName": name })
-
-
-  }
+ 
 
 
 
@@ -65,12 +50,13 @@ const FarmerList = () => {
     };
 
 
-    postMethod(config.getcc, payloaddata)
+    postMethod(config.getTruck, payloaddata)
       .then((res) => {
         console.log(res.data.responses[0].cd);
         const payload = res.data.responses[0].cd.map((index) => ({
           value: index.centerId, label: index.centerName
-        }))
+        })
+        )
         console.log(payload);
         setccdata(payload);
 
@@ -83,20 +69,20 @@ const FarmerList = () => {
 
   const handlesubmit = () => {
 
-    console.log(farmerdata);
+    console.log(truckdata);
     const sendpayload = {
-      ...farmerdata, "Farmer": {
+      ...truckdata, "Truck": {
         "___smart_action___": "lookup",
-        "___smart_value___": farmerdata.fId
+        "___smart_value___": truckdata.licenseNo
       }
     }
 
-    postMethod(config.editFarmer, sendpayload)
+    postMethod(config.editTruck, sendpayload)
       .then((res) => {
         console.log(res.data.responses[0].message);
-        if (res.data.responses[0].message == "Farmer details has been updated.") {
+        if (res.data.responses[0].message === "Truck details has been updated.") {
 
-          navigate("/farmerList")
+          navigate("/truckList")
         }
 
 
@@ -113,7 +99,7 @@ const FarmerList = () => {
     switch (option) {
       case "Edit":
 
-        navigate('/farmer-edit', {
+        navigate('/truck-edit', {
           state: {
             id: data.id,
             data: data,
@@ -122,10 +108,11 @@ const FarmerList = () => {
         break;
       case "Assign to CC":
 
-        setfarmerdata(data);
+        settruckdata(data);
         setopen(true);
-      default:
         break;
+      default:
+        
     }
   }
 
@@ -133,15 +120,15 @@ const FarmerList = () => {
     setopen(false);
   }
 
-  const handleCreateClick = () => {
-    navigate('/farmer');
-  };
 
+  const handleCreateClick = () => {
+    navigate('/createTruck');
+  };
   return (
     <div style={{ margin: "10%" }}>
 
 
-      <Datatable url={config.getfarmer} handleOptions={handleOptions} flowEvent="farmerEvent" flow="FarmerFlow" header_data={header_data} onCreateClick={handleCreateClick}/>
+      <Datatable url={config.getTruck} flowEvent="TruckEvent" flow="MasterDataFlow" header_data={header_data} onCreateClick={handleCreateClick} />
 
       <Dialog
         open={open}
@@ -161,7 +148,7 @@ const FarmerList = () => {
               name="radio-buttons-group"
             >
               {ccdata.map((index) => {
-                return <FormControlLabel value={index.value} name={index.label} control={<Radio onChange={handleChange} />} label={index.label} />
+                return <FormControlLabel value={index.value} name={index.label}  label={index.label} />
               })}
             </RadioGroup>
           </FormControl>
@@ -180,5 +167,5 @@ const FarmerList = () => {
 
 }
 
-export default FarmerList;
+export default TruckList;
 

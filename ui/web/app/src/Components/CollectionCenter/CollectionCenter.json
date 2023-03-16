@@ -1,0 +1,34 @@
+{
+  "division": {
+    "name": "Collection Header",
+    "formelements": {
+      "title": "CREATE COLLECTION CENTER",
+      "generalDetails": [
+        {
+          "label": "centerId",
+          "id": "centerId",
+          "control": "textbox",
+          "validation": "alphanumeric"
+        },
+        {
+          "label": "centerName",
+          "id": "centerName",
+          "control": "textbox",
+          "validation": "alphanumeric"
+        },
+        {
+          "label": "centerAddress",
+          "id": "centerAddress",
+          "control": "textbox",
+          "validate": "alphanumeric"
+        },
+        {
+          "label": "contact",
+          "id": "contact",
+          "control": "textbox",
+          "validate": "number"
+        }
+      ]
+    }
+  }
+}

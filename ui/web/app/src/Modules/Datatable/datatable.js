@@ -9,9 +9,10 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import axios from 'axios';
 import SmartConnect from '../../Components/smart-connect/smart-connect';
 import postMethod from '../service';
+import CreateIcon from '@mui/icons-material/Create';
 
 
-const Datatable = ({ url, handleOptions, flow, header_data, flowEvent }) => {
+const Datatable = ({ url, handleOptions, flow, header_data, flowEvent ,onCreateClick}) => {
  
   const [selectedRow, setSelectedRow] = React.useState(-1);
 
@@ -138,6 +139,17 @@ const Datatable = ({ url, handleOptions, flow, header_data, flowEvent }) => {
     filter: true,
     filterType: "dropdown",
     responsive: "stacked",
+    customToolbar: () => {
+      return (
+        
+        <IconButton onClick={onCreateClick}>
+          <CreateIcon />
+          
+        </IconButton>
+        
+      
+      );
+    },
 
 
 
