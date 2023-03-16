@@ -112,9 +112,11 @@ export const config = {
   addfarmer:"/FarmerFlow/CreateFarmer",
   getfarmer:"/FarmerFlow/SearchFarmers",
   getcc:"/MasterDataFlow/SearchCollectionCenter",
+
   editPO:"/PurchaseOrderTemplateFlow/EditPurchaseOrderTemplate",
   addPO:"/PurchaseOrderTemplateFlow/CreatePurchaseOrderTemplate",
   getPO:"/PurchaseOrderTemplateFlow/SearchPurchaseOrdersTemplate", 
+
   editCollectionCenter:"/MasterDataFlow/EditCollectionCenter",
   addCollectionCenter:"/MasterDataFlow/CreateCollectionCenter",
   getCollectionCenter:"/MasterDataFlow/SearchCollectionCenter",
@@ -131,4 +133,6 @@ export const config = {
   addPurchaseOrderTemplate:"/PurchaseOrderTemplateFlow/CreatePurchaseOrderTemplate",
   getPurchaseOrderTemplate:"/PurchaseOrderTemplateFlow/SearchPurchaseOrderTemplate",
 
+
 };
+

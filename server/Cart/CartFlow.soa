@@ -1,0 +1,30 @@
+name: CartFlow
+defaultEnable: all
+primeData:
+  - com.iorbit.cart.Cart
+events:
+  - com.iorbit.cart.CreateCart
+  - com.iorbit.cart.GetCart
+  - com.iorbit.cart.SearchCart
+  - com.iorbit.cart.EditCart
+ 
+responses:
+  - com.iorbit.cart.MessageResponse
+  - com.iorbit.cart.CartDetails
+  - com.iorbit.cart.CartList
+  - com.iorbit.cart.EditCart
+ 
+transitions:
+  - com.iorbit.cart.CartManager
+features:
+  - name: all
+    artefacts:
+      - com.iorbit.cart.Cart
+      - com.iorbit.cart.CreateCart
+      - com.iorbit.cart.CartManager
+      - com.iorbit.cart.MessageResponse
+      - com.iorbit.cart.CartDetails
+      - com.iorbit.cart.SearchCart
+      - com.iorbit.cart.CartList
+      - com.iorbit.cart.EditCart  
+      

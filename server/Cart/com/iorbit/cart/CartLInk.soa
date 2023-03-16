@@ -1,0 +1,11 @@
+name: CartLink
+type: PrimeData
+flow: CartFlow
+attributes:
+  - attribute: CartId
+    type: key
+states:
+  - name: active
+    startState: true
+  - name: inactive
+    endState: true

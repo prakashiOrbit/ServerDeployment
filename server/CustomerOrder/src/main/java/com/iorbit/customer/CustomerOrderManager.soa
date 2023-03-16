@@ -1,0 +1,40 @@
+name: CreateCustomerOrder
+type: Transition
+flow: CustomerOrderFlow
+foreach: FlowAdmin|CreateCustomerOrder,CustomerOrder|GetCustomerOrder,FlowAdmin|SearchCustomerOrder,CustomerOrder|EditCustomerOrder
+actions:
+  - name: createCustomerOrder
+    method: createCustomerOrder
+    foreach: FlowAdmin|CreateCustomerOrder
+    parms: (event,srch.CustomerOrderFlow.CustomerOrder.event.coId)
+    from: active
+    to: active
+  - name: getCustomerOrder
+    method: getCustomerOrder
+    foreach: CustomerOrder|GetCustomerOrder
+    from: active,approved
+    to: active
+  - name: setupCustomerOrderSearch
+    method: setupCustomerOrderSearch
+    foreach: FlowAdmin|SearchCustomerOrder
+    from: active
+    to: active
+  - name: getCustomerOrders
+    method: getCustomerOrders
+    runAfter: searchCustomerOrder
+    foreach: FlowAdmin|SearchCustomerOrder
+    from: active
+    to: active
+  - name: editCustomerOrder
+    method: editCustomerOrder
+    foreach: CustomerOrder|EditCustomerOrder
+    from: active
+    to: active
+callservices:
+  - name: searchCustomerOrder
+    service: AllFlows.SearchManager.searchService
+    parms: (CustomerOrderFlow,CustomerOrder,event.search,event.customerorder)
+    runAfter: setupCustomerOrderSearch
+    foreach: FlowAdmin|SearchCustomerOrder
+    from: active
+    to: active

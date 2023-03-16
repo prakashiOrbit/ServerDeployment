@@ -1,0 +1,28 @@
+name: CustomerOrderFlow
+defaultEnable: basic
+primeData:
+  - com.iorbit.customer.CustomerOrder
+events:
+  - com.iorbit.customer.CreateCustomerOrder
+  - com.iorbit.customer.GetCustomerOrder
+  - com.iorbit.customer.SearchCustomerOrder
+  - com.iorbit.customer.EditCustomerOrder
+responses:
+  - com.iorbit.customer.MessageResponse
+  - com.iorbit.customer.CustomerOrderDetails
+  - com.iorbit.customer.CustomerOrderList
+  - com.iorbit.customer.EditCustomerOrder
+transitions:
+  - com.iorbit.customer.CustomerOrderManager
+features:
+  - name: basic
+    artefacts:
+      - com.iorbit.customer.CustomerOrder
+      - com.iorbit.customer.CreateCustomerOrder
+      - com.iorbit.customer.MessageResponse
+      - com.iorbit.customer.CustomerOrderManager
+      - com.iorbit.customer.CustomerOrderDetails
+      - com.iorbit.customer.GetCustomerOrder
+      - com.iorbit.customer.SearchCustomerOrder
+      - com.iorbit.customer.CustomerOrderList
+      - com.iorbit.customer.EditCustomerOrder

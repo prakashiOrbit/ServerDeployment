@@ -5,7 +5,7 @@ import java.util.List;
 
 public class FarmerList implements java.io.Serializable {
 	class FarmerData implements java.io.Serializable {
-		private String fId;
+		private String farmerId;
 		private String name;
 		private String phoneNo;
 		private String streetAddress;
@@ -21,7 +21,7 @@ public class FarmerList implements java.io.Serializable {
 		private String centerName;
 
 		FarmerData(Farmer farmer) {
-			fId = farmer.getFId();
+			farmerId=farmer.getFarmerId();
 			name = farmer.getName();
 			phoneNo = farmer.getPhoneNo();
 			streetAddress = farmer.getStreetAddress();

@@ -10,270 +10,124 @@ import axios from 'axios';
 import SmartConnect from '../../Components/smart-connect/smart-connect';
 import postMethod from '../service';
 
-const  Datatable = ({url,handleOptions,flow,header_data,flowEvent}) => {
-  const [responsive, setResponsive] = useState("vertical");
 
-
-
-  const[tableData,settableData]= useState([]);
-
-  const[columndata,setcolumndata]=useState(header_data);
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
-
-  
-
-  const handleClick = (event) => {
-    
-    setAnchorEl(event.currentTarget);
-  };
-
-  useEffect(()=>{
-    console.log(header_data);
-  })
-
-  
-  
-useEffect(()=>{
-
-  
-  const action =   {
-    name: "Action",
-    options: {
-      filter: false,
-      sort: false,
-      viewColumns:false,
-      customBodyRender: (value, rowdata ) => {
-        return (<>
-
-            <IconButton 
-            onClick={(e)=>{handleClick(e)}}
-                >
-                <MoreVertIcon/>
-            </IconButton>
-
-            <Menu
-    id="long-menu"
-    MenuListProps={{
-      'aria-labelledby': 'long-button',
-    }}
-    anchorEl={anchorEl}
-    open={open}
-    onClose={() => {handleClose()}}
-    PaperProps={{
-      style: {
-        maxHeight:  ITEM_HEIGHT  * 4.5,
-        width: '20ch',
-      },
-    }}
-  >
-    {options.map((option) => (
-      <MenuItem key={option}  onClick={()=>{handleClose(rowdata,option)}}>
-        {option}
-      </MenuItem>
-    ))}
-  </Menu>
-
-
-              </>
-          
-        );
-      }
-    }
-  };
-  setcolumndata([...columndata,action]);
-
-  getData("*");
+const Datatable = ({ url, handleOptions, flow, header_data, flowEvent }) => {
  
-},[]);
-
-
-const getData = async (searchString) =>{
- 
-
- const payload =  {"FlowAdmin": {"___smart_action___": "lookup","___smart_value___": flow},"searchString": searchString}
-
-postMethod(url,payload)
-.then((res)=>{
-  console.log(res);
-  settableData(res?.data?.responses[0]?.farmers);
-});
-
-
-
-}
-
-
-  const handleClose = (data,option) => {
-    // console.log(option);
-    // console.log(data.rowIndex);
-    // console.log(data.tableData[data.rowIndex])
-    handleOptions(data.tableData[data.rowIndex],option)
-    setAnchorEl(null);
-  };
+  const [selectedRow, setSelectedRow] = React.useState(-1);
 
   const options = [
     "Edit",
-   
+
     "Assign to CC"
   ];
 
+  const [tableData, settableData] = useState([]);
+
+  const [columndata, setcolumndata] = useState(header_data);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
+
+
+  const handleClick = (event, rowIndex) => {
+
+    setSelectedRow(rowIndex);
+    setAnchorEl(event.currentTarget);
+  };
+
+
+  const renderActions = (rowData, rowMeta) => {
+    const rowIndex = rowMeta.rowIndex;
+    return (
+      <>
+        <IconButton
+          onClick={(e) => handleClick(e, rowIndex)}
+        >
+          <MoreVertIcon />
+        </IconButton>
+
+        <Menu
+          id="long-menu"
+          MenuListProps={{
+            'aria-labelledby': 'long-button',
+          }}
+          anchorEl={anchorEl}
+          open={open}
+          onClose={() => handleClose()}
+          PaperProps={{
+            style: {
+              maxHeight: ITEM_HEIGHT * 4.5,
+              width: '20ch',
+            },
+          }}
+        >
+          {options.map((option) => (
+            <MenuItem key={option} onClick={() => handleClose(rowMeta.tableData[selectedRow], option)}>
+              {option}
+            </MenuItem>
+          ))}
+        </Menu>
+
+      </>
+    );
+  };
+
+
+  const updatedColumns = [...columndata, {
+    name: 'actions',
+    label: 'Actions',
+    options: {
+      filter: false,
+      sort: false,
+      customBodyRender: renderActions,
+    },
+  }];
+
+
+
+  const handleClose = (data, option) => {
+    
+    handleOptions(data,option)
+    setAnchorEl(null);
+    console.log(data);
+    setSelectedRow(-1);
+    console.log(option);
+  };
+
+
+  useEffect(() => {
+
+    getData("*");
+
+  }, []);
+
+
+  const getData = async (searchString) => {
+
+
+    const payload = { "FlowAdmin": { "___smart_action___": "lookup", "___smart_value___": flow }, "searchString": searchString }
+
+    postMethod(url, payload)
+      .then((res) => {
+        console.log(res);
+        settableData(res?.data?.responses[0]?.farmers);
+      });
+
+
+
+  }
+
+
+
+
+
+
   const ITEM_HEIGHT = 48;
 
-  const columns = [
-    
-      {
-        "label": "flabel",
-        "name": "flabel",
-        "control": "textbox",
-        "vallabelation": "alphanumeric",
-        options:{
-          display:false,
-          filter:false
-       
-        }
-      },
-      {
-        "label": "name",
-        "name": "name",
-        "control": "textbox",
-        "vallabelation": "alphanumeric"
-      },
-      {
-        "label": "phoneNo",
-        "name": "phoneNo",
-        "control": "textbox",
-        "vallabelation": "phone"
-      },
-      {
-        "label": "Aadhar No",
-        "name": "aadharNo",
-        options:{
-          display:false,
-       
-        }
-      
-      },
-      {
-        "name": "panNo",
-        "label": "pan",
-        "control": "textbox",
-        "vallabelate": "alphanumeric",
-        options:{
-          display:false,
-       
-        }
-        
-      },
-      {
-        "label": "Street Address",
-        "name": "streetAddress",
-        "control": "textbox",
-        "vallabelate": "alphanumeric",
-        options:{
-          display:false,
-       
-        }
-      },
-      {
-        "label": "City",
-        "name": "city",
-        "control": "textbox",
-        "vallabelate": "alphanumeric",
-        options:{
-          display:false,
-       
-        }
-      },
-      {
-        "label": "State",
-        "name": "state",
-        "control": "textbox",
-        "vallabelate": "alphanumeric"
-      },
-      {
-        "label": "Pin Code",
-        "name": "pinCode",
-        "control": "textbox",
-        "vallabelate": "number",
-        options:{
-          display:false,
-       
-        }
-      },
-      {
-        "label": "Payee Name",
-        "name": "payeeName",
-        "control": "textbox",
-        "vallabelate": "alphanumeric"
-      },
-      {
-        "label": "Account Number",
-        "name": "accountNo",
-        "control": "textbox",
-        "vallabelate": "number"
-      },
-      {
-        "label": "IFSC  Code",
-        "name": "ifscCode",
-        "control": "textbox",
-        "vallabelate": "number",
-        options:{
-          display:false,
-       
-        }
-      }
-    ,
-
-    {
-        name: "Action",
-        options: {
-          filter: false,
-          sort: false,
-          viewColumns:false,
-          customBodyRender: (value, rowdata ) => {
-            return (<>
-
-                <IconButton 
-                onClick={handleClick}
-                    >
-                    <MoreVertIcon/>
-                </IconButton>
-
-                <Menu
-        id="long-menu"
-        MenuListProps={{
-          'aria-labelledby': 'long-button',
-        }}
-         anchorEl={anchorEl}
-        open={open}
-        onClose={()=>{handleClose(rowdata,option)}}
-        PaperProps={{
-          style: {
-            maxHeight:  ITEM_HEIGHT  * 4.5,
-            width: '20ch',
-          },
-        }}
-      >
-        {options.map((option) => (
-          <MenuItem key={option}  onClick={()=>{handleClose(rowdata,option)}}>
-            {option}
-          </MenuItem>
-        ))}
-      </Menu>
-
-
-                  </>
-              
-            );
-          }
-        }
-      },
-  ];
 
   const logValue = debounce((value) => {
-    getData(value+"*");
-}, 1000);
+    getData(value + "*");
+  }, 1000);
 
 
   const option = {
@@ -284,31 +138,30 @@ postMethod(url,payload)
     filter: true,
     filterType: "dropdown",
     responsive: "stacked",
-   
- 
 
-    
+
+
     onTableChange: (action, state) => {
-        console.log(action);
-     if(action==="search"){
+      console.log(action);
+      if (action === "search") {
         logValue(state.searchText);
-         
-     }
+
+      }
     }
   };
 
 
   return (
     <>
-        <MUIDataTable
-       
-          data={tableData}
-          columns={columns}
-          options={option}
-        />
-           {/* <SmartConnect server={config.host} port={config.port} tenant={config.tenant} flow={flow} flowEvent={flowEvent} ref={this.child} /> 
-      */}
-      </>
+      <MUIDataTable
+
+        data={tableData}
+        columns={updatedColumns}
+        options={option}
+      />
+
+
+    </>
   );
 }
 
