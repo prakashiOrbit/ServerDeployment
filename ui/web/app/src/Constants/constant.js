@@ -114,7 +114,7 @@ export const config = {
   getcc:"/MasterDataFlow/SearchCollectionCenter",
   editPO:"/PurchaseOrderTemplateFlow/EditPurchaseOrderTemplate",
   addPO:"/PurchaseOrderTemplateFlow/CreatePurchaseOrderTemplate",
-  getPO:"/PurchaseOrderTemplateFlow/SearchPurchaseOrdersTemplate",  
+  getPO:"/PurchaseOrderTemplateFlow/SearchPurchaseOrdersTemplate", 
   editCollectionCenter:"/MasterDataFlow/EditCollectionCenter",
   addCollectionCenter:"/MasterDataFlow/CreateCollectionCenter",
   getCollectionCenter:"/MasterDataFlow/SearchCollectionCenter",
