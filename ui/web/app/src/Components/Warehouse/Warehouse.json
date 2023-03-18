@@ -3,15 +3,15 @@
     "name": "Warehouse Header",
     "formelements": {
       "title": "CREATE WAREHOUSE",
-      "generalDetails": [
+      "warehouseDetails": [
         {
           "label": "address",
-          "id": "Warehouse Address",
+          "id": "Address",
           "control": "textbox"
         },
         {
           "label": "capacity",
-          "id": "capacity",
+          "id": "Capacity",
           "control": "textbox"
         }
       ]

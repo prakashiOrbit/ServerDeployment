@@ -1,8 +1,8 @@
 import React from 'react';
-import { useLocation, useNavigate, useParams, useRoutes } from 'react-router-dom';
-import EditComponent from '../../Modules/edit';
+import { useLocation, useNavigate} from 'react-router-dom';
+import CollectionCenterEditComponent from './collectioncentereditcomp';
 import postMethod from '../../Modules/service';
-import CollectionCenter from "./CollectionCenter.json";
+import CollectionCenter from "./CollectionCenter";
 import { config } from '../../Constants/constant';
 
 const CollectionCenterEdit = () => {
@@ -49,7 +49,7 @@ const CollectionCenterEdit = () => {
     return (
         <>
 
-            <EditComponent rowdata={data} type="edit" formDetails={CollectionCenter} onSubmit={onSubmit} />
+            <CollectionCenterEditComponent rowdata={data} type="edit" formDetails={CollectionCenter} onSubmit={onSubmit} />
         </>
     )
 };

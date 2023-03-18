@@ -26,19 +26,21 @@ const TruckList = () => {
   const [truckdata, settruckdata] = useState({});
 
 
-
   useEffect(() => {
     getCcList();
   }, [])
 
+  const handleChange = (e) => {
 
- 
+    var name = e.target.name;
+    var value = e.target.value;
+
+    settruckdata({ ...truckdata, "centerId": value, "centerName": name })
 
 
-
+  }
 
   const getCcList = () => {
-
 
 
     const payloaddata = {
@@ -53,7 +55,7 @@ const TruckList = () => {
     postMethod(config.getTruck, payloaddata)
       .then((res) => {
         console.log(res.data.responses[0].cd);
-        const payload = res.data.responses[0].cd.map((index) => ({
+        const payload = res.data.responses[0].cd?.map((index) => ({
           value: index.centerId, label: index.centerName
         })
         )
@@ -106,7 +108,7 @@ const TruckList = () => {
           }
         });
         break;
-      case "Assign to CC":
+      case "Create Truck":
 
         settruckdata(data);
         setopen(true);
@@ -128,7 +130,7 @@ const TruckList = () => {
     <div style={{ margin: "10%" }}>
 
 
-      <Datatable url={config.getTruck} flowEvent="TruckEvent" flow="MasterDataFlow" header_data={header_data} onCreateClick={handleCreateClick} />
+      <Datatable url={config.getTruck}  handleOptions={handleOptions} flowEvent="TruckEvent" flow="MasterDataFlow" header_data={header_data} onCreateClick={handleCreateClick} />
 
       <Dialog
         open={open}
@@ -147,8 +149,8 @@ const TruckList = () => {
               defaultValue="female"
               name="radio-buttons-group"
             >
-              {ccdata.map((index) => {
-                return <FormControlLabel value={index.value} name={index.label}  label={index.label} />
+              {ccdata?.map((index) => {
+                return <FormControlLabel value={index.value} name={index.label} control={<Radio onChange={handleChange} />} label={index.label} />
               })}
             </RadioGroup>
           </FormControl>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation, useNavigate} from 'react-router-dom';
-import EditComponent from '../../Modules/edit';
+import TruckEditComponent from './truckeditcomp';
 import postMethod from '../../Modules/service';
 import { config } from '../../Constants/constant';
 import Truck from './Truck';
@@ -45,7 +45,7 @@ else {
     return(
         <>
 
-<EditComponent   rowdata={data} type="edit" formDetails={Truck} onSubmit={onSubmit} />
+<TruckEditComponent   rowdata={data} type="edit" formDetails={Truck} onSubmit={onSubmit} />
         </>
     )
 };

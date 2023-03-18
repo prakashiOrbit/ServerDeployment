@@ -1,6 +1,6 @@
 import React from 'react';
-import { useLocation, useNavigate, useParams, useRoutes } from 'react-router-dom';
-import EditComponent from '../../Modules/edit';
+import { useNavigate} from 'react-router-dom';
+import CollectionCenterEditComponent from './collectioncentereditcomp';
 import postMethod from '../../Modules/service';
 import CollectionCenter from "./CollectionCenter.json";
 import { config } from '../../Constants/constant';
@@ -25,7 +25,7 @@ const CreateCollectionCenter = () => {
             postMethod(config.addCollectionCenter, payload)
                 .then((res) => {
                     console.log(res);
-                //    navigate("/centerList");
+                
                 });
 
         }
@@ -42,7 +42,7 @@ const CreateCollectionCenter = () => {
     return (
         <>
 
-            <EditComponent formDetails={CollectionCenter} onSubmit={onSubmit} />
+            <CollectionCenterEditComponent formDetails={CollectionCenter} onSubmit={onSubmit} />
         </>
     )
 };

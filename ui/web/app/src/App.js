@@ -153,20 +153,20 @@ const App = () => {
               <ProductList />
             }
           />
-
           <Route
             path="/CreateProduct"
             element={
 
-              <CreateProduct />
+              < CreateProduct />
             }
           />
+
           <Route
             path="/product-edit"
             element={
-              <Protected isSignedIn={isSignedIn}>
-                <ProductEdit />
-              </Protected>
+
+              <ProductEdit />
+
             }
           />
 
@@ -183,9 +183,9 @@ const App = () => {
           <Route
             path="/truck-edit"
             element={
-              <Protected isSignedIn={isSignedIn}>
-                <TruckEdit />
-              </Protected>
+
+              <TruckEdit />
+
             }
           />
           <Route
@@ -209,9 +209,9 @@ const App = () => {
           <Route
             path="/center-edit"
             element={
-              <Protected isSignedIn={isSignedIn}>
-                <CollectionCenterEdit />
-              </Protected>
+
+              <CollectionCenterEdit />
+
             }
           />
           <Route
@@ -233,9 +233,9 @@ const App = () => {
           <Route
             path="/warehouse-edit"
             element={
-              <Protected isSignedIn={isSignedIn}>
-                <WarehouseEdit />
-              </Protected>
+
+              <WarehouseEdit />
+
             }
           />
           <Route
@@ -299,7 +299,7 @@ const App = () => {
             }
           />
         </Route>
-        
+
         <Route
           path="/test/delete"
           element={
@@ -314,7 +314,7 @@ const App = () => {
             />
           }
         />
-        
+
 
         <Route
           path="/creates"

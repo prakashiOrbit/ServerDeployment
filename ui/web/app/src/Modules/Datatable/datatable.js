@@ -1,13 +1,10 @@
 import { debounce } from 'lodash';
 import MUIDataTable from "mui-datatables";
 import React, { useEffect, useState } from "react";
-import { config } from '../../Constants/constant';
 import { IconButton } from '@mui/material';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import axios from 'axios';
-import SmartConnect from '../../Components/smart-connect/smart-connect';
 import postMethod from '../service';
 import CreateIcon from '@mui/icons-material/Create';
 

@@ -1,7 +1,6 @@
 
 
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Datatable from "../../Modules/Datatable/datatable";
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -16,10 +15,12 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import postMethod from "../../Modules/service";
 import { config } from "../../Constants/constant";
+import { Navigate, useNavigate } from "react-router-dom";
 
 
 const CollectionCenterList = () => {
 
+  //const navigate = useNavigate();
   const navigate = useNavigate();
   const [open, setopen] = useState(false);
   const [ccdata, setccdata] = useState([{ name: "check", label: "check" }]);
@@ -61,7 +62,7 @@ const CollectionCenterList = () => {
     postMethod(config.getCollectionCenter, payloaddata)
       .then((res) => {
         console.log(res.data.responses[0].cd);
-        const payload = res.data.responses[0].cd.map((index) => ({
+        const payload = res.data.responses[0].cd?.map((index) => ({
           value: index.centerId, label: index.centerName
         }))
         console.log(payload);
@@ -87,14 +88,14 @@ const CollectionCenterList = () => {
     postMethod(config.editCollectionCenter, sendpayload)
       .then((res) => {
         console.log(res.data.responses[0].message);
-        if (res.data.responses[0].message === "CollectionCeter details has been updated.") {
-
+        if (res.data.responses[0].message == "CollectionCeter details has been updated.") {
+          
           navigate("/centerList")
         }
 
 
       });
-      setopen(false);
+    setopen(false);
 
 
   }
@@ -113,13 +114,13 @@ const CollectionCenterList = () => {
           }
         });
         break;
-      case "Assign to CC":
+      case "Create CC":
 
         setcenterdata(data);
         setopen(true);
         break;
       default:
-        
+
     }
   }
 
@@ -154,7 +155,7 @@ const CollectionCenterList = () => {
               defaultValue="female"
               name="radio-buttons-group"
             >
-              {ccdata.map((index) => {
+              {ccdata?.map((index) => {
                 return <FormControlLabel value={index.value} name={index.label} control={<Radio onChange={handleChange} />} label={index.label} />
               })}
             </RadioGroup>

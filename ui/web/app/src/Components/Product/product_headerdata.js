@@ -25,11 +25,13 @@ export const header_data = [
         "label": "itemCategory",
         "name": "itemCategory",
         "control": "textbox",
-        "vallabelation": "phone"
+        "vallabelation": "alphanumeric"
       },
       {
         "label": "itemSubcategory",
         "name": "itemSubcategory",
+        "control": "textbox",
+        "vallabelation": "alphanumeric",
         options:{
           display:false,
        

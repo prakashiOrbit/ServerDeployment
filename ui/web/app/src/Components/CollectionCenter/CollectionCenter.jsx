@@ -1,6 +1,6 @@
 import React from "react";
 import FormView from "../CreateForm"
-import { getApi, postMethod } from "../../webservice";
+import { getApi} from "../../webservice";
 import SmartConnect from "../smart-connect/smart-connect";
 import {config} from "../../Constants/constant";
 

@@ -61,7 +61,7 @@ const WarehouseList = () => {
     postMethod(config.getWarehouse, payloaddata)
       .then((res) => {
         console.log(res.data.responses[0].cd);
-        const payload = res.data.responses[0].cd.map((index) => ({
+        const payload = res.data.responses[0].cd?.map((index) => ({
           value: index.centerId, label: index.centerName
         }))
         console.log(payload);
@@ -113,7 +113,7 @@ const WarehouseList = () => {
           }
         });
         break;
-      case "Assign to CC":
+      case "Create Warehouse":
 
         setwarehousedata(data);
         setopen(true);
@@ -154,7 +154,7 @@ const WarehouseList = () => {
               defaultValue="female"
               name="radio-buttons-group"
             >
-              {ccdata.map((index) => {
+              {ccdata?.map((index) => {
                 return <FormControlLabel value={index.value} name={index.label} control={<Radio onChange={handleChange} />} label={index.label} />
               })}
             </RadioGroup>

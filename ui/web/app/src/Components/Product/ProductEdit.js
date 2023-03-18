@@ -1,6 +1,6 @@
 import React from 'react';
-import { useLocation, useNavigate, useParams, useRoutes } from 'react-router-dom';
-import EditComponent from '../../Modules/edit';
+import { useLocation, useNavigate} from 'react-router-dom';
+import ProductEditComponent from './producteditcomp';
 import postMethod from '../../Modules/service';
 import Product from "./Product.json";
 import { config } from '../../Constants/constant';
@@ -45,7 +45,7 @@ else {
     return(
         <>
 
-<EditComponent   rowdata={data} type="edit" formDetails={Product} onSubmit={onSubmit} />
+<ProductEditComponent   rowdata={data} type="edit" formDetails={Product} onSubmit={onSubmit} />
         </>
     )
 };

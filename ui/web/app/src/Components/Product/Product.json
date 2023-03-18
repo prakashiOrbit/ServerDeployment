@@ -3,7 +3,7 @@
     "name": "Product Header",
     "formelements": {
       "title": "CREATE NEW PRODUCT",
-      "generalDetails": [
+      "productDetails": [
         {
           "label": "skuId",
           "id": "skuId",

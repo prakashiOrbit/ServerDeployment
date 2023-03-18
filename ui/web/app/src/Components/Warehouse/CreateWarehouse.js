@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate} from 'react-router-dom';
-import EditComponent from '../../Modules/edit';
+import WarehouseEditComponent from './warehouseeditcomp';
 import postMethod from '../../Modules/service';
 import Warehouse from "./Warehouse.json";
 import { config } from '../../Constants/constant';
@@ -42,7 +42,7 @@ const CreateWarehouse = () => {
     return (
         <>
 
-            <EditComponent formDetails={Warehouse} onSubmit={onSubmit} />
+            <WarehouseEditComponent formDetails={Warehouse} onSubmit={onSubmit} />
         </>
     )
 };

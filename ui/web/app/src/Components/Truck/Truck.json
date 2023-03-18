@@ -3,7 +3,7 @@
     "name": "Truck",
     "formelements": {
       "title": "CREATE TRUCK AND DRIVER",
-      "generalDetails": [
+      "truckDetails": [
         {
           "label": "licenseNo",
           "id": "licenseNo",

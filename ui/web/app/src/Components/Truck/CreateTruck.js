@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate} from 'react-router-dom';
-import EditComponent from '../../Modules/edit';
+import TruckEditComponent from './truckeditcomp';
 import postMethod from '../../Modules/service';
 import Truck from "./Truck.json";
 import { config } from '../../Constants/constant';
@@ -42,7 +42,7 @@ const CreateTruck = () => {
     return (
         <>
 
-            <EditComponent formDetails={Truck} onSubmit={onSubmit} />
+            <TruckEditComponent formDetails={Truck} onSubmit={onSubmit} />
         </>
     )
 };

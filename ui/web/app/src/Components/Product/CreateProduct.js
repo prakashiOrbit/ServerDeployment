@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate} from 'react-router-dom';
-import EditComponent from '../../Modules/edit';
+import ProductEditComponent from './producteditcomp';
 import postMethod from '../../Modules/service';
 import Product from "./Product.json";
 import { config } from '../../Constants/constant';
@@ -42,7 +42,7 @@ const CreateProduct = () => {
     return (
         <>
 
-            <EditComponent formDetails={Product} onSubmit={onSubmit} />
+            <ProductEditComponent formDetails={Product} onSubmit={onSubmit} />
         </>
     )
 };
