@@ -24,7 +24,9 @@ const CreateCollectionCenter = () => {
 
             postMethod(config.addCollectionCenter, payload)
                 .then((res) => {
-                    console.log(res);
+                    if(res.data.responses[0].message === "Collection Center is successfully created.") {
+                        navigate("/centerList")
+                    }
                 
                 });
 

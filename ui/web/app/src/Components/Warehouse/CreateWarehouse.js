@@ -24,7 +24,10 @@ const CreateWarehouse = () => {
 
             postMethod(config.addWarehouse, payload)
                 .then((res) => {
-                    console.log(res);
+                    console.log(res.data.responses[0].message);
+                    if(res.data.responses[0].message === "Warehouse is successfully created.") {
+                        navigate("/warehouseList")
+                    }
                 
                 });
 

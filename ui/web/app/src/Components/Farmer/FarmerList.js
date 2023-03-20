@@ -23,16 +23,10 @@ import { config } from "../../Constants/constant";
 
 const FarmerList = () => {
 
-  //   fields = "./Service/po.json";
-  //   farmerFields = "./Service/farmer.json";
-
-
   const navigate = useNavigate();
   const [open, setopen] = useState(false);
   const [ccdata, setccdata] = useState([{ name: "check", label: "check" }]);
   const [farmerdata, setfarmerdata] = useState({});
-
-
 
   useEffect(() => {
     getCcList();
@@ -45,16 +39,8 @@ const FarmerList = () => {
     var value = e.target.value;
 
     setfarmerdata({ ...farmerdata, "centerId": value, "centerName": name })
-
-
   }
-
-
-
-
   const getCcList = () => {
-
-
 
     const payloaddata = {
       "FlowAdmin": {
@@ -63,7 +49,6 @@ const FarmerList = () => {
       },
       "searchString": "*"
     };
-
 
     postMethod(config.getcc, payloaddata)
       .then((res) => {
@@ -74,15 +59,10 @@ const FarmerList = () => {
         console.log(payload);
         setccdata(payload);
 
-
       });
-
-
   };
 
-
   const handlesubmit = () => {
-
     console.log(farmerdata);
     const sendpayload = {
       ...farmerdata, "Farmer": {
@@ -99,13 +79,9 @@ const FarmerList = () => {
           navigate("/farmerList")
         }
 
-
       });
       setopen(false);
-
-
   }
-
 
   const handleOptions = (data, option) => {
     console.log(option);
@@ -174,7 +150,6 @@ const FarmerList = () => {
           </Button>
         </DialogActions>
       </Dialog>
-
     </div>
   );
 

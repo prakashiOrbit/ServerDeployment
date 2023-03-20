@@ -1,18 +1,11 @@
 import React from "react";
-//import farmerFields from "./farmerFields.js";
-//import FormView from "form-create-builder";
 import FormView from "../CreateForm"
-import { getApi, postMethod } from "../../webservice";
-//import SmartConnect from "../Url/SmartConnect";
+import { getApi } from "../../webservice";
 import SmartConnect from "../smart-connect/smart-connect";
-import Datatable from "../../Modules/Datatable/datatable";
-//import farmerFields from "./farmerFields.json";
 import {config} from "../../Constants/constant";
 
 class Farmer extends React.Component {
 
-    //   fields = "./Service/po.json";
-    //   farmerFields = "./Service/farmer.json";
     constructor(props) {
         super(props);
         this.child = React.createRef();
@@ -32,8 +25,6 @@ class Farmer extends React.Component {
         this.setState({
             handleClick:  this.state.functions.current ? this.state.functions.current.handleClick : {} 
         })
-        // this.child.current.handleSearch();
-        //var sc = new SmartConnect();
         
     }
 
@@ -46,10 +37,7 @@ class Farmer extends React.Component {
                     </>) : (null)
     }
           <SmartConnect server={config.host} port={config.port} tenant={config.tenant} flow="farmer" flowEvent="farmerEvent" ref={this.child} /> 
-                {/* <SmartConnect ref={this.child} flow={this.state.flow} tenant={this.state.tenant}/> */}
-             
-                {/* <SmartConnect server="localhost" port="9082" tenant="fresh2rely" flow="farmer" flowEvent="farmerEvent" /> */}
-            </div>
+              </div>
         );
     }
 }

@@ -88,7 +88,7 @@ const CollectionCenterList = () => {
     postMethod(config.editCollectionCenter, sendpayload)
       .then((res) => {
         console.log(res.data.responses[0].message);
-        if (res.data.responses[0].message == "CollectionCeter details has been updated.") {
+        if (res.data.responses[0].message === "Collection Center details has been updated.") {
           
           navigate("/centerList")
         }
@@ -145,7 +145,7 @@ const CollectionCenterList = () => {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          Assign to CC
+          Create
         </DialogTitle>
         <DialogContent>
           <FormControl>

@@ -24,7 +24,9 @@ const CreateTruck = () => {
 
             postMethod(config.addTruck, payload)
                 .then((res) => {
-                    console.log(res);
+                    if(res.data.responses[0].message === "Truck is successfully created.") {
+                        navigate("/truckList")
+                    }
                 
                 });
 

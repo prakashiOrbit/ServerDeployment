@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation, useNavigate, useParams, useRoutes } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import EditComponent from '../../Modules/edit';
 import postMethod from '../../Modules/service';
 import farmer from "./farmer.json";

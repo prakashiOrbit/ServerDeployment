@@ -24,7 +24,11 @@ const CreateProduct = () => {
 
             postMethod(config.addProduct, payload)
                 .then((res) => {
-                    console.log(res);
+                    console.log(res.data.responses[0].message);
+                    if(res.data.responses[0].message === "Product is successfully created.") {
+                        navigate("/productList")
+                    }
+
                 
                 });
 
