@@ -6,27 +6,26 @@ import Datatable from "../../Modules/Datatable/datatable";
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Button } from "@mui/material";
-import { header_data } from "./farmer_headerdata";
-import axios from "axios";
+import { header_data } from "./warehouse_headerdata";
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-import FRSelect from "../../Modules/select";
-import postMethod, { getMethod } from "../../Modules/service";
+import postMethod from "../../Modules/service";
 import { config } from "../../Constants/constant";
 
 
-const FarmerList = () => {
+const WarehouseList = () => {
 
   const navigate = useNavigate();
   const [open, setopen] = useState(false);
   const [ccdata, setccdata] = useState([{ name: "check", label: "check" }]);
-  const [farmerdata, setfarmerdata] = useState({});
+  const [warehousedata, setwarehousedata] = useState({});
+
+
 
   useEffect(() => {
     getCcList();
@@ -38,9 +37,17 @@ const FarmerList = () => {
     var name = e.target.name;
     var value = e.target.value;
 
-    setfarmerdata({ ...farmerdata, "centerId": value, "centerName": name })
+    setwarehousedata({ ...warehousedata, "centerId": value, "centerName": name })
+
+
   }
+
+
+
+
   const getCcList = () => {
+
+
 
     const payloaddata = {
       "FlowAdmin": {
@@ -50,38 +57,48 @@ const FarmerList = () => {
       "searchString": "*"
     };
 
-    postMethod(config.getcc, payloaddata)
+
+    postMethod(config.getWarehouse, payloaddata)
       .then((res) => {
         console.log(res.data.responses[0].cd);
-        const payload = res.data.responses[0].cd.map((index) => ({
+        const payload = res.data.responses[0].cd?.map((index) => ({
           value: index.centerId, label: index.centerName
         }))
         console.log(payload);
         setccdata(payload);
 
+
       });
+
+
   };
 
+
   const handlesubmit = () => {
-    console.log(farmerdata);
+
+    console.log(warehousedata);
     const sendpayload = {
-      ...farmerdata, "Farmer": {
+      ...warehousedata, "Warehouse": {
         "___smart_action___": "lookup",
-        "___smart_value___": farmerdata.fId
+        "___smart_value___": warehousedata.address
       }
     }
 
-    postMethod(config.editFarmer, sendpayload)
+    postMethod(config.editWarehouse, sendpayload)
       .then((res) => {
         console.log(res.data.responses[0].message);
-        if (res.data.responses[0].message == "Farmer details has been updated.") {
+        if (res.data.responses[0].message === "Warehouse details has been updated.") {
 
-          navigate("/farmerList")
+          navigate("/warehouseList")
         }
+
 
       });
       setopen(false);
+
+
   }
+
 
   const handleOptions = (data, option) => {
     console.log(option);
@@ -89,19 +106,20 @@ const FarmerList = () => {
     switch (option) {
       case "Edit":
 
-        navigate('/farmer-edit', {
+        navigate('/warehouse-edit', {
           state: {
             id: data.id,
             data: data,
           }
         });
         break;
-      case "Assign to CC":
+      case "Create Warehouse":
 
-        setfarmerdata(data);
+        setwarehousedata(data);
         setopen(true);
-      default:
         break;
+      default:
+        
     }
   }
 
@@ -109,15 +127,15 @@ const FarmerList = () => {
     setopen(false);
   }
 
-  const handleCreateClick = () => {
-    navigate('/farmer');
-  };
 
+  const handleCreateClick = () => {
+    navigate('/createWarehouse');
+  };
   return (
     <div style={{ margin: "10%" }}>
 
 
-      <Datatable url={config.getfarmer} handleOptions={handleOptions} flowEvent="farmerEvent" flow="FarmerFlow" header_data={header_data} onCreateClick={handleCreateClick}/>
+      <Datatable url={config.getWarehouse} handleOptions={handleOptions} flowEvent="WarehouseEvent" flow="MasterDataFlow" header_data={header_data} onCreateClick={handleCreateClick} />
 
       <Dialog
         open={open}
@@ -136,7 +154,7 @@ const FarmerList = () => {
               defaultValue="female"
               name="radio-buttons-group"
             >
-              {ccdata.map((index) => {
+              {ccdata?.map((index) => {
                 return <FormControlLabel value={index.value} name={index.label} control={<Radio onChange={handleChange} />} label={index.label} />
               })}
             </RadioGroup>
@@ -150,10 +168,11 @@ const FarmerList = () => {
           </Button>
         </DialogActions>
       </Dialog>
+
     </div>
   );
 
 }
 
-export default FarmerList;
+export default WarehouseList;
 

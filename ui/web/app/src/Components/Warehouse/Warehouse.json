@@ -1,0 +1,20 @@
+{
+  "division": {
+    "name": "Warehouse Header",
+    "formelements": {
+      "title": "CREATE WAREHOUSE",
+      "warehouseDetails": [
+        {
+          "label": "address",
+          "id": "Address",
+          "control": "textbox"
+        },
+        {
+          "label": "capacity",
+          "id": "Capacity",
+          "control": "textbox"
+        }
+      ]
+    }
+  }
+}

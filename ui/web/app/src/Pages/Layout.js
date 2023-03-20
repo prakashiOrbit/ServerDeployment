@@ -65,7 +65,6 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
   ...theme.mixins.toolbar,
   justifyContent: "flex-end",
 }));
@@ -73,7 +72,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 export default function Layout() {
 
   const [openMenu, setOpenMenu] = React.useState(true);
-
+  const [openMenuIndex, setOpenMenuIndex] = React.useState(-1);
   const theme = createTheme({
     palette: {
       primary: {
@@ -101,7 +100,9 @@ export default function Layout() {
   const handleClickMenu = () => {
     setOpenMenu(!openMenu)
   };
-
+  const handleMenuClick = (index) => {
+    setOpenMenuIndex(openMenuIndex === index ? -1 : index); // toggle the state
+  };
   return (
     <ThemeProvider theme={theme}>
       
@@ -155,14 +156,14 @@ export default function Layout() {
 <List>
   {sideMenu.map((item, index) => (
     <>
-      <ListItemButton onClick={handleClickMenu}>
+      <ListItemButton onClick={() => handleMenuClick(index)}>
         <ListItemIcon>
           {item.icon}
         </ListItemIcon>
         <ListItemText primary={item.text} />
-        {openMenu ? <ExpandLess /> : <ExpandMore />}
+        {!openMenu ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
-      <Collapse in={!openMenu} timeout="auto" unmountOnExit>
+      <Collapse in={openMenuIndex === index} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           
             {item.options.map((option, index) => {

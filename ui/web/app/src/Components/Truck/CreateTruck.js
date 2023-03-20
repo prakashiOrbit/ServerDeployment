@@ -1,11 +1,11 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import EditComponent from '../../Modules/edit';
+import { useNavigate} from 'react-router-dom';
+import TruckEditComponent from './truckeditcomp';
 import postMethod from '../../Modules/service';
-import farmer from "./farmer.json";
+import Truck from "./Truck.json";
 import { config } from '../../Constants/constant';
 
-const FarmerOnboard = () => {
+const CreateTruck = () => {
 
     const navigate = useNavigate();
     const onSubmit = (text, data) => {
@@ -18,19 +18,21 @@ const FarmerOnboard = () => {
             const payload = {
                 ...data, "FlowAdmin": {
                     "___smart_action___": "lookup",
-                    "___smart_value___": "FarmerFlow",
+                    "___smart_value___": "MasterDataFlow",
                 }
             }
 
-            postMethod(config.addfarmer, payload)
+            postMethod(config.addTruck, payload)
                 .then((res) => {
-                    console.log(res);
-
+                    if(res.data.responses[0].message === "Truck is successfully created.") {
+                        navigate("/truckList")
+                    }
+                
                 });
 
         }
         else {
-            navigate("/farmerList")
+            navigate("/truckList")
         }
 
     }
@@ -42,8 +44,8 @@ const FarmerOnboard = () => {
     return (
         <>
 
-            <EditComponent formDetails={farmer} onSubmit={onSubmit} />
+            <TruckEditComponent formDetails={Truck} onSubmit={onSubmit} />
         </>
     )
 };
-export default FarmerOnboard;
+export default CreateTruck;

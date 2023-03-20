@@ -2,20 +2,20 @@ export const header_data = [
 
   
     {
-        "label": "name",
-        "name": "name",
+        "label": <strong>name</strong>,
+        "name": "<strong>name</strong>",
         "control": "textbox",
         "vallabelation": "alphanumeric"
     },
     {
-        "label": "phoneNo",
-        "name": "phoneNo",
+        "label": <strong>phoneNo</strong>,
+        "name": "<strong>phoneNo</strong>",
         "control": "textbox",
         "vallabelation": "phone"
     },
     {
-        "label": "Aadhar No",
-        "name": "aadharNo",
+        "label": <strong>aadharNo</strong>,
+        "name": <strong>aadharNo</strong>,
         "control": "textbox",
         "vallabelate": "alphanumeric",
         options:{
@@ -24,8 +24,8 @@ export const header_data = [
           }
     },
     {
-        "name": "panNo",
-        "label": "pan",
+        "name": "<strong>panNo</strong>",
+        "label": <strong>panNo</strong>,
         "control": "textbox",
         "vallabelate": "alphanumeric",
         options:{
@@ -35,8 +35,8 @@ export const header_data = [
     },
        
           {
-        "label": "Street Address",
-        "name": "streetAddress",
+        "label": <strong>streetAddress</strong>,
+        "name": <strong>streetAddress</strong>,
         "control": "textbox",
         "vallabelate": "alphanumeric",
         options:{
@@ -45,20 +45,20 @@ export const header_data = [
           }
     },
     {
-        "label": "City",
-        "name": "city",
+        "label": <strong>city</strong>,
+        "name": <strong>city</strong>,
         "control": "textbox",
         "vallabelate": "alphanumeric"
     },
     {
-        "label": "State",
-        "name": "state",
+        "label": <strong>state</strong>,
+        "name": <strong>state</strong>,
         "control": "textbox",
         "vallabelate": "alphanumeric"
     },
     {
-        "label": "Pin Code",
-        "name": "pinCode",
+        "label": <strong>pinCode</strong>,
+        "name": <strong>pinCode</strong>,
         "control": "textbox",
         "vallabelate": "number",
         options:{
