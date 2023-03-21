@@ -8,25 +8,34 @@
           "label": "centerId",
           "id": "centerId",
           "control": "textbox",
-          "validation": "alphanumeric"
+          "required":"true",
+          "minLength":1,
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\s]*$",
+          "errorMessage":"Please enter valid Center Id."
         },
         {
           "label": "centerName",
           "id": "centerName",
           "control": "textbox",
-          "validation": "alphanumeric"
+          "required":"true",
+          "pattern": "^[^0-9]+$",
+          "errorMessage":"Please enter valid Center Name(eg.Manoj Farms)"
         },
         {
           "label": "centerAddress",
           "id": "centerAddress",
           "control": "textbox",
-          "validate": "alphanumeric"
+          "required":"true",
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\s,-#]*$",
+          "errorMessage":"Please enter Center Address(eg.LIG-113, Manjo Farms, Kerala)"
         },
         {
           "label": "contact",
           "id": "contact",
           "control": "textbox",
-          "validate": "number"
+          "required":"true",
+          "pattern": "^[6-9][0-9]{9}$",
+          "errorMessage":"Contact Number only contains 10 digits(eg. 9876567654)"
         }
       ]
     }

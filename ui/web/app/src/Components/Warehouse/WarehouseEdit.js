@@ -3,7 +3,7 @@ import { useLocation, useNavigate} from 'react-router-dom';
 import WarehouseEditComponent from './warehouseeditcomp';
 import postMethod from '../../Modules/service';
 import { config } from '../../Constants/constant';
-import Warehouse from './Warehouse';
+import en from './en';
 
 const WarehouseEdit =()=>{
     
@@ -45,7 +45,7 @@ else {
     return(
         <>
 
-<WarehouseEditComponent   rowdata={data} type="edit" formDetails={Warehouse} onSubmit={onSubmit} />
+<WarehouseEditComponent   rowdata={data} type="edit" formDetails={en} onSubmit={onSubmit} />
         </>
     )
 };

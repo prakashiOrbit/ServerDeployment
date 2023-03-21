@@ -8,31 +8,45 @@
           "label": "skuId",
           "id": "skuId",
           "control": "textbox",
-          "validation": "alphanumeric"
+          "required":"true",
+          "minLength":1,
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\s]*$",
+          "errorMessage":"Please enter valid Sku Id."
         },
         {
           "label": "itemName",
           "id": "itemName",
           "control": "textbox",
-          "validation": "alphanumeric"
+          "required":"true",
+          "minLength":2,
+          "pattern": "^[a-zA-Z ]+$",
+          "errorMessage":"Item Name only contains letters.(eg. Apple, Cabbage, Cauliflower)"
         },
         {
           "label": "itemCategory",
           "id": "itemCategory",
           "control": "textbox",
-          "validation": "alphanumeric"
+          "required":"true",
+          "minLength":2,
+          "pattern": "^[a-zA-Z ]+$",
+          "errorMessage":"Item Category only contains letters.(eg. tropical / fleshy fruit / stone fruit /melons)"
         },
         {
           "label": "itemSubcategory",
           "id": "itemSubcategory",
           "control": "textbox",
-          "validation": "alphanumeric"
+          "required":"true",
+          "minLength":2,
+          "pattern": "^[a-zA-Z ]+$",
+          "errorMessage":"Item Sub-Category only contains letters.(eg. Pits / citrus / core )"
         },
         {
           "label": "basePrice",
           "id": "basePrice",
           "control": "textbox",
-          "validation": "alphanumeric"
+          "required":"true",
+          "pattern": "^[0-9]+(.[0-9]+)?$",
+          "errorMessage":"Base Price only contains numbers.(eg. 300, 120.35)"
         }
       ]
     },
@@ -47,7 +61,7 @@
         "id": "cancel",
         "label": "Cancel",
         "control": "button",
-        "redirect": "polist"
+        "redirect": "/productList"
       }
     ]
   }

@@ -15,25 +15,33 @@
           "id": "name",
           "label": "name",
           "control": "textbox",
-          "validation": "alphanumeric"
+          "required":"true",
+          "pattern": "^[^0-9]+$",
+          "errorMessage":"Username only contains letters(eg. G. Shivani Murthy)"
         },
         {
           "id": "phoneNo",
           "label": "phoneNo",
           "control": "textbox",
-          "validation": "phone"
+          "required":"true",
+          "pattern": "^[6-9][0-9]{9}$",
+          "errorMessage":"Phone Number only contains 10 digits(eg. 9876567654)"
         },
         {
           "id": "Aadhar No",
           "label": "aadharNo",
           "control": "textbox",
-          "validate": "alphanumeric"
+          "required":"true",
+          "pattern": "^[2-9]{4} [0-9]{4} [0-9]{4}$",
+          "errorMessage":"Aadhar Number must contains 12 digits.(eg. 7654 8759 8324)"
         },
         {
           "label": "panNo",
           "id": "pan",
           "control": "textbox",
-          "validate": "alphanumeric"
+          "required":"true",
+          "pattern": "^[A-Z]{5}[0-9]{4}[A-Z]{1}$",
+          "errorMessage":"Please enter valid Pan Number.(eg. CQAYM7601W)"
         }
       ],
       "title2": "ADDRESS DETAILS",
@@ -42,25 +50,37 @@
           "id": "Street Address",
           "label": "streetAddress",
           "control": "textbox",
-          "validate": "alphanumeric"
+          "required":"true",
+          "minLength":2,
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\s]*$",
+          "errorMessage":"Please enter valid Street Address.(eg. 13th Church Street)"
         },
         {
           "id": "City",
           "label": "city",
           "control": "textbox",
-          "validate": "alphanumeric"
+          "required":"true",
+          "minLength":2,
+          "pattern": "^[a-zA-Z ]+$",
+          "errorMessage":"City Name only contains letters.(Bangalore)"
         },
         {
           "id": "State",
           "label": "state",
           "control": "textbox",
-          "validate": "alphanumeric"
+          "required":"true",
+          "minLength":2,
+          "pattern": "^[a-zA-Z ]+$",
+          "errorMessage":"State only contains letters.(eg. Tamil Nadu)"
         },
         {
           "id": "Pin Code",
           "label": "pinCode",
           "control": "textbox",
-          "validate": "number"
+          "required":"true",
+          "minLength":6,
+          "pattern": "^[1-9][0-9]{5}$",
+          "errorMessage":"Pin Code only contains 6 digits.(EG. 495006)"
         }
       ],
 
@@ -70,19 +90,27 @@
           "id": "Payee Name",
           "label": "payeeName",
           "control": "textbox",
-          "validate": "alphanumeric"
+          "required":"true",
+          "minLength":3,
+          "pattern": "^[^0-9]+$",
+          "errorMessage":"Payee Name only contains letters.(Manish Malhotra)"
         },
         {
           "id": "Account Number",
           "label": "accountNo",
           "control": "textbox",
-          "validate": "number"
+          "required":"true",
+          "minLength":9,
+          "pattern": "^[0-9]{9,18}$",
+          "errorMessage":"Please enter valid Account Number.(eg. 876543256789)"
         },
         {
           "id": "IFSC  Code",
           "label": "ifscCode",
           "control": "textbox",
-          "validate": "number"
+          "required":"true",
+          "pattern": "^[A-Z]{4}0[A-Z0-9]{6}$",
+          "errorMessage":"Please enter valid IFSC Code."
         }
       ]
     },
