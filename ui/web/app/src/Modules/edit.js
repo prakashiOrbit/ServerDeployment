@@ -1,7 +1,6 @@
 import { Button, Grid } from "@mui/material";
 import { useEffect, useState } from "react";
 import CustomTextField from "./Textfield";
-import { validation } from "../Components/CreateForm/Validattion";
 
 const EditComponent = ({ formDetails, rowdata, onSubmit, type }) => {
   const [formdata, setformdata] = useState(rowdata ? rowdata : {});
@@ -63,7 +62,8 @@ const EditComponent = ({ formDetails, rowdata, onSubmit, type }) => {
                           value={rowdata?.[item.label]}
                           onChange={onChange}
                           label={item.label}
-                          required={validation}
+                          rules={item}
+                          
 
                         />
                       ) : (
@@ -117,7 +117,7 @@ const EditComponent = ({ formDetails, rowdata, onSubmit, type }) => {
                           value={rowdata?.[item.label]}
                           onChange={onChange}
                           label={item.label}
-                          required={validation}
+                          rules={item}
 
                         />
                       ) : (
@@ -172,7 +172,7 @@ const EditComponent = ({ formDetails, rowdata, onSubmit, type }) => {
                           value={rowdata?.[item.label]}
                           onChange={onChange}
                           label={item.label}
-                          required={validation}
+                          rules={item}
 
                         />
                       ) : (

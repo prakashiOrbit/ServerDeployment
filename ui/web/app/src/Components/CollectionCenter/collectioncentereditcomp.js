@@ -1,7 +1,6 @@
 import { Button, Grid } from "@mui/material";
 import { useEffect, useState } from "react";
 import CustomTextField from "../../Modules/Textfield";
-import { validation } from "../CreateForm/Validattion";
 
 const CollectionCenterEditComponent = ({ formDetails, rowdata, onSubmit, type }) => {
     const [formdata, setformdata] = useState(rowdata ? rowdata : {});
@@ -63,7 +62,7 @@ const CollectionCenterEditComponent = ({ formDetails, rowdata, onSubmit, type })
                                                     value={rowdata?.[item.label]}
                                                     onChange={onChange}
                                                     label={item.label}
-                                                    required={validation}
+                                                    rules={item}
 
                                                 />
                                             ) : (

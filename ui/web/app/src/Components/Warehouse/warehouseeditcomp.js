@@ -63,7 +63,7 @@ const WarehouseEditComponent = ({ formDetails, rowdata, onSubmit, type }) => {
                                                     value={rowdata?.[item.label]}
                                                     onChange={onChange}
                                                     label={item.label}
-                                                    required={validation}
+                                                    rules={item}
 
                                                 />
                                             ) : (

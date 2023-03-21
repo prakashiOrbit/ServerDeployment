@@ -8,32 +8,36 @@
           "label": "licenseNo",
           "id": "licenseNo",
           "control": "textbox",
-          "validate": "alphanumeric"
+          "required":"true",
+          "pattern": "^[A-Z]{2}-[0-9]{2}-[0-9]{4}-[0-9]{7}$",
+          "errorMessage":"Enter valid License Number.(eg. CG-12-2023-7654634)"
         },
         {
           "id": "registrationDate",
           "label": "registrationDate",
           "control": "textbox",
-          "validate": "alphanumeric"
+          "required":"true",
+          "pattern": "^(0?[1-9]|[12][0-9]|3[01])\/(0?[1-9]|1[0-2])\/{4}$",
+          "errorMessage":"Enter valid Registration date Date.(eg.12-09-2023 )"
         },
         {
-          "id": "VinNo",
-          "label": "VinNo",
+          "id": "vinNo",
+          "label": "vinNo",
           "control": "textbox",
-          "validate": "time"
+          "required":"true",
+          "minLength":2,
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\s]*$",
+          "errorMessage":"Please enter valid VIN Number.(eg. 4Y1SL65848Z411439)"
         },
-        {
-          "id": "chassisNo",
-          "label": "chassisNo",
-          "control": "textbox",
-          "validate": "alphanumeric"
-        },
+        
 
         {
           "id": "regAddress",
           "label": "regAddress",
           "control": "textbox",
-          "validate": "alphanumeric"
+          "required":"true",
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\s,-#]*$",
+          "errorMessage":"Please enter Registered Address(eg.LIG-113, Manjo Farms, Kerala)"
         }
       ]
     }
