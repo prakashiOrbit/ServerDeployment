@@ -9,19 +9,35 @@
           "label": "fId",
           "control": "textbox",
           "validation": "alphanumeric",
-          "disabled": true
+          "disabled": true,
+          "required": true,
+          "minLength": 3,
+          "pattern": "^[A-Za-z0-9_-]*$",
+          "errorMessage":
+            "Username must be at least 3 characters long and contain only letters and numbers."
         },
         {
           "id": "name",
           "label": "name",
           "control": "textbox",
-          "validation": "alphanumeric"
+          "validation": "alphanumeric",
+          "required": true,
+          "minLength": 3,
+      
+          "pattern": "^[A-Za-z0-9_-]*$",
+          "errorMessage":
+            "Username must be at least 3 characters long and contain only letters and numbers."
         },
         {
           "id": "phoneNo",
           "label": "phoneNo",
           "control": "textbox",
-          "validation": "phone"
+          "validation": "phone",
+          "required": true,
+          "minLength": 10,
+          "pattern": "^[0-9]*$",
+          "errorMessage":
+            "Username must be at least 3 characters long and contain only letters ."
         },
         {
           "id": "Aadhar No",

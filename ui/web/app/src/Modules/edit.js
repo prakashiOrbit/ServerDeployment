@@ -63,7 +63,7 @@ console.log(formdata);
                                   onChange={onChange}
                                   label={item.label}
                                   //disabled={item?.disabled}
-                                
+                                 rules = {item}
                                  // defaultValue={rowdata[item.label]}
                                   
                                 />
