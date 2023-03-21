@@ -1,0 +1,13 @@
+name: Farmer
+type: PrimeData
+flow: FarmerFlow
+attributes:
+  - attribute: fId
+    type: key
+states:
+  - name: active
+    startState: true
+  - name: approved
+    startState: false
+  - name: inactive
+    endState: true

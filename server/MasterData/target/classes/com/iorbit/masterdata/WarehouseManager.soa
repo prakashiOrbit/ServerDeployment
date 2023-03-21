@@ -1,0 +1,40 @@
+name: WarehouseCreate
+type: Transition
+flow: MasterDataFlow
+foreach: FlowAdmin|CreateWarehouse,Warehouse|GetWarehouse,FlowAdmin|SearchWarehouse,Warehouse|EditWarehouse
+actions:
+  - name: createWarehouse
+    method: createWarehouse
+    foreach: FlowAdmin|CreateWarehouse
+    parms: (event,srch.MasterDataFlow.Warehouse.event.wId)
+    from: active
+    to: active
+  - name: getWarehouse
+    method: getWarehouse
+    foreach: Warehouse|GetWarehouse
+    from: active,approved
+    to: active
+  - name: setupWarehouseSearch
+    method: setupWarehouseSearch
+    foreach: FlowAdmin|SearchWarehouse
+    from: active
+    to: active
+  - name: getWarehouses
+    method: getWarehouses
+    runAfter: searchWarehouse
+    foreach: FlowAdmin|SearchWarehouse
+    from: active
+    to: active
+  - name: editWarehouse
+    method: editWarehouse
+    foreach: Warehouse|EditWarehouse
+    from: active
+    to: active
+callservices:
+  - name: searchWarehouse
+    service: AllFlows.SearchManager.searchService
+    parms: (MasterDataFlow,Warehouse,event.search,event.warehouse)
+    runAfter: setupWarehouseSearch
+    foreach: FlowAdmin|SearchWarehouse
+    from: active
+    to: active

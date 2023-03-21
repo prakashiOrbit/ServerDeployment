@@ -1,0 +1,11 @@
+com/iorbit/farmer/EditFarmer.class
+com/iorbit/farmer/CreateFarmer.class
+com/iorbit/farmer/FarmerList$FarmerData.class
+com/iorbit/farmer/FarmerList.class
+com/iorbit/farmer/GetFarmer.class
+com/iorbit/farmer/SearchFarmers.class
+com/iorbit/farmer/FarmerDetails.class
+com/iorbit/farmer/Farmer.class
+com/iorbit/farmer/FarmerManager.class
+com/iorbit/farmer/Validator.class
+com/iorbit/farmer/MessageResponse.class
