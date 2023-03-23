@@ -2,20 +2,20 @@ export const header_data = [
 
   
     {
-        "label": <strong>name</strong>,
-        "name": "<strong>name</strong>",
+        "label": "name",
+        "name": "name",
         "control": "textbox",
         "vallabelation": "alphanumeric"
     },
     {
-        "label": <strong>phoneNo</strong>,
-        "name": "<strong>phoneNo</strong>",
+        "label": "phoneNo",
+        "name": "phoneNo",
         "control": "textbox",
         "vallabelation": "phone"
     },
     {
-        "label": <strong>aadharNo</strong>,
-        "name": <strong>aadharNo</strong>,
+        "label": "Aadhar No",
+        "name": "aadharNo",
         "control": "textbox",
         "vallabelate": "alphanumeric",
         options:{
@@ -24,8 +24,8 @@ export const header_data = [
           }
     },
     {
-        "name": "<strong>panNo</strong>",
-        "label": <strong>panNo</strong>,
+        "name": "panNo",
+        "label": "pan",
         "control": "textbox",
         "vallabelate": "alphanumeric",
         options:{
@@ -35,8 +35,8 @@ export const header_data = [
     },
        
           {
-        "label": <strong>streetAddress</strong>,
-        "name": <strong>streetAddress</strong>,
+        "label": "Street Address",
+        "name": "streetAddress",
         "control": "textbox",
         "vallabelate": "alphanumeric",
         options:{
@@ -45,20 +45,20 @@ export const header_data = [
           }
     },
     {
-        "label": <strong>city</strong>,
-        "name": <strong>city</strong>,
+        "label": "City",
+        "name": "city",
         "control": "textbox",
         "vallabelate": "alphanumeric"
     },
     {
-        "label": <strong>state</strong>,
-        "name": <strong>state</strong>,
+        "label": "State",
+        "name": "state",
         "control": "textbox",
         "vallabelate": "alphanumeric"
     },
     {
-        "label": <strong>pinCode</strong>,
-        "name": <strong>pinCode</strong>,
+        "label": "Pin Code",
+        "name": "pinCode",
         "control": "textbox",
         "vallabelate": "number",
         options:{
@@ -87,4 +87,3 @@ export const header_data = [
     // },
    
 ];
-
