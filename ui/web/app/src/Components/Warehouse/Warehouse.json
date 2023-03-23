@@ -1,0 +1,26 @@
+{
+  "division": {
+    "name": "Warehouse Header",
+    "formelements": {
+      "title": "CREATE WAREHOUSE",
+      "warehouseDetails": [
+        {
+          "label": "address",
+          "id": "Address",
+          "control": "textbox",
+          "required":"true",
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\s,-#]*$",
+          "errorMessage":"Please enter Address(eg.LIG-113, Manoj Farms, Kerala)"
+        },
+        {
+          "label": "capacity",
+          "id": "Capacity",
+          "control": "textbox",
+          "required":"true",
+          "pattern": "^[0-9]+$",
+          "errorMessage":"Please enter Capacity.(eg. 100)"
+        }
+      ]
+    }
+  }
+}

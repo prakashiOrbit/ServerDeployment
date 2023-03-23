@@ -40,26 +40,28 @@ import { TextField as MUITextField } from "@material-ui/core";
 
 
 
-function CustomTextField({ label, value, defaultValue, onChange,disable, rules,...rest }) {
+function CustomTextField({ label, value, defaultValue, onChange,disable, handleError ,rules,...rest }) {
   const [error, setError] = useState(null);
   const [fieldValue, setFieldValue] = useState(value);
   console.log("ruless",rules);
   const handleFieldChange = (event) => {
     const newValue = event.target.value;
     const isValid = validateInput(newValue);
-    
     if (isValid) {
       setError(null);
       setFieldValue(event.target.value);
       onChange(event);
+      handleError(false);
     } else {
       setError(`Invalid input: ${rules.errorMessage}`);
       setFieldValue(event.target.value);
+      handleError(true);
     }
   };
+  
 
   const validateInput = (input) => {
-  
+
 
    if(rules.required){
     var testpattern =  new RegExp(rules.pattern)
@@ -83,7 +85,6 @@ function CustomTextField({ label, value, defaultValue, onChange,disable, rules,.
     console.log("asdjm")
     return true;
   }
-  
   };
 
   return (
@@ -97,8 +98,10 @@ function CustomTextField({ label, value, defaultValue, onChange,disable, rules,.
     onChange={handleFieldChange}
     error={Boolean(error)}
     helperText={error}
+    required
       variant="outlined"
- 
+
+
       {...rest}
   />
     </div>
