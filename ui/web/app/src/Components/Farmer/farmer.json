@@ -5,13 +5,6 @@
       "title": "GENERAL DETAILS ",
       "generalDetails": [
         {
-          "id": "fId",
-          "label": "fId",
-          "control": "textbox",
-          "validation": "alphanumeric",
-          "disabled": true
-        },
-        {
           "id": "name",
           "label": "name",
           "control": "textbox",
