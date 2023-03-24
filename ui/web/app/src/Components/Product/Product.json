@@ -27,7 +27,7 @@
           "id": "itemCategory",
           "control": "textbox",
           "required":"true",
-          "minLength":2,
+          "minLength":0,
           "pattern": "^[a-zA-Z ]+$",
           "errorMessage":"Item Category only contains letters.(eg. tropical / fleshy fruit / stone fruit /melons)"
         },
