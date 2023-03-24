@@ -111,7 +111,7 @@ export default class SmartConnect extends Component {
     handleClick = (url, data) => {
         console.log(url, data, "from handle click");
         this.postMethod({ "FlowAdmin": { "___smart_action___": "lookup", "___smart_value___": this.props.flow }, ...data },
-            'http://', 'localhost:9082/', this.props.tenant,this.props.flow, url)
+            'http://', '167.71.237.12:9082/', this.props.tenant,this.props.flow, url)
             .then(res=>res.json()
             .then((resp)=>{
              var datalist=(resp.responses[0].message); 
@@ -123,13 +123,13 @@ export default class SmartConnect extends Component {
     handleSearch = (url, searchString) => {
         console.log(url, searchString, "from handle search click");
         this.postMethod({"FlowAdmin": {"___smart_action___": "lookup","___smart_value___": this.props.flow},"searchString": searchString},
-        'http://', 'localhost:9082/', this.props.tenant, this.props.flow, url);
+        'http://', '167.71.237.12:9082/', this.props.tenant, this.props.flow, url);
     }
 
     handleEdit = (url, data) => {
         console.log(url, data, "from handle Edit click");
         this.postMethod(...data,{"FlowAdmin": {"___smart_action___": "lookup","___smart_value___": this.props.flow}},
-        'http://', 'localhost:9082/', this.props.tenant, this.props.flow, url);
+        'http://', '167.71.237.12:9082/', this.props.tenant, this.props.flow, url);
     }
 
 
@@ -142,7 +142,7 @@ export default class SmartConnect extends Component {
         console.log(payload, "payload &&&&&&&&&&&&&&&&&&#####################")
         var url = this.urlbuilder(protocol, domain, tenant, object, endpoint);
         //call authenticate function
-        var fun = this.authenticate('http://', 'localhost:9082/', 'apptest/', 'Security', 'Authenticate')
+        var fun = this.authenticate('http://', '167.71.237.12:9082/', 'apptest/', 'Security', 'Authenticate')
         //localstorage getitem - store the session in a variable
         var id = localStorage.getItem('sessionId', fun)
         console.log(id);

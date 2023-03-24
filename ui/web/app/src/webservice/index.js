@@ -5,7 +5,7 @@ const authToken = ""
 
 export const handleSearch = (url,value) => {
   postMethod({"FlowAdmin": {"___smart_action___": "lookup","___smart_value___": "FarmerFlow"},"searchString": value},
-  'http://', 'localhost:9082/', 'apptest/', 'FarmerFlow', url)
+  'http://', '167.71.237.12:9082/', 'apptest/', 'FarmerFlow', url)
   .then(res=>res.json()
   .then((resp)=>{
    var datalist=(resp.responses[0].farmers); 
@@ -96,7 +96,7 @@ export function postMethod(payload, protocol, domain, tenant, object, endpoint) 
   console.log("post methode");
   var url = urlbuilder(protocol, domain, tenant, object, endpoint);
   //call authenticate function
-  var fun = authenticate('http://', 'localhost:9082/', 'apptest/', 'Security', 'Authenticate')
+  var fun = authenticate('http://', '167.71.237.12:9082/', 'apptest/', 'Security', 'Authenticate')
   //localstorage getitem - store the session in a variable
   var id = localStorage.getItem('sessionId', fun)
   //Pass the variable in the header
