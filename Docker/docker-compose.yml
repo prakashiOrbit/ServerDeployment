@@ -8,8 +8,8 @@ services:
             - "8081:80"
             - "9082:9081"
         volumes:
-                - "/home/smartuser/dev-docker/deploy-app:/app"
-                - "/home/smartuser/dev-docker/app-data:/var/lib/mysql"
+                - "/root/Fresh2Rely/Docker/deploy-app:/app"
+                - "/root/Fresh2Rely/Docker/app-data:/var/lib/mysql"
         entrypoint: /bin/bash
         command:
             - /home/run.sh

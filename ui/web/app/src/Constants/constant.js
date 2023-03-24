@@ -105,7 +105,7 @@ export const sideMenu = [
   },
 ];
 export const config = {
-  host: "localhost",
+  host: "167.71.237.12",
   port: "9082",
   tenant: "apptest",
   editFarmer:"/FarmerFlow/EditFarmer",
