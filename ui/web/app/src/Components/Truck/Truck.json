@@ -17,12 +17,21 @@
           "label": "registrationDate",
           "control": "textbox",
           "required":"true",
-          "pattern": "^(0?[1-9]|[12][0-9]|3[01])\/(0?[1-9]|1[0-2])\/{4}$",
+          "pattern": "^(0?[1-9]|[12][0-9]|3[01])[-\/](0?[1-9]|1[0-2])[-\/]\\d{4}$",
           "errorMessage":"Enter valid Registration date Date.(eg.12-09-2023 )"
         },
         {
           "id": "vinNo",
           "label": "vinNo",
+          "control": "textbox",
+          "required":"true",
+          "minLength":2,
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\s]*$",
+          "errorMessage":"Please enter valid VIN Number.(eg. 4Y1SL65848Z411439)"
+        },
+        {
+          "id": "chassisNo",
+          "label": "chassisNo",
           "control": "textbox",
           "required":"true",
           "minLength":2,
@@ -36,7 +45,6 @@
           "label": "regAddress",
           "control": "textbox",
           "required":"true",
-          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\s,-#]*$",
           "errorMessage":"Please enter Registered Address(eg.LIG-113, Manjo Farms, Kerala)"
         }
       ]

@@ -26,7 +26,6 @@
           "id": "centerAddress",
           "control": "textbox",
           "required":"true",
-          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\s,-#]*$",
           "errorMessage":"Please enter Center Address(eg.LIG-113, Manjo Farms, Kerala)"
         },
         {

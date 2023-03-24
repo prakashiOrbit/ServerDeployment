@@ -8,28 +8,31 @@ tenant=apptest
 ######################
 
 declare -a deployfile=(
-$installpath'inventoryappflow.jar'
-$installpath'helper-1.0-SNAPSHOT.jar'
+$installpath'farmer-0.0.1-SNAPSHOT.jar'
+$installpath'Masterdata-0.0.1-SNAPSHOT.jar'
 )
 
 declare -a deploysoa=(
-'InventoryAppFlow.soa'
-'TransitionHelperFlow.soa'
+'FarmerFlow.soa'
+'MasterDataFlow.soa'
 )
 
 ######################
 #CHANGE FOR NEW FLOWS TO BE ADDED
 ######################
 
-defenabled='TransitionHelperFlow'
-defenablefeatures="all"
+defenabled='FarmerFlow'
+defenabled='MasterDataFlow'
+defenablefeatures="basic"
 
 declare -a enableflows=(
-'InventoryAppFlow'
+'FarmerFlow'
 )
-
+declare -a enableflows=(
+'MasterDataFlow'
+)
 declare -a enablefeatures=(
-'all'
+'basic'
 )
 
 declare -a enablelinks=(
