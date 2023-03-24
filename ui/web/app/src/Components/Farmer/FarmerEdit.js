@@ -17,8 +17,7 @@ console.log(data,text);
 
 if(text=="submit"){
 
-const sendpayload = {...data,"Farmer":{ "___smart_action___": "lookup",
-"___smart_value___": data.fId}}
+const sendpayload = {...data,"Farmer":{"___smart_value___": data.fId, "___smart_action___": "lookup","___smart_value___": data.fId}}
 
 postMethod(config.editFarmer,sendpayload)
 .then((res)=>{

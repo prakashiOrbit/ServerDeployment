@@ -9,7 +9,6 @@
           "id": "Address",
           "control": "textbox",
           "required":"true",
-          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\s,-#]*$",
           "errorMessage":"Please enter Address(eg.LIG-113, Manoj Farms, Kerala)"
         },
         {

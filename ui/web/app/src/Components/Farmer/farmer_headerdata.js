@@ -1,21 +1,27 @@
 export const header_data = [
 
-  
+    
     {
-        "label": <strong>name</strong>,
-        "name": "<strong>name</strong>",
+        "label": "farmerId",
+        "name": "farmerId",
+        "control": "textbox",
+        "vallabelate": "alphanumeric"
+    },
+    {
+        "label": "name",
+        "name": "name",
         "control": "textbox",
         "vallabelation": "alphanumeric"
     },
     {
-        "label": <strong>phoneNo</strong>,
-        "name": "<strong>phoneNo</strong>",
+        "label": "phoneNo",
+        "name": "phoneNo",
         "control": "textbox",
         "vallabelation": "phone"
     },
     {
-        "label": <strong>aadharNo</strong>,
-        "name": <strong>aadharNo</strong>,
+        "label": "aadharNo",
+        "name": "aadharNo",
         "control": "textbox",
         "vallabelate": "alphanumeric",
         options:{
@@ -24,8 +30,8 @@ export const header_data = [
           }
     },
     {
-        "name": "<strong>panNo</strong>",
-        "label": <strong>panNo</strong>,
+        "name": "panNo",
+        "label": "panNo",
         "control": "textbox",
         "vallabelate": "alphanumeric",
         options:{
@@ -35,8 +41,8 @@ export const header_data = [
     },
        
           {
-        "label": <strong>streetAddress</strong>,
-        "name": <strong>streetAddress</strong>,
+        "label": "streetAddress",
+        "name": "streetAddress",
         "control": "textbox",
         "vallabelate": "alphanumeric",
         options:{
@@ -45,26 +51,32 @@ export const header_data = [
           }
     },
     {
-        "label": <strong>city</strong>,
-        "name": <strong>city</strong>,
+        "label": "city",
+        "name": "city",
         "control": "textbox",
         "vallabelate": "alphanumeric"
     },
     {
-        "label": <strong>state</strong>,
-        "name": <strong>state</strong>,
+        "label": "state",
+        "name": "state",
         "control": "textbox",
         "vallabelate": "alphanumeric"
     },
     {
-        "label": <strong>pinCode</strong>,
-        "name": <strong>pinCode</strong>,
+        "label": "pinCode",
+        "name": "pinCode",
         "control": "textbox",
         "vallabelate": "number",
         options:{
             display:false,
          
           }
+    },
+    {
+        "label": "centerName",
+        "name": "centerName",
+        "control": "textbox",
+        "vallabelate": "alphanumeric"
     },
     
     //      { 

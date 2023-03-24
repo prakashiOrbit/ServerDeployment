@@ -38,7 +38,7 @@ const FarmerList = () => {
     var name = e.target.name;
     var value = e.target.value;
 
-    setfarmerdata({ ...farmerdata, "centerId": value, "centerName": name })
+    setfarmerdata({ ...farmerdata, "cId": value, "centerName": name })
   }
   const getCcList = () => {
 
@@ -52,9 +52,9 @@ const FarmerList = () => {
 
     postMethod(config.getcc, payloaddata)
       .then((res) => {
-        console.log(res.data.responses[0].cd);
-        const payload = res.data.responses[0].cd.map((index) => ({
-          value: index.centerId, label: index.centerName
+        console.log(res.data.responses[0].farmers);
+        const payload = res.data.responses[0].farmers.map((index) => ({
+          value: index.cId, label: index.centerName
         }))
         console.log(payload);
         setccdata(payload);
@@ -117,7 +117,7 @@ const FarmerList = () => {
     <div style={{ margin: "10%" }}>
 
 
-      <Datatable url={config.getfarmer} handleOptions={handleOptions} flowEvent="farmerEvent" flow="FarmerFlow" header_data={header_data} onCreateClick={handleCreateClick}/>
+      <Datatable url={config.getfarmer} handleOptions={handleOptions} flowEvent="farmerEvent" flow="FarmerFlow" header_data={header_data} onCreateClick={handleCreateClick} showAssignToCC={true}/>
 
       <Dialog
         open={open}
