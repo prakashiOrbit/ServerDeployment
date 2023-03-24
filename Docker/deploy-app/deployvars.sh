@@ -22,15 +22,21 @@ declare -a deploysoa=(
 ######################
 
 defenabled='FarmerFlow'
+defenablefeatures="basic"
 defenabled='MasterDataFlow'
 defenablefeatures="basic"
 
 declare -a enableflows=(
 'FarmerFlow'
 )
+
+declare -a enablefeatures=(
+'basic'
+)
 declare -a enableflows=(
 'MasterDataFlow'
 )
+
 declare -a enablefeatures=(
 'basic'
 )
