@@ -1,7 +1,7 @@
 version: '3'
 services:
     smart: 
-        image: smartplatform/pocit:latest
+        image: smartplatform/pocit:testversion
         user: root
         ports:
             - "8100:3306"
@@ -13,19 +13,4 @@ services:
         entrypoint: /bin/bash
         command:
             - /home/run.sh
-        networks:
-            front:
-                ipv4_address: 172.16.238.10
-                ipv6_address: "2001:3984:3989::10"
-
-networks:
-    front:
-        driver: bridge
-        driver_opts:
-            com.docker.network.enable_ipv6: "true"
-        ipam:
-            driver: default
-            config:
-                - subnet: 172.16.238.0/24
-                - subnet: "2001:3984:3989::/64"
 
