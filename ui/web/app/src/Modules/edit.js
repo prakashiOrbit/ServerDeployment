@@ -5,19 +5,48 @@ import CustomTextField from "./Textfield";
 const EditComponent = ({ formDetails, rowdata, onSubmit, type }) => {
   const [formdata, setformdata] = useState(rowdata ? rowdata : {});
   const[error,setError] = useState(true);
+  const[errorflag,setErrorflag] = useState(true);
+  const[reqfields,setreqfields]=useState([]);
 
 
-  const handleError=(flag)=>{
-    console.log(flag);
-    setError(flag)
-  }
+ useEffect(()=>{
+const labels = formDetails?.division?.formelements.flatMap(item => item.details)
+  .filter(detail => detail.required)
+  .map(detail => detail.label);
+  setreqfields(labels);
+
+ },[]);
+
+
+
+const validateall = () =>{
+
+  const allLabelsPresent = reqfields.every(label => Object.keys(formdata).includes(label));
+  const allLabelsPresentAndHaveValue = reqfields.every(label => formdata[label] !== null && formdata[label] !== undefined);
+console.log(allLabelsPresentAndHaveValue);
+  if (allLabelsPresent && !errorflag) {
+    console.log("All labels are present in the object's keys.");
+    setError(false);
+} else {
+    console.log("Not all labels are present in the object's keys.");
+    setError(true);
+}
+
+}
+
 
 
 
   const onClick = (e) => {
 
+    
     onSubmit(e.target.name, formdata);
 
+  }
+
+
+  const handleError = (flag) =>{
+    setErrorflag(flag);
   }
 
   const onChange = (e) => {
@@ -25,7 +54,10 @@ const EditComponent = ({ formDetails, rowdata, onSubmit, type }) => {
     let value = e.target.value;
 
     setformdata({ ...formdata, [id]: value });
+    validateall();
+    
   }
+
 
   useEffect(() => {
     console.log(formdata);
@@ -70,8 +102,8 @@ const EditComponent = ({ formDetails, rowdata, onSubmit, type }) => {
                 onChange={onChange}
                 label={item.label}
                 rules={item}
-                
                 handleError={handleError}
+
               />
             ) : (
               <>No Data Box</>

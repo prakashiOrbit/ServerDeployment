@@ -40,10 +40,10 @@ import { TextField as MUITextField } from "@material-ui/core";
 
 
 
-function CustomTextField({ label, value, defaultValue, onChange,disable, handleError ,rules,...rest }) {
+function CustomTextField({ label, value, defaultValue,onChange,handleError,disable ,rules,...rest }) {
   const [error, setError] = useState(null);
   const [fieldValue, setFieldValue] = useState(value);
-  console.log("ruless",rules);
+ 
   const handleFieldChange = (event) => {
     const newValue = event.target.value;
     const isValid = validateInput(newValue);
@@ -52,10 +52,12 @@ function CustomTextField({ label, value, defaultValue, onChange,disable, handleE
       setFieldValue(event.target.value);
       onChange(event);
       handleError(false);
+
     } else {
       setError(`Invalid input: ${rules.errorMessage}`);
       setFieldValue(event.target.value);
       handleError(true);
+
     }
   };
   
@@ -66,7 +68,7 @@ function CustomTextField({ label, value, defaultValue, onChange,disable, handleE
    if(rules.required){
     var testpattern =  new RegExp(rules.pattern)
 
-    console.log(testpattern);
+  
     if (rules.required && input.trim() === "") {
       return false;
     }
@@ -82,7 +84,7 @@ function CustomTextField({ label, value, defaultValue, onChange,disable, handleE
   }
 
   else {
-    console.log("asdjm")
+  
     return true;
   }
   };
