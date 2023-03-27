@@ -5,7 +5,7 @@ const authToken = ""
 
 export const handleSearch = (url,value) => {
   postMethod({"FlowAdmin": {"___smart_action___": "lookup","___smart_value___": "FarmerFlow"},"searchString": value},
-  'http://', '167.71.237.12:9082/', 'apptest/', 'FarmerFlow', url)
+  'http://', 'localhost:9082/', 'apptest/', 'FarmerFlow', url)
   .then(res=>res.json()
   .then((resp)=>{
    var datalist=(resp.responses[0].farmers); 

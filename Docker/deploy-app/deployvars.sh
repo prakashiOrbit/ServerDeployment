@@ -33,15 +33,9 @@ declare -a enableflows=(
 declare -a enablefeatures=(
 'basic'
 )
-declare -a enableflows=(
-'MasterDataFlow'
-)
-
-declare -a enablefeatures=(
-'basic'
-)
 
 declare -a enablelinks=(
 ''
 )
+
 
