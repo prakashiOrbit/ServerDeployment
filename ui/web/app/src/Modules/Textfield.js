@@ -1,39 +1,3 @@
-// import React from 'react';
-// import TextField from '@material-ui/core/TextField';
-// import { useState } from 'react';
-// const CustomTextField = ({ label, value, defaultValue, onChange,disable, ...rest }) => {
-//     const [fieldValue, setFieldValue] = useState(value);
-
-//   const handleFieldChange = (event) => {
-//     setFieldValue(event.target.value);
-//     onChange(event);
-//   };
-//   return (
-//     <TextField
-//       label={label}
-//       value={fieldValue}
-//       fullWidth
-//       id={label}
-//       disabled={disable}
-//      // defaultValue={defaultValue}
-//       onChange={handleFieldChange}
-//       variant="outlined"
- 
-//       {...rest}
-//     />
-//   );
-// };
-
-// export default CustomTextField;
-
-
-// const  rules = {
-//     required: true,
-//     minLength: 3,
-//     pattern: /^[a-zA-Z0-9]+$/,
-//     errorMessage:
-//       "Username must be at least 3 characters long and contain only letters and numbers.",
-//   };
 
 import React, { useState } from "react";
 import { TextField as MUITextField } from "@material-ui/core";
@@ -50,14 +14,14 @@ function CustomTextField({ label, value, defaultValue,onChange,handleError,disab
     if (isValid) {
       setError(null);
       setFieldValue(event.target.value);
-      onChange(event);
+      onChange(event,false);
       handleError(false);
-
+console.log("no error")
     } else {
       setError(`Invalid input: ${rules.errorMessage}`);
       setFieldValue(event.target.value);
       handleError(true);
-
+      console.log(" error")
     }
   };
   

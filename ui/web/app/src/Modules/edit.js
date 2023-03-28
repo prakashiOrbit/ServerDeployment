@@ -23,7 +23,7 @@ const validateall = () =>{
 
   const allLabelsPresent = reqfields.every(label => Object.keys(formdata).includes(label));
   const allLabelsPresentAndHaveValue = reqfields.every(label => formdata[label] !== null && formdata[label] !== undefined);
-console.log(allLabelsPresentAndHaveValue);
+console.log(errorflag);
   if (allLabelsPresent && !errorflag) {
     console.log("All labels are present in the object's keys.");
     setError(false);
