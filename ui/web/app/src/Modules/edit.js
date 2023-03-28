@@ -26,6 +26,7 @@ const validateall = () =>{
 console.log(errorflag);
   if (allLabelsPresent && !errorflag) {
     console.log("All labels are present in the object's keys.");
+    console.log(allLabelsPresent,errorflag)
     setError(false);
 } else {
     console.log("Not all labels are present in the object's keys.");
@@ -45,6 +46,11 @@ console.log(errorflag);
   }
 
 
+  useEffect(()=>{
+    validateall();
+  },[errorflag]);
+  
+
   const handleError = (flag) =>{
     setErrorflag(flag);
   }
@@ -54,7 +60,7 @@ console.log(errorflag);
     let value = e.target.value;
 
     setformdata({ ...formdata, [id]: value });
-    validateall();
+ 
     
   }
 

@@ -3,7 +3,7 @@ import { useLocation, useNavigate} from 'react-router-dom';
 import WarehouseEditComponent from './warehouseeditcomp';
 import postMethod from '../../Modules/service';
 import { config } from '../../Constants/constant';
-import en from './en';
+import Warehouse from './Warehouse';
 
 const WarehouseEdit =()=>{
     
@@ -23,12 +23,10 @@ const sendpayload = {...data,"Warehouse":{ "___smart_action___": "lookup",
 postMethod(config.editWarehouse,sendpayload)
 .then((res)=>{
     console.log(res.data.responses[0].message);
-    if(res.data.responses[0].message == "Warehouse details has been updated."){
+    if(res.data.responses[0].message == "warehouse details has been updated."){
       
         navigate("/warehouseList")
     }
-
-
 });
 
 }
@@ -37,15 +35,10 @@ else {
 }
 
     }
-    
-
-
-
-
     return(
         <>
 
-<WarehouseEditComponent   rowdata={data} type="edit" formDetails={en} onSubmit={onSubmit} />
+<WarehouseEditComponent   rowdata={data} type="edit" formDetails={Warehouse} onSubmit={onSubmit} />
         </>
     )
 };

@@ -5,6 +5,8 @@ import FormView from "./Components/CreateForm";
 import { useEffect } from "react";
 import { getApi, postApi } from "./webservice";
 import Po from "./Components/Po/po";
+import POEdit from "./Components/Po/POEdit";
+import POList from "./Components/Po/POList";
 import FarmerList from "./Components/Farmer/FarmerList";
 import TruckEdit from "./Components/Truck/TruckEdit";
 import CreateCollectionCenter from "./Components/CollectionCenter/CreateCollectionCenter";
@@ -93,16 +95,21 @@ const App = () => {
           <Route path="/po" element={<Po />} />
 
           <Route
+            path="/po-edit"
+            element={
+              <Protected isSignedIn={isSignedIn}>
+                <POEdit />
+              </Protected>
+            }
+          />
+
+            <Route
             path="/poList"
             element={
-              <FormView
-                aev={"list"}
-                fields={field}
-                list={lists}
-                search={searchs}
-                getApi={getApi}
-                postApi={postApi}
-              />
+              <Protected isSignedIn={isSignedIn}>
+              
+              <POList/>
+              </Protected>
             }
           />
           <Route

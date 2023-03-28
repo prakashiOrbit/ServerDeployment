@@ -9,14 +9,13 @@ import postMethod from '../service';
 import CreateIcon from '@mui/icons-material/Create';
 
 
-const Datatable = ({ url, handleOptions, flow, header_data, flowEvent ,onCreateClick}) => {
+const Datatable = ({ url, handleOptions, flow, header_data, flowEvent ,onCreateClick,showAssignToCC}) => {
  
   const [selectedRow, setSelectedRow] = React.useState(-1);
 
   const options = [
     "Edit",
-
-    "Assign to CC"
+    ...(showAssignToCC ? ["Assign to CC"] : [])
   ];
 
   const [tableData, settableData] = useState([]);

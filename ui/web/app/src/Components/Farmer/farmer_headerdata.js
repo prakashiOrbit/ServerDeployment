@@ -1,6 +1,12 @@
 export const header_data = [
 
-  
+    
+    {
+        "label": "farmerId",
+        "name": "farmerId",
+        "control": "textbox",
+        "vallabelate": "alphanumeric"
+    },
     {
         "label": "name",
         "name": "name",
@@ -65,6 +71,12 @@ export const header_data = [
             display:false,
          
           }
+    },
+    {
+        "label": "centerName",
+        "name": "centerName",
+        "control": "textbox",
+        "vallabelate": "alphanumeric"
     },
     
     //      { 

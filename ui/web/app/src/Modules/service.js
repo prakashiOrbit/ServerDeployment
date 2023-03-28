@@ -14,8 +14,8 @@ const postMethod = async (url,payload) => {
     const config = {
         headers:{ 'Content-Type': 'application/json',  'Session-Id': id }
       };
-    console.log("http://localhost:9082/apptest"+url, payload)
-    return await axios.post("http://localhost:9082/apptest"+url, payload,config)
+    console.log("http://167.71.237.12:9082/apptest"+url, payload)
+    return await axios.post("http://167.71.237.12:9082/apptest"+url, payload,config)
             .then((res) => {
           
                 return res;
@@ -44,8 +44,8 @@ export const getMethod = async (url,payload) => {
     const config = {
         headers:{ 'Content-Type': 'application/json',  'Session-Id': id }
       };
-    console.log("http://localhost:9082/apptest"+url, payload)
-    return await axios.get("http://localhost:9082/apptest"+url, payload,config)
+    console.log("http://167.71.237.12:9082/apptest"+url, payload)
+    return await axios.get("http://167.71.237.12:9082/apptest"+url, payload,config)
             .then((res) => {
           
                 return res;

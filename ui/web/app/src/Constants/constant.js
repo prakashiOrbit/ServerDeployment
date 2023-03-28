@@ -105,13 +105,18 @@ export const sideMenu = [
   },
 ];
 export const config = {
-  host: "localhost",
+  host: "167.71.237.12",
   port: "9082",
   tenant: "apptest",
   editFarmer:"/FarmerFlow/EditFarmer",
   addfarmer:"/FarmerFlow/CreateFarmer",
   getfarmer:"/FarmerFlow/SearchFarmers",
   getcc:"/MasterDataFlow/SearchCollectionCenter",
+
+  editPO:"/PurchaseOrderTemplateFlow/EditPurchaseOrderTemplate",
+  addPO:"/PurchaseOrderTemplateFlow/CreatePurchaseOrderTemplate",
+  getPO:"/PurchaseOrderTemplateFlow/SearchPurchaseOrdersTemplate", 
+
   editCollectionCenter:"/MasterDataFlow/EditCollectionCenter",
   addCollectionCenter:"/MasterDataFlow/CreateCollectionCenter",
   getCollectionCenter:"/MasterDataFlow/SearchCollectionCenter",
@@ -128,4 +133,6 @@ export const config = {
   addPurchaseOrderTemplate:"/PurchaseOrderTemplateFlow/CreatePurchaseOrderTemplate",
   getPurchaseOrderTemplate:"/PurchaseOrderTemplateFlow/SearchPurchaseOrderTemplate",
 
+
 };
+

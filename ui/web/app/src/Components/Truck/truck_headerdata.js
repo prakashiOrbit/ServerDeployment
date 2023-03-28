@@ -18,8 +18,7 @@ export const header_data = [
       {
         "label": "registrationDate",
         "name": "registrationDate",
-        "control": "textbox",
-        "vallabelation": "alphanumeric"
+        "control": "textbox"
       },
       {
         "label": "VinNo",

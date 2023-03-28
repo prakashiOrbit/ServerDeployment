@@ -136,7 +136,7 @@ const CollectionCenterList = () => {
     <div style={{ margin: "10%" }}>
 
 
-      <Datatable url={config.getCollectionCenter} handleOptions={handleOptions} flowEvent="CollectionCenterEvent" flow="MasterDataFlow" header_data={header_data} onCreateClick={handleCreateClick} />
+      <Datatable url={config.getCollectionCenter} handleOptions={handleOptions} flowEvent="CollectionCenterEvent" flow="MasterDataFlow" header_data={header_data} onCreateClick={handleCreateClick} showAssignToCC={false}/>
 
       <Dialog
         open={open}
