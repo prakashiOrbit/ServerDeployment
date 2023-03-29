@@ -20,7 +20,7 @@ export const header_data = [
         "vallabelation": "phone"
     },
     {
-        "label": "aadharNo",
+        "label": "Aadhar No",
         "name": "aadharNo",
         "control": "textbox",
         "vallabelate": "alphanumeric",
@@ -31,7 +31,7 @@ export const header_data = [
     },
     {
         "name": "panNo",
-        "label": "panNo",
+        "label": "pan",
         "control": "textbox",
         "vallabelate": "alphanumeric",
         options:{
@@ -41,7 +41,7 @@ export const header_data = [
     },
        
           {
-        "label": "streetAddress",
+        "label": "Street Address",
         "name": "streetAddress",
         "control": "textbox",
         "vallabelate": "alphanumeric",
@@ -51,19 +51,19 @@ export const header_data = [
           }
     },
     {
-        "label": "city",
+        "label": "City",
         "name": "city",
         "control": "textbox",
         "vallabelate": "alphanumeric"
     },
     {
-        "label": "state",
+        "label": "State",
         "name": "state",
         "control": "textbox",
         "vallabelate": "alphanumeric"
     },
     {
-        "label": "pinCode",
+        "label": "Pin Code",
         "name": "pinCode",
         "control": "textbox",
         "vallabelate": "number",
@@ -99,4 +99,3 @@ export const header_data = [
     // },
    
 ];
-

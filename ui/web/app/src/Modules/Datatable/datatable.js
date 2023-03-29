@@ -106,7 +106,7 @@ const Datatable = ({ url, handleOptions, flow, header_data, flowEvent ,onCreateC
 
     postMethod(url, payload)
       .then((res) => {
-        console.log(res);
+        console.log(res?.data?.responses[0]?.farmers);
         settableData(res?.data?.responses[0]?.farmers);
       });
 
