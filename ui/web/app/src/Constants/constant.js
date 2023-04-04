@@ -1,6 +1,6 @@
 import AgricultureIcon from '@mui/icons-material/Agriculture';
 import AddIcon from '@mui/icons-material/Add';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
 import CategoryIcon from '@mui/icons-material/Category';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import WarehouseIcon from '@mui/icons-material/Warehouse';
@@ -11,6 +11,7 @@ import GridViewIcon from '@mui/icons-material/GridView';
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import ShopRoundedIcon from '@mui/icons-material/ShopRounded';
+import LocationOnSharpIcon from '@mui/icons-material/LocationOnSharp';
 export const sideMenu = [
   {
     text: "Farmer Management",
@@ -100,6 +101,18 @@ export const sideMenu = [
         text: "View Order",
         link: "/customerList",
         icon: <ListAltIcon />
+      },
+    ],
+  },
+  {
+    text: "Warehouse Order",
+    icon: <WarehouseIcon />,
+    options: [
+      {
+        text: "Order Status",
+        link: "/warehouseOrder",
+        icon: < LocationOnSharpIcon />,
+        
       },
     ],
   },

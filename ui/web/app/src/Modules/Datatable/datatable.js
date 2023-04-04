@@ -9,7 +9,7 @@ import postMethod from '../service';
 import CreateIcon from '@mui/icons-material/Create';
 
 
-const Datatable = ({ url, handleOptions, flow, header_data, flowEvent ,onCreateClick,showAssignToCC}) => {
+const Datatable = ({ url, handleOptions, flow, header_data, flowEvent ,onCreateClick,showAssignToCC,showCreateIcon}) => {
  
   const [selectedRow, setSelectedRow] = React.useState(-1);
 
@@ -138,10 +138,11 @@ const Datatable = ({ url, handleOptions, flow, header_data, flowEvent ,onCreateC
     customToolbar: () => {
       return (
         
-        <IconButton onClick={onCreateClick}>
-          <CreateIcon />
-          
-        </IconButton>
+        showCreateIcon && (
+          <IconButton onClick={onCreateClick}>
+            <CreateIcon />
+          </IconButton>
+        )
         
       
       );

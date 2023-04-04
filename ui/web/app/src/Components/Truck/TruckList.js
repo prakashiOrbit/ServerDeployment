@@ -130,7 +130,7 @@ const TruckList = () => {
     <div style={{ margin: "10%" }}>
 
 
-      <Datatable url={config.getTruck}  handleOptions={handleOptions} flowEvent="TruckEvent" flow="MasterDataFlow" header_data={header_data} onCreateClick={handleCreateClick} showAssignToCC={false}/>
+      <Datatable url={config.getTruck}  handleOptions={handleOptions} flowEvent="TruckEvent" flow="MasterDataFlow" header_data={header_data} onCreateClick={handleCreateClick} showAssignToCC={false} showCreateIcon={true}/>
 
       <Dialog
         open={open}

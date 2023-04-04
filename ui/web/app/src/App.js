@@ -25,6 +25,9 @@ import TruckList from "./Components/Truck/TruckList";
 import CreateProduct from "./Components/Product/CreateProduct";
 import ProductList from "./Components/Product/ProductList";
 import ProductEdit from "./Components/Product/ProductEdit";
+import OrderTracker from "./Components/Warehouse Order/WarehouseOrder";
+import OrderStatus from "./Components/Warehouse Order/WarehouseOrder";
+import ProgressBar from "./Components/Warehouse Order/ProgressBar";
 
 const App = () => {
   const fields = "/Service/farmer.json";
@@ -279,32 +282,13 @@ const App = () => {
               />
             }
           />
-          <Route
-            path="/test/view"
-            element={
-              <FormView
-                aev={"view"}
-                fields={fieldss}
-                list={customerList}
-                search={customerSearch}
-                getApi={getApi}
-                postApi={postApi}
-              />
-            }
-          />
-          <Route
-            path="/test/edit"
-            element={
-              <FormView
-                aev={"edit"}
-                fields={fieldss}
-                list={customerList}
-                getApi={getApi}
-                search={customerSearch}
-                postApi={postApi}
-              />
-            }
-          />
+          
+          
+          <Route>
+          <Route path="/warehouseOrder" element={<ProgressBar />} />
+          </Route>
+          
+
         </Route>
 
         <Route

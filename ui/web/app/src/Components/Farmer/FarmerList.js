@@ -117,7 +117,7 @@ const FarmerList = () => {
     <div style={{ margin: "10%" }}>
 
 
-      <Datatable url={config.getfarmer} handleOptions={handleOptions} flowEvent="farmerEvent" flow="FarmerFlow" header_data={header_data} onCreateClick={handleCreateClick} showAssignToCC={true}/>
+      <Datatable url={config.getfarmer} handleOptions={handleOptions} flowEvent="farmerEvent" flow="FarmerFlow" header_data={header_data} onCreateClick={handleCreateClick} showAssignToCC={true} showCreateIcon={true}/>
 
       <Dialog
         open={open}

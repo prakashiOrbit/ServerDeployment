@@ -39,15 +39,10 @@ const tableIcons = {
     ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />)
   };
 
-
-
 const BasicTable = ({formDetails, tableData, showData, getApi}) => {
   
   console.log("datee",tableData)
   const  farmerdata  = tableData;
-
-  
-
   console.log("taaa",farmerdata)
   const [gridData, setGridData] = useState({
     
@@ -60,13 +55,8 @@ const BasicTable = ({formDetails, tableData, showData, getApi}) => {
 
   useEffect(() => {   
     const data = formDetails.submitURL ? () => showData(formDetails.submitURL,false) : ''
-
-    
-       
     axios.get(dataurl).then((resp) => {  
-      //setValue(resp.data.submitURL)   
       console.log("checkkeee axioo",resp.data.submitURL)
-      //showData(resp.data.submitURL,{"searchString":"Mohan"} )
       setGridData({
         data: resp.data.data,
         columns: resp.data.headCells,
@@ -74,13 +64,7 @@ const BasicTable = ({formDetails, tableData, showData, getApi}) => {
         updatedAt: new Date() 
       })
     });
-
-    
-  //gridData.resolve();
-  
 }, []);
-
-
 
   const onRowAdd = newData =>
     new Promise((resolve, reject) => {     
@@ -94,13 +78,9 @@ const BasicTable = ({formDetails, tableData, showData, getApi}) => {
 
   const onRowUpdate = (newData, oldData) =>
     new Promise((resolve, reject) => {
-      // Copy current state data to a new array
       const data = [...gridData.data];
-      // Get edited row index
       const index = data.indexOf(oldData);
-      // replace old data
       data[index] = newData;
-      // update state with the new array
       const updatedAt = new Date();
       showData(formDetails.submitURL, newData)
       setGridData({ ...gridData, data, updatedAt, resolve });

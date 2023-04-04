@@ -1,0 +1,93 @@
+.status-tracker {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .status-item {
+    display: inline-block;
+  margin-right: 20px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  background-color: #f2f2f2;
+  margin-top: 20px;
+  }
+  
+  .status-item.completed {
+    background-color: #007bff;
+    color: #fff;
+  }
+ 
+
+  .status-item.active {
+    background-color: #1abc9c;
+  }
+  
+  .status-label {
+    font-weight: bold;
+    color: #333;
+  }
+  .status-item:focus {
+    outline: none;
+  }
+
+  
+  .progress-bar {
+    background-color: purple;
+    height: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 20px;
+    min-width: 20px;
+    transition: width 0.5s ease-in-out;
+  }
+  
+  .progress-text {
+    color: white;
+    font-size: 12px;
+    position: absolute;
+    top: 1%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  
+  .button-container {
+    display: flex;
+    justify-content: space-between;/* Change justify-content to flex-start */
+    width: 100%;
+  }
+  
+  .button {
+    background-color: green;
+    color: white;
+    border: none;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-top: 70px;
+    margin-right: 10px; /* Add margin-right to add spacing between buttons */
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background-color: darkgreen;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    border: 2px solid black;
+    padding: 14px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #17a589;
+    color: white;
+  }
+  
+  

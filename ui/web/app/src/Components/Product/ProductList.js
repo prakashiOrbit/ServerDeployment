@@ -135,7 +135,7 @@ const ProductList = () => {
     <div style={{ margin: "10%" }}>
 
 
-      <Datatable url={config.getProduct} handleOptions={handleOptions} flowEvent="ProductEvent" flow="MasterDataFlow" header_data={header_data} onCreateClick={handleCreateClick} showAssignToCC={false}/>
+      <Datatable url={config.getProduct} handleOptions={handleOptions} flowEvent="ProductEvent" flow="MasterDataFlow" header_data={header_data} onCreateClick={handleCreateClick} showAssignToCC={false} showCreateIcon={true}/>
 
       <Dialog
         open={open}

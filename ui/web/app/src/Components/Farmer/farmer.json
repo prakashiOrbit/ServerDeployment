@@ -10,7 +10,7 @@
           "control": "textbox",
           "validation": "alphanumeric",
           "disabled": true,
-          "required": true,
+          "required": false,
           "minLength": 3,
           "pattern": "^[A-Za-z0-9_-]*$",
           "errorMessage":

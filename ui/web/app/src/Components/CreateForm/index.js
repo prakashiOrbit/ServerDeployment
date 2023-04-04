@@ -5,25 +5,17 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 //import FarmerComponent from "./FarmerComponent";
 import Container from "@mui/material/Container";
-import { postMethod } from "../smart-connect/smart-connect";
-
+import CustomTextField from "../../Modules/Textfield";
 import { withRouter } from "./WithRouter";
-import SelectClass from "./SelectClass";
-import TextFieldClass from "./TextFieldClass";
 import DateClass from "./DateClass";
 import ButtonClass from "./ButtonClass";
-import { validation } from "./Validattion";
+import FRSelect from "../../Modules/select";
 
-import POList from '../Po/POList';
+import BasicTable from "../BasicTable";
 
-import BasicTable from '../BasicTable'
-
-import { getApi} from "../../webservice";
+import { getApi } from "../../webservice";
 
 import EnhancedTable from "./DataTable";
-//import { Navigate, Outlet, useNavigate } from "react-router-dom";
-
-//import MultipleTextBoxes from "./MultipleTextBoxes";
 
 export class FormView extends Component {
   constructor(props) {
@@ -35,11 +27,10 @@ export class FormView extends Component {
     this.setView = this.setView.bind(this);
     this.handleEditButton = this.handleEditButton.bind(this);
     this.child = React.createRef();
-   
 
     //console.log(,this.props.aev"aev propsss");
     const { aev } = this.props.aev;
-    
+
     this.state = {
       inputDetails: {},
       searchInputDetails: {},
@@ -49,23 +40,20 @@ export class FormView extends Component {
       view: aev,
       selected: [],
       isSubmit: "",
-      formErrors: {},
-      
-
+      formErrors: {}
     };
   }
-
- 
 
   handleEditButton() {
     console.log("from handle button");
     const ress = {};
     const newDescData = this.state.view[0].map((item, index) => {
-      ress[this.state.view[0][index].dataAttribute] =
-        this.state.view[1][0][index];
+      ress[this.state.view[0][index].dataAttribute] = this.state.view[1][0][
+        index
+      ];
     });
     this.setState({
-      inputDetails: { ...ress },
+      inputDetails: { ...ress }
     });
 
     console.log(ress, "from handle button");
@@ -75,17 +63,16 @@ export class FormView extends Component {
   setView(selectedView) {
     console.log(selectedView, "selected viewww");
     this.setState({
-      view: selectedView,
+      view: selectedView
     });
   }
   setSelected(newSelected) {
     const selection = newSelected;
     console.log(selection, "selected");
     this.setState({
-      selected: selection,
+      selected: selection
     });
   }
-  
 
   showData(url, search) {
     console.log(url, "url :", search, "#########################");
@@ -100,24 +87,13 @@ export class FormView extends Component {
         }
       }
     );
-    
-   
-    
-    
-    
 
-    this.props
-      .postApi(
-        
-        this.state.inputDetails
-      )
-      // .then((resp) => {
-      //   // setFormDetails(resp.data)
-      //   console.log(resp, "respo from postapi");
-      // });
-      
-  
-          };
+    this.props.postApi(this.state.inputDetails);
+    // .then((resp) => {
+    //   // setFormDetails(resp.data)
+    //   console.log(resp, "respo from postapi");
+    // });
+  }
   onChangeSearch(e) {
     console.log(e);
     console.log(this.state.searchInputDetails);
@@ -126,12 +102,12 @@ export class FormView extends Component {
     this.setState({
       searchInputDetails: {
         ...this.state.searchInputDetails,
-        [name]: value,
-      },
+        [name]: value
+      }
     });
   }
 
-  redirectToOtherPage = (button) => {
+  redirectToOtherPage = button => {
     const { redirect } = button;
 
     if (!redirect) return;
@@ -142,18 +118,16 @@ export class FormView extends Component {
   onChange(e) {
     const name = e.target.name;
     const value = e.target.value;
-    const component =
-      this.state.formDetails.division.formelements.generalDetails.filter(
-        (item) => {
-          if (item.id === name) return item;
-        }
-      );
-    const component1 =
-      this.state.formDetails.division.formelements?.paymentDetails?.filter(
-        (item) => {
-          if (item.id === name) return item;
-        }
-      );
+    const component = this.state.formDetails.division.formelements.generalDetails.filter(
+      item => {
+        if (item.id === name) return item;
+      }
+    );
+    const component1 = this.state.formDetails.division.formelements?.paymentDetails?.filter(
+      item => {
+        if (item.id === name) return item;
+      }
+    );
 
     //const isValid = validation(value, component[0].item.validate);
     //console.log(validation(value, component[0].validate), "validation");
@@ -162,21 +136,21 @@ export class FormView extends Component {
     this.setState({
       inputDetails: {
         ...this.state.inputDetails,
-        [name]: value,
-      },
+        [name]: value
+      }
     });
 
     this.setState({
       formErrors: {
-        ...this.state.formErrors,
+        ...this.state.formErrors
         //[name]: !validation(value, component[0].validate),
-      },
+      }
     });
-    console.log("input in onchange",this.state.inputDetails)
+    console.log("input in onchange", this.state.inputDetails);
   }
   getData() {
     console.log("component did mount getdata");
-    this.props.getApi(this.props.fields).then((resp) => {
+    this.props.getApi(this.props.fields).then(resp => {
       console.log(resp.data);
       this.setState({ formDetails: resp.data });
     });
@@ -192,7 +166,7 @@ export class FormView extends Component {
         console.log("edit function", this.props.list);
         this.props
           .getApi(this.props.list)
-          .then((resp) => {
+          .then(resp => {
             const array = [];
             resp.data.data.map((item, index) => {
               array.push(Object.values(item));
@@ -203,22 +177,22 @@ export class FormView extends Component {
 
             console.log(newData, "converted array");
             this.setState({
-              inputDetails: { ...newData },
+              inputDetails: { ...newData }
             });
             if (this.props.aev === "list") {
               this.props
                 .getApi(this.props.search)
 
-                .then((resp) => {
+                .then(resp => {
                   this.setState({
-                    searchBar: resp.data,
+                    searchBar: resp.data
                   });
 
                   console.log(resp, "serach f");
                 });
             }
           })
-          .catch((error) => {
+          .catch(error => {
             console.log(error);
           });
       }
@@ -235,7 +209,7 @@ export class FormView extends Component {
             marginRight: 10,
             display: "flex",
             flexDirection: "column",
-            alignItems: "center",
+            alignItems: "center"
           }}
         >
           <Box noValidate sx={{ mt: 4 }}>
@@ -248,14 +222,14 @@ export class FormView extends Component {
                         return (
                           <div key={index} sitem xs={12} sm={4}>
                             {item.control === "select" ? (
-                              <SelectClass
+                              <FRSelect
                                 formDetails={item}
                                 onChange={this.onChangeSearch}
                                 inputDetails={this.state.inputDetails}
                                 editFlag={this.props.aev}
                               />
                             ) : item.control === "textbox" ? (
-                              <TextFieldClass
+                              <CustomTextField
                                 formDetails={item}
                                 onChange={this.onChangeSearch}
                                 inputDetails={this.state.inputDetails}
@@ -285,22 +259,20 @@ export class FormView extends Component {
                         <div
                           style={{
                             display: "flex",
-                            justifyContent: "space-between",
+                            justifyContent: "space-between"
                           }}
                         >
-                          {this.state.searchBar.division.buttons.map(
-                            (button) => (
-                              <ButtonClass
-                                key={button.id}
-                                fun={this.navi}
-                                formDetails={button}
-                                showData={this.showData}
-                                inputDetails={this.state.inputDetails}
-                                aev={this.props.aev}
-                                search
-                              />
-                            )
-                          )}
+                          {this.state.searchBar.division.buttons.map(button => (
+                            <ButtonClass
+                              key={button.id}
+                              fun={this.navi}
+                              formDetails={button}
+                              showData={this.showData}
+                              inputDetails={this.state.inputDetails}
+                              aev={this.props.aev}
+                              search
+                            />
+                          ))}
                         </div>
                       ) : (
                         <div>No Data</div>
@@ -352,7 +324,7 @@ export class FormView extends Component {
                 </Grid>
               </div>
             ) : (
-              //function for adding 
+              //function for adding
               <Grid container spacing={8}>
                 {Object.keys(this.state.formDetails).length ? (
                   <Grid>
@@ -362,7 +334,7 @@ export class FormView extends Component {
                         fontWeight: "bold",
                         display: "block",
                         marginTop: "1px",
-                        color: "navy",
+                        color: "navy"
                       }}
                     >
                       {this.state.formDetails.division.formelements.title}
@@ -375,6 +347,7 @@ export class FormView extends Component {
                         padding: "30px",
                         boxSizing: "borderBox",
                         marginTop: "20px",
+                        color: "brown",
                       }}
                     >
                       {this.state.formDetails.division.formelements.generalDetails?.map(
@@ -382,22 +355,23 @@ export class FormView extends Component {
                           return (
                             <Grid key={index} item xs={12} sm={6}>
                               {item.control === "select" ? (
-                                <SelectClass
+                                <FRSelect
                                   formDetails={item}
                                   onChange={this.onChange}
                                   inputDetails={this.state.inputDetails}
                                   editFlag={this.props.aev}
                                 />
                               ) : item.control === "textbox" ? (
-                                <TextFieldClass
+                                <CustomTextField
                                   formDetails={item}
                                   onChange={this.onChange}
+                                  label={item.label}
                                   inputDetails={this.state.inputDetails}
                                   editFlag={this.props.aev}
                                   formErrors={this.state.formErrors}
                                   labelInside={true}
-                                  rows={item.rows?item.rows:1}
-                                  minRows={item.minRows?item.minRows : 1}
+                                  rows={item.rows ? item.rows : 1}
+                                  minRows={item.minRows ? item.minRows : 1}
                                 />
                               ) : item.control === "date" ? (
                                 <DateClass
@@ -410,78 +384,78 @@ export class FormView extends Component {
                                 <span></span>
                               )}
 
-                            <Grid
-                              container
-                              display = {item.addressFields?"block":"none"}
-                              spacing={2}
-                              style={{
-                                border: "3px solid #ace",
-                                padding: "30px",
-                                boxSizing: "borderBox",
-                                marginTop: "50px",
-                              }}
-                            >   
-                      <span
-                      style={{
-                        fontSize: "25px",
-                        fontWeight: "bold",
-                        color: "navy"                       
-                      }}
-                    >
-                      {item.label}
-                    </span>
-                       
-                        {item.addressFields?.map(
-                          (item, index) => {
-                            return (
-                              <Grid key={index} item xs={10} sm={10}>                                
-                                {item.control === "select" ? (
-                                  <SelectClass
-                                    formDetails={item}
-                                    onChange={this.onChange}
-                                    inputDetails={this.state.inputDetails}
-                                    editFlag={this.props.aev}
-                                  />
-                                ) : item.control === "textbox" ? (
-                                  <TextFieldClass
-                                    formDetails={item}
-                                    onChange={this.onChange}
-                                    inputDetails={this.state.inputDetails}
-                                    editFlag={this.props.aev}
-                                    formErrors={this.state.formErrors}
-                                    labelInside={true}
-                                    rows={item.rows?item.rows:1}
-                                    minRows={item.minRows?item.minRows : 1}
-                                  />
-                                ) : item.control === "date" ? (
-                                  <DateClass
-                                    formDetails={item}
-                                    onChange={this.onChange}
-                                    inputDetails={this.state.inputDetails}
-                                    editFlag={this.props.aev}
-                                  />
-                                ) : (
-                                  <>No Data Box</>
-                                )}
-                              </Grid>
-                            );
-                          }
-                        )}
-                      </Grid>
+                              <Grid
+                                container
+                                display={item.addressFields ? "block" : "none"}
+                                spacing={2}
+                                style={{
+                                  border: "3px solid #ace",
+                                  padding: "30px",
+                                  boxSizing: "borderBox",
+                                  marginTop: "50px",
+                                  color: "brown",
+                                }}
+                              >
+                                <span
+                                  style={{
+                                    fontSize: "25px",
+                                    fontWeight: "bold",
+                                    color: "navy"
+                                  }}
+                                >
+                                  {item.label}
+                                </span>
 
+                                {item.addressFields?.map((item, index) => {
+                                  return (
+                                    <Grid key={index} item xs={10} sm={10}>
+                                      {item.control === "select" ? (
+                                        <FRSelect
+                                          formDetails={item}
+                                          onChange={this.onChange}
+                                          inputDetails={this.state.inputDetails}
+                                          editFlag={this.props.aev}
+                                        />
+                                      ) : item.control === "textbox" ? (
+                                        <CustomTextField
+                                          formDetails={item}
+                                          onChange={this.onChange}
+                                          label={item.label}
+                                          inputDetails={this.state.inputDetails}
+                                          editFlag={this.props.aev}
+                                          formErrors={this.state.formErrors}
+                                          labelInside={true}
+                                          rows={item.rows ? item.rows : 1}
+                                          minRows={
+                                            item.minRows ? item.minRows : 1
+                                          }
+                                        />
+                                      ) : item.control === "date" ? (
+                                        <DateClass
+                                          formDetails={item}
+                                          onChange={this.onChange}
+                                          inputDetails={this.state.inputDetails}
+                                          editFlag={this.props.aev}
+                                        />
+                                      ) : (
+                                        <>No Data Box</>
+                                      )}
+                                    </Grid>
+                                  );
+                                })}
+                              </Grid>
                             </Grid>
                           );
                         }
                       )}
-
-                      
                     </Grid>
                   </Grid>
                 ) : (
                   <div>No Data</div>
                 )}
 
-                {Object.keys(this.state.formDetails).length && this.state.formDetails.division.formelements.section > 1 ? (
+                {Object.keys(this.state.formDetails).length &&
+                this.state.formDetails.division.formelements.section > 1 ? (
                   <>
                     <span
                       style={{
@@ -489,7 +463,7 @@ export class FormView extends Component {
                         fontWeight: "bold",
                         color: "navy",
                         display: "block",
-                        marginTop: "100px",
+                        marginTop: "100px"
                       }}
                     >
                       {this.state.formDetails.division.formelements.title1}
@@ -501,7 +475,7 @@ export class FormView extends Component {
                         border: "3px solid #ace",
                         padding: "30px",
                         boxSizing: "borderBox",
-                        marginTop: "50px",
+                        marginTop: "50px"
                       }}
                     >
                       {this.state.formDetails.division.formelements.paymentDetails?.map(
@@ -509,16 +483,17 @@ export class FormView extends Component {
                           return (
                             <Grid key={index} item xs={4} sm={8}>
                               {item.control === "select" ? (
-                                <SelectClass
+                                <FRSelect
                                   formDetails={item}
                                   onChange={this.onChange}
                                   inputDetails={this.state.inputDetails}
                                   editFlag={this.props.aev}
                                 />
                               ) : item.control === "textbox" ? (
-                                <TextFieldClass
+                                <CustomTextField
                                   formDetails={item}
                                   onChange={this.onChange}
+                                  label={item.label}
                                   inputDetails={this.state.inputDetails}
                                   editFlag={this.props.aev}
                                   formErrors={this.state.formErrors}
@@ -544,17 +519,19 @@ export class FormView extends Component {
                   <div>No Data</div>
                 )}
 
-                  {
-                                            Object.keys(this.state.formDetails).length ? (
-                                                this.state.formDetails.division.edittable.map((item, index) => {
-                                                    return (
-                                                        <Grid key={index} item xs={12} sm={12} >
-                                                            <POList />
-                                                        </Grid>
-                                                    )
-                                                })
-                                            ) : <div>No Data</div>
-                                        }
+                {Object.keys(this.state.formDetails).length ? (
+                  this.state.formDetails.division.edittable.map(
+                    (item, index) => {
+                      return (
+                        <Grid key={index} item xs={12} sm={12}>
+                          <BasicTable formDetails = {this.state.formDetails.division.buttons[0]} tableData={this.state.formDetails.division.edittable} showData={this.showData} getApi={getApi}/>
+                        </Grid>
+                      );
+                    }
+                  )
+                ) : (
+                  <div>No Data</div>
+                )}
 
                 {Object.keys(this.state.formDetails).length ? (
                   this.state.formDetails.division.buttons?.map(
@@ -574,7 +551,6 @@ export class FormView extends Component {
                 ) : (
                   <div>No Data</div>
                 )}
-               
               </Grid>
             )}
           </Box>

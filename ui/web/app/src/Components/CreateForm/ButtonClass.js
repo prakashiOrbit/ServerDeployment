@@ -15,7 +15,7 @@ const ButtonClass = (props) => {
       type="submit"
       fullWidth
       variant="contained"
-      sx={{ mt: 3, mb: 2, ml: 3 }}
+      sx={{ mt: 3, mb: 2, ml: 3, color: 'blue' }}
       onClick={
         formDetails.redirect
           ? () => navigate(formDetails.redirect)

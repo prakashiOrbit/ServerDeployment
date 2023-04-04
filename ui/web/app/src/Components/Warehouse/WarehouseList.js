@@ -135,7 +135,7 @@ const WarehouseList = () => {
     <div style={{ margin: "10%" }}>
 
 
-      <Datatable url={config.getWarehouse} handleOptions={handleOptions} flowEvent="WarehouseEvent" flow="MasterDataFlow" header_data={header_data} onCreateClick={handleCreateClick} showAssignToCC={false}/>
+      <Datatable url={config.getWarehouse} handleOptions={handleOptions} flowEvent="WarehouseEvent" flow="MasterDataFlow" header_data={header_data} onCreateClick={handleCreateClick} showAssignToCC={false} showCreateIcon={true}/>
 
       <Dialog
         open={open}
