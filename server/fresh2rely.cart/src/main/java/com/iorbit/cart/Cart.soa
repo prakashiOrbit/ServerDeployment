@@ -1,8 +1,8 @@
 name: Cart
 type: PrimeData
-flow: CartFlow
+flow: CartItemFlow
 attributes:
-  - attribute: itemId
+  - attribute: cartId
     type: key
 states:
   - name: active

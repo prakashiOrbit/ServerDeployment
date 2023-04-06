@@ -1,0 +1,56 @@
+name: CartItemFlow
+defaultEnable: all
+primeData:
+  - com.iorbit.cart.Cart  
+  - com.iorbit.cart.CartItem
+  - com.iorbit.cart.Item
+events:
+  - com.iorbit.cart.RemoveCartItem
+  - com.iorbit.cart.ChangeCartItemQuantity
+  - com.iorbit.cart.AddToCart
+  - com.iorbit.cart.CartItem
+  - com.iorbit.cart.CreateCart
+  - com.iorbit.cart.GetCartItems
+  - com.iorbit.cart.GetCart
+  - com.iorbit.cart.GetItem
+  - com.iorbit.cart.SearchItem
+  - com.iorbit.cart.CreateItem
+  - com.iorbit.cart.EditItem
+  - com.iorbit.cart.SearchCart
+responses:
+  - com.iorbit.cart.MessageResponse
+  - com.iorbit.cart.CartList
+  - com.iorbit.cart.CartDetails
+  - com.iorbit.cart.ItemDetails
+  - com.iorbit.cart.ItemList
+  - com.iorbit.cart.EditItem
+ 
+transitions:
+  - com.iorbit.cart.CartManager
+  - com.iorbit.cart.ItemManager
+  
+features:
+  - name: all
+    artefacts:
+      - com.iorbit.cart.CartItem
+      - com.iorbit.cart.CartList
+      - com.iorbit.cart.AddToCart
+      - com.iorbit.cart.RemoveCartItem
+      - com.iorbit.cart.ChangeCartItemQuantity
+      - com.iorbit.cart.GetCart
+      - com.iorbit.cart.Cart
+      - com.iorbit.cart.SearchCart
+      - com.iorbit.cart.CartManager
+      - com.iorbit.cart.MessageResponse
+      - com.iorbit.cart.CreateCart
+      - com.iorbit.cart.CartDetails
+      - com.iorbit.cart.GetCartItems
+      - com.iorbit.cart.Item
+      - com.iorbit.cart.MessageResponse
+      - com.iorbit.cart.ItemDetails
+      - com.iorbit.cart.SearchItem
+      - com.iorbit.cart.ItemList
+      - com.iorbit.cart.GetItem
+      - com.iorbit.cart.EditItem
+      - com.iorbit.cart.ItemManager
+      - com.iorbit.cart.CreateItem

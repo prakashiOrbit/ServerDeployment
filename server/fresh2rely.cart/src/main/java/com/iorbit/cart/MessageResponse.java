@@ -1,5 +1,7 @@
 package com.iorbit.cart;
 
+
+
 public class MessageResponse  implements java.io.Serializable{
 	private String message;
 

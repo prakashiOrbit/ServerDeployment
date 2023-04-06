@@ -1,11 +1,13 @@
-name: CartLink
+name: Item
 type: PrimeData
-flow: CartFlow
+flow: CartItemFlow
 attributes:
-  - attribute: CartId
+  - attribute: skuId
     type: key
 states:
   - name: active
     startState: true
+  - name: approved
+    startState: false
   - name: inactive
     endState: true
