@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import "./style.css";
 import BasicTable from '../BasicTable';
-import { header_data} from "./tableData";
+import { header_data } from "./tableData";
 import Datatable from '../../Modules/Datatable/datatable';
 import { config } from '../../Constants/constant';
-//import { header_data } from '../Po/po_headerdata';
+import EditComponent from './WarehouseEditComponent';
+import warehouse from "./warehouse.json";
 
 const ProgressBar = () => {
   const [progress, setProgress] = useState(0);
-  const [shippingAddress, setShippingAddress] = useState('');
-  const [paymentInfo, setPaymentInfo] = useState('');
+  const [formdata, setformdata] = useState('');
 
   const handlePendingClick = () => {
     setProgress(0);
@@ -30,11 +30,17 @@ const ProgressBar = () => {
   const handleDeliveredClick = () => {
     setProgress(100);
   };
-  
 
+  const onSubmit = (e) => {
+    onSubmit(e.target.name, formdata);
+
+  }
   return (
     <><div className="message" style={{ marginTop: '80px', fontWeight: "bold", fontSize: "28px", color: "blueviolet" }}>Warehouse Receiving Order
+    <label htmlFor="order-date" style={{ fontWeight: "bold", fontSize: "22px", color: "orange" , marginLeft:"310px"}}>Order date:</label>
+    <input type="date" id="order-date" name="order-date" style={{ marginLeft: "20px", width: "130px" , height:"35px"}} />
       <div className="progress-container" style={{ border: '5px solid  #17a589 ', marginTop: '10px', padding: '15px' }}>
+        
         <div className="progress-bar" style={{ width: `${progress}%` }}>
           {progress > 0 && <span className="progress-text">{`${progress}%`}</span>}
         </div>
@@ -46,7 +52,7 @@ const ProgressBar = () => {
           <button className="button" onClick={handleDeliveredClick}>Delivered</button>
         </div>
       </div>
-    </div><div style={{ marginTop: '25px', fontWeight: "bold", fontSize: "28px", color: "blueviolet" }}>Products Summary</div>
+    </div><div style={{ marginTop: '35px', fontWeight: "bold", fontSize: "28px", color: "blueviolet" }}>Products Summary</div>
       {/* <table style={{ marginTop: '8px', width: "100%" }}>
 
         <thead>
@@ -83,27 +89,16 @@ const ProgressBar = () => {
 
         </tbody>
       </table> */}
-{/* <BasicTable
+      {/* <BasicTable
   formDetails={{ submitURL: 'url' }}
   tableData={header_data}
   showData={(url, data) => console.log(url, data)}
   getApi={api => console.log(api)}
 /> */}
-<Datatable url={config.getfarmer} flowEvent="farmerEvent" flow="FarmerFlow" header_data={header_data} showAssignToCC={false} showCreateIcon={false}/>
+      <Datatable url={config.getfarmer} flowEvent="farmerEvent" flow="AdminFlow" header_data={header_data} showAssignToCC={false} showCreateIcon={false} />
 
-<div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px' }}>
-      <div style={{ marginTop: '20px' }}>
-  <label htmlFor="shipping-address" style={{fontSize: "23px", fontWeight: "bold", color: "blueviolet"}}>Shipping Address</label>
-  <br />
-  <textarea  name="shipping-address" rows="7" cols="50"></textarea>
-</div>
 
-<div style={{ marginTop: '20px' }}>
-  <label htmlFor="payment-info" style={{fontSize: "23px", fontWeight: "bold", color: "blueviolet"}}>Payment Information</label>
-  <br />
-  <textarea id="payment-info" name="payment-info" rows="7" cols="50" ></textarea>
-</div>
-</div>
+      <EditComponent type="edit" formDetails={warehouse} onSubmit={onSubmit} />
     </>
   );
 };

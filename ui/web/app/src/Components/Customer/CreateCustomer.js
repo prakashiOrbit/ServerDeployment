@@ -1,11 +1,11 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import EditComponent from '../../Modules/edit';
+import { useNavigate} from 'react-router-dom';
+import CustomerEditComponent from './customereditcomp';
 import postMethod from '../../Modules/service';
-import farmer from "./farmer.json";
+import Customer from "./Customer.json";
 import { config } from '../../Constants/constant';
 
-const FarmerOnboard = () => {
+const CreateCustomer = () => {
 
     const navigate = useNavigate();
     const onSubmit = (text, data) => {
@@ -18,23 +18,23 @@ const FarmerOnboard = () => {
             const payload = {
                 ...data, "FlowAdmin": {
                     "___smart_action___": "lookup",
-                    "___smart_value___": "AdminFlow",
+                    "___smart_value___": "CustomerOrderFlow",
                 }
             }
 
-            postMethod(config.addfarmer, payload)
+            postMethod(config.addCustomer, payload)
                 .then((res) => {
-                    //console.log(res);
                     console.log(res.data.responses[0].message);
-                    if(res.data.responses[0].message == "Farmer is successfully onboarded."){
-                      
-                        navigate("/farmerList")
+                    if(res.data.responses[0].message === "Customer is successfully created.") {
+                        navigate("/customerList")
                     }
+
+                
                 });
 
         }
         else {
-            navigate("/farmerList")
+            navigate("/customerList")
         }
 
     }
@@ -46,8 +46,8 @@ const FarmerOnboard = () => {
     return (
         <>
 
-            <EditComponent formDetails={farmer} onSubmit={onSubmit} />
+            <CustomerEditComponent formDetails={Customer} onSubmit={onSubmit} />
         </>
     )
 };
-export default FarmerOnboard;
+export default CreateCustomer;

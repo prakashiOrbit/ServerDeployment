@@ -2,7 +2,7 @@ import { Button, Grid } from "@mui/material";
 import { useEffect, useState } from "react";
 import CustomTextField from "../../Modules/Textfield";
 
-const TruckEditComponent = ({ formDetails, rowdata, onSubmit, type }) => {
+const CustomerEditComponent = ({ formDetails, rowdata, onSubmit, type }) => {
     const [formdata, setformdata] = useState(rowdata ? rowdata : {});
 
 
@@ -44,7 +44,7 @@ const TruckEditComponent = ({ formDetails, rowdata, onSubmit, type }) => {
                             style={{
                                 border:
                                     formDetails.division.formelements.title ===
-                                        "CREATE TRUCK AND DRIVER"
+                                        "CREATE NEW PRODUCT"
                                         ? "3px solid green"
                                         : "3px solid green",
                                 padding: "30px",
@@ -52,7 +52,7 @@ const TruckEditComponent = ({ formDetails, rowdata, onSubmit, type }) => {
                                 marginTop: "10px",
                             }}
                         >
-                            {formDetails.division.formelements.truckDetails?.map(
+                            {formDetails.division.formelements.productDetails?.map(
                                 (item, index) => {
                                     return (
                                         <Grid key={index} item xs={12} sm={6}>
@@ -95,4 +95,4 @@ const TruckEditComponent = ({ formDetails, rowdata, onSubmit, type }) => {
         </div>
     )
 }
-export default TruckEditComponent;
+export default CustomerEditComponent;

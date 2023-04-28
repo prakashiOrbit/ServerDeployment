@@ -5,19 +5,21 @@
       "title": "CREATE WAREHOUSE",
       "warehouseDetails": [
         {
-          "label": "address",
-          "id": "Address",
+          "label": "warehouseAddress",
+          "id": "warehouseAddress",
           "control": "textbox",
           "required":"true",
           "errorMessage":"Please enter Address(eg.LIG-113, Manoj Farms, Kerala)"
         },
         {
-          "label": "capacity",
-          "id": "Capacity",
-          "control": "textbox",
-          "required":"true",
-          "pattern": "^[0-9]+$",
-          "errorMessage":"Please enter Capacity.(eg. 100)"
+          "label": "warehouseName",
+          "id": "warehouseName",
+          "control": "textbox"
+        },
+        {
+          "label": "contactNo",
+          "id": "contactNo",
+          "control": "textbox"
         }
       ]
     }

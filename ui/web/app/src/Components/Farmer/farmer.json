@@ -4,18 +4,7 @@
     "formelements": [{
       "title": "GENERAL DETAILS ",
       "details": [
-        {
-          "id": "fId",
-          "label": "fId",
-          "control": "textbox",
-          "validation": "alphanumeric",
-          "disabled": true,
-          "required": false,
-          "minLength": 3,
-          "pattern": "^[A-Za-z0-9_-]*$",
-          "errorMessage":
-            "Username must be at least 3 characters long and contain only letters and numbers."
-        },
+        
         {
           "id": "name",
           "label": "name",

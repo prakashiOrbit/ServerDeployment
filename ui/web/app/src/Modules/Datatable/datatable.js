@@ -6,17 +6,21 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import postMethod from '../service';
-import CreateIcon from '@mui/icons-material/Create';
+import AddIcon from '@mui/icons-material/Add';
 
 
-const Datatable = ({ url, handleOptions, flow, header_data, flowEvent ,onCreateClick,showAssignToCC,showCreateIcon}) => {
+const Datatable = ({ url, handleOptions, flow, header_data ,onCreateClick,showAssignToCC,showCreateIcon,showAssignToWarehouse,showCustomerOrder,showEdit,showPoTemplate}) => {
  
   const [selectedRow, setSelectedRow] = React.useState(-1);
+  const [selectedCount, setSelectedCount] = React.useState(0);
 
-  const options = [
-    "Edit",
-    ...(showAssignToCC ? ["Assign to CC"] : [])
-  ];
+  const options = [  ...(showEdit ? ["Edit"] : []),
+   ...(showAssignToCC ? ["Assign to CC"] : []),
+  ...(showAssignToWarehouse ? ["Assign to Warehouse"] : []),
+  ...(showCustomerOrder ? ["View Customer Order"] : []),
+  ...(showPoTemplate ? ["Create PO Template"] : [])
+];
+
 
   const [tableData, settableData] = useState([]);
 
@@ -29,6 +33,7 @@ const Datatable = ({ url, handleOptions, flow, header_data, flowEvent ,onCreateC
   const handleClick = (event, rowIndex) => {
 
     setSelectedRow(rowIndex);
+    setSelectedCount(selectedCount + 1);
     setAnchorEl(event.currentTarget);
   };
 
@@ -88,6 +93,7 @@ const Datatable = ({ url, handleOptions, flow, header_data, flowEvent ,onCreateC
     setAnchorEl(null);
     console.log(data);
     setSelectedRow(-1);
+    setSelectedCount(0);
     console.log(option);
   };
 
@@ -109,23 +115,11 @@ const Datatable = ({ url, handleOptions, flow, header_data, flowEvent ,onCreateC
         console.log(res?.data?.responses[0]?.farmers);
         settableData(res?.data?.responses[0]?.farmers);
       });
-
-
-
   }
-
-
-
-
-
-
   const ITEM_HEIGHT = 48;
-
-
   const logValue = debounce((value) => {
     getData(value + "*");
   }, 1000);
-
 
   const option = {
     search: true,
@@ -135,16 +129,24 @@ const Datatable = ({ url, handleOptions, flow, header_data, flowEvent ,onCreateC
     filter: true,
     filterType: "dropdown",
     responsive: "stacked",
+    rowsPerPageOptions: [10, 50, 100],
     customToolbar: () => {
       return (
         
-        showCreateIcon && (
-          <IconButton onClick={onCreateClick}>
-            <CreateIcon />
-          </IconButton>
-        )
+        // showCreateIcon && (
+        //   <IconButton onClick={onCreateClick} title="Create">
+        //     <AddIcon />
+        //   </IconButton>
+        // )
         
-      
+        <>
+        {showCreateIcon && (
+          <IconButton onClick={onCreateClick} title="Create">
+            <AddIcon />
+          </IconButton>
+        )}
+       
+      </>
       );
     },
 

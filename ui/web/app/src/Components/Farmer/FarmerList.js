@@ -117,7 +117,7 @@ const FarmerList = () => {
     <div style={{ margin: "10%" }}>
 
 
-      <Datatable url={config.getfarmer} handleOptions={handleOptions} flowEvent="farmerEvent" flow="FarmerFlow" header_data={header_data} onCreateClick={handleCreateClick} showAssignToCC={true} showCreateIcon={true}/>
+      <Datatable url={config.getfarmer} handleOptions={handleOptions} showPoTemplate={true} flowEvent="farmerEvent" flow="AdminFlow" header_data={header_data} onCreateClick={handleCreateClick} showEdit={true} showAssignToCC={true} showCreateIcon={true}/>
 
       <Dialog
         open={open}
@@ -156,4 +156,3 @@ const FarmerList = () => {
 }
 
 export default FarmerList;
-

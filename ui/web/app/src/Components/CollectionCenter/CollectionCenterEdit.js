@@ -27,7 +27,7 @@ const CollectionCenterEdit = () => {
             postMethod(config.editCollectionCenter, sendpayload)
                 .then((res) => {
                     console.log(res.data.responses[0].message);
-                    if (res.data.responses[0].message == "CollectionCenter details has been updated.") {
+                    if (res.data.responses[0].message == "Collection Center details has been updated.") {
 
                         navigate("/centerList")
                     }

@@ -1,0 +1,79 @@
+{
+    "division": {
+      "name": "Warehouse Header",
+      "formelements": [{
+        "title": "SHIPPING DETAILS ",
+        "details": [
+          {
+            "id": "shipToStreet",
+            "label": "Shipping Street",
+            "control": "textbox",
+            "validation": "alphanumeric",
+            "required": true
+          },
+          {
+            "id": "shipToCity",
+            "label": "Shipping City",
+            "control": "textbox",
+            "required":true
+          },
+          {
+            "id": "shipToState",
+            "label": "Shipping State",
+            "control": "textbox",
+            "required":true
+          },
+          {
+            "id": "shipToPinCode",
+            "label": "Shipping PinCode",
+            "control": "textbox",
+            "required":true
+          }
+        ]},
+        {
+        "title": "PAYMENT INFORMATION",
+        "details": [
+          {
+            "id": "paymentMethod",
+            "label": "Payment Method",
+            "control": "textbox",
+            "required":true
+          },
+          {
+            "id": "paymentStatus",
+            "label": "Payment Status",
+            "control": "textbox",
+            "required":true
+          },
+          {
+            "id": "transactionID",
+            "label": "Transaction ID",
+            "control": "textbox",
+            "required":true
+          },
+          {
+            "id": "amountPaid",
+            "label": "Amount Paid",
+            "control": "textbox",
+            "required":true
+          }
+        ]}
+  ],
+      "buttons": [
+        {
+          "id": "create",
+          "label": "Create",
+          "control": "button",
+          "validationjs": "validatedata",
+          "submitURL": "/farmerList"
+        },
+        {
+          "id": "cancel",
+          "label": "Cancel",
+          "control": "button",
+          "redirect": "/farmerList"
+        }
+      ]
+    }
+  }
+  

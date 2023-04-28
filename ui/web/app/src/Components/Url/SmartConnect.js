@@ -15,7 +15,7 @@ export default class SmartConnect extends Component {
     //     var data = JSON.stringify({
     //         "FlowAdmin": {
     //             "___smart_action___": "lookup",
-    //             "___smart_value___": "FarmerFlow"
+    //             "___smart_value___": "AdminFlow"
     //         },
     //         "searchString": searchString
     //     });
@@ -54,7 +54,7 @@ export default class SmartConnect extends Component {
     //     var data = JSON.stringify({
     //         "FlowAdmin": {
     //             "___smart_action___": "lookup",
-    //             "___smart_value___": "FarmerFlow"
+    //             "___smart_value___": "AdminFlow"
     //         },
     //         "searchString": searchString
     //     });
@@ -84,14 +84,14 @@ export default class SmartConnect extends Component {
         // var data = JSON.stringify({
         //     "FlowAdmin": {
         //         "___smart_action___": "lookup",
-        //         "___smart_value___": "FarmerFlow"
+        //         "___smart_value___": "AdminFlow"
         //     },
         //    ...data
         // });
 
         // var config = {
         //     method: 'post',
-        //     url: 'http://localhost:9082/apptest/FarmerFlow/CreateFarmer',
+        //     url: 'http://localhost:9082/apptest/AdminFlow/CreateFarmer',
         //     headers: {
         //         'Session-Id': 'e529ce66-e8bb-41b2-839d-2af769bf942f',
         //         'Content-Type': 'application/json'

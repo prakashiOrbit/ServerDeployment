@@ -1,4 +1,4 @@
-name: FarmerFlow
+name: AdminFlow
 defaultEnable: basic
 primeData:
   - com.iorbit.farmer.Farmer

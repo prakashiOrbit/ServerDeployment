@@ -16,8 +16,8 @@ export const header_data = [
         
       },
       {
-        "label": "registrationDate",
-        "name": "registrationDate",
+        "label": "tranportCompanyName",
+        "name": "tranportCompanyName",
         "control": "textbox"
       },
       {
@@ -26,13 +26,13 @@ export const header_data = [
         "control": "textbox",
         "vallabelation": "alphanumerc",
         options:{
-          display:false,
+          display:true,
        
         }
       },
       {
-        "label": "chassisNo",
-        "name": "chassisNo",
+        "label": "companyName",
+        "name": "companyName",
         options:{
           display:false,
        
@@ -40,11 +40,16 @@ export const header_data = [
       
       },
       {
-        "label": "regAddress",
-        "name": "regAddress",
+        "label": "contactNo",
+        "name": "contactNo",
         "control": "textbox",
         "vallabelate": "alphanumeric"
       },
-   
+      {
+        "label": "address",
+        "name": "address",
+        "control": "textbox",
+        "vallabelate": "alphanumeric"
+      },
 ];
 

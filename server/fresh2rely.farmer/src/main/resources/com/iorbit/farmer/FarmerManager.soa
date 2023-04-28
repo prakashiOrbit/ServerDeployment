@@ -1,12 +1,12 @@
 name: FarmerCreate
 type: Transition
-flow: FarmerFlow
+flow: AdminFlow
 foreach: FlowAdmin|CreateFarmer,Farmer|GetFarmer,FlowAdmin|SearchFarmers,Farmer|EditFarmer,FarmerLinks|AssignCC
 actions:
   - name: createFarmer
     method: createFarmer
     foreach: FlowAdmin|CreateFarmer
-    parms: (event,srch.FarmerFlow.Farmer.event.fId)
+    parms: (event,srch.AdminFlow.Farmer.event.fId)
     from: active
     to: active
   - name: getFarmer
@@ -33,7 +33,7 @@ actions:
 callservices:
   - name: searchFarmers
     service: AllFlows.SearchManager.searchService
-    parms: (FarmerFlow,Farmer,event.search,event.farmer)
+    parms: (AdminFlow,Farmer,event.search,event.farmer)
     runAfter: setupFarmersSearch
     foreach: FlowAdmin|SearchFarmers
     from: active

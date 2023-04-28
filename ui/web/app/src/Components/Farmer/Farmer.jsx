@@ -14,7 +14,7 @@ class Farmer extends React.Component {
             functions: this.child,
             handleClick:null,
             handleSearch:null,
-            flow:"FarmerFlow",
+            flow:"AdminFlow",
             tenant:"apptest/"
         }
         console.log(this.child, "child propss");

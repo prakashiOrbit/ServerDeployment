@@ -1,5 +1,10 @@
 export const header_data = [
-
+    {
+        "label": "fId",
+        "name": "fId",
+        "control": "textbox",
+        "vallabelate": "alphanumeric"
+    },
     
     {
         "label": "farmerId",
@@ -20,7 +25,7 @@ export const header_data = [
         "vallabelation": "phone"
     },
     {
-        "label": "Aadhar No",
+        "label": "aadharNo",
         "name": "aadharNo",
         "control": "textbox",
         "vallabelate": "alphanumeric",
@@ -31,7 +36,7 @@ export const header_data = [
     },
     {
         "name": "panNo",
-        "label": "pan",
+        "label": "panNo",
         "control": "textbox",
         "vallabelate": "alphanumeric",
         options:{
@@ -41,7 +46,7 @@ export const header_data = [
     },
        
           {
-        "label": "Street Address",
+        "label": "streetAddress",
         "name": "streetAddress",
         "control": "textbox",
         "vallabelate": "alphanumeric",
@@ -51,19 +56,19 @@ export const header_data = [
           }
     },
     {
-        "label": "City",
+        "label": "city",
         "name": "city",
         "control": "textbox",
         "vallabelate": "alphanumeric"
     },
     {
-        "label": "State",
+        "label": "state",
         "name": "state",
         "control": "textbox",
         "vallabelate": "alphanumeric"
     },
     {
-        "label": "Pin Code",
+        "label": "pinCode",
         "name": "pinCode",
         "control": "textbox",
         "vallabelate": "number",

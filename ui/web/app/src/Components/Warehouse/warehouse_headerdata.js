@@ -9,15 +9,21 @@ export const header_data = [
     
   },
     {
-        "label": "address",
-        "name": "address",
+        "label": "warehouseAddress",
+        "name": "warehouseAddress",
         "control": "textbox",
         "vallabelation": "alphanumeric",
         
       },
       {
-        "label": "capacity",
-        "name": "capacity",
+        "label": "warehouseName",
+        "name": "warehouseName",
+        "control": "textbox",
+        "vallabelation": "alphanumeric"
+      },
+      {
+        "label": "contactNo",
+        "name": "contactNo",
         "control": "textbox",
         "vallabelation": "alphanumeric"
       },

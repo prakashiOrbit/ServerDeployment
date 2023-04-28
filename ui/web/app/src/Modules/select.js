@@ -21,7 +21,7 @@ function FRSelect(props) {
     <FormControl className={classes.formControl} fullWidth>
       <InputLabel>{label}</InputLabel>
       <Select value={value} onChange={onChange}>
-        {options.map((option) => (
+        {options?.map((option) => (
           <MenuItem key={option.value} value={option.value}>
             {option.label}
           </MenuItem>

@@ -1,6 +1,5 @@
 import AgricultureIcon from '@mui/icons-material/Agriculture';
 import AddIcon from '@mui/icons-material/Add';
-import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
 import CategoryIcon from '@mui/icons-material/Category';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import WarehouseIcon from '@mui/icons-material/Warehouse';
@@ -8,8 +7,6 @@ import LocalConvenienceStoreIcon from '@mui/icons-material/LocalConvenienceStore
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import HailIcon from '@mui/icons-material/Hail';
 import GridViewIcon from '@mui/icons-material/GridView';
-import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
-import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import ShopRoundedIcon from '@mui/icons-material/ShopRounded';
 import LocationOnSharpIcon from '@mui/icons-material/LocationOnSharp';
 export const sideMenu = [
@@ -33,13 +30,9 @@ export const sideMenu = [
     text: "Purchase order",
     icon: < ShopRoundedIcon />,
     options: [
+      
       {
-        text: "Create PO Template",
-        link: "/po",
-        icon: < ShoppingBasketIcon />,
-      },
-      {
-        text: "PO Template List",
+        text: "Purchase Order List",
         link: "/poList",
         icon: <ListAltIcon />
       },
@@ -75,11 +68,7 @@ export const sideMenu = [
     text: "Customer Order",
     icon: <HailIcon />,
     options: [
-      {
-        text: "Create Order",
-        link: "/customer",
-        icon: <PersonAddAlt1Icon />
-      },
+      
       {
         text: "View Order",
         link: "/customerList",
@@ -88,24 +77,7 @@ export const sideMenu = [
     ],
   },
   {
-    text: "Transport Order",
-    icon: <LocalShippingIcon />,
-    options: [
-      {
-        text: "Create Order",
-        link: "/customer",
-        icon: < AddIcon />,
-        
-      },
-      {
-        text: "View Order",
-        link: "/customerList",
-        icon: <ListAltIcon />
-      },
-    ],
-  },
-  {
-    text: "Warehouse Order",
+    text: "Warehouse",
     icon: <WarehouseIcon />,
     options: [
       {
@@ -118,12 +90,12 @@ export const sideMenu = [
   },
 ];
 export const config = {
-  host: "167.71.237.12",
+  host: "localhost",
   port: "9082",
   tenant: "apptest",
-  editFarmer:"/FarmerFlow/EditFarmer",
-  addfarmer:"/FarmerFlow/CreateFarmer",
-  getfarmer:"/FarmerFlow/SearchFarmers",
+  editFarmer:"/AdminFlow/EditFarmer",
+  addfarmer:"/AdminFlow/CreateFarmer",
+  getfarmer:"/AdminFlow/SearchFarmers",
   getcc:"/MasterDataFlow/SearchCollectionCenter",
 
   editPO:"/PurchaseOrderTemplateFlow/EditPurchaseOrderTemplate",
@@ -145,6 +117,10 @@ export const config = {
   editPurchaseOrderTemplate:"/PurchaseOrderTemplateFlow/EditPurchaseOrderTemplate",
   addPurchaseOrderTemplate:"/PurchaseOrderTemplateFlow/CreatePurchaseOrderTemplate",
   getPurchaseOrderTemplate:"/PurchaseOrderTemplateFlow/SearchPurchaseOrderTemplate",
+
+  editCustomer:"/CustomerOrderFlow/EditCustomerOrder",
+  addCustomer:"/CustomerOrderFlow/CreateCustomerOrder",
+  getCustomer:"/CustomerOrderFlow/SearchCustomerOrder",
 
 
 };

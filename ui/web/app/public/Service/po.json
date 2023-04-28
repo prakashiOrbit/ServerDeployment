@@ -5,11 +5,7 @@
       "title": "CREATE PO TEMPLATE",
       "section": 1,
       "generalDetails": [
-        {
-          "id": "poId",
-          "label": "poid",
-          "control": "textbox"
-        },
+        
 
         {
           "id": "date",

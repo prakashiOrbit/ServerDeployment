@@ -23,14 +23,14 @@ public class CustomerOrderList implements java.io.Serializable {
 		}
 	}
 
-	private List<CustomerOrderData> customerorders;
+	private List<CustomerOrderData> farmers;
 
 	public CustomerOrderList(List listcustomerorder) {
-		customerorders = new ArrayList<CustomerOrderData>();
+		farmers = new ArrayList<CustomerOrderData>();
 		System.out.println("Fetching customer orders as: " + listcustomerorder);
 		for (int i = 0; i < listcustomerorder.size(); i++) {
 			CustomerOrderData data = new CustomerOrderData((CustomerOrder) listcustomerorder.get(i));
-			customerorders.add(data);
+			farmers.add(data);
 		}
 	}
 }

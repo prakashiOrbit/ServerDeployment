@@ -1,61 +1,54 @@
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class SelectClass extends Component {
+export default function SelectClass(props) {
 
-    constructor(props) {
-        super(props);
-    }
+    return (
+        <>
+            {
+                props.inputDetails != undefined ? (
+                    <FormControl fullWidth >
+                        <InputLabel>{props.formDetails.label}</InputLabel>
+                        <Select
+                            required
+                            fullWidth
+                            label={props.formDetails.id}
+                            variant='outlined'
+                            type="select"
+                            name={props.formDetails.id}
+                            onChange={(e) => props.onChange(e)}
+                            value={props.inputDetails[props.formDetails.id]}
+                            InputProps={{
+                                readOnly: props.editFlag === 'edit' ? props.formDetails.disabled : props.editFlag === 'view' ? true : false
+                            }}
 
-    render() {
-        return (
-            <>
-                {
-                    this.props.inputDetails != undefined ? (
-                        <FormControl fullWidth >
-                            <InputLabel>{this.props.formDetails.label}</InputLabel>
-                            <Select
-                                required
-                                fullWidth
-                                label={this.props.formDetails.id}
-                                // size='small'
-                                variant='outlined'
-                                type="select"
-                                name={this.props.formDetails.id}
-                                onChange={(e) => this.props.onChange(e)}
-                                value={this.props.inputDetails[this.props.formDetails.id]}
-                                InputProps={{
-                                    readOnly: this.props.editFlag == 'edit' ? this.props.formDetails.disabled : this.props.editFlag == 'view' ? true : false
-                                }}
+                        >
+                            <MenuItem
+                                onChange={(e) => props.onChange(e)}
+                                value={props.inputDetails[props.formDetails.id]}
 
                             >
-                                <MenuItem
-                                    onChange={(e) => this.props.onChange(e)}
-                                    value={this.props.inputDetails[this.props.formDetails.id]}
+                                {/* <em>None</em> */}
+                            </MenuItem>
+                            {
+                                [
+                                    "Kerala", "Tamilnadu", "Karnataka"
+                                ].map((item, index) => {
+                                    return (
+                                        <MenuItem key={index} value={item}>
+                                            {item}
+                                        </MenuItem>
+                                    )
+                                })
+                            }
 
-                                >
-                                    {/* <em>None</em> */}
-                                </MenuItem>
-                                {
-                                    [
-                                        "Kerala", "Tamilnadu", "Karnataka"
-                                    ].map((item, index) => {
-                                        return (
-                                            <MenuItem key={index} value={item}>
-                                                {item}
-                                            </MenuItem>
-                                        )
-                                    })
-                                }
+                        </Select>
+                    </FormControl>
+                ) : (
+                    <></>
+                )
+            }
 
-                            </Select>
-                        </FormControl>
-                    ) : (
-                        <></>
-                    )
-                }
-
-            </>
-        )
-    }
+        </>
+    )
 }

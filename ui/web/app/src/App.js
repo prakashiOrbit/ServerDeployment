@@ -15,7 +15,6 @@ import CollectionCenterEdit from "./Components/CollectionCenter/CollectionCenter
 import CreateWarehouse from "./Components/Warehouse/CreateWarehouse";
 import WarehouseList from "./Components/Warehouse/WarehouseList";
 import WarehouseEdit from "./Components/Warehouse/WarehouseEdit";
-import Customer from "./Components/Customer/Customer";
 import Login from "./Components/login/Login";
 import FarmerEdit from "./Components/Farmer/FarmerEdit";
 import FarmerOnboard from "./Components/Farmer/FarmerOnboard";
@@ -25,21 +24,18 @@ import TruckList from "./Components/Truck/TruckList";
 import CreateProduct from "./Components/Product/CreateProduct";
 import ProductList from "./Components/Product/ProductList";
 import ProductEdit from "./Components/Product/ProductEdit";
-import OrderTracker from "./Components/Warehouse Order/WarehouseOrder";
-import OrderStatus from "./Components/Warehouse Order/WarehouseOrder";
 import ProgressBar from "./Components/Warehouse Order/ProgressBar";
+import CreateCustomer from "./Components/Customer/CreateCustomer";
+import CustomerList from "./Components/Customer/CustomerList";
+import CustomerEdit from "./Components/Customer/CustomerEdit";
+import ViewCustomerOrder from "./Components/Customer/ViewCustomerOrder";
 
 const App = () => {
   const fields = "/Service/farmer.json";
   const list = "/Details/listFarmer.json";
-  const lists = "/Details/listPo.json";
   const products = "/Service/MasterData/product.json";
-  const customerList = "/Details/listcustomer.json";
   const search = "/Service/farmerSearch.json";
-  const searchs = "/Service/posearch.json";
-  const customerSearch = "/Service/customerSearch.json";
   const field = "/Service/po.json";
-  const fieldss = "/Service/customer.json";
 
   const [isSignedIn, setIsSignedIn] = useState(false);
 
@@ -66,7 +62,7 @@ const App = () => {
           }
         >
           <Route
-            path="/farmer"
+            exact path="/farmer" component={FarmerOnboard}
             element={
               <Protected isSignedIn={isSignedIn}>
                 <FarmerOnboard />
@@ -255,31 +251,35 @@ const App = () => {
               <CreateWarehouse />
             }
           />
-          <Route path="/customer" element={<Customer />} />
+          <Route path="/Customer" element={<CreateCustomer />} />
           <Route
             path="/customerList"
             element={
-              <FormView
-                aev={"list"}
-                fields={fieldss}
-                list={customerList}
-                search={customerSearch}
-                getApi={getApi}
-                postApi={postApi}
-              />
+
+              <CustomerList />
             }
           />
           <Route
-            path="/create"
+            path="/customer-edit"
             element={
-              <FormView
-                aev={"add"}
-                fields={fieldss}
-                list={customerList}
-                search={customerSearch}
-                getApi={getApi}
-                postApi={postApi}
-              />
+
+              <CustomerEdit />
+
+            }
+          />
+           <Route
+            path="/view-customer"
+            element={
+
+              <ViewCustomerOrder />
+
+            }
+          />
+          <Route
+            path="/CreateWarehouse"
+            element={
+
+              <CreateWarehouse />
             }
           />
           

@@ -4,8 +4,8 @@ const baseUrl = ""
 const authToken = ""
 
 export const handleSearch = (url,value) => {
-  postMethod({"FlowAdmin": {"___smart_action___": "lookup","___smart_value___": "FarmerFlow"},"searchString": value},
-  'http://', 'localhost:9082/', 'apptest/', 'FarmerFlow', url)
+  postMethod({"FlowAdmin": {"___smart_action___": "lookup","___smart_value___": "AdminFlow"},"searchString": value},
+  'http://', 'localhost:9082/', 'apptest/', 'AdminFlow', url)
   .then(res=>res.json()
   .then((resp)=>{
    var datalist=(resp.responses[0].farmers); 
@@ -19,7 +19,7 @@ export const handleSearch = (url,value) => {
   // var data = JSON.stringify({
   //     "FlowAdmin": {
   //         "___smart_action___": "lookup",
-  //         "___smart_value___": "FarmerFlow"
+  //         "___smart_value___": "AdminFlow"
   //     },
   //     "searchString": value
   // });
@@ -27,7 +27,7 @@ export const handleSearch = (url,value) => {
 
 //   var config = {
 //       method: 'post',
-//       url: 'http://localhost:9082/apptest/FarmerFlow/SearchFarmers',
+//       url: 'http://localhost:9082/apptest/AdminFlow/SearchFarmers',
 //       headers: {
 //           'Session-Id': 'b639e661-6443-4f7d-aa5f-596d8508cda0',
 //           'Content-Type': 'application/json'
@@ -61,8 +61,8 @@ export function postApi(url, value) {
 
 // handleSearch(url, searchString){
 //   console.log(url, searchString, "from handle search click");
-//   postMethod({"FlowAdmin": {"smart_action": "lookup","smart_value": "FarmerFlow"},"searchString": searchString},
-//   'http://', 'localhost:10324/', 'apptest/', 'FarmerFlow', url);
+//   postMethod({"FlowAdmin": {"smart_action": "lookup","smart_value": "AdminFlow"},"searchString": searchString},
+//   'http://', 'localhost:10324/', 'apptest/', 'AdminFlow', url);
 //   }
 
 export function getApi(url,searchString) {

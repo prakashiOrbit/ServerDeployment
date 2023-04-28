@@ -89,10 +89,7 @@ export class FormView extends Component {
     );
 
     this.props.postApi(this.state.inputDetails);
-    // .then((resp) => {
-    //   // setFormDetails(resp.data)
-    //   console.log(resp, "respo from postapi");
-    // });
+   
   }
   onChangeSearch(e) {
     console.log(e);
@@ -128,9 +125,6 @@ export class FormView extends Component {
         if (item.id === name) return item;
       }
     );
-
-    //const isValid = validation(value, component[0].item.validate);
-    //console.log(validation(value, component[0].validate), "validation");
     console.log(component, "selected comp");
 
     this.setState({
@@ -143,7 +137,6 @@ export class FormView extends Component {
     this.setState({
       formErrors: {
         ...this.state.formErrors
-        //[name]: !validation(value, component[0].validate),
       }
     });
     console.log("input in onchange", this.state.inputDetails);
@@ -392,7 +385,7 @@ export class FormView extends Component {
                                   border: "3px solid #ace",
                                   padding: "30px",
                                   boxSizing: "borderBox",
-                                  marginTop: "50px",
+                                  marginTop: "100px",
                                   color: "brown",
                                 }}
                               >

@@ -1,8 +1,5 @@
-
 import React, { useState } from "react";
 import { TextField as MUITextField } from "@material-ui/core";
-
-
 
 function CustomTextField({ label, value, defaultValue, onChange, handleError, disable, rules, ...rest }) {
   const [error, setError] = useState(null);
@@ -14,25 +11,21 @@ function CustomTextField({ label, value, defaultValue, onChange, handleError, di
     if (isValid) {
       setError(null);
       setFieldValue(event.target.value);
-      handleError(false);
+      //handleError(false);
       onChange(event);
    
     } else {
       setError(`Invalid input: ${rules.errorMessage}`);
-      handleError(true);
+      //handleError(true);
       setFieldValue(event.target.value);
       onChange(event);
 
     }
   };
-
-
   const validateInput = (input) => {
-
 
     if (rules.required) {
       var testpattern = new RegExp(rules.pattern)
-
 
       if (rules.required && input.trim() === "") {
         return false;
@@ -49,11 +42,9 @@ function CustomTextField({ label, value, defaultValue, onChange, handleError, di
     }
 
     else {
-
       return true;
     }
   };
-
   return (
     <div>
       <MUITextField
@@ -67,12 +58,9 @@ function CustomTextField({ label, value, defaultValue, onChange, handleError, di
         helperText={error}
         required
         variant="outlined"
-
-
         {...rest}
       />
     </div>
   );
 }
-
 export default CustomTextField;

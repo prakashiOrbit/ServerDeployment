@@ -25,28 +25,31 @@
         {
           "label": "itemCategory",
           "id": "itemCategory",
-          "control": "textbox",
+          "control": "select",
           "required":"true",
-          "minLength":0,
-          "pattern": "^[a-zA-Z ]+$",
-          "errorMessage":"Item Category only contains letters.(eg. tropical / fleshy fruit / stone fruit /melons)"
+          "options": [
+            {"label": "Fruits", "value": "Fruits"},
+            {"label": "Vegetables", "value": "Vegetables"},
+            {"label": "Meat", "value": "Meat"}
+          ]
         },
         {
           "label": "itemSubcategory",
           "id": "itemSubcategory",
-          "control": "textbox",
+          "control": "select",
           "required":"true",
-          "minLength":2,
-          "pattern": "^[a-zA-Z ]+$",
-          "errorMessage":"Item Sub-Category only contains letters.(eg. Pits / citrus / core )"
+          "options": [
+            {"label": "Organic", "value": "organic"},
+            {"label": "InOrganic", "value": "inorganic"}
+          ]
         },
         {
           "label": "basePrice",
           "id": "basePrice",
           "control": "textbox",
           "required":"true",
-          "pattern": "^[0-9]+(.[0-9]+)?$",
-          "errorMessage":"Base Price only contains numbers.(eg. 300, 120.35)"
+          "pattern": "^\\d+(?:\\.\\d+)?\\s*KG$",
+          "errorMessage":"Base price must be in kg (eg. 10KG, 17.5KG)"
         }
       ]
     },

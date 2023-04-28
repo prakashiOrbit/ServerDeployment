@@ -13,7 +13,7 @@ $installpath'Masterdata-0.0.1-SNAPSHOT.jar'
 )
 
 declare -a deploysoa=(
-'FarmerFlow.soa'
+'AdminFlow.soa'
 'MasterDataFlow.soa'
 )
 
@@ -21,13 +21,13 @@ declare -a deploysoa=(
 #CHANGE FOR NEW FLOWS TO BE ADDED
 ######################
 
-defenabled='FarmerFlow'
+defenabled='AdminFlow'
 defenablefeatures="basic"
 defenabled='MasterDataFlow'
 defenablefeatures="basic"
 
 declare -a enableflows=(
-'FarmerFlow'
+'AdminFlow'
 )
 
 declare -a enablefeatures=(

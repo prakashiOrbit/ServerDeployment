@@ -19,6 +19,7 @@ import FormLabel from '@mui/material/FormLabel';
 import FRSelect from "../../Modules/select";
 import postMethod, { getMethod } from "../../Modules/service";
 import { config } from "../../Constants/constant";
+import Datatable from "../../Modules/Datatable/datatable";
 
 
 const POList = () => {
@@ -127,13 +128,15 @@ const POList = () => {
     setopen(false);
   }
 
-
+  const handleCreateClick = () => {
+    navigate('/po');
+  };
 
   return (
     <div style={{ margin: "10%" }}>
 
 
-      <PODatatable url={config.getPO} handleOptions={handleOptions}  flowEvent="SearchPurchaseOrdersTemplate" flow="PurchaseOrderTemplateFlow" header_data={header_data} />
+      <Datatable url={config.getPO} handleOptions={handleOptions} onCreateClick={handleCreateClick} flowEvent="SearchPurchaseOrdersTemplate" flow="PurchaseOrderTemplateFlow" header_data={header_data} showCreateIcon={true} />
 
       
 

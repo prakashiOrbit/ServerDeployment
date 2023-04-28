@@ -1,6 +1,6 @@
 name: Farmer
 type: PrimeData
-flow: FarmerFlow
+flow: AdminFlow
 attributes:
   - attribute: fId
     type: key

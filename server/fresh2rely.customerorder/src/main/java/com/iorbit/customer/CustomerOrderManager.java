@@ -43,8 +43,8 @@ public class CustomerOrderManager {
 	}
 
 	public void getCustomerOrders(SearchCustomerOrder searchcustomer) {
-		List customerorders = searchcustomer.getCustomerOrder();
-		CustomerOrderList td = new CustomerOrderList(customerorders);
+		List farmers = searchcustomer.getCustomerOrder();
+		CustomerOrderList td = new CustomerOrderList(farmers);
 	}
 
 	// editing of farmer details

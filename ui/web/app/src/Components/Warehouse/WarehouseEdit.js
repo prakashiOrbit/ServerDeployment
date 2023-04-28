@@ -23,7 +23,7 @@ const sendpayload = {...data,"Warehouse":{ "___smart_action___": "lookup",
 postMethod(config.editWarehouse,sendpayload)
 .then((res)=>{
     console.log(res.data.responses[0].message);
-    if(res.data.responses[0].message == "warehouse details has been updated."){
+    if(res.data.responses[0].message == "Warehouse details has been updated."){
       
         navigate("/warehouseList")
     }

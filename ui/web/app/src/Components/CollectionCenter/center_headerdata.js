@@ -9,8 +9,8 @@ export const header_data = [
     
   },
     {
-        "label": "centerId",
-        "name": "centerId",
+        "label": "centerCode",
+        "name": "centerCode",
         "control": "textbox",
         "vallabelation": "alphanumeric",
         
@@ -32,8 +32,24 @@ export const header_data = [
       
       },
       {
-        "label": "contact",
-        "name": "contact",
+        "label": "contactPersonName",
+        "name": "contactPersonName",
+        "control": "textbox",
+        "vallabelate": "alphanumeric",
+        options:{
+          display:false,
+       
+        }
+      },
+      {
+        "label": "emailId",
+        "name": "emailId",
+        "control": "textbox",
+        "vallabelate": "alphanumeric"
+      },
+      {
+        "label": "contactNo",
+        "name": "contactNo",
         "control": "textbox",
         "vallabelate": "alphanumeric"
       },

@@ -5,8 +5,8 @@
       "title": "CREATE COLLECTION CENTER",
       "centerDetails": [
         {
-          "label": "centerId",
-          "id": "centerId",
+          "label": "centerCode",
+          "id": "centerCode",
           "control": "textbox",
           "required":"true",
           "minLength":1,
@@ -29,8 +29,19 @@
           "errorMessage":"Please enter Center Address(eg.LIG-113, Manjo Farms, Kerala)"
         },
         {
-          "label": "contact",
-          "id": "contact",
+          "label": "contactPersonName",
+          "id": "contactPersonName",
+          "control": "textbox",
+          "required":"true"
+        },
+        {
+          "label": "emailId",
+          "id": "emailId",
+          "control": "textbox"
+        },
+        {
+          "label": "contactNo",
+          "id": "contactNo",
           "control": "textbox",
           "required":"true",
           "pattern": "^[6-9][0-9]{9}$",
