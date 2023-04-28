@@ -10,7 +10,7 @@ source /app/deployvars.sh
 
 server=$1
 port=$2
-demodomain='localhost'
+demodomain='35.200.175.176'
 
 smartadm='smartadmin'
 smartadmpwd='smartadmin'

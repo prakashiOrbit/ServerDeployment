@@ -49,7 +49,7 @@ else
     # set the new root password
     mysql -e "UPDATE mysql.user SET Password=PASSWORD('root') WHERE User='root'; FLUSH PRIVILEGES;"
     # add some privileges to debian-sys-maint (-> mysql daemon)
-    mysql -u root -proot -e "GRANT ALL PRIVILEGES ON *.* TO 'debian-sys-maint'@'localhost' IDENTIFIED BY '$debSysPwd'; FLUSH PRIVILEGES;"
+    mysql -u root -proot -e "GRANT ALL PRIVILEGES ON *.* TO 'debian-sys-maint'@'35.200.175.176' IDENTIFIED BY '$debSysPwd'; FLUSH PRIVILEGES;"
 
     # kill the unsecure service
     service mysql stop
@@ -73,7 +73,7 @@ else
 
     # setup an "admin" with a random password and allowing remote connections
     admin_password="smartuser"
-    mysql -u root -proot -e "GRANT ALL ON smarttest.* TO 'smarttest'@'localhost' IDENTIFIED BY '$admin_password' WITH GRANT OPTION;"
+    mysql -u root -proot -e "GRANT ALL ON smarttest.* TO 'smarttest'@'35.200.175.176' IDENTIFIED BY '$admin_password' WITH GRANT OPTION;"
 
     echo "========================================================================="
     echo "#"
@@ -82,7 +82,7 @@ else
     echo "#    password: $admin_password"
     echo "#"
     echo "#  * root is only accessible from within this container."
-    echo "#  It does not accept any connection except from localhost."
+    echo "#  It does not accept any connection except from 35.200.175.176."
     echo "#"
     echo "========================================================================="
 

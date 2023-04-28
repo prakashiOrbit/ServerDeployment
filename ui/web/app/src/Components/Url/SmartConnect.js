@@ -47,7 +47,7 @@ export default class SmartConnect extends Component {
 
     // handleSearch = (url, searchString) => {
     //     console.log("inside handle Search",url,searchString)
-    //     var fun = this.authenticate('http://', 'localhost:9082/', 'apptest/', 'Security', 'Authenticate')
+    //     var fun = this.authenticate('http://', '35.200.175.176:9082/', 'apptest/', 'Security', 'Authenticate')
     //     //localstorage getitem - store the session in a variable
     //     var id = localStorage.getItem('sessionId', fun)
     //     console.log(id);
@@ -91,7 +91,7 @@ export default class SmartConnect extends Component {
 
         // var config = {
         //     method: 'post',
-        //     url: 'http://localhost:9082/apptest/AdminFlow/CreateFarmer',
+        //     url: 'http://35.200.175.176:9082/apptest/AdminFlow/CreateFarmer',
         //     headers: {
         //         'Session-Id': 'e529ce66-e8bb-41b2-839d-2af769bf942f',
         //         'Content-Type': 'application/json'

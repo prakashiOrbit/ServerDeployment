@@ -6,7 +6,7 @@ secure_installation() {
     echo "Securing installation.."
     mysql -u root <<-EOF
     UPDATE mysql.user SET Password=PASSWORD('root') WHERE User='root';
-    DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
+    DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('35.200.175.176', '127.0.0.1', '::1');
     DELETE FROM mysql.user WHERE User='';
     DELETE FROM mysql.db WHERE Db='test' OR Db='test\_%';
     GRANT ALL PRIVILEGES ON *.* TO 'smarttest' IDENTIFIED BY 'smarttest' WITH GRANT OPTION;
@@ -57,8 +57,8 @@ su -c "./startSmart.sh SecureServer" smartuser
 
 /home/checkserver.sh
 
-/home/deploy.sh localhost 9081
-/home/createtenant.sh localhost 9081
+/home/deploy.sh 35.200.175.176 9081
+/home/createtenant.sh 35.200.175.176 9081
 
 tail -f /home/smartuser/smartinstall/nohup.out
 

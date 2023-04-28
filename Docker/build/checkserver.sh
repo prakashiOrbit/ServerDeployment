@@ -2,7 +2,7 @@
 SUCCESSFUL_ATTEMPTS=0
 MIN_SUCCESSFUL=5
 check_server_started() {
-    nc -z localhost 9081
+    nc -z 35.200.175.176 9081
     if [ $? -eq 0 ]; then
         SUCCESSFUL_ATTEMPTS=$((SUCCESSFUL_ATTEMPTS+1))
     fi
