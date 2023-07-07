@@ -1,49 +1,46 @@
 export const header_data = [
+  
   {
-    "label": "pId",
-    "name": "pId",
-    options:{
-      display:false,
-   
-    }
-    
+    "label": <strong>Item Name</strong>,
+    "name": "itemName",
+    "control": "textbox",
+    "vallabelation": "alphanumeric"
   },
     {
-        "label": "skuId",
+        "label": <strong>Sku Id</strong>,
         "name": "skuId",
         "control": "textbox",
         "vallabelation": "alphanumeric",
         
       },
+      
       {
-        "label": "itemName",
-        "name": "itemName",
-        "control": "textbox",
-        "vallabelation": "alphanumeric"
-      },
-      {
-        "label": "itemCategory",
+        "label": <strong>Item Category</strong>,
         "name": "itemCategory",
         "control": "textbox",
         "vallabelation": "alphanumeric"
-      },
-      {
-        "label": "itemSubcategory",
-        "name": "itemSubcategory",
-        "control": "textbox",
-        "vallabelation": "alphanumeric",
-        options:{
-          display:false,
-       
-        }
+      
       
       },
+      
       {
-        "label": "basePrice",
-        "name": "basePrice",
+        "label": <strong>Quantity</strong>,
+        "name": "quantity",
         "control": "textbox",
         "vallabelate": "alphanumeric"
       },
+      {
+        "label": <strong>Unit Of Measurement</strong>,
+        "name": "UOM",
+        "control": "textbox",
+        "vallabelate": "alphanumeric"
+      },
+      {
+        "label": <strong>Base Price (₹)</strong>,
+        "name": "basePrice",
+        "control": "textbox",
+        "vallabelate": "alphanumeric"
+      }
    
 ];
 

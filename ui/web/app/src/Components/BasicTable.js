@@ -41,7 +41,7 @@ const tableIcons = {
 
 const BasicTable = ({formDetails, tableData, showData, getApi}) => {
   
-  console.log("datee",tableData)
+  console.log("formdetails",formDetails)
   const  farmerdata  = tableData;
   console.log("taaa",farmerdata)
   const [gridData, setGridData] = useState({
@@ -54,9 +54,9 @@ const BasicTable = ({formDetails, tableData, showData, getApi}) => {
   
 
   useEffect(() => {   
-    const data = formDetails.submitURL ? () => showData(formDetails.submitURL,false) : ''
+    const data = formDetails.lineitemsSubmitURL ? () => showData(formDetails.lineitemsSubmitURL,false) : ''
     axios.get(dataurl).then((resp) => {  
-      console.log("checkkeee axioo",resp.data.submitURL)
+      console.log("checkkeee axioo",resp.data.lineitemsSubmitURL)
       setGridData({
         data: resp.data.data,
         columns: resp.data.headCells,
@@ -69,7 +69,7 @@ const BasicTable = ({formDetails, tableData, showData, getApi}) => {
   const onRowAdd = newData =>
     new Promise((resolve, reject) => {     
       const data = [...gridData.data];
-      showData(formDetails.submitURL, newData)
+      showData(formDetails.lineitemsSubmitURL, newData)
       data.push(newData);
       const updatedAt = new Date();
       setGridData({ ...gridData, data, updatedAt, resolve });
@@ -82,7 +82,8 @@ const BasicTable = ({formDetails, tableData, showData, getApi}) => {
       const index = data.indexOf(oldData);
       data[index] = newData;
       const updatedAt = new Date();
-      showData(formDetails.submitURL, newData)
+      showData(formDetails.lineitemsSubmitURL, newData)
+      //console.log(JSON.stringify(newData));
       setGridData({ ...gridData, data, updatedAt, resolve });
     });
 

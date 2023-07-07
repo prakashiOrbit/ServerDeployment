@@ -1,59 +1,42 @@
 {
   "division": {
     "name": "Truck",
-    "formelements": {
-      "title": "CREATE TRUCK AND DRIVER",
-      "truckDetails": [
-        {
-          "label": "licenseNo",
-          "id": "licenseNo",
-          "control": "textbox",
-          "required":"true",
-          "pattern": "^[A-Z]{2}[0-9]{2}[0-9]{4}[0-9]{7}$",
-          "errorMessage":"Enter valid License Number.(eg. CG1220237654634)"
-        },
+    "formelements": [{
+      "title": "CREATE TRANSPORT",
+      "details": [
         {
           "id": "tranportCompanyName",
-          "label": "tranportCompanyName",
+          "label": "Tranport Company Name",
           "control": "textbox",
           "required":true,
-          "pattern": "^[^0-9]+$",
-          "errorMessage":"Company Name only contains letters(eg. Manoj Transports)"
+          "errorMessage":"Enter a valid Company Name (eg. Manoj Transports)"
         },
         {
-          "id": "VinNo",
-          "label": "VinNo",
+          "label": "License No",
+          "id": "licenseNo",
           "control": "textbox",
-          "required":"true",
-          "minLength":2,
-          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\s]*$",
-          "errorMessage":"Please enter valid VIN Number.(eg. 4Y1SL65848Z411439)"
+          "required":true,
+          "pattern": "^[A-Z]{2}[0-9]{2}[0-9]{4}[0-9]{7}$",
+          "errorMessage":"License Number must be in a valid format(eg. CG1220237654634)."
         },
-        {
-          "id": "companyName",
-          "label": "companyName",
-          "control": "textbox",
-          "required":"true",
-          "pattern": "^[^0-9]+$",
-          "errorMessage":"Company Name only contains letters(eg. Manoj Transports)"
-        },
-        
 
         {
           "id": "contactNo",
-          "label": "contactNo",
+          "label": "Contact No",
           "control": "textbox",
           "required":true,
-          "pattern": "^[6-9][0-9]{9}$",
-          "errorMessage":"Contact Number only contains 10 digits(eg. 9876567654)"
+          "pattern": "^(\\d{3}|\\d{4})?(\\d{7}|\\d{8}|\\d{9}|\\d{10})$",
+          "errorMessage":"Contact number must be valid(eg. 9876567654, 04712314440)"
         },
         {
           "id": "address",
-          "label": "address",
+          "label": "Address",
           "control": "textbox",
-          "required":"true"
+          "required":true,
+          "minLength":2,
+          "errorMessage":"Enter valid address details.(eg. 13th ,Church Street)"
         }
       ]
-    }
+    }]
   }
 }

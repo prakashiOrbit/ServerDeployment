@@ -33,7 +33,7 @@
         "label": "Save",
         "control": "button",
         "validationjs": "validatedata",
-        "submitURL": "http://167.71.237.12:9082/SmartOwner/AdminSmartFlow/EnableFlow"
+        "submitURL": "http://localhost:9082/SmartOwner/AdminSmartFlow/EnableFlow"
       },
       {
         "id": "cancel",

@@ -9,6 +9,7 @@ import HailIcon from '@mui/icons-material/Hail';
 import GridViewIcon from '@mui/icons-material/GridView';
 import ShopRoundedIcon from '@mui/icons-material/ShopRounded';
 import LocationOnSharpIcon from '@mui/icons-material/LocationOnSharp';
+import HiveIcon from '@mui/icons-material/Hive';
 export const sideMenu = [
   {
     text: "Farmer Management",
@@ -22,18 +23,6 @@ export const sideMenu = [
       {
         text: "Farmer List",
         link: "/farmerList",
-        icon: <ListAltIcon />
-      },
-    ],
-  },
-  {
-    text: "Purchase order",
-    icon: < ShopRoundedIcon />,
-    options: [
-      
-      {
-        text: "Purchase Order List",
-        link: "/poList",
         icon: <ListAltIcon />
       },
     ],
@@ -62,6 +51,18 @@ export const sideMenu = [
         link: "/warehouseList",
         icon: <WarehouseIcon />,
       },
+      {
+        text: "Category List",
+        link: "/category-list",
+        icon: < CategoryIcon />,
+        
+      },
+      {
+        text: "Item List",
+        link: "/product-list",
+        icon: < HiveIcon />,
+        
+      },
     ],
   },
   {
@@ -70,7 +71,7 @@ export const sideMenu = [
     options: [
       
       {
-        text: "View Order",
+        text: "Order List",
         link: "/customerList",
         icon: <ListAltIcon />
       },
@@ -90,7 +91,7 @@ export const sideMenu = [
   },
 ];
 export const config = {
-  host: "35.200.175.176",
+  host: "localhost",
   port: "9082",
   tenant: "apptest",
   editFarmer:"/AdminFlow/EditFarmer",
@@ -98,9 +99,9 @@ export const config = {
   getfarmer:"/AdminFlow/SearchFarmers",
   getcc:"/MasterDataFlow/SearchCollectionCenter",
 
-  editPO:"/PurchaseOrderTemplateFlow/EditPurchaseOrderTemplate",
-  addPO:"/PurchaseOrderTemplateFlow/CreatePurchaseOrderTemplate",
-  getPO:"/PurchaseOrderTemplateFlow/SearchPurchaseOrdersTemplate", 
+  editPO:"/AdminFlow/EditPurchaseOrderTemplate",
+  addPO:"/AdminFlow/CreatePurchaseOrderTemplate",
+  getPO:"/AdminFlow/SearchPurchaseOrdersTemplate", 
 
   editCollectionCenter:"/MasterDataFlow/EditCollectionCenter",
   addCollectionCenter:"/MasterDataFlow/CreateCollectionCenter",
@@ -114,14 +115,34 @@ export const config = {
   editTruck:"/MasterDataFlow/EditTruck",
   addTruck:"/MasterDataFlow/CreateTruck",
   getTruck:"/MasterDataFlow/SearchTruck",
-  editPurchaseOrderTemplate:"/PurchaseOrderTemplateFlow/EditPurchaseOrderTemplate",
-  addPurchaseOrderTemplate:"/PurchaseOrderTemplateFlow/CreatePurchaseOrderTemplate",
-  getPurchaseOrderTemplate:"/PurchaseOrderTemplateFlow/SearchPurchaseOrderTemplate",
 
-  editCustomer:"/CustomerOrderFlow/EditCustomerOrder",
-  addCustomer:"/CustomerOrderFlow/CreateCustomerOrder",
-  getCustomer:"/CustomerOrderFlow/SearchCustomerOrder",
 
+  editPurchaseOrderTemplate:"/AdminFlow/EditPurchaseOrdersTemplate",
+  addPurchaseOrderTemplate:"/AdminFlow/CreatePurchaseOrderTemplate",
+  SearchPurchaseOrdersTable:"/AdminFlow/SearchPurchaseOrdersTable",
+  CreatePurchaseOrder:"/AdminFlow/CreatePurchaseOrder",
+  SearchPurchaseOrder:"/AdminFlow/SearchPurchaseOrders",
+  EditPurchaseOrder :"/AdminFlow/EditPurchaseOrder",
+  getPurchaseOrderTemplate:"/AdminFlow/GetPurchaseOrderTemplate",
+  searchPurchaseOrderTemplate:"/AdminFlow/SearchPurchaseOrdersTemplate",
+  createPurchaseOrderTemplateLineItem:"/AdminFlow/CreatePurchaseOrderTable",
+  editPurchaseOrderTemplateLineItem:"/AdminFlow/EditPurchaseOrderTable",
+  searchPurchaseOrderTemplateLineItems:"/AdminFlow/SearchPurchaseOrdersTable",
+
+  editCustomer:"/AppFlow/EditCustomerOrder",
+  addCustomer:"/AppFlow/CreateCustomerOrder",
+  getCustomer:"/AppFlow/SearchCustomerOrder",
+
+  getCustomerview:"/AppFlow/ViewCustomerOrder",
+
+  createItem:"/AppFlow/CreateItem",
+  searchItem:"/AppFlow/SearchItem",
+  editItem:"/AppFlow/EditItem",
+  getCustomerOrder:"/AppFlow/SearchlineItem",
+  
+  createCategory:"/AppFlow/CreateCategory",
+  searchCategory:"/AppFlow/SearchCategory",
+  editCategory:"/AppFlow/EditCategory",
 
 };
 

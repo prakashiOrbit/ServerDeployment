@@ -1,67 +1,42 @@
 export const header_data = [
-
     {
-        "label": "poId",
-        "name": "poid",
+        "label": "SKU Id",
+        "name": "skuId",
         "control": "textbox",
-        "vallabelation": "alphanumeric",
-        "disabled": true
+        "vallabelate": "alphanumeric"
     },
     {
-        "label": "date",
-        "name": "date",
+        "label": "Item Name",
+        "name": "itemName",
         "control": "date",
         "vallabelation": "alphanumeric"
     },
+    
     {
-        "label": "Ship Address",
-        "name": "Ship Address",
-        "control": "textbox",
-        "vallabelation": "Ship Address"
-    },
-    {
-        "label": "city",
-        "name": "shipToCity",
+        "label": "Quantity",
+        "name": "quantity",
         "control": "textbox",
         "vallabelate": "alphanumeric"
     },
     {
-        "name": "shipToState",
-        "label": "state",
+        "label": "Base Price (₹)",
+        "name": "basePrice",
         "control": "textbox",
-        "vallabelate": "alphanumeric"
-    },
-       
-          {
-        "label": "shipToPinCode",
-        "name": "pin",
-        "control": "textbox",
-        "vallabelate": "alphanumeric"
+        "vallabelation": "alphanumeric"
     },
     {
-        "label": "Bill Address",
-        "name": "Bill Address",
-        "control": "textbox",
-        "vallabelation": "Bill Address"
-    },
-    {
-        "label": "city",
-        "name": "billToCity",
-        "control": "textbox",
-        "vallabelate": "alphanumeric"
-    },
-    {
-        "name": "billToState",
-        "label": "state",
+        "label": "Pick Up Date",
+        "name": "pickUpDate",
         "control": "textbox",
         "vallabelate": "alphanumeric"
     },
        
           {
-        "label": "billToPinCode",
-        "name": "pin",
+        "label": "Day Of Week",
+        "name": "dayOfWeek",
         "control": "textbox",
         "vallabelate": "alphanumeric"
     },
+  
 ];
 

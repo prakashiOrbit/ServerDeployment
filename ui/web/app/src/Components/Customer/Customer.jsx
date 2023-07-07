@@ -13,7 +13,7 @@ class Customer extends React.Component {
             functions: this.child,
             handleClick:null,
             handleSearch:null,
-            flow:"CustomerOrderFlow",
+            flow:"AppFlow",
             tenant:"apptest/"
         }
         console.log(this.child, "child propss");
@@ -35,7 +35,7 @@ class Customer extends React.Component {
                         <FormView aev="add" fields={"/Service/customer.json"} search={"/Service/customerSearch.json"} getApi={getApi} postApi={this.state.functions.current ? this.state.functions.current.handleClick : null} />
                     </>) : (null)
     }
-          <SmartConnect server={config.host} port={config.port} tenant={config.tenant} flow="CustomerOrderFlow" flowEvent="CreateCustomer" ref={this.child} /> 
+          <SmartConnect server={config.host} port={config.port} tenant={config.tenant} flow="AppFlow" flowEvent="CreateCustomer" ref={this.child} /> 
                
             </div>
         );

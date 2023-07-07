@@ -1,70 +1,74 @@
 {
   "division": {
     "name": "Product Header",
-    "formelements": {
-      "title": "CREATE NEW PRODUCT",
-      "productDetails": [
-        {
-          "label": "skuId",
-          "id": "skuId",
-          "control": "textbox",
-          "required":"true",
-          "minLength":1,
-          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\s]*$",
-          "errorMessage":"Please enter valid Sku Id."
-        },
-        {
-          "label": "itemName",
-          "id": "itemName",
-          "control": "textbox",
-          "required":"true",
-          "minLength":2,
-          "pattern": "^[a-zA-Z ]+$",
-          "errorMessage":"Item Name only contains letters.(eg. Apple, Cabbage, Cauliflower)"
-        },
-        {
-          "label": "itemCategory",
-          "id": "itemCategory",
-          "control": "select",
-          "required":"true",
-          "options": [
-            {"label": "Fruits", "value": "Fruits"},
-            {"label": "Vegetables", "value": "Vegetables"},
-            {"label": "Meat", "value": "Meat"}
-          ]
-        },
-        {
-          "label": "itemSubcategory",
-          "id": "itemSubcategory",
-          "control": "select",
-          "required":"true",
-          "options": [
-            {"label": "Organic", "value": "organic"},
-            {"label": "InOrganic", "value": "inorganic"}
-          ]
-        },
-        {
-          "label": "basePrice",
-          "id": "basePrice",
-          "control": "textbox",
-          "required":"true",
-          "pattern": "^\\d+(?:\\.\\d+)?\\s*KG$",
-          "errorMessage":"Base price must be in kg (eg. 10KG, 17.5KG)"
-        }
-      ]
-    },
-    "buttons": [
+    "formelements": [
       {
-        "id": "Next",
-        "label": "Next",
-        "control": "button",
-        "submitURL": "CreateProduct"
-      },
-      {
-        "id": "cancel",
-        "label": "Cancel",
-        "control": "button",
-        "redirect": "/productList"
+        "title": "CREATE NEW PRODUCT",
+        "details": [
+          {
+            "label": "Item Name",
+            "id": "itemName",
+            "control": "textbox",
+            "required": true,
+            "minLength": 2,
+            "pattern": "^[^0-9]+$",
+            "errorMessage":"Enter a valid Item Name(eg. Apple , Cabbage."
+          },
+          {
+            "label": "Item Category",
+            "id": "itemCategory",
+            "control": "dropdown",
+            "required": true,
+            "options": [
+              {
+                "value": "Fruits",
+                "label": "Fruits"
+              },
+              {
+                "value": "Vegetables",
+                "label": "Vegetables"
+              }
+            ]
+          },
+          {
+            "label": "Quantity",
+            "id": "quantity",
+            "control": "textbox",
+            "required": true,
+            "pattern": "^\\d+$",
+            "errorMessage": "Quantity must be a positive integer."
+          },
+          {
+            "label": "Unit Of Measurement",
+            "id": "UOM",
+            "control": "dropdown",
+            "required": true,
+            "options": [
+              {
+                "value": "Kilograms",
+                "label": "Kilograms"
+              },
+              {
+                "value": "Grams",
+                "label": "Grams"
+              },
+              {
+                "value": "Piece",
+                "label": "Piece"
+              }
+            ]
+          },
+          {
+            "label": "Base Price",
+            "id": "basePrice",
+            "control": "textbox",
+            "required": true,
+            "minLength": 1,
+            "pattern": "^\\d+(?:\\.\\d+)?\\s*$",
+            "errorMessage": "Enter a valid Base Price(eg. 67.34, 17)"
+          }
+          
+        ]
       }
     ]
   }

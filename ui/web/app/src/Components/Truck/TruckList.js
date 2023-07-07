@@ -17,31 +17,34 @@ import FormLabel from '@mui/material/FormLabel';
 import postMethod from "../../Modules/service";
 import { config } from "../../Constants/constant";
 
-
 const TruckList = () => {
 
   const navigate = useNavigate();
   const [open, setopen] = useState(false);
   const [ccdata, setccdata] = useState([{ name: "check", label: "check" }]);
   const [truckdata, settruckdata] = useState({});
-
+  const [currentPage, setcurrentPage] = useState(localStorage.getItem("truckPage") ? localStorage.getItem("truckPage") : 0);
 
   useEffect(() => {
     getCcList();
   }, [])
 
+  const onPagination = (page) => {
+    if (page >= 0) {
+      setcurrentPage(page);
+      localStorage.setItem("truckPage", page);
+    }
+
+  }
   const handleChange = (e) => {
 
     var name = e.target.name;
     var value = e.target.value;
 
     settruckdata({ ...truckdata, "centerId": value, "centerName": name })
-
-
   }
 
   const getCcList = () => {
-
 
     const payloaddata = {
       "FlowAdmin": {
@@ -51,23 +54,19 @@ const TruckList = () => {
       "searchString": "*"
     };
 
-
     postMethod(config.getTruck, payloaddata)
       .then((res) => {
-        console.log(res.data.responses[0].cd);
-        const payload = res.data.responses[0].cd?.map((index) => ({
+        console.log(res.data.responses[0].farmers);
+        const payload = res.data.responses[0].farmers?.map((index) => ({
           value: index.centerId, label: index.centerName
         })
         )
         console.log(payload);
         setccdata(payload);
 
-
       });
 
-
   };
-
 
   const handlesubmit = () => {
 
@@ -87,17 +86,15 @@ const TruckList = () => {
           navigate("/truckList")
         }
 
-
       });
-      setopen(false);
-
-
+    setopen(false);
   }
-
 
   const handleOptions = (data, option) => {
     console.log(option);
-    console.log(data)
+    console.log(data);
+    localStorage.setItem('truck', data.licenseNo);
+    localStorage.setItem("truckDetails", JSON.stringify(data))
     switch (option) {
       case "Edit":
 
@@ -114,7 +111,7 @@ const TruckList = () => {
         setopen(true);
         break;
       default:
-        
+
     }
   }
 
@@ -130,11 +127,12 @@ const TruckList = () => {
     <div style={{ margin: "10%" }}>
 
 
-      <Datatable url={config.getTruck}  handleOptions={handleOptions} flowEvent="TruckEvent" flow="MasterDataFlow" header_data={header_data} onCreateClick={handleCreateClick} showEdit={true} showAssignToCC={false} showCreateIcon={true}/>
+      <Datatable title="Transportation Details" currentPage={currentPage} onPagination={onPagination} print={false} url={config.getTruck} handleOptions={handleOptions} flowEvent="TruckEvent" flow="MasterDataFlow" header_data={header_data} onCreateClick={handleCreateClick} showEdit={true} showAssignToCC={false} showCreateIcon={true} />
 
       <Dialog
-        open={open}
         onClose={handleClose}
+        open={open}
+
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
@@ -166,7 +164,6 @@ const TruckList = () => {
 
     </div>
   );
-
 }
 
 export default TruckList;

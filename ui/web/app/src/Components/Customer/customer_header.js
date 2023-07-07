@@ -1,35 +1,62 @@
 export const header_data = [
     {
-      "label": "sNo",
-      "name": "sNo",
+      "label": <strong>CO Id</strong>,
+      "name": "coId",
       options:{
-        display:true,
+        display:false,
+     
+      }
+      
+    },
+    {
+      "label": <strong>COI Id</strong>,
+      "name": "coiId",
+      options:{
+        display:false,
      
       }
       
     },
       {
-          "label": "Item Name",
-          "name": "phoneNo",
+          "label": <strong>SKU Id</strong>,
+          "name": "skuId",
           "control": "textbox",
           "vallabelation": "alphanumeric",
           
         },
         {
-          "label": "Quantity",
-          "name": "source",
+          "label": <strong>Item Name</strong>,
+          "name": "itemName",
           "control": "textbox",
           "vallabelation": "alphanumeric"
         },
         {
-          "label": "Unit Price",
-          "name": "totalAmount",
+          "label": <strong>Image</strong>,
+          "name": "image",
           "control": "textbox",
-          "vallabelation": "alphanumeric"
+          "vallabelation": "alphanumeric",
+          options:{
+            display:false,
+         
+          }
         },
         {
-          "label": "Total Price + GST",
-          "name": "products",
+          "label": <strong>Item Price (₹)</strong>,
+          "name": "itemPrice",
+          "control": "textbox",
+          "vallabelation": "alphanumeric",
+        
+        },
+        {
+          "label": <strong>Discount Price (₹)</strong>,
+          "name": "discountPrice",
+          "control": "textbox",
+          "vallabelation": "alphanumeric",
+        
+        },
+        {
+          "label": <strong>Quantity</strong>,
+          "name": "quantity",
           "control": "textbox",
           "vallabelation": "alphanumeric",
           options:{
@@ -38,6 +65,7 @@ export const header_data = [
           }
         
         },
+      
   ];
   
   

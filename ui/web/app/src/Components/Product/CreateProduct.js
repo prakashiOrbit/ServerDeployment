@@ -28,8 +28,6 @@ const CreateProduct = () => {
                     if(res.data.responses[0].message === "Product is successfully created.") {
                         navigate("/productList")
                     }
-
-                
                 });
 
         }
@@ -38,11 +36,6 @@ const CreateProduct = () => {
         }
 
     }
-
-
-
-
-
     return (
         <>
 

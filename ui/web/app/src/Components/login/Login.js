@@ -3,7 +3,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { FormControl } from '@mui/material';
 import Typography from "@mui/material/Typography";
 import { Container, InputLabel, Input, FormHelperText, Button, Grid } from '@mui/material';
-import { Navigate } from "react-router-dom";
+
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -11,6 +11,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import {config} from "../../Constants/constant";
+
 //import SmartConnect from "@iorbit-tech/smart-connect";
 import SmartConnect from "../smart-connect/smart-connect";
 
@@ -25,8 +26,7 @@ class Login extends Component {
       username: "",
       password: "",
       open: false,
-      openf: false,
-      redirectToFarmerPage: false 
+      openf: false
     };
 
   this.onLoginClick = this.onLoginClick.bind(this);
@@ -50,12 +50,10 @@ class Login extends Component {
       };
 
       var test = this.child.current.authenticate(userData.username, userData.password);
-      console.log(test);
+      console.log('test : '+test);
 
-      if(test !== undefined){
-        this.setState({redirectToFarmerPage: true});
+      if(test === undefined){
         this.handleClickOpenf();
-        
       }else{
         // To do: Redirection using class component is not working. Will have to upgrade this to a functional component
       }
@@ -84,16 +82,13 @@ class Login extends Component {
   handleClosef = () => {
     this.setState({openf:false});
   };
- 
+
   render() {
-    if (this.state.redirectToFarmerPage) {
-      return <Navigate to='/farmer' />;
-    }
     return (
       <Container maxWidth="sm">
       <CssBaseline />
           <form>
-            <Grid container direction={"column"} spacing={5}>\
+            <Grid container direction={"column"} spacing={5}>
               <Grid item>
                 <Typography variant="h3" noWrap component="div">
                 Login
@@ -108,7 +103,7 @@ class Login extends Component {
               <Grid item>
                 <FormControl>
                   <InputLabel htmlFor="my-input">Password</InputLabel>
-                  <Input id="password" aria-describedby="my-helper-passtext" name="password" onChange={this.onChange} />
+                  <Input id="password" type="password" aria-describedby="my-helper-passtext" name="password" onChange={this.onChange} />
                 </FormControl>
               </Grid>
               <Grid item>
@@ -135,7 +130,6 @@ class Login extends Component {
           <Button onClick={this.handleClose}>Ok</Button>
         </DialogActions>
       </Dialog>
-   
 
       <Dialog
         open={this.state.openf}

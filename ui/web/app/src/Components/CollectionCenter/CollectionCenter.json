@@ -1,53 +1,49 @@
 {
   "division": {
     "name": "Collection Header",
-    "formelements": {
+    "formelements": [{
       "title": "CREATE COLLECTION CENTER",
-      "centerDetails": [
+      "details": [
+        
         {
-          "label": "centerCode",
-          "id": "centerCode",
-          "control": "textbox",
-          "required":"true",
-          "minLength":1,
-          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\s]*$",
-          "errorMessage":"Please enter valid Center Id."
-        },
-        {
-          "label": "centerName",
+          "label": "Center Name",
           "id": "centerName",
           "control": "textbox",
-          "required":"true",
-          "pattern": "^[^0-9]+$",
-          "errorMessage":"Please enter valid Center Name(eg.Manoj Farms)"
+          "required":true,
+          "errorMessage":"Enter a valid Center Name (such as Manoj Farms)."
         },
         {
-          "label": "centerAddress",
+          "label": "Center Address",
           "id": "centerAddress",
           "control": "textbox",
-          "required":"true",
-          "errorMessage":"Please enter Center Address(eg.LIG-113, Manjo Farms, Kerala)"
+          "required":true,
+          "errorMessage":"Provide the Center Address (e.g. LIG-113, Manjo Farms, Kerala)."
         },
         {
-          "label": "contactPersonName",
+          "label": "Contact Person Name",
           "id": "contactPersonName",
           "control": "textbox",
-          "required":"true"
+          "required":true,
+          "pattern": "^[^0-9]+$",
+          "errorMessage":"The name of the person only contains alphabets (for example, G. Shivani Murthy)."
         },
         {
-          "label": "emailId",
+          "label": "EmailId",
           "id": "emailId",
-          "control": "textbox"
+          "control": "textbox",
+          "required":false,
+          "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+          "errorMessage": "Email Id must be valid(eg. shibu@gmail.com)."
         },
         {
-          "label": "contactNo",
+          "label": "Contact No",
           "id": "contactNo",
           "control": "textbox",
-          "required":"true",
-          "pattern": "^[6-9][0-9]{9}$",
-          "errorMessage":"Contact Number only contains 10 digits(eg. 9876567654)"
+          "required":true,
+          "pattern": "^(\\d{3}|\\d{4})?(\\d{7}|\\d{8}|\\d{9}|\\d{10})$",
+          "errorMessage":"Enter a valid contact number(eg. 9876567654, 04712314440)"
         }
       ]
-    }
+    }]
   }
 }

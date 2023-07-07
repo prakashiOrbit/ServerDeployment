@@ -9,8 +9,9 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import axios from 'axios';
 import SmartConnect from '../../Components/smart-connect/smart-connect';
 import postMethod from '../service';
+import { Typography } from '@mui/material';
 
-const  PODatatable = ({url,handleOptions,flow,header_data,flowEvent}) => {
+const  PODatatable = ({title,url,handleOptions,flow,header_data,flowEvent}) => {
   const [responsive, setResponsive] = useState("vertical");
 
 
@@ -256,6 +257,7 @@ postMethod(url,payload)
 
   return (
     <>
+    <Typography variant="h4" component="h2">{title}</Typography>
         <MUIDataTable
        
           data={tableData}

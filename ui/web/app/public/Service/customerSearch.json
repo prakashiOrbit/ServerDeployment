@@ -22,7 +22,7 @@
         "label": "Search",
         "control": "button",
         "validationjs": "validatedata",
-        "submitURL": "https://167.71.237.12/searchProduct"
+        "submitURL": "https://localhost/searchProduct"
       },
       {
         "id": "create",

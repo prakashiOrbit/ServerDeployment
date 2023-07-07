@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Datatable from "../../Modules/Datatable/datatable";
@@ -17,20 +15,24 @@ import FormLabel from '@mui/material/FormLabel';
 import postMethod from "../../Modules/service";
 import { config } from "../../Constants/constant";
 
-
 const ProductList = () => {
 
   const navigate = useNavigate();
   const [open, setopen] = useState(false);
   const [ccdata, setccdata] = useState([{ name: "check", label: "check" }]);
   const [productdata, setproductdata] = useState({});
-
-
+  const [currentPage, setcurrentPage] = useState(localStorage.getItem("productPage") ? localStorage.getItem("productPage") : 0);
 
   useEffect(() => {
     getCcList();
   }, [])
+  const onPagination = (page) => {
+    if (page >= 0) {
+      setcurrentPage(page);
+      localStorage.setItem("productPage", page);
+    }
 
+  }
 
   const handleChange = (e) => {
 
@@ -42,12 +44,7 @@ const ProductList = () => {
 
   }
 
-
-
-
   const getCcList = () => {
-
-
 
     const payloaddata = {
       "FlowAdmin": {
@@ -57,22 +54,16 @@ const ProductList = () => {
       "searchString": "*"
     };
 
-
     postMethod(config.getProduct, payloaddata)
       .then((res) => {
-        console.log(res.data.responses[0].cd);
-        const payload = res.data.responses[0].cd?.map((index) => ({
+        console.log(res.data.responses[0].farmers);
+        const payload = res.data.responses[0].farmers?.map((index) => ({
           value: index.centerId, label: index.centerName
         }))
         console.log(payload);
         setccdata(payload);
-
-
       });
-
-
   };
-
 
   const handlesubmit = () => {
 
@@ -83,7 +74,6 @@ const ProductList = () => {
         "___smart_value___": productdata.skuId
       }
     }
-
     postMethod(config.editProduct, sendpayload)
       .then((res) => {
         console.log(res.data.responses[0].message);
@@ -91,18 +81,14 @@ const ProductList = () => {
 
           navigate("/productList")
         }
-
-
       });
-      setopen(false);
-
-
+    setopen(false);
   }
-
-
   const handleOptions = (data, option) => {
     console.log(option);
-    console.log(data)
+    console.log(data);
+    localStorage.setItem('product', data.itemName);
+    localStorage.setItem("productDetails", JSON.stringify(data))
     switch (option) {
       case "Edit":
 
@@ -119,7 +105,7 @@ const ProductList = () => {
         setopen(true);
         break;
       default:
-        
+
     }
   }
 
@@ -127,15 +113,13 @@ const ProductList = () => {
     setopen(false);
   }
 
-
   const handleCreateClick = () => {
     navigate('/createProduct');
   };
   return (
     <div style={{ margin: "10%" }}>
 
-
-      <Datatable url={config.getProduct} handleOptions={handleOptions} flowEvent="ProductEvent" flow="MasterDataFlow" header_data={header_data} onCreateClick={handleCreateClick} showAssignToCC={false} showEdit={true} showCreateIcon={true}/>
+      <Datatable title="Products List" currentPage={currentPage} onPagination={onPagination} print={false} url={config.getProduct} handleOptions={handleOptions} flowEvent="ProductEvent" flow="MasterDataFlow" header_data={header_data} onCreateClick={handleCreateClick} showAssignToCC={false} showEdit={true} showCreateIcon={true} />
 
       <Dialog
         open={open}
@@ -173,6 +157,5 @@ const ProductList = () => {
   );
 
 }
-
 export default ProductList;
 

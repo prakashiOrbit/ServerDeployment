@@ -511,14 +511,16 @@ export class FormView extends Component {
                 ) : (
                   <div>No Data</div>
                 )}
-
+                
                 {Object.keys(this.state.formDetails).length ? (
                   this.state.formDetails.division.edittable.map(
                     (item, index) => {
                       return (
-                        <Grid key={index} item xs={12} sm={12}>
-                          <BasicTable formDetails = {this.state.formDetails.division.buttons[0]} tableData={this.state.formDetails.division.edittable} showData={this.showData} getApi={getApi}/>
-                        </Grid>
+                          <Grid key={index} item xs={12} sm={12}>
+                            {window.location.pathname === '/po-edit' &&
+                              <BasicTable formDetails = {this.state.formDetails.division.buttons[0]} tableData={this.state.formDetails.division.edittable} showData={this.showData} getApi={getApi}/>
+                            }
+                          </Grid>
                       );
                     }
                   )

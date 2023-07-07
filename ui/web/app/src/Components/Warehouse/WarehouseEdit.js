@@ -9,7 +9,7 @@ const WarehouseEdit =()=>{
     
     const location = useLocation();
     const navigate = useNavigate();
-    const { data } = location.state;
+    const { id,data} = location.state;
     console.log(data);
 
     const onSubmit = (text,data)=>{
@@ -38,7 +38,7 @@ else {
     return(
         <>
 
-<WarehouseEditComponent   rowdata={data} type="edit" formDetails={Warehouse} onSubmit={onSubmit} />
+<WarehouseEditComponent   rowdata={data} id={id} type="edit" formDetails={Warehouse} onSubmit={onSubmit} />
         </>
     )
 };
