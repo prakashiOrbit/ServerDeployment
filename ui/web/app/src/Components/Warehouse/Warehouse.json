@@ -1,27 +1,33 @@
 {
   "division": {
     "name": "Warehouse Header",
-    "formelements": {
+    "formelements": [{
       "title": "CREATE WAREHOUSE",
-      "warehouseDetails": [
+      "details": [
         {
-          "label": "warehouseAddress",
+          "label": "Warehouse Address",
           "id": "warehouseAddress",
           "control": "textbox",
-          "required":"true",
-          "errorMessage":"Please enter Address(eg.LIG-113, Manoj Farms, Kerala)"
+          "required":true,
+          "errorMessage":"Provide the warehouse address (eg. Trivandrum, Kerala)"
         },
         {
-          "label": "warehouseName",
+          "label": "Warehouse Name",
           "id": "warehouseName",
-          "control": "textbox"
+          "control": "textbox",
+          "required":true,
+          "minLength":2,
+          "errorMessage":"Enter a valid warehouse name (eg. F2R BLR)."
         },
         {
-          "label": "contactNo",
+          "label": "Contact No",
           "id": "contactNo",
-          "control": "textbox"
+          "control": "textbox",
+          "required":true,
+          "pattern": "^(\\d{3}|\\d{4})?(\\d{7}|\\d{8}|\\d{9}|\\d{10})$",
+          "errorMessage":"Contact number must be valid(eg. 9876567654, 04712314440)"
         }
       ]
-    }
+    }]
   }
 }

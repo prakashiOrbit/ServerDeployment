@@ -20,6 +20,9 @@ const POEditComponent = ({formDetails,rowdata,onSubmit,type}) =>{
         setformdata({...formdata ,[id] : value});
     }
 
+
+
+
 useEffect(()=>{
 console.log("dettt",formdata);
 console.log("dmdmdm",rowdata)

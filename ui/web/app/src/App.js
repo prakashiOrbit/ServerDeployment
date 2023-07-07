@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import Layout from "./Pages/Layout";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import FormView from "./Components/CreateForm";
 import { useEffect } from "react";
-import { getApi, postApi } from "./webservice";
-import Po from "./Components/Po/po";
+import PoCreate from "./Components/Po/po";
 import POEdit from "./Components/Po/POEdit";
-import POList from "./Components/Po/POList";
 import FarmerList from "./Components/Farmer/FarmerList";
 import TruckEdit from "./Components/Truck/TruckEdit";
 import CreateCollectionCenter from "./Components/CollectionCenter/CreateCollectionCenter";
@@ -15,7 +12,6 @@ import CollectionCenterEdit from "./Components/CollectionCenter/CollectionCenter
 import CreateWarehouse from "./Components/Warehouse/CreateWarehouse";
 import WarehouseList from "./Components/Warehouse/WarehouseList";
 import WarehouseEdit from "./Components/Warehouse/WarehouseEdit";
-import Login from "./Components/login/Login";
 import FarmerEdit from "./Components/Farmer/FarmerEdit";
 import FarmerOnboard from "./Components/Farmer/FarmerOnboard";
 import Protected from "./Components/Protected";
@@ -24,18 +20,17 @@ import TruckList from "./Components/Truck/TruckList";
 import CreateProduct from "./Components/Product/CreateProduct";
 import ProductList from "./Components/Product/ProductList";
 import ProductEdit from "./Components/Product/ProductEdit";
+import POTemplateList from "./Components/Po/POtemplate";
+import CreatePo from "./Components/Po/create_po";
 import ProgressBar from "./Components/Warehouse Order/ProgressBar";
-import CreateCustomer from "./Components/Customer/CreateCustomer";
 import CustomerList from "./Components/Customer/CustomerList";
-import CustomerEdit from "./Components/Customer/CustomerEdit";
 import ViewCustomerOrder from "./Components/Customer/ViewCustomerOrder";
+import ItemList from "./Components/Items";
+import SignIn from "./Components/login";
+import ViewActualPO from "./Components/Po/view_actualpo";
+import CategoryList from "./Components/Category/categories";
 
 const App = () => {
-  const fields = "/Service/farmer.json";
-  const list = "/Details/listFarmer.json";
-  const products = "/Service/MasterData/product.json";
-  const search = "/Service/farmerSearch.json";
-  const field = "/Service/po.json";
 
   const [isSignedIn, setIsSignedIn] = useState(false);
 
@@ -52,7 +47,7 @@ const App = () => {
   return (
     <>
       <Routes>
-        <Route path="/login" element={<Login />}></Route>
+        <Route path="/login" element={<SignIn />}></Route>
         <Route
           path="/"
           element={
@@ -69,6 +64,39 @@ const App = () => {
               </Protected>
             }
           />
+          <Route
+            path="/create-po"
+            element={
+              <Protected isSignedIn={isSignedIn}>
+                <CreatePo />
+              </Protected>
+            }
+          />
+          <Route
+            path="/view_actualpo"
+            element={
+              <Protected isSignedIn={isSignedIn}>
+                <ViewActualPO />
+              </Protected>
+            }
+          />
+          <Route
+            path="/category-list"
+            element={
+              <Protected isSignedIn={isSignedIn}>
+                <CategoryList />
+              </Protected>
+            }
+          />
+          <Route
+            path="/product-list"
+            element={
+              <Protected isSignedIn={isSignedIn}>
+                <ItemList />
+              </Protected>
+            }
+          />
+
 
           <Route
             path="/farmer-edit"
@@ -91,7 +119,12 @@ const App = () => {
 
 
 
-          <Route path="/po" element={<Po />} />
+          <Route path="/po"
+            element={
+              <Protected isSignedIn={isSignedIn}>
+                <PoCreate />
+              </Protected>}
+          />
 
           <Route
             path="/po-edit"
@@ -102,52 +135,13 @@ const App = () => {
             }
           />
 
-            <Route
+          <Route
             path="/poList"
             element={
               <Protected isSignedIn={isSignedIn}>
-              
-              <POList/>
+
+                <POTemplateList />
               </Protected>
-            }
-          />
-          <Route
-            path="/create"
-            element={
-              <FormView
-                aev={"add"}
-                fields={fields}
-                list={list}
-                search={search}
-                getApi={getApi}
-                postApi={postApi}
-              />
-            }
-          />
-          <Route
-            path="/test/view"
-            element={
-              <FormView
-                aev={"view"}
-                fields={field}
-                list={list}
-                search={search}
-                getApi={getApi}
-                postApi={postApi}
-              />
-            }
-          />
-          <Route
-            path="/test/edit"
-            element={
-              <FormView
-                aev={"edit"}
-                fields={fields}
-                list={list}
-                getApi={getApi}
-                search={search}
-                postApi={postApi}
-              />
             }
           />
 
@@ -155,50 +149,58 @@ const App = () => {
           <Route
             path="/productList"
             element={
-
-              <ProductList />
+              <Protected isSignedIn={isSignedIn}>
+                <ProductList />
+              </Protected>
             }
           />
           <Route
             path="/CreateProduct"
             element={
+              <Protected isSignedIn={isSignedIn}>
+                < CreateProduct />
+              </Protected>
 
-              < CreateProduct />
             }
           />
 
           <Route
             path="/product-edit"
             element={
-
-              <ProductEdit />
+              <Protected isSignedIn={isSignedIn}>
+                <ProductEdit />
+              </Protected>
 
             }
           />
-
-
 
           <Route path="/Truck" element={<CreateTruck />} />
           <Route
             path="/truckList"
             element={
+              <Protected isSignedIn={isSignedIn}>
+                <TruckList />
+              </Protected>
 
-              <TruckList />
             }
           />
           <Route
             path="/truck-edit"
             element={
+              <Protected isSignedIn={isSignedIn}>
+                <TruckEdit />
+              </Protected>
 
-              <TruckEdit />
 
             }
           />
           <Route
             path="/CreateTruck"
             element={
+              <Protected isSignedIn={isSignedIn}>
+                <CreateTruck />
+              </Protected>
 
-              <CreateTruck />
             }
           />
 
@@ -208,23 +210,29 @@ const App = () => {
           <Route
             path="/centerList"
             element={
+              <Protected isSignedIn={isSignedIn}>
+                <CollectionCenterList />
+              </Protected>
 
-              <CollectionCenterList />
             }
           />
           <Route
             path="/center-edit"
             element={
+              <Protected isSignedIn={isSignedIn}>
+                <CollectionCenterEdit />
+              </Protected>
 
-              <CollectionCenterEdit />
 
             }
           />
           <Route
             path="/CreateCenter"
             element={
+              <Protected isSignedIn={isSignedIn}>
+                < CreateCollectionCenter />
+              </Protected>
 
-              < CreateCollectionCenter />
             }
           />
 
@@ -232,46 +240,48 @@ const App = () => {
           <Route
             path="/warehouseList"
             element={
+              <Protected isSignedIn={isSignedIn}>
+                <WarehouseList />
+              </Protected>
 
-              <WarehouseList />
             }
           />
           <Route
             path="/warehouse-edit"
             element={
+              <Protected isSignedIn={isSignedIn}>
+                <WarehouseEdit />
+              </Protected>
 
-              <WarehouseEdit />
 
             }
           />
           <Route
             path="/CreateWarehouse"
             element={
+              <Protected isSignedIn={isSignedIn}>
+                <CreateWarehouse />
+              </Protected>
 
-              <CreateWarehouse />
             }
           />
-          <Route path="/Customer" element={<CreateCustomer />} />
           <Route
             path="/customerList"
             element={
+              <Protected isSignedIn={isSignedIn}>
+                <CustomerList />
+              </Protected>
 
-              <CustomerList />
             }
           />
+
           <Route
-            path="/customer-edit"
-            element={
-
-              <CustomerEdit />
-
-            }
-          />
-           <Route
             path="/view-customer"
             element={
+              <Protected isSignedIn={isSignedIn}>
+                <ViewCustomerOrder />
+              </Protected>
 
-              <ViewCustomerOrder />
 
             }
           />
@@ -282,47 +292,17 @@ const App = () => {
               <CreateWarehouse />
             }
           />
-          
-          
           <Route>
-          <Route path="/warehouseOrder" element={<ProgressBar />} />
+            <Route path="/warehouseOrder" element={<ProgressBar />} />
           </Route>
-          
+
 
         </Route>
 
-        <Route
-          path="/test/delete"
-          element={
-            <FormView
-              aev={"delete"}
-              fields={fields}
-              list={list}
-              navigate={navigate}
-              search={search}
-              getApi={getApi}
-              postApi={postApi}
-            />
-          }
-        />
-
-
-        <Route
-          path="/creates"
-          element={
-            <FormView
-              aev={"add"}
-              field={products}
-              list={list}
-              search={search}
-              getApi={getApi}
-              postApi={postApi}
-            />
-          }
-        />
       </Routes>
     </>
   );
 };
 
 export default App;
+

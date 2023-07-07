@@ -1,35 +1,50 @@
 export const header_data = [
   {
-    "label": "coId",
+    "label": <strong>Order Id</strong>,
     "name": "coId",
     options:{
       display:true,
    
-    }
-    
+    },
   },
     {
-        "label": "phoneNo",
-        "name": "phoneNo",
+      "label": <strong>Date</strong>,
+      "name": "date",
+      options:{
+        display:true,
+     
+      }
+  },
+    {
+        "label": <strong>Source</strong>,
+        "name": "source",
         "control": "textbox",
         "vallabelation": "alphanumeric",
         
       },
       {
-        "label": "source",
-        "name": "source",
+        "label": <strong>Phone Number</strong>,
+        "name": "phoneNumber",
         "control": "textbox",
-        "vallabelation": "alphanumeric"
+        "vallabelation": "alphanumeric",
+        options:{
+          display:true,
+       
+        }
       },
       {
-        "label": "totalAmount",
-        "name": "totalAmount",
+        "label": <strong>Name</strong>,
+        "name": "name",
         "control": "textbox",
-        "vallabelation": "alphanumeric"
+        "vallabelation": "alphanumeric",
+        options:{
+          display:true,
+       
+        }
       },
       {
-        "label": "products",
-        "name": "products",
+        "label": <strong>Delivery Address</strong>,
+        "name": "deliveryAddress",
         "control": "textbox",
         "vallabelation": "alphanumeric",
         options:{
@@ -39,12 +54,36 @@ export const header_data = [
       
       },
       {
-        "label": "address",
-        "name": "address",
+        "label": <strong>Total Price (₹)</strong>,
+        "name": "totalPrice",
         "control": "textbox",
         "vallabelation": "alphanumeric",
         options:{
           display:true,
+       
+        }
+    
+      
+      },
+      {
+        "label": <strong>Status</strong>,
+        "name": "status",
+        "control": "textbox",
+        "vallabelation": "alphanumeric",
+        options:{
+          display:true,
+       
+        }
+    
+      
+      },
+      {
+        "label": <strong>Transaction Id</strong>,
+        "name": "transactionId",
+        "control": "textbox",
+        "vallabelation": "alphanumeric",
+        options:{
+          display:false,
        
         }
       

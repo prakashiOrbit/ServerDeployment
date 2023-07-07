@@ -4,125 +4,110 @@
     "formelements": [{
       "title": "GENERAL DETAILS ",
       "details": [
-        
+   
         {
           "id": "name",
-          "label": "name",
+          "label": "Name",
           "control": "textbox",
           "required":true,
+          "minLength":2,
           "pattern": "^[^0-9]+$",
-          "errorMessage":"Username only contains letters(eg. G. Shivani Murthy)"
+          "errorMessage":"The name contains only letters(eg. G. Prakash Murthy)"
         },
         {
           "id": "phoneNo",
-          "label": "phoneNo",
+          "label": "Phone Number",
           "control": "textbox",
           "required":true,
-          "pattern": "^[6-9][0-9]{9}$",
-          "errorMessage":"Phone Number only contains 10 digits(eg. 9876567654)"
+          "pattern": "^(\\d{3}|\\d{4})?(\\d{7}|\\d{8}|\\d{9}|\\d{10})$",
+          "errorMessage":"Please enter valid contact number(eg. 9876567654, 04712314440)"
         },
         {
-          "id": "Aadhar No",
-          "label": "aadharNo",
+          "id": "aadharNo",
+          "label": "Aadhar Number",
           "control": "textbox",
           "required":true,
-          "pattern": "^[2-9]{4} [0-9]{4} [0-9]{4}$",
-          "errorMessage":"Aadhar Number must contains 12 digits.(eg. 7654 8759 8324)"
+          "pattern": "^[2-9]{1}[0-9]{3}[0-9]{4}[0-9]{4}$",
+          "errorMessage":"There must be 12 digits in the Aadhar Number(eg. 765487598324)."
         },
         {
-          "label": "panNo",
-          "id": "pan",
+          "label": "PAN Number",
+          "id": "panNo",
           "control": "textbox",
-          "required":true,
-          "pattern": "^[A-Z]{5}[0-9]{4}[A-Z]{1}$",
-          "errorMessage":"Please enter valid Pan Number.(eg. CQAYM7601W)"
+          "required":false
         }
       ]},
       {
       "title": "ADDRESS DETAILS",
       "details": [
         {
-          "id": "Street Address",
-          "label": "streetAddress",
+          "id": "village",
+          "label": "Village",
           "control": "textbox",
           "required":true,
           "minLength":2,
-          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9\\s]*$",
-          "errorMessage":"Please enter valid Street Address.(eg. 13th Church Street)"
+          "pattern": "^[a-zA-Z0-9,#][a-zA-Z0-9,#\\s]*$",
+          "errorMessage":"Input a valid village (eg.Antapur , Boral)."
         },
         {
-          "id": "City",
-          "label": "city",
+          "id": "panchayat",
+          "label": "Panchayat",
+          "control": "textbox",
+          "required":false
+        },
+        {
+          "id": "taluk",
+          "label": "Taluk",
+          "control": "textbox",
+          "required":false
+        },
+        {
+          "id": "district",
+          "label": "District",
           "control": "textbox",
           "required":true,
           "minLength":2,
-          "pattern": "^[a-zA-Z ]+$",
-          "errorMessage":"City Name only contains letters.(Bangalore)"
-        },
-        {
-          "id": "State",
-          "label": "state",
-          "control": "textbox",
-          "required":true,
-          "minLength":2,
-          "pattern": "^[a-zA-Z ]+$",
-          "errorMessage":"State only contains letters.(eg. Tamil Nadu)"
-        },
-        {
-          "id": "Pin Code",
-          "label": "pinCode",
-          "control": "textbox",
-          "required":true,
-          "minLength":6,
-          "pattern": "^[1-9][0-9]{5}$",
-          "errorMessage":"Pin Code only contains 6 digits.(EG. 495006)"
+          "pattern": "^[^0-9]+$",
+          "errorMessage":"Input a valid District.(eg. Bagalkot, Bidar)"
         }
       ]},
 {
       "title": "PAYMENT DETAILS",
       "details": [
         {
-          "id": "Payee Name",
-          "label": "payeeName",
+          "id": "payeeName",
+          "label": "Payee Name",
           "control": "textbox",
           "required":true,
           "minLength":3,
           "pattern": "^[^0-9]+$",
-          "errorMessage":"Payee Name only contains letters.(Manish Malhotra)"
+          "errorMessage":"The Payee name only consists of letters.(Manish Malhotra)"
         },
         {
-          "id": "Account Number",
-          "label": "accountNo",
+          "id": "accountNo",
+          "label": "Account Number",
           "control": "textbox",
           "required":true,
           "minLength":9,
           "pattern": "^[0-9]{9,18}$",
-          "errorMessage":"Please enter valid Account Number.(eg. 876543256789)"
+          "errorMessage":"Enter the correct Account Number (eg. 876543256789)."
         },
         {
-          "id": "IFSC  Code",
-          "label": "ifscCode",
+          "id": "bankNameAddress",
+          "label": "Bank Name with Address",
+          "control": "textbox",
+          "required":false
+        },
+        {
+          "id": "ifscCode",
+          "label": "IFSC  Code",
           "control": "textbox",
           "required":true,
+          "minLength":8,
           "pattern": "^[A-Z]{4}0[A-Z0-9]{6}$",
-          "errorMessage":"Please enter valid IFSC Code."
+          "errorMessage":"The IFSC code must be valid."
         }
       ]
-    }],
-    "buttons": [
-      {
-        "id": "create",
-        "label": "Create",
-        "control": "button",
-        "validationjs": "validatedata",
-        "submitURL": "/farmerList"
-      },
-      {
-        "id": "cancel",
-        "label": "Cancel",
-        "control": "button",
-        "redirect": "/farmerList"
-      }
-    ]
+    }]
   }
 }

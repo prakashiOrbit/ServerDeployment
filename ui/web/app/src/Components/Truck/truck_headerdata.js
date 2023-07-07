@@ -1,6 +1,6 @@
 export const header_data = [
   {
-    "label": "tId",
+    "label": <strong>TId</strong>,
     "name": "tId",
     options:{
       display:false,
@@ -8,45 +8,31 @@ export const header_data = [
     }
     
   },
+  {
+    "label": <strong>Tranport Company Name</strong>,
+    "name": "tranportCompanyName",
+    "control": "textbox"
+  
+  },
     {
-        "label": "licenseNo",
+        "label": <strong>License No</strong>,
         "name": "licenseNo",
         "control": "textbox",
         "vallabelation": "alphanumeric",
-        
-      },
-      {
-        "label": "tranportCompanyName",
-        "name": "tranportCompanyName",
-        "control": "textbox"
-      },
-      {
-        "label": "VinNo",
-        "name": "VinNo",
-        "control": "textbox",
-        "vallabelation": "alphanumerc",
         options:{
           display:true,
        
         }
+        
       },
       {
-        "label": "companyName",
-        "name": "companyName",
-        options:{
-          display:false,
-       
-        }
-      
-      },
-      {
-        "label": "contactNo",
+        "label": <strong>Contact No</strong>,
         "name": "contactNo",
         "control": "textbox",
         "vallabelate": "alphanumeric"
       },
       {
-        "label": "address",
+        "label": <strong>Address</strong>,
         "name": "address",
         "control": "textbox",
         "vallabelate": "alphanumeric"

@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Datatable from "../../Modules/Datatable/datatable";
@@ -17,38 +15,30 @@ import FormLabel from '@mui/material/FormLabel';
 import postMethod from "../../Modules/service";
 import { config } from "../../Constants/constant";
 
-
 const WarehouseList = () => {
-
   const navigate = useNavigate();
   const [open, setopen] = useState(false);
   const [ccdata, setccdata] = useState([{ name: "check", label: "check" }]);
   const [warehousedata, setwarehousedata] = useState({});
-
-
+  const [currentPage, setcurrentPage] = useState(localStorage.getItem("warehousePage") ? localStorage.getItem("warehousePage") : 0);
 
   useEffect(() => {
     getCcList();
   }, [])
+  const onPagination = (page) => {
+    if (page >= 0) {
+      setcurrentPage(page);
+      localStorage.setItem("warehousePage", page);
+    }
 
-
+  }
   const handleChange = (e) => {
-
     var name = e.target.name;
     var value = e.target.value;
 
     setwarehousedata({ ...warehousedata, "centerId": value, "centerName": name })
-
-
   }
-
-
-
-
   const getCcList = () => {
-
-
-
     const payloaddata = {
       "FlowAdmin": {
         "___smart_action___": "lookup",
@@ -57,76 +47,64 @@ const WarehouseList = () => {
       "searchString": "*"
     };
 
-
     postMethod(config.getWarehouse, payloaddata)
       .then((res) => {
-        console.log(res.data.responses[0].cd);
-        const payload = res.data.responses[0].cd?.map((index) => ({
+        console.log(res.data.responses[0].farmers);
+        const payload = res.data.responses[0]?.farmers?.map((index) => ({
           value: index.centerId, label: index.centerName
         }))
         console.log(payload);
         setccdata(payload);
-
-
       });
-
-
   };
-
-
   const handlesubmit = () => {
 
     console.log(warehousedata);
     const sendpayload = {
       ...warehousedata, "Warehouse": {
         "___smart_action___": "lookup",
-        "___smart_value___": warehousedata.address
+        "___smart_value___": warehousedata.wId
       }
     }
-
     postMethod(config.editWarehouse, sendpayload)
       .then((res) => {
-        console.log(res.data.responses[0].message);
-        if (res.data.responses[0].message === "Warehouse details has been updated.") {
+        console.log(res.data.responses[0]?.message);
+        if (res.data.responses[0]?.message === "Warehouse details has been updated.") {
 
           navigate("/warehouseList")
         }
-
-
       });
-      setopen(false);
-
-
+    setopen(false);
   }
-
 
   const handleOptions = (data, option) => {
     console.log(option);
-    console.log(data)
+    console.log(data);
+    localStorage.setItem('warehouse', data.warehouseName);
+    localStorage.setItem("warehouseDetails", JSON.stringify(data))
     switch (option) {
       case "Edit":
 
         navigate('/warehouse-edit', {
+
           state: {
+
             id: data.id,
             data: data,
+            option: option,
+            warehousedata: warehousedata,
+
+
           }
         });
         break;
-      case "Create Warehouse":
-
-        setwarehousedata(data);
-        setopen(true);
-        break;
       default:
-        
+
     }
   }
-
   const handleClose = () => {
     setopen(false);
   }
-
 
   const handleCreateClick = () => {
     navigate('/createWarehouse');
@@ -134,9 +112,7 @@ const WarehouseList = () => {
   return (
     <div style={{ margin: "10%" }}>
 
-
-      <Datatable url={config.getWarehouse} handleOptions={handleOptions} flowEvent="WarehouseEvent" flow="MasterDataFlow" header_data={header_data} showEdit={true} onCreateClick={handleCreateClick} showAssignToCC={false} showCreateIcon={true}/>
-
+      <Datatable title="Warehouse List" currentPage={currentPage} onPagination={onPagination} print={false} url={config.getWarehouse} handleOptions={handleOptions} flowEvent="WarehouseEvent" flow="MasterDataFlow" header_data={header_data} showEdit={true} onCreateClick={handleCreateClick} showAssignToCC={false} showCreateIcon={true} />
       <Dialog
         open={open}
         onClose={handleClose}
@@ -171,8 +147,6 @@ const WarehouseList = () => {
 
     </div>
   );
-
 }
-
 export default WarehouseList;
 

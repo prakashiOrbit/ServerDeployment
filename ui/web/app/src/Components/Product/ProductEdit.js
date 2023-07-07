@@ -18,7 +18,7 @@ console.log(data,text);
 if(text=="submit"){
 
 const sendpayload = {...data,"Product":{ "___smart_action___": "lookup",
-"___smart_value___": data.pId}}
+"___smart_value___": data.skuId}}
 
 postMethod(config.editProduct,sendpayload)
 .then((res)=>{
@@ -27,21 +27,13 @@ postMethod(config.editProduct,sendpayload)
       
         navigate("/productList")
     }
-
-
 });
 
 }
 else {
     navigate("/productList")
 }
-
     }
-    
-
-
-
-
     return(
         <>
 

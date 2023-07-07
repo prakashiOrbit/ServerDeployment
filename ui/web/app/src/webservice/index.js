@@ -5,7 +5,7 @@ const authToken = ""
 
 export const handleSearch = (url,value) => {
   postMethod({"FlowAdmin": {"___smart_action___": "lookup","___smart_value___": "AdminFlow"},"searchString": value},
-  'http://', '35.200.175.176:9082/', 'apptest/', 'AdminFlow', url)
+  'http://', 'localhost:9082/', 'apptest/', 'AdminFlow', url)
   .then(res=>res.json()
   .then((resp)=>{
    var datalist=(resp.responses[0].farmers); 
@@ -27,7 +27,7 @@ export const handleSearch = (url,value) => {
 
 //   var config = {
 //       method: 'post',
-//       url: 'http://35.200.175.176:9082/apptest/AdminFlow/SearchFarmers',
+//       url: 'http://localhost:9082/apptest/AdminFlow/SearchFarmers',
 //       headers: {
 //           'Session-Id': 'b639e661-6443-4f7d-aa5f-596d8508cda0',
 //           'Content-Type': 'application/json'
@@ -62,7 +62,7 @@ export function postApi(url, value) {
 // handleSearch(url, searchString){
 //   console.log(url, searchString, "from handle search click");
 //   postMethod({"FlowAdmin": {"smart_action": "lookup","smart_value": "AdminFlow"},"searchString": searchString},
-//   'http://', '35.200.175.176:10324/', 'apptest/', 'AdminFlow', url);
+//   'http://', 'localhost:10324/', 'apptest/', 'AdminFlow', url);
 //   }
 
 export function getApi(url,searchString) {
@@ -96,7 +96,7 @@ export function postMethod(payload, protocol, domain, tenant, object, endpoint) 
   console.log("post methode");
   var url = urlbuilder(protocol, domain, tenant, object, endpoint);
   //call authenticate function
-  var fun = authenticate('http://', '167.71.237.12:9082/', 'apptest/', 'Security', 'Authenticate')
+  var fun = authenticate('http://', 'localhost:9082/', 'apptest/', 'Security', 'Authenticate')
   //localstorage getitem - store the session in a variable
   var id = localStorage.getItem('sessionId', fun)
   //Pass the variable in the header

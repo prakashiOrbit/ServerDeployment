@@ -10,6 +10,7 @@ import warehouse from "./warehouse.json";
 const ProgressBar = () => {
   const [progress, setProgress] = useState(0);
   const [formdata, setformdata] = useState('');
+  const[currentPage,setcurrentPage]=useState(localStorage.getItem("warehouseOrderPage")?localStorage.getItem("warehouseOrderPage"):0);
 
   const handlePendingClick = () => {
     setProgress(0);
@@ -33,6 +34,13 @@ const ProgressBar = () => {
 
   const onSubmit = (e) => {
     onSubmit(e.target.name, formdata);
+
+  }
+  const onPagination =(page)=>{
+    if(page>=0){
+      setcurrentPage(page);
+      localStorage.setItem("warehouseOrderPage",page);
+    }
 
   }
   return (
@@ -95,7 +103,7 @@ const ProgressBar = () => {
   showData={(url, data) => console.log(url, data)}
   getApi={api => console.log(api)}
 /> */}
-      <Datatable url={config.getfarmer} flowEvent="farmerEvent" flow="AdminFlow" header_data={header_data} showAssignToCC={false} showCreateIcon={false} />
+      <Datatable url={config.getfarmer} fcurrentPage={currentPage}  onPagination={onPagination} lowEvent="farmerEvent" flow="AdminFlow" header_data={header_data} showAssignToCC={false} showCreateIcon={false} />
 
 
       <EditComponent type="edit" formDetails={warehouse} onSubmit={onSubmit} />

@@ -1,6 +1,6 @@
 export const header_data = [
   {
-    "label": "wId",
+    "label": <strong>WId</strong>,
     "name": "wId",
     options:{
       display:false,
@@ -8,21 +8,30 @@ export const header_data = [
     }
     
   },
+  {
+    "label": <strong>Warehouse Code</strong>,
+    "name": "warehouseCode",
+    options:{
+      display:true,
+   
+    }
+    
+  },
     {
-        "label": "warehouseAddress",
+        "label": <strong>Warehouse Address</strong>,
         "name": "warehouseAddress",
         "control": "textbox",
         "vallabelation": "alphanumeric",
         
       },
       {
-        "label": "warehouseName",
+        "label": <strong>Warehouse Name</strong>,
         "name": "warehouseName",
         "control": "textbox",
         "vallabelation": "alphanumeric"
       },
       {
-        "label": "contactNo",
+        "label": <strong>Contact No</strong>,
         "name": "contactNo",
         "control": "textbox",
         "vallabelation": "alphanumeric"

@@ -5,7 +5,11 @@
       "title": "CREATE PO TEMPLATE",
       "section": 1,
       "generalDetails": [
-        
+        {
+          "id": "poId",
+          "label": "poid",
+          "control": "textbox"
+        },
 
         {
           "id": "date",
@@ -93,7 +97,8 @@
         "control": "button",
         "validationjs": "validatedata",
 
-        "submitURL": "CreatePurchaseOrderTemplate"
+        "submitURL": "CreatePurchaseOrderTemplate",
+        "lineitemsSubmitURL": "CreatePurchaseOrderTemplateLineitem"
       },
       {
         "id": "cancel",
@@ -106,7 +111,8 @@
       {
         "id": "abx",
         "label": "PO Template Data",
-        "dataurl": "/Service/poTableData.json"
+        "dataurl": "/Service/poTableData.json",
+        "submitURL": "CreatePurchaseOrderTemplate"
       }
     ]
   }

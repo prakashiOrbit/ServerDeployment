@@ -1,31 +1,31 @@
 export const header_data = [
-    {
-        "label": "fId",
-        "name": "fId",
-        "control": "textbox",
-        "vallabelate": "alphanumeric"
-    },
+    // {
+    //     "label": "fId",
+    //     "name": "fId",
+    //     "control": "textbox",
+    //     "vallabelate": "alphanumeric"
+    // },
     
     {
-        "label": "farmerId",
+        "label": <strong>Farmer Id</strong>,
         "name": "farmerId",
         "control": "textbox",
         "vallabelate": "alphanumeric"
     },
     {
-        "label": "name",
+        "label": <strong>Name</strong>,
         "name": "name",
         "control": "textbox",
         "vallabelation": "alphanumeric"
     },
     {
-        "label": "phoneNo",
+        "label": <strong>Phone Number</strong>,
         "name": "phoneNo",
         "control": "textbox",
         "vallabelation": "phone"
     },
     {
-        "label": "aadharNo",
+        "label": <strong>Aadhar Number</strong>,
         "name": "aadharNo",
         "control": "textbox",
         "vallabelate": "alphanumeric",
@@ -36,7 +36,7 @@ export const header_data = [
     },
     {
         "name": "panNo",
-        "label": "panNo",
+        "label": <strong>PAN Number</strong>,
         "control": "textbox",
         "vallabelate": "alphanumeric",
         options:{
@@ -46,8 +46,14 @@ export const header_data = [
     },
        
           {
-        "label": "streetAddress",
-        "name": "streetAddress",
+        "label": <strong>Village</strong>,
+        "name": "village",
+        "control": "textbox",
+        "vallabelate": "alphanumeric"
+    },
+    {
+        "label": <strong>Panchayat</strong>,
+        "name": "panchayat",
         "control": "textbox",
         "vallabelate": "alphanumeric",
         options:{
@@ -56,20 +62,52 @@ export const header_data = [
           }
     },
     {
-        "label": "city",
-        "name": "city",
+        "label": <strong>Taluk</strong>,
+        "name": "taluk",
+        "control": "textbox",
+        "vallabelate": "alphanumeric",
+        options:{
+            display:false,
+         
+          }
+    },
+    {
+        "label": <strong>District</strong>,
+        "name": "district",
         "control": "textbox",
         "vallabelate": "alphanumeric"
     },
+
     {
-        "label": "state",
-        "name": "state",
+        "label": <strong>CC Name</strong>,
+        "name": "centerName",
         "control": "textbox",
         "vallabelate": "alphanumeric"
     },
+    { 
+        "label": <strong>Bank Name & Address</strong>,
+        "name": "bankNameAddress",
+        "control": "textbox",
+        "vallabelate": "alphanumeric",
+        options:{
+            display:false,
+         
+          }
+    },
+    
+         { 
+        "label": <strong>Payee Name</strong>,
+        "name": "payeeName",
+        "control": "textbox",
+        "vallabelate": "alphanumeric",
+        options:{
+            display:false,
+         
+          }
+    },
     {
-        "label": "pinCode",
-        "name": "pinCode",
+        "label": <strong>Account Number</strong>,
+        "name": "accountNo",
         "control": "textbox",
         "vallabelate": "number",
         options:{
@@ -78,29 +116,14 @@ export const header_data = [
           }
     },
     {
-        "label": "centerName",
-        "name": "centerName",
+        "label": <strong>IFSC  Code</strong>,
+        "name": "ifscCode",
         "control": "textbox",
-        "vallabelate": "alphanumeric"
+        "vallabelate": "number",
+        options:{
+            display:false,
+         
+          }
     },
-    
-    //      { 
-    //     "label": "Payee Name",
-    //     "name": "payeeName",
-    //     "control": "textbox",
-    //     "vallabelate": "alphanumeric"
-    // },
-    // {
-    //     "label": "Account Number",
-    //     "name": "accountNo",
-    //     "control": "textbox",
-    //     "vallabelate": "number"
-    // },
-    // {
-    //     "label": "IFSC  Code",
-    //     "name": "ifscCode",
-    //     "control": "textbox",
-    //     "vallabelate": "number"
-    // },
    
 ];

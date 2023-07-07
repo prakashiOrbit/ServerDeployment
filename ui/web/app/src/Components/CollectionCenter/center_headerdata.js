@@ -1,6 +1,6 @@
 export const header_data = [
   {
-    "label": "cId",
+    "label": <strong>CId</strong>,
     "name": "cId",
     options:{
       display:false,
@@ -9,7 +9,7 @@ export const header_data = [
     
   },
     {
-        "label": "centerCode",
+        "label": <strong>Center Code</strong>,
         "name": "centerCode",
         "control": "textbox",
         "vallabelation": "alphanumeric",
@@ -17,22 +17,22 @@ export const header_data = [
       },
       
       {
-        "label": "centerName",
+        "label": <strong>Center Name</strong>,
         "name": "centerName",
         "control": "textbox",
         "vallabelation": "phone"
       },
       {
-        "label": "centerAddress",
+        "label": <strong>Center Address</strong>,
         "name": "centerAddress",
         options:{
-          display:false,
+          display:true,
        
         }
       
       },
       {
-        "label": "contactPersonName",
+        "label": <strong>Contact Person</strong>,
         "name": "contactPersonName",
         "control": "textbox",
         "vallabelate": "alphanumeric",
@@ -42,13 +42,17 @@ export const header_data = [
         }
       },
       {
-        "label": "emailId",
+        "label": <strong>EmailId</strong>,
         "name": "emailId",
         "control": "textbox",
-        "vallabelate": "alphanumeric"
+        "vallabelate": "alphanumeric",
+        options:{
+          display:false,
+       
+        }
       },
       {
-        "label": "contactNo",
+        "label": <strong>Contact No</strong>,
         "name": "contactNo",
         "control": "textbox",
         "vallabelate": "alphanumeric"
